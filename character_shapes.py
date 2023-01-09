@@ -9,8 +9,8 @@ REGULAR_WIDTH = 8
 BOLD_HEIGHT = 13
 BOLD_WIDTH = 9
 
-WHITE = (255, 255, 255, 255)
-BLACK = (0, 0, 0, 255)
+WHITE = ((255, 255, 255, 255), 255)
+BLACK = ((0, 0, 0, 255), 0)
 
 
 def get_regular_shapes() -> dict[int, str]:
@@ -32,7 +32,7 @@ def get_bitmask(x: int, y: int, image: Image, width: int, height: int) -> int:
         for x in range(width):
             bitmask <<= 1
             color = image.getpixel((x0 + x, y0 + y))
-            if color != WHITE:
+            if color not in WHITE:
                 bitmask += 1
     return bitmask
 
