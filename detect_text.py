@@ -1,19 +1,19 @@
 from PIL import Image
 
-from character_shapes import REGULAR_SHAPES, REGULAR_WIDTH, REGULAR_HEIGHT, get_regular_bitmask
+from character_shapes import REGULAR_FONT, Font
 
 
-def get_text_blocks(image: Image):
-    lines = get_text_lines(image)
+def get_text_blocks(image: Image, font: Font):
+    lines = get_text_lines(image, font)
     while lines:
         new_block = [lines[0]]
         new_lines = []
         for x, y, line in lines[1:]:
             x0, y0, line0 = new_block[-1]
-            x1 = x0 + REGULAR_WIDTH * len(line0)
-            x_end = x * REGULAR_WIDTH * len(line)
+            x1 = x0 + font.width * len(line0)
+            x_end = x * font.width * len(line)
             interval0, interval1 = sorted([(x, x_end), (x0, x1)])
-            if y == y0 + REGULAR_HEIGHT and interval0[1] > interval1[0]:
+            if y == y0 + font.height and interval0[1] > interval1[0]:
                 new_block.append((x, y, line))
             else:
                 new_lines.append((x, y, line))
@@ -21,37 +21,36 @@ def get_text_blocks(image: Image):
         yield new_block
 
 
-def get_text_lines(image: Image):
+def get_text_lines(image: Image, font: Font):
     lines = []
-    for y in range(image.height - REGULAR_HEIGHT + 1):
+    for y in range(image.height - font.height + 1):
         x = 0
-        while x < image.width - REGULAR_WIDTH + 1:
+        while x < image.width - font.width + 1:
             for l_x, l_y, line in lines:
-                if l_x - REGULAR_WIDTH < x <= l_x and y - l_y < REGULAR_HEIGHT:
-                    x = l_x + REGULAR_WIDTH * len(line)
+                if l_x - font.width < x <= l_x and y - l_y < font.height:
+                    x = l_x + font.width * len(line)
                     break
-            if x >= image.width - REGULAR_WIDTH + 1:
+            if x >= image.width - font.width + 1:
                 break
-            bitmask = get_regular_bitmask(x, y, image=image)
-            if bitmask in REGULAR_SHAPES:
-                line = get_line(x, y, image)
+            char = font.get_char(x, y, image)
+            if char not in (' ', None):
+                line = get_line(x, y, image, font)
                 if line not in ".'`,|":
                     lines.append((x, y, line))
-                    x += REGULAR_WIDTH * len(line)
+                    x += font.width * len(line)
             x += 1
     return lines
 
 
-def get_line(x: int, y: int, image: Image):
-    bitmask = get_regular_bitmask(x, y, image=image)
-    line = REGULAR_SHAPES[bitmask]
+def get_line(x: int, y: int, image: Image, font: Font):
+    line = font.get_char(x, y, image=image)
     spaces = 0
     while True:
-        x += REGULAR_WIDTH
-        if x > image.width - REGULAR_WIDTH:
+        x += font.width
+        if x > image.width - font.width:
             break
-        bitmask = get_regular_bitmask(x, y, image=image)
-        if bitmask == 0:
+        char = font.get_char(x, y, image)
+        if char == ' ':
             spaces += 1
             if spaces > 2:
                 break
@@ -63,18 +62,19 @@ def get_line(x: int, y: int, image: Image):
                     last_char = line[-2]
                 if last_char not in '.!?':
                     break
-        elif bitmask in REGULAR_SHAPES:
+        elif char is not None:
             if spaces > 0:
                 line += ' ' * spaces
                 spaces = 0
-            line += REGULAR_SHAPES[bitmask]
+            line += char
         else:
             break
     return line
-    # parse next line etc. (there may be some offset)
 
 
 if __name__ == '__main__':
     import sys
-    for block in get_text_blocks(Image.open(sys.argv[1])):
+    for block in get_text_blocks(Image.open(sys.argv[1]), REGULAR_FONT):
         print(' '.join(line for x, y, line in block).replace('  ', ' '))
+    # for block in get_text_blocks(Image.open(sys.argv[1]), BOLD_FONT):
+    #     print(' '.join(line for x, y, line in block).replace('  ', ' '))

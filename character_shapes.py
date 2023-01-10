@@ -1,4 +1,6 @@
 import string
+from dataclasses import dataclass
+
 from PIL import Image
 
 SHAPE_FILE = 'img/printable.png'
@@ -13,16 +15,46 @@ WHITE = ((255, 255, 255, 255), 255)
 BLACK = ((0, 0, 0, 255), 0)
 
 
+@dataclass
+class Font:
+    width: int
+    height: int
+    shapes: dict[int, str]
+
+    def get_char(self, x: int, y: int, image: Image) -> str | None:
+        bitmask = self.get_bitmask(x, y, image)
+        if bitmask == 0:
+            return ' '
+        return self.shapes.get(bitmask)
+
+    def get_bitmask(self, x: int, y: int, image: Image) -> int:
+        return get_bitmask(x, y, image, self.width, self.height)
+
+
 def get_regular_shapes() -> dict[int, str]:
     image = Image.open(SHAPE_FILE)
     return {
-        get_regular_bitmask(x=REGULAR_WIDTH*i, y=0, image=image): char
+        get_bitmask(x=REGULAR_WIDTH * i, y=0, image=image, width=REGULAR_WIDTH, height=REGULAR_HEIGHT): char
         for i, char in enumerate(string.printable.strip())
     }
 
 
-def get_regular_bitmask(x: int, y: int, image: Image):
-    return get_bitmask(x, y, image, REGULAR_WIDTH, REGULAR_HEIGHT)
+def get_bold_shapes() -> dict[int, str]:
+    return {
+        regular_shape_to_bold(shape): char
+        for shape, char in REGULAR_FONT.shapes.items()
+    }
+
+
+def regular_shape_to_bold(shape: int) -> int:
+    bold = 0
+    mask = (1 << REGULAR_WIDTH) - 1
+    for level in range(REGULAR_HEIGHT):
+        line = shape & mask
+        bold_line = line | (line << 1)
+        bold |= bold_line << (level * BOLD_WIDTH)
+        shape >>= REGULAR_WIDTH
+    return bold
 
 
 def get_bitmask(x: int, y: int, image: Image, width: int, height: int) -> int:
@@ -37,5 +69,5 @@ def get_bitmask(x: int, y: int, image: Image, width: int, height: int) -> int:
     return bitmask
 
 
-REGULAR_SHAPES = get_regular_shapes()
-
+REGULAR_FONT = Font(REGULAR_WIDTH, REGULAR_HEIGHT, get_regular_shapes())
+BOLD_FONT = Font(BOLD_WIDTH, BOLD_HEIGHT, get_bold_shapes())
