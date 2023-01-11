@@ -3,7 +3,7 @@ from dataclasses import dataclass
 
 from PIL import Image
 
-SHAPE_FILE = 'img/printable.png'
+REGULAR_SHAPE_FILE = 'img/regular.png'
 
 REGULAR_HEIGHT = 13
 REGULAR_WIDTH = 8
@@ -32,7 +32,7 @@ class Font:
 
 
 def get_regular_shapes() -> dict[int, str]:
-    image = Image.open(SHAPE_FILE)
+    image = Image.open(REGULAR_SHAPE_FILE)
     return {
         get_bitmask(x=REGULAR_WIDTH * i, y=0, image=image, width=REGULAR_WIDTH, height=REGULAR_HEIGHT): char
         for i, char in enumerate(string.printable.strip())
