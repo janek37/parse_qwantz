@@ -26,6 +26,14 @@ class SimpleImage:
         # caution: no bounds checking!
         return self.pixels.get(pixel, Color.WHITE)
 
+    def find_color(self, box: tuple[Pixel, Pixel]) -> Color:
+        (x0, y0), (x1, y1) = box
+        for x in range(x0, x1):
+            for y in range(x1, y1):
+                if (x, y) in self.pixels:
+                    return self.pixels[(x, y)]
+        return Color.WHITE
+
 
 def get_pixels(image: Image) -> Iterable[tuple[Pixel, Color]]:
     palette = image.getpalette()
