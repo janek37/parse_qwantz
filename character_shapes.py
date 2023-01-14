@@ -3,12 +3,11 @@ from dataclasses import dataclass
 
 from PIL import Image
 
+from colors import WHITE
+
 PRINTABLE = string.printable.strip()
 
 REGULAR_SHAPE_FILE = 'img/regular.png'
-
-WHITE = ((255, 255, 255, 255), 255)
-BLACK = ((0, 0, 0, 255), 0)
 
 
 @dataclass
@@ -27,8 +26,8 @@ class Font:
         return get_bitmask(x, y, image, self.width, self.height)
 
 
-def get_regular_shapes() -> tuple[int, int, dict[int, str]]:
-    image = Image.open(REGULAR_SHAPE_FILE)
+def get_regular_shapes(file_path: str) -> tuple[int, int, dict[int, str]]:
+    image = Image.open(file_path)
     width = image.width // len(PRINTABLE)
     height = image.height
     return width, height, {
@@ -67,5 +66,5 @@ def get_bitmask(x: int, y: int, image: Image, width: int, height: int) -> int:
     return bitmask
 
 
-REGULAR_FONT = Font(*get_regular_shapes())
+REGULAR_FONT = Font(*get_regular_shapes(REGULAR_SHAPE_FILE))
 BOLD_FONT = Font(*get_bold_shapes(REGULAR_FONT))
