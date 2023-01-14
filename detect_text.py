@@ -1,8 +1,6 @@
 from typing import Iterable, NamedTuple
 
-from PIL import Image
-
-from character_shapes import REGULAR_FONT, Font, BOLD_FONT
+from character_shapes import Font
 from colors import Color
 from pixels import Pixel, SimpleImage
 
@@ -26,51 +24,43 @@ class TextBlock(NamedTuple):
     font: Font
 
 
-def get_text_blocks(image: SimpleImage, font: Font) -> Iterable[TextBlock]:
-    lines = get_text_lines(image, font)
-    while lines:
-        new_block = [lines[0]]
+def get_text_blocks(text_lines: list[TextLine], image: SimpleImage) -> Iterable[TextBlock]:
+    while text_lines:
+        new_block = [text_lines[0]]
+        font = text_lines[0].font
         new_lines: list[TextLine] = []
-        for line in lines[1:]:
-            (x, y), (x_end, y_end) = line.box()
-            line0 = new_block[-1]
-            (x0, y0), (x1, y1) = line0.box()
-            interval0, interval1 = sorted([(x, x_end), (x0, x1)])
-            if y == y1 and interval0[1] > interval1[0]:
-                new_block.append(line)
+        for text_line in text_lines[1:]:
+            if text_line.font == font:
+                (x, y), (x_end, y_end) = text_line.box()
+                line0 = new_block[-1]
+                (x0, y0), (x1, y1) = line0.box()
+                interval0, interval1 = sorted([(x, x_end), (x0, x1)])
+                if y == y1 and interval0[1] > interval1[0]:
+                    new_block.append(text_line)
+                else:
+                    new_lines.append(text_line)
             else:
-                new_lines.append(line)
-        lines = new_lines
+                new_lines.append(text_line)
+        text_lines = new_lines
         color = image.find_color(new_block[0].box())
         yield TextBlock(new_block, color, font)
 
 
-def get_text_lines(image: SimpleImage, font: Font) -> list[TextLine]:
-    lines = []
-    for y in range(image.height - font.height + 1):
-        x = 0
-        while x < image.width - font.width + 1:
-            for line in lines:
-                l_x, l_y = line.start
-                if l_x - font.width < x <= l_x and y - l_y < font.height:
-                    x = line.x_end()
-                    break
-            if x >= image.width - font.width + 1:
-                break
+def try_text_line(start: Pixel, image: SimpleImage, font: Font) -> TextLine | None:
+    x0, y0 = start
+    for x in range(x0, x0 - font.width + 1, -1):
+        for y in range(y0, y0 - font.height + 1, -1):
             line = get_text_line((x, y), image, font)
-            if line and line.content not in ".'`,|":
-                lines.append(line)
-                x = line.x_end()
-            x += 1
-    return lines
+            if line:
+                return line
 
 
-def get_text_line(pixel: Pixel, image: SimpleImage, font: Font) -> TextLine | None:
-    text = font.get_char(pixel, image=image)
+def get_text_line(start: Pixel, image: SimpleImage, font: Font) -> TextLine | None:
+    text = font.get_char(start, image=image)
     if text in (' ', None):
         return None
     spaces = 0
-    x, y = pixel
+    x, y = start
     while True:
         x += font.width
         if x > image.width - font.width:
@@ -95,13 +85,4 @@ def get_text_line(pixel: Pixel, image: SimpleImage, font: Font) -> TextLine | No
             text += char
         else:
             break
-    return TextLine(pixel, text, font)
-
-
-if __name__ == '__main__':
-    import sys
-    img = SimpleImage.from_image(Image.open(sys.argv[1]))
-    for block in get_text_blocks(img, REGULAR_FONT):
-        print(' '.join(line.content for line in block.lines).replace('  ', ' '))
-    for block in get_text_blocks(img, BOLD_FONT):
-        print(' '.join(line.content for line in block.lines).replace('  ', ' '))
+    return TextLine(start, text, font)

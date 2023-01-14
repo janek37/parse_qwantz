@@ -12,6 +12,7 @@ REGULAR_SHAPE_FILE = 'img/regular.png'
 
 @dataclass
 class Font:
+    name: str
     width: int
     height: int
     shapes: dict[int, str]
@@ -24,6 +25,12 @@ class Font:
 
     def _get_bitmask(self, pixel: Pixel, image: SimpleImage) -> int:
         return get_bitmask(pixel, image, self.width, self.height)
+
+    def __str__(self):
+        return self.name
+
+    def __repr__(self):
+        return f"Font(name={self.name}, width={self.width}, height={self.height})"
 
 
 def get_regular_shapes(file_path: str) -> tuple[int, int, dict[int, str]]:
@@ -65,5 +72,7 @@ def get_bitmask(pixel: Pixel, image: SimpleImage, width: int, height: int) -> in
     return bitmask
 
 
-REGULAR_FONT = Font(*get_regular_shapes(REGULAR_SHAPE_FILE))
-BOLD_FONT = Font(*get_bold_shapes(REGULAR_FONT))
+REGULAR_FONT = Font('Regular', *get_regular_shapes(REGULAR_SHAPE_FILE))
+BOLD_FONT = Font('Bold', *get_bold_shapes(REGULAR_FONT))
+
+ALL_FONTS = [REGULAR_FONT, BOLD_FONT]

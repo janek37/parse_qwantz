@@ -1,10 +1,12 @@
-from itertools import groupby
+from itertools import groupby, product
 
 from colors import Color
 from pixels import Pixel, SimpleImage
 
+Line = tuple[Pixel, Pixel, list[Pixel]]
 
-def get_line(pixel: Pixel, image: SimpleImage) -> tuple[Pixel, Pixel] | None:
+
+def get_line(pixel: Pixel, image: SimpleImage) -> Line | None:
     pixels = get_shape(pixel, image)
     if len(set(pixels.values())) != 1:
         return None
@@ -23,10 +25,11 @@ def get_line(pixel: Pixel, image: SimpleImage) -> tuple[Pixel, Pixel] | None:
         forward = False
     else:
         return None
-    slices = [group for key, group in groupby(sorted(pixels), key=lambda px: px[0])]
+    sorted_pixels = sorted(pixels)
+    slices = [list(y for x, y in group) for key, group in groupby(sorted_pixels, key=lambda px: px[0])]
     # all slices are single intervals
     for s in slices:
-        if not all(y1 + 1 == y2 for (x1, y1), (x2, y2) in zip(s, s[1:])):
+        if not all(y1 + 1 == y2 for y1, y2 in zip(s, s[1:])):
             return None
     # slices are monotonic
     for slice1, slice2 in zip(slices, slices[1:]):
@@ -41,14 +44,13 @@ def get_line(pixel: Pixel, image: SimpleImage) -> tuple[Pixel, Pixel] | None:
     ):
         return None
     for x, y in pixels:
-        for i in range(3):
-            for j in range(3):
-                if (x + i, y + j) not in pixels:
-                    break
-            else:
-                # contains 3x3 square
-                return None
-    return end1, end2
+        for i, j in product(range(3), range(3)):
+            if (x + i, y + j) not in pixels:
+                break
+        else:
+            # contains 3x3 square
+            return None
+    return end1, end2, sorted_pixels
 
 
 def get_shape(pixel: Pixel, image: SimpleImage) -> dict[Pixel, Color]:
