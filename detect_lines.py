@@ -1,13 +1,10 @@
 from itertools import groupby
 
-from PIL import Image
-
-from character_shapes import WHITE
 from colors import Color
-from pixels import Pixel
+from pixels import Pixel, SimpleImage
 
 
-def get_line(pixel: Pixel, image: Image) -> tuple[Pixel, Pixel] | None:
+def get_line(pixel: Pixel, image: SimpleImage) -> tuple[Pixel, Pixel] | None:
     pixels = get_shape(pixel, image)
     if len(set(pixels.values())) != 1:
         return None
@@ -54,14 +51,14 @@ def get_line(pixel: Pixel, image: Image) -> tuple[Pixel, Pixel] | None:
     return end1, end2
 
 
-def get_shape(pixel: Pixel, image: Image) -> dict[Pixel, Color]:
+def get_shape(pixel: Pixel, image: SimpleImage) -> dict[Pixel, Color]:
     pixels_left = [pixel]
     pixels = {}
     while pixels_left:
         pixel = pixels_left.pop()
-        pixels[pixel] = image.getpixel(pixel)
+        pixels[pixel] = image.get_pixel(pixel)
         for other_pixel in get_adjacent_pixels(pixel):
-            if other_pixel not in pixels and image.getpixel(other_pixel) != WHITE:
+            if other_pixel not in pixels and other_pixel in image.pixels:
                 pixels_left.append(other_pixel)
     return pixels
 

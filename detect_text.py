@@ -2,11 +2,11 @@ from typing import Iterable
 
 from PIL import Image
 
-from character_shapes import REGULAR_FONT, Font
-from pixels import Pixel
+from character_shapes import REGULAR_FONT, Font, BOLD_FONT
+from pixels import Pixel, SimpleImage
 
 
-def get_text_blocks(image: Image, font: Font) -> Iterable[list[tuple[Pixel, str]]]:
+def get_text_blocks(image: SimpleImage, font: Font) -> Iterable[list[tuple[Pixel, str]]]:
     lines = get_text_lines(image, font)
     while lines:
         new_block = [lines[0]]
@@ -24,7 +24,7 @@ def get_text_blocks(image: Image, font: Font) -> Iterable[list[tuple[Pixel, str]
         yield new_block
 
 
-def get_text_lines(image: Image, font: Font) -> list[tuple[Pixel, str]]:
+def get_text_lines(image: SimpleImage, font: Font) -> list[tuple[Pixel, str]]:
     lines = []
     for y in range(image.height - font.height + 1):
         x = 0
@@ -43,7 +43,7 @@ def get_text_lines(image: Image, font: Font) -> list[tuple[Pixel, str]]:
     return lines
 
 
-def get_line(pixel: Pixel, image: Image, font: Font) -> str | None:
+def get_line(pixel: Pixel, image: SimpleImage, font: Font) -> str | None:
     line = font.get_char(pixel, image=image)
     if line in (' ', None):
         return None
@@ -78,7 +78,8 @@ def get_line(pixel: Pixel, image: Image, font: Font) -> str | None:
 
 if __name__ == '__main__':
     import sys
-    for block in get_text_blocks(Image.open(sys.argv[1]), REGULAR_FONT):
+    img = SimpleImage.from_image(Image.open(sys.argv[1]))
+    for block in get_text_blocks(img, REGULAR_FONT):
         print(' '.join(line for _, line in block).replace('  ', ' '))
-    # for block in get_text_blocks(Image.open(sys.argv[1]), BOLD_FONT):
-    #     print(' '.join(line for _, line in block).replace('  ', ' '))
+    for block in get_text_blocks(img, BOLD_FONT):
+        print(' '.join(line for _, line in block).replace('  ', ' '))

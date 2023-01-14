@@ -3,8 +3,7 @@ from dataclasses import dataclass
 
 from PIL import Image
 
-from colors import WHITE
-from pixels import Pixel
+from pixels import Pixel, SimpleImage
 
 PRINTABLE = string.printable.strip()
 
@@ -17,18 +16,18 @@ class Font:
     height: int
     shapes: dict[int, str]
 
-    def get_char(self, pixel: Pixel, image: Image) -> str | None:
+    def get_char(self, pixel: Pixel, image: SimpleImage) -> str | None:
         bitmask = self._get_bitmask(pixel, image)
         if bitmask == 0:
             return ' '
         return self.shapes.get(bitmask)
 
-    def _get_bitmask(self, pixel: Pixel, image: Image) -> int:
+    def _get_bitmask(self, pixel: Pixel, image: SimpleImage) -> int:
         return get_bitmask(pixel, image, self.width, self.height)
 
 
 def get_regular_shapes(file_path: str) -> tuple[int, int, dict[int, str]]:
-    image = Image.open(file_path)
+    image = SimpleImage.from_image(Image.open(file_path))
     width = image.width // len(PRINTABLE)
     height = image.height
     return width, height, {
@@ -55,14 +54,13 @@ def regular_shape_to_bold(shape: int, regular_font: Font) -> int:
     return bold
 
 
-def get_bitmask(pixel: Pixel, image: Image, width: int, height: int) -> int:
+def get_bitmask(pixel: Pixel, image: SimpleImage, width: int, height: int) -> int:
     bitmask = 0
     x0, y0 = pixel
     for y in range(height):
         for x in range(width):
             bitmask <<= 1
-            color = image.getpixel((x0 + x, y0 + y))
-            if color not in WHITE:
+            if (x0 + x, y0 + y) in image.pixels:
                 bitmask += 1
     return bitmask
 

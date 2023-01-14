@@ -1,5 +1,7 @@
-Color = tuple[int, int, int, int] | int
+from enum import Enum
 
-WHITE = ((255, 255, 255, 255), 255)
-BLACK = ((0, 0, 0, 255), 0)
-RED = ((128, 0, 0, 255),)
+
+class Color(Enum):
+    WHITE = (255, 255, 255)
+    BLACK = (0, 0, 0)
+    RED = (128, 0, 0)
