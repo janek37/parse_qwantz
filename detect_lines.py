@@ -1,21 +1,14 @@
 from itertools import groupby
-from typing import Iterable, Optional
 
 from PIL import Image
 
 from character_shapes import WHITE
 from colors import Color
+from pixels import Pixel
 
 
-def get_pixels(image: Image) -> Iterable[tuple[int, int]]:
-    for x in range(image.width):
-        for y in range(image.height):
-            if image.getpixel(x, y) not in WHITE:
-                yield x, y
-
-
-def get_line(x: int, y: int, image: Image) -> Optional[tuple[tuple[int, int], tuple[int, int]]]:
-    pixels = get_shape(x, y, image)
+def get_line(pixel: Pixel, image: Image) -> tuple[Pixel, Pixel] | None:
+    pixels = get_shape(pixel, image)
     if len(set(pixels.values())) != 1:
         return None
     x_min = min(x for x, y in pixels)
@@ -33,7 +26,7 @@ def get_line(x: int, y: int, image: Image) -> Optional[tuple[tuple[int, int], tu
         forward = False
     else:
         return None
-    slices = [group for key, group in groupby(sorted(pixels), key=lambda pixel: pixel[0])]
+    slices = [group for key, group in groupby(sorted(pixels), key=lambda px: px[0])]
     # all slices are single intervals
     for s in slices:
         if not all(y1 + 1 == y2 for (x1, y1), (x2, y2) in zip(s, s[1:])):
@@ -61,8 +54,8 @@ def get_line(x: int, y: int, image: Image) -> Optional[tuple[tuple[int, int], tu
     return end1, end2
 
 
-def get_shape(x: int, y: int, image: Image) -> dict[tuple[int, int], Color]:
-    pixels_left = [(x, y)]
+def get_shape(pixel: Pixel, image: Image) -> dict[Pixel, Color]:
+    pixels_left = [pixel]
     pixels = {}
     while pixels_left:
         pixel = pixels_left.pop()
@@ -73,6 +66,6 @@ def get_shape(x: int, y: int, image: Image) -> dict[tuple[int, int], Color]:
     return pixels
 
 
-def get_adjacent_pixels(pixel: tuple[int, int]):
+def get_adjacent_pixels(pixel: Pixel):
     x, y = pixel
     return [(x - 1, y), (x + 1, y), (x, y - 1), (x, y + 1)]
