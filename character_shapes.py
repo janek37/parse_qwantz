@@ -8,6 +8,7 @@ from pixels import Pixel, SimpleImage
 PRINTABLE = string.printable.strip()
 
 REGULAR_SHAPE_FILE = 'img/regular.png'
+REGULAR11_SHAPE_FILE = 'img/regular11.png'
 
 
 @dataclass
@@ -74,5 +75,6 @@ def get_bitmask(pixel: Pixel, image: SimpleImage, width: int, height: int) -> in
 
 REGULAR_FONT = Font('Regular', *get_regular_shapes(REGULAR_SHAPE_FILE))
 BOLD_FONT = Font('Bold', *get_bold_shapes(REGULAR_FONT))
+REGULAR11_FONT = Font('Small', *get_regular_shapes(REGULAR11_SHAPE_FILE))
 
-ALL_FONTS = [REGULAR_FONT, BOLD_FONT]
+ALL_FONTS = [REGULAR_FONT, BOLD_FONT, REGULAR11_FONT]
