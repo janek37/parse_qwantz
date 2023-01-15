@@ -32,7 +32,10 @@ class TextBlock(NamedTuple):
         return ' '.join(line.content for line in self.lines).replace('  ', ' ')
 
     def __str__(self):
-        return f"{self.start} [{self.font}] {self.content}"
+        if self.font.name == 'Regular':
+            return self.content
+        else:
+            return f"[{self.font}] {self.content}"
 
 
 def get_text_blocks(text_lines: list[TextLine], image: SimpleImage) -> Iterable[TextBlock]:

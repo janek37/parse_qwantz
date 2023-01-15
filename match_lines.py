@@ -11,14 +11,13 @@ class Character:
     name: str
     box: tuple[Pixel, Pixel]
 
+    def __str__(self):
+        return self.name
 
-class OffPanel:
-    pass
 
+OFF_PANEL = Character("Off-Panel", ((0, 0), (0, 0)))
 
-OFF_PANEL = OffPanel()
-
-Target = TextBlock | Character | OffPanel
+Target = TextBlock | Character
 
 
 class UnmatchedLine(Exception):
@@ -27,7 +26,7 @@ class UnmatchedLine(Exception):
 
 def match_lines(
     lines: list[Line], text_blocks: list[TextBlock], characters: list[Character], image: SimpleImage
-) -> Iterable[tuple[Line, Target, Target]]:
+) -> Iterable[tuple[Target, Target]]:
     boxes: list[tuple[tuple[Pixel, Pixel], Target]] = [
         (text_line.box(), text_block)
         for text_block in text_blocks
@@ -56,9 +55,13 @@ def match_lines(
                         distance2 = d2
                         closest2 = target
                     break
-        if closest1 is None or closest2 is None:
+        if (
+            closest1 is None
+            or closest2 is None
+            or not (isinstance(closest1, TextBlock) or isinstance(closest2, TextBlock))
+        ):
             raise UnmatchedLine(line)
-        yield line, closest1, closest2
+        yield closest1, closest2
 
 
 def sides(box: tuple[Pixel, Pixel]) -> list[tuple[Pixel, Pixel]]:

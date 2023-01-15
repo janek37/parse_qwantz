@@ -1,13 +1,16 @@
+import logging
 from pathlib import Path
+from typing import Iterable
 
 from PIL import Image
 
-from character_shapes import REGULAR_FONT
 from detect_text import get_text_blocks
 from elements import get_elements
+from match_blocks import match_blocks
 from match_lines import match_lines, Character
 from pixels import SimpleImage
 
+logger = logging.getLogger()
 
 CHARACTERS = {
     1: [Character('T-Rex', ((104, 99), (170, 238)))],
@@ -30,23 +33,34 @@ CHARACTERS = {
 }
 
 
-def parse_qwantz(directory: Path):
-    for i in range(1, 7):
-        filename = f"panel{i}.png"
-        image = SimpleImage.from_image(Image.open(directory / filename))
-        lines, text_lines = get_elements(image)
-        text_blocks = sorted(get_text_blocks(text_lines, image), key=lambda b: (b.start[1], b.start[0]))
-        print(filename)
-        for block in text_blocks:
-            if block.font != REGULAR_FONT:
-                print(f"[{block.font}] {block.content}")
-            else:
-                print(block.content)
-        for line, block1, block2 in match_lines(lines, text_blocks, CHARACTERS[i], image):
-            print(line, str(block1), str(block2))
+def parse_qwantz(directory: Path) -> Iterable[Iterable[str]]:
+    for i, characters in enumerate(CHARACTERS, start=1):
+        image = SimpleImage.from_image(Image.open(directory / f"panel{i}.png"))
+        yield parse_panel(image, CHARACTERS[i])
+
+
+def parse_panel(image: Image, characters: list[Character]) -> Iterable[str]:
+    lines, text_lines = get_elements(image)
+    text_blocks = sorted(get_text_blocks(text_lines, image), key=lambda b: (b.start[1], b.start[0]))
+    line_matches = match_lines(lines, text_blocks, characters, image)
+    block_matches = match_blocks(line_matches)
+    for block in text_blocks:
+        if id(block) in block_matches:
+            yield f"{block_matches[id(block)]}: {block}"
+        else:
+            if block.font.name != 'Bold':
+                logger.warning('Narrator not bold')
+            yield f"Narrator: {block.content}"
+
+
+def main():
+    import sys
+
+    for panel_no, panel in enumerate(parse_qwantz(Path(sys.argv[1])), start=1):
+        print(f'Panel {panel_no}:')
+        for line in panel:
+            print(line)
 
 
 if __name__ == '__main__':
-    import sys
-
-    parse_qwantz(Path(sys.argv[1]))
+    main()
