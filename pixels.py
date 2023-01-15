@@ -34,6 +34,10 @@ class SimpleImage:
                     return self.pixels[(x, y)]
         return Color.WHITE
 
+    def is_on_edge(self, pixel: Pixel) -> bool:
+        x, y = pixel
+        return x in (0, self.width - 1) or y in (0, self.height - 1)
+
 
 def get_pixels(image: Image) -> Iterable[tuple[Pixel, Color]]:
     palette = image.getpalette()

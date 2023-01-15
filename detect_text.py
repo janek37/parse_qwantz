@@ -23,6 +23,17 @@ class TextBlock(NamedTuple):
     color: Color
     font: Font
 
+    @property
+    def start(self):
+        return self.lines[0].start
+
+    @property
+    def content(self):
+        return ' '.join(line.content for line in self.lines).replace('  ', ' ')
+
+    def __str__(self):
+        return f"{self.start} [{self.font}] {self.content}"
+
 
 def get_text_blocks(text_lines: list[TextLine], image: SimpleImage) -> Iterable[TextBlock]:
     while text_lines:

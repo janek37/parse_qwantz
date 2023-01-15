@@ -3,10 +3,10 @@ from itertools import groupby, product
 from colors import Color
 from pixels import Pixel, SimpleImage
 
-Line = tuple[Pixel, Pixel, list[Pixel]]
+Line = tuple[Pixel, Pixel]
 
 
-def get_line(pixel: Pixel, image: SimpleImage) -> Line | None:
+def get_line(pixel: Pixel, image: SimpleImage) -> tuple[Line, list[Pixel]] | None:
     pixels = get_shape(pixel, image)
     if len(set(pixels.values())) != 1:
         return None
@@ -50,7 +50,7 @@ def get_line(pixel: Pixel, image: SimpleImage) -> Line | None:
         else:
             # contains 3x3 square
             return None
-    return end1, end2, sorted_pixels
+    return (end1, end2), sorted_pixels
 
 
 def get_shape(pixel: Pixel, image: SimpleImage) -> dict[Pixel, Color]:

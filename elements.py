@@ -21,10 +21,10 @@ def get_elements(image: SimpleImage) -> tuple[list[Line], list[TextLine]]:
                 sorted_pixels = remove_box(sorted_pixels, text_line.box())
                 break
         else:
-            line = get_line(pixel, image)
-            if line:
+            result = get_line(pixel, image)
+            if result:
+                line, line_pixels = result
                 lines.append(line)
-                line_pixels = line[2]
                 sorted_pixels = remove_subsequence(sorted_pixels, line_pixels)
             else:
                 raise NoMatchFound(f"No match found for pixel {pixel}")
@@ -60,4 +60,4 @@ if __name__ == '__main__':
     for lin in lins:
         print(lin[0], '->', lin[1])
     for block in get_text_blocks(txt_lines, img):
-        print(block.font, ' '.join(line.content for line in block.lines).replace('  ', ' '))
+        print(block.font, block.content)
