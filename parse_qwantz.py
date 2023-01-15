@@ -1,5 +1,4 @@
 import logging
-from pathlib import Path
 from typing import Iterable
 
 from PIL import Image
@@ -9,8 +8,19 @@ from elements import get_elements
 from match_blocks import match_blocks
 from match_lines import match_lines, Character
 from pixels import SimpleImage
+from prepare_image import apply_mask
 
 logger = logging.getLogger()
+
+# size and offset
+PANELS = [
+    ((239, 239), (3, 2)),
+    ((126, 239), (246, 2)),
+    ((358, 239), (375, 2)),
+    ((190, 239), (3, 244)),
+    ((295, 239), (196, 244)),
+    ((239, 239), (494, 244)),
+]
 
 CHARACTERS = {
     1: [Character('T-Rex', ((104, 99), (170, 238)))],
@@ -33,10 +43,12 @@ CHARACTERS = {
 }
 
 
-def parse_qwantz(directory: Path) -> Iterable[Iterable[str]]:
-    for i, characters in enumerate(CHARACTERS, start=1):
-        image = SimpleImage.from_image(Image.open(directory / f"panel{i}.png"))
-        yield parse_panel(image, CHARACTERS[i])
+def parse_qwantz(image: Image) -> Iterable[Iterable[str]]:
+    masked = apply_mask(image)
+    for i, (panel, characters) in enumerate(zip(PANELS, CHARACTERS), start=1):
+        (width, height), (x, y) = panel
+        panel_image = SimpleImage.from_image(masked.crop((x, y, x + width, y + height)))
+        yield parse_panel(panel_image, CHARACTERS[i])
 
 
 def parse_panel(image: Image, characters: list[Character]) -> Iterable[str]:
@@ -56,7 +68,7 @@ def parse_panel(image: Image, characters: list[Character]) -> Iterable[str]:
 def main():
     import sys
 
-    for panel_no, panel in enumerate(parse_qwantz(Path(sys.argv[1])), start=1):
+    for panel_no, panel in enumerate(parse_qwantz(Image.open(sys.argv[1])), start=1):
         print(f'Panel {panel_no}:')
         for line in panel:
             print(line)
