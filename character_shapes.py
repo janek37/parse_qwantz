@@ -34,14 +34,30 @@ class Font:
         return f"Font(name={self.name}, width={self.width}, height={self.height})"
 
 
-def get_regular_shapes(file_path: str) -> tuple[int, int, dict[int, str]]:
+def get_regular_shapes(
+    file_path: str, shifted_variants: dict[str, int] | None = None
+) -> tuple[int, int, dict[int, str]]:
     image = SimpleImage.from_image(Image.open(file_path))
     width = image.width // len(PRINTABLE)
     height = image.height
-    return width, height, {
-        get_bitmask((width * i, 0), image=image, width=width, height=height): char
-        for i, char in enumerate(PRINTABLE)
-    }
+    shapes = {}
+    for i, char in enumerate(PRINTABLE):
+        bitmask = get_bitmask((width * i, 0), image=image, width=width, height=height)
+        shapes[bitmask] = char
+        if shifted_variants and char in shifted_variants:
+            shapes[get_shifted_variant(bitmask, width, height, shifted_variants[char])] = char
+    return width, height, shapes
+
+
+def get_shifted_variant(shape: int, width: int, height: int, offset: int) -> int:
+    shifted = 0
+    mask = (1 << width) - 1
+    for level in range(height):
+        line = shape & mask
+        shifted_line = line >> offset
+        shifted |= shifted_line << (level * width)
+        shape >>= width
+    return shifted
 
 
 def get_bold_shapes(regular_font: Font) -> tuple[int, int, dict[int, str]]:
@@ -73,7 +89,7 @@ def get_bitmask(pixel: Pixel, image: SimpleImage, width: int, height: int) -> in
     return bitmask
 
 
-REGULAR_FONT = Font('Regular', *get_regular_shapes(REGULAR_SHAPE_FILE))
+REGULAR_FONT = Font('Regular', *get_regular_shapes(REGULAR_SHAPE_FILE, shifted_variants={',': 1}))
 BOLD_FONT = Font('Bold', *get_bold_shapes(REGULAR_FONT))
 REGULAR11_FONT = Font('Small', *get_regular_shapes(REGULAR11_SHAPE_FILE))
 
