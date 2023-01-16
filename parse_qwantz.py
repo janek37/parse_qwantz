@@ -24,7 +24,7 @@ PANELS = [
 ]
 
 CHARACTERS = {
-    1: [Character('T-Rex', ((104, 99), (170, 238)))],
+    1: [Character('T-Rex', ((104, 90), (170, 238)))],
     2: [Character('T-Rex', ((4, 119), (105, 238)))],
     3: [
         Character('T-Rex', ((80, 55), (115, 213))),
@@ -33,7 +33,7 @@ CHARACTERS = {
     ],
     4: [
         Character('T-Rex', ((0, 77), (50, 190))),
-        Character('Utahraptor', ((103, 81), (138, 190))),
+        Character('Utahraptor', ((103, 81), (138, 165))),
         Character('Girl', ((0, 213), (8, 238))),
     ],
     5: [
