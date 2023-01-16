@@ -8,5 +8,5 @@ MASK_IMAGE = Image.open(MASK_FILENAME)
 
 
 def apply_mask(image: Image):
-    all_white = Image.new(mode='1', size=DIM, color=255)
+    all_white = Image.new(mode='RGB', size=DIM, color=(255, 255, 255))
     return Image.composite(image, all_white, MASK_IMAGE)
