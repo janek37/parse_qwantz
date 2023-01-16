@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from typing import Iterable
 
 from detect_lines import Line
-from detect_text import TextBlock
+from detect_blocks import TextBlock
 from pixels import Pixel, SimpleImage
 
 

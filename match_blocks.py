@@ -1,6 +1,6 @@
 from typing import Iterable
 
-from detect_text import TextBlock
+from detect_blocks import TextBlock
 from match_lines import Target, Character
 
 

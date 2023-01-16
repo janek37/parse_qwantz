@@ -4,7 +4,7 @@ from typing import Iterable
 from PIL import Image
 
 from colors import Color
-from detect_text import get_text_blocks
+from detect_blocks import get_text_blocks
 from elements import get_elements
 from match_blocks import match_blocks
 from match_lines import match_lines, Character, OFF_PANEL

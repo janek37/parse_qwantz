@@ -49,15 +49,3 @@ def remove_subsequence(sorted_pixels: list[Pixel], subsequence: list[Pixel]) -> 
         else:
             pixels.append(pixel)
     return pixels
-
-
-if __name__ == '__main__':
-    import sys
-    from PIL import Image
-    from detect_text import get_text_blocks
-    img = SimpleImage.from_image(Image.open(sys.argv[1]))
-    lins, txt_lines = get_elements(img)
-    for lin in lins:
-        print(lin[0], '->', lin[1])
-    for block in get_text_blocks(txt_lines, img):
-        print(block.font, block.content)
