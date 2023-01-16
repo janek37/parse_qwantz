@@ -27,7 +27,7 @@ def get_elements(image: SimpleImage) -> tuple[list[Line], list[TextLine]]:
                 lines.append(line)
                 sorted_pixels = remove_subsequence(sorted_pixels, line_pixels)
             else:
-                raise NoMatchFound(f"No match found for pixel {pixel}")
+                raise NoMatchFound(pixel, text_lines)
     return lines, sorted(text_lines, key=lambda l: (l.start[1], l.start[0]))
 
 

@@ -1,11 +1,11 @@
 import logging
 from typing import Iterable
 
-from PIL import Image
+from PIL import Image, ImageDraw
 
 from colors import Color
 from detect_blocks import get_text_blocks
-from elements import get_elements
+from elements import get_elements, NoMatchFound
 from match_blocks import match_blocks
 from match_lines import match_lines, Character, OFF_PANEL
 from pixels import SimpleImage
@@ -44,13 +44,20 @@ CHARACTERS = {
 }
 
 
-def parse_qwantz(image: Image) -> Iterable[Iterable[str]]:
+def parse_qwantz(image: Image) -> Iterable[list[str]]:
     masked = apply_mask(image)
     for i, (panel, characters) in enumerate(zip(PANELS, CHARACTERS), start=1):
         (width, height), (x, y) = panel
         cropped = masked.crop((x, y, x + width, y + height))
         panel_image = SimpleImage.from_image(cropped)
-        yield parse_panel(panel_image, CHARACTERS[i])
+        try:
+            yield list(parse_panel(panel_image, CHARACTERS[i]))
+        except NoMatchFound as e:
+            (x0, y0), text_lines = e.args
+            draw = ImageDraw.Draw(cropped)
+            draw.rectangle(((x0 - 13, y0 - 13), (x0 + 13), (y0 + 13)), outline=(255, 0, 0))
+            cropped.show()
+            yield ["Error"] + text_lines
 
 
 def parse_panel(image: Image, characters: list[Character]) -> Iterable[str]:
