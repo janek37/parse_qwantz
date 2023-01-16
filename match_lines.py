@@ -1,9 +1,13 @@
+import logging
 from dataclasses import dataclass
 from typing import Iterable
 
 from detect_lines import Line
 from detect_blocks import TextBlock
 from pixels import Pixel, SimpleImage
+
+
+logger = logging.getLogger()
 
 
 @dataclass
@@ -28,7 +32,7 @@ def match_lines(
     lines: list[Line], text_blocks: list[TextBlock], characters: list[Character], image: SimpleImage
 ) -> Iterable[tuple[Target, Target]]:
     boxes: list[tuple[tuple[Pixel, Pixel], Target]] = [
-        (text_line.box(), text_block)
+        (text_line.box(margin=1), text_block)
         for text_block in text_blocks
         for text_line in text_block.lines
     ]
@@ -60,8 +64,10 @@ def match_lines(
             or closest2 is None
             or not (isinstance(closest1, TextBlock) or isinstance(closest2, TextBlock))
         ):
+            logger.error(f"Unmatched line: matches {closest1} to {closest2}")
             raise UnmatchedLine(line)
         if closest1 == closest2:
+            logger.error(f"Line matches the same object: {closest1}")
             raise UnmatchedLine(line)
         yield closest1, closest2
 

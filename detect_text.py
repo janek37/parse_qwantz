@@ -9,9 +9,9 @@ class TextLine(NamedTuple):
     content: str
     font: Font
 
-    def box(self) -> tuple[Pixel, Pixel]:
+    def box(self, margin: int = 0) -> tuple[Pixel, Pixel]:
         x, y = self.start
-        return self.start, (self.x_end(), y + self.font.height)
+        return (x - margin, y - margin), (self.x_end() + margin, y + self.font.height + margin)
 
     def x_end(self):
         return self.start[0] + self.font.width * len(self.content)
