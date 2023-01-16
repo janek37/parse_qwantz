@@ -3,10 +3,11 @@ from typing import Iterable
 
 from PIL import Image
 
+from colors import Color
 from detect_text import get_text_blocks
 from elements import get_elements
 from match_blocks import match_blocks
-from match_lines import match_lines, Character
+from match_lines import match_lines, Character, OFF_PANEL
 from pixels import SimpleImage
 from prepare_image import apply_mask
 
@@ -47,7 +48,8 @@ def parse_qwantz(image: Image) -> Iterable[Iterable[str]]:
     masked = apply_mask(image)
     for i, (panel, characters) in enumerate(zip(PANELS, CHARACTERS), start=1):
         (width, height), (x, y) = panel
-        panel_image = SimpleImage.from_image(masked.crop((x, y, x + width, y + height)))
+        cropped = masked.crop((x, y, x + width, y + height))
+        panel_image = SimpleImage.from_image(cropped)
         yield parse_panel(panel_image, CHARACTERS[i])
 
 
@@ -57,8 +59,20 @@ def parse_panel(image: Image, characters: list[Character]) -> Iterable[str]:
     line_matches = match_lines(lines, text_blocks, characters, image)
     block_matches = match_blocks(line_matches)
     for block in text_blocks:
+        if block.color == Color.RED:
+            if block_matches.get(id(block)) != OFF_PANEL:
+                logger.warning('Red block not off-panel')
+            if block.font.name != 'Bold':
+                logger.warning('Red block not bold')
+            block_matches[id(block)] = Character('Devil', ((0, 0), (0, 0)))
+        elif block_matches.get(id(block)) == OFF_PANEL and block.font.name == 'Bold':
+            block_matches[id(block)] = Character('God', ((0, 0), (0, 0)))
         if id(block) in block_matches:
-            yield f"{block_matches[id(block)]}: {block}"
+            character = block_matches[id(block)]
+            if character.name in ('God', 'Devil'):
+                yield f"{character}: {block.content}"
+            else:
+                yield f"{character}: {block}"
         else:
             if block.font.name != 'Bold':
                 logger.warning('Narrator not bold')
