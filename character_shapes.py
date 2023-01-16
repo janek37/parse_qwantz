@@ -19,6 +19,7 @@ class Font:
     width: int
     height: int
     shapes: dict[int, str]
+    is_bold: bool = False
 
     def get_char(self, pixel: Pixel, image: SimpleImage) -> str | None:
         bitmask = self._get_bitmask(pixel, image)
@@ -97,11 +98,20 @@ def get_bitmask(pixel: Pixel, image: SimpleImage, width: int, height: int) -> in
     return bitmask
 
 
-REGULAR_FONT = Font('Regular', *get_regular_shapes(REGULAR_SHAPE_FILE, shifted_variants={',': 1}))
+REGULAR_FONT = Font('Regular', *get_regular_shapes(REGULAR_SHAPE_FILE, shifted_variants={',': 1, ':': 1}))
+BOLD_FONT = Font('Bold', *get_bold_shapes(REGULAR_FONT), True)
 CONDENSED_FONT = Font('Condensed', *get_regular_shapes(REGULAR12_SHAPE_FILE))
-BOLD_FONT = Font('Bold', *get_bold_shapes(REGULAR_FONT))
 SMALL_FONT = Font('Small', *get_regular_shapes(REGULAR11_SHAPE_FILE))
 TINY_FONT = Font('Tiny', *get_regular_shapes(REGULAR8_SHAPE_FILE))
 
 
 ALL_FONTS = [REGULAR_FONT, BOLD_FONT, SMALL_FONT, TINY_FONT, CONDENSED_FONT]
+
+
+FONT_GROUPS = {
+    REGULAR_FONT.name: [REGULAR_FONT, BOLD_FONT],
+    BOLD_FONT.name: [REGULAR_FONT, BOLD_FONT],
+    SMALL_FONT.name: [SMALL_FONT],
+    TINY_FONT.name: [TINY_FONT],
+    CONDENSED_FONT.name: [CONDENSED_FONT],
+}
