@@ -61,6 +61,8 @@ def match_lines(
             or not (isinstance(closest1, TextBlock) or isinstance(closest2, TextBlock))
         ):
             raise UnmatchedLine(line)
+        if closest1 == closest2:
+            raise UnmatchedLine(line)
         yield closest1, closest2
 
 
