@@ -37,7 +37,7 @@ def get_text_blocks(text_lines: list[TextLine], image: SimpleImage) -> Iterable[
                 line0 = new_block[-1]
                 (x0, y0), (x1, y1) = line0.box()
                 interval0, interval1 = sorted([(x, x_end), (x0, x1)])
-                if y == y1 and interval0[1] > interval1[0]:
+                if y in (y1, y1 + 1) and interval0[1] > interval1[0]:
                     new_block.append(text_line)
                 else:
                     new_lines.append(text_line)

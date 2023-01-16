@@ -24,7 +24,13 @@ class Font:
         bitmask = self._get_bitmask(pixel, image)
         if bitmask == 0:
             return ' '
-        return self.shapes.get(bitmask)
+        if bitmask in self.shapes:
+            return self.shapes[bitmask]
+        for cut_bottom in range(1, 3):
+            cut_bitmask = bitmask & (1 << (self.width * cut_bottom))
+            if cut_bitmask & -cut_bitmask > (1 << ((self.width + 1) * cut_bottom)):
+                if cut_bitmask in self.shapes:
+                    return self.shapes[bitmask]
 
     def _get_bitmask(self, pixel: Pixel, image: SimpleImage) -> int:
         return get_bitmask(pixel, image, self.width, self.height)

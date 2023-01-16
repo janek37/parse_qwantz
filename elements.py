@@ -14,8 +14,14 @@ def get_elements(image: SimpleImage) -> tuple[list[Line], list[TextLine]]:
     sorted_pixels = sorted(image.pixels)
     while sorted_pixels:
         pixel = sorted_pixels[0]
+        pixels = set(sorted_pixels)
+        tmp_image = SimpleImage(
+            width=image.width,
+            height=image.height,
+            pixels={pixel: color for pixel, color in image.pixels.items() if pixel in pixels},
+        )
         for font in ALL_FONTS:
-            text_line = try_text_line(pixel, image, font)
+            text_line = try_text_line(pixel, tmp_image, font)
             if text_line:
                 text_lines.append(text_line)
                 sorted_pixels = remove_box(sorted_pixels, text_line.box())
