@@ -50,13 +50,12 @@ def match_lines(
         for box, target in boxes:
             for side in sides(box):
                 if intersects(line, side):
-                    d1 = dist_to_segment_squared(end1, side)
-                    d2 = dist_to_segment_squared(end2, side)
-                    if d1 < d2 and (distance1 is None or d1 < distance1):
-                        distance1 = d1
+                    t = relative_distance_to_intersection(line, side)
+                    if t <= 0 and (distance1 is None or -t < distance1):
+                        distance1 = -t
                         closest1 = target
-                    elif d1 >= d2 and (distance2 is None or d2 < distance2):
-                        distance2 = d2
+                    elif t > 0 and (distance2 is None or t < distance2):
+                        distance2 = t
                         closest2 = target
                     break
         if (
@@ -83,21 +82,22 @@ def intersects(line: Line, segment: Line) -> bool:
     return ((y0 - y1)*(ax - x0) + (x1 - x0)*(ay - y0)) * ((y0 - y1)*(bx - x0) + (x1 - x0)*(by - y0)) < 0
 
 
-# https://stackoverflow.com/a/1501725/245594
-def dist_to_segment_squared(point: Pixel, segment: Line) -> float:
-    l2 = dist2(*segment)  # i.e. |w-v|^2
-    if l2 == 0:
-        return dist2(point, segment[0])
-    px, py = point
-    (vx, vy), (wx, wy) = segment
-    # Consider the line extending the segment, parameterized as v + t (w - v).
-    # We find projection of point p onto the line.
-    # It falls where t = [(p-v) . (w-v)] / |w-v|^2
-    # We clamp t from [0,1] to handle points outside the segment vw.
-    t = ((px - vx) * (wx - vx) + (py - vy) * (wy - vy)) / l2
-    t = max(0., min(1., t))
-    return dist2(point, (vx + t * (wx - vx), vy + t * (wy - vy)))
+def relative_distance_to_intersection(line: Line, segment: Line) -> float:
+    (x0, y0), (x1, y1) = line
+    (ax, ay), (bx, by) = segment
+    # (x0, y0) + t (x1 - x0, y1 - y0)
+    # -> for which t is it on the ab line?
+    t = ((ax - x0)*(by - ay) - (ay - y0)*(bx - ax)) / ((x1 - x0)*(by - ay) - (y1 - y0)*(bx - ax))
+    if t > 1 or t < 0:
+        return t
+    else:
+        if is_left(line, segment[0]):
+            return 0
+        else:
+            return 1
 
 
-def dist2(p1: Pixel, p2: tuple[int | float, int | float]) -> int | float:
-    return (p1[0] - p2[0])**2 + (p1[1] - p2[1])**2
+def is_left(line: Line, point: Pixel) -> bool:
+    (ax, ay), (bx, by) = line
+    cx, cy = point
+    return (bx - ax)*(cy - ay) - (by - ay)*(cx - ax) > 0

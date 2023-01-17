@@ -37,18 +37,18 @@ def get_text_line(start: Pixel, image: SimpleImage, font: Font) -> TextLine | No
         if x > image.width - font.width:
             break
         char = font.get_char((x, y), image)
+        if char is None:
+            for offset in ((-1, 0), (1, 0), (0, -1), (0, 1)):
+                off_x, off_y = offset
+                char = font.get_char((x + off_x, y + off_y), image)
+                if char is not None:
+                    x += off_x
+                    y += off_y
+                    break
         if char == ' ':
             spaces += 1
             if spaces > 2:
                 break
-            if spaces == 2:
-                last_char = text[-1]
-                if last_char == '"':
-                    if len(text) < 1:
-                        break
-                    last_char = text[-2]
-                if last_char not in '.!?':
-                    break
         elif char is not None:
             if spaces > 0:
                 text += ' ' * spaces
@@ -56,4 +56,6 @@ def get_text_line(start: Pixel, image: SimpleImage, font: Font) -> TextLine | No
             text += char
         else:
             break
+    if text in ",.'`|":
+        return
     return TextLine(start, text, font)
