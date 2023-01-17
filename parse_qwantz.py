@@ -1,4 +1,3 @@
-import logging
 from typing import Iterable
 
 from PIL import Image, ImageDraw
@@ -10,8 +9,9 @@ from match_blocks import match_blocks
 from match_lines import match_lines, Character, OFF_PANEL
 from pixels import SimpleImage
 from prepare_image import apply_mask
+from logger import get_logger
 
-logger = logging.getLogger()
+logger = get_logger()
 
 # size and offset
 PANELS = [
