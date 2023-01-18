@@ -16,12 +16,12 @@ def get_line(pixel: Pixel, image: SimpleImage) -> tuple[Line, list[Pixel]] | Non
     y_max = max(y for x, y in pixels)
     # \ or /
     if (x_min, y_min) in pixels and (x_max, y_max) in pixels:
-        end1 = (x_min, y_min)
-        end2 = (x_max, y_max)
+        end1 = Pixel(x_min, y_min)
+        end2 = Pixel(x_max, y_max)
         forward = True
     elif (x_min, y_max) in pixels and (x_max, y_min) in pixels:
-        end1 = (x_min, y_max)
-        end2 = (x_max, y_min)
+        end1 = Pixel(x_min, y_max)
+        end2 = Pixel(x_max, y_min)
         forward = False
     else:
         return None

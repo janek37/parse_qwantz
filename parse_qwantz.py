@@ -7,7 +7,7 @@ from detect_blocks import get_text_blocks, TextBlock
 from elements import get_elements, NoMatchFound
 from match_blocks import match_blocks
 from match_lines import match_lines, Character, OFF_PANEL
-from pixels import SimpleImage
+from pixels import SimpleImage, Pixel
 from prepare_image import apply_mask
 from logger import get_logger
 
@@ -24,23 +24,23 @@ PANELS = [
 ]
 
 CHARACTERS = {
-    1: [Character('T-Rex', ((104, 90), (170, 238)))],
-    2: [Character('T-Rex', ((4, 119), (105, 238)))],
+    1: [Character('T-Rex', (Pixel(104, 90), Pixel(170, 238)))],
+    2: [Character('T-Rex', (Pixel(4, 119), Pixel(105, 238)))],
     3: [
-        Character('T-Rex', ((80, 55), (115, 213))),
-        Character('Dromiceiomimus', ((325, 150), (357, 238))),
-        Character('House', ((115, 210), (163, 238))),
+        Character('T-Rex', (Pixel(80, 55), Pixel(115, 213))),
+        Character('Dromiceiomimus', (Pixel(325, 150), Pixel(357, 238))),
+        Character('House', (Pixel(115, 210), Pixel(163, 238))),
     ],
     4: [
-        Character('T-Rex', ((0, 77), (50, 190))),
-        Character('Utahraptor', ((103, 81), (138, 165))),
-        Character('Girl', ((0, 213), (8, 238))),
+        Character('T-Rex', (Pixel(0, 77), Pixel(50, 190))),
+        Character('Utahraptor', (Pixel(103, 81), Pixel(138, 165))),
+        Character('Girl', (Pixel(0, 213), Pixel(8, 238))),
     ],
     5: [
-        Character('T-Rex', ((40, 70), (70, 200))),
-        Character('Utahraptor', ((200, 80), (233, 145))),
+        Character('T-Rex', (Pixel(40, 70), Pixel(70, 200))),
+        Character('Utahraptor', (Pixel(200, 80), Pixel(233, 145))),
     ],
-    6: [Character('T-Rex', ((74, 60), (107, 195)))],
+    6: [Character('T-Rex', (Pixel(74, 60), Pixel(107, 195)))],
 }
 
 
@@ -88,9 +88,9 @@ def handle_god_and_devil(block: TextBlock, is_off_panel: bool):
             logger.warning('Red block not off-panel')
         if block.font.name != 'Bold':
             logger.warning('Red block not bold')
-        return Character('Devil', ((0, 0), (0, 0)))
+        return Character.from_name('Devil')
     elif is_off_panel and block.font.name == 'Bold':
-        return Character('God', ((0, 0), (0, 0)))
+        return Character.from_name('God')
 
 
 def main(input_file_path: str):

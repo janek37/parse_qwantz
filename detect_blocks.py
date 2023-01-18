@@ -44,7 +44,7 @@ def get_text_blocks(text_lines: list[TextLine], image: SimpleImage) -> Iterable[
                     line0 = new_block[-1]
                     (x0, y0), (x1, y1) = line0.box()
                     interval0, interval1 = sorted([(x, x_end), (x0, x1)])
-                    if y in (y1, y1 + 1) and interval0[1] > interval1[0]:
+                    if y1 - 1 <= y <= y1 + 1 and interval0[1] > interval1[0]:
                         new_block_lines.append(text_line)
                     else:
                         new_lines.append(text_line)
@@ -54,5 +54,5 @@ def get_text_blocks(text_lines: list[TextLine], image: SimpleImage) -> Iterable[
             text_lines = new_lines
             if not new_block_lines:
                 break
-        color = image.find_color(new_block[0].box())
+        color = image.find_color(new_block[0].character_boxes[0].box)
         yield TextBlock(new_block, color, font)

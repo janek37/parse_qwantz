@@ -1,11 +1,14 @@
 from dataclasses import dataclass
-from typing import Iterable
+from typing import Iterable, NamedTuple
 
 from PIL import Image
 
 from colors import Color
 
-Pixel = tuple[int, int]
+
+class Pixel(NamedTuple):
+    x: int
+    y: int
 
 
 class UnknownColor(ValueError):
@@ -31,7 +34,7 @@ class SimpleImage:
         for x in range(x0, x1):
             for y in range(y0, y1):
                 if (x, y) in self.pixels:
-                    return self.pixels[(x, y)]
+                    return self.pixels[Pixel(x, y)]
         return Color.WHITE
 
     def is_on_edge(self, pixel: Pixel) -> bool:
@@ -52,6 +55,6 @@ def get_pixels(image: Image) -> Iterable[tuple[Pixel, Color]]:
                 value = tuple(palette[value * 3: value * 3 + 3])
             if value != Color.WHITE.value:
                 try:
-                    yield (x, y), Color(value)
+                    yield Pixel(x, y), Color(value)
                 except ValueError:
                     raise UnknownColor(value)

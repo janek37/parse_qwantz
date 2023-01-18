@@ -18,8 +18,12 @@ class Character:
     def __str__(self):
         return self.name
 
+    @classmethod
+    def from_name(cls, name: str):
+        return cls(name, (Pixel(0, 0), Pixel(0, 0)))
 
-OFF_PANEL = Character("Off-Panel", ((0, 0), (0, 0)))
+
+OFF_PANEL = Character.from_name("Off-Panel")
 
 Target = TextBlock | Character
 
@@ -72,8 +76,13 @@ def match_lines(
 
 
 def sides(box: tuple[Pixel, Pixel]) -> list[tuple[Pixel, Pixel]]:
-    (x0, y0), (x1, y1) = box
-    return [((x0, y0), (x0, y1)), ((x0, y1), (x1, y1)), ((x1, y1), (x1, y0)), ((x1, y0), (x0, y0))]
+    top_left, bottom_right = box
+    return [
+        (top_left, (top_left.x, bottom_right.y)),
+        ((top_left.x, bottom_right.y), bottom_right),
+        (bottom_right, (bottom_right.x, top_left.y)),
+        ((bottom_right.x, top_left.y), top_left),
+    ]
 
 
 def intersects(line: Line, segment: Line) -> bool:
@@ -91,10 +100,7 @@ def relative_distance_to_intersection(line: Line, segment: Line) -> float:
     if t > 1 or t < 0:
         return t
     else:
-        if is_left(line, segment[0]):
-            return 0
-        else:
-            return 1
+        return 0 if is_left(line, segment[0]) else 1
 
 
 def is_left(line: Line, point: Pixel) -> bool:

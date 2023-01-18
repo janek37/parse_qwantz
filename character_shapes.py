@@ -1,5 +1,6 @@
 import string
 from dataclasses import dataclass
+from typing import NamedTuple
 
 from PIL import Image
 
@@ -13,6 +14,11 @@ REGULAR11_SHAPE_FILE = 'img/regular11.png'
 REGULAR8_SHAPE_FILE = 'img/regular8.png'
 
 
+class CharacterBox(NamedTuple):
+    char: str
+    box: tuple[Pixel, Pixel]
+
+
 @dataclass
 class Font:
     name: str
@@ -21,17 +27,19 @@ class Font:
     shapes: dict[int, str]
     is_bold: bool = False
 
-    def get_char(self, pixel: Pixel, image: SimpleImage) -> str | None:
+    def get_char(self, pixel: Pixel, image: SimpleImage) -> CharacterBox | None:
+        bottom_right = Pixel(pixel.x + self.width, pixel.y + self.height)
         bitmask = self._get_bitmask(pixel, image)
         if bitmask == 0:
-            return ' '
+            return CharacterBox(' ', (pixel, bottom_right))
         if bitmask in self.shapes:
-            return self.shapes[bitmask]
+            return CharacterBox(self.shapes[bitmask], (pixel, bottom_right))
         for cut_bottom in range(1, 3):
             cut_bitmask = bitmask & -(1 << (self.width * cut_bottom))
             if cut_bitmask & -cut_bitmask > (1 << ((self.width + 1) * cut_bottom)):
                 if cut_bitmask in self.shapes:
-                    return self.shapes[cut_bitmask]
+                    right, bottom = bottom_right
+                    return CharacterBox(self.shapes[cut_bitmask], (pixel, Pixel(right, bottom - cut_bottom)))
 
     def _get_bitmask(self, pixel: Pixel, image: SimpleImage) -> int:
         return get_bitmask(pixel, image, self.width, self.height)
@@ -51,7 +59,7 @@ def get_regular_shapes(
     height = image.height
     shapes = {}
     for i, char in enumerate(PRINTABLE):
-        bitmask = get_bitmask((width * i, 0), image=image, width=width, height=height)
+        bitmask = get_bitmask(Pixel(width * i, 0), image=image, width=width, height=height)
         shapes[bitmask] = char
         if shifted_variants and char in shifted_variants:
             shapes[get_shifted_variant(bitmask, width, height, shifted_variants[char])] = char

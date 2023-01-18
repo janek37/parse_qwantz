@@ -24,7 +24,7 @@ def get_elements(image: SimpleImage) -> tuple[list[Line], list[TextLine]]:
             text_line = try_text_line(pixel, tmp_image, font)
             if text_line:
                 text_lines.append(text_line)
-                sorted_pixels = remove_box(sorted_pixels, text_line.box())
+                sorted_pixels = remove_boxes(sorted_pixels, [char_box.box for char_box in text_line.character_boxes])
                 break
         else:
             result = get_line(pixel, image)
@@ -37,9 +37,20 @@ def get_elements(image: SimpleImage) -> tuple[list[Line], list[TextLine]]:
     return lines, sorted(text_lines, key=lambda l: (l.start[1], l.start[0]))
 
 
-def remove_box(sorted_pixels: list[Pixel], box: tuple[Pixel, Pixel]) -> list[Pixel]:
-    (x0, y0), (x1, y1) = box
-    return [(x, y) for x, y in sorted_pixels if not (x0 <= x < x1 and y0 <= y < y1)]
+def remove_boxes(sorted_pixels: list[Pixel], boxes: list[tuple[Pixel, Pixel]]) -> list[Pixel]:
+    box_iter = iter(boxes)
+    (x0, y0), (x1, y1) = next(box_iter)
+    new_pixels = []
+    pass_through = False
+    for pixel in sorted_pixels:
+        while not pass_through and pixel.x >= x1:
+            try:
+                (x0, y0), (x1, y1) = next(box_iter)
+            except StopIteration:
+                pass_through = True
+        if pass_through or not (x0 <= pixel.x < x1 and y0 <= pixel.y < y1):
+            new_pixels.append(pixel)
+    return new_pixels
 
 
 def remove_subsequence(sorted_pixels: list[Pixel], subsequence: list[Pixel]) -> list[Pixel]:
