@@ -86,14 +86,13 @@ def parse_panel(image: Image, characters: list[Character]) -> Iterable[str]:
             yield f"Narrator: {block.content}"
 
 
-def main():
-    import sys
-
-    for panel_no, panel in enumerate(parse_qwantz(Image.open(sys.argv[1])), start=1):
+def main(input_file_path: str):
+    for panel_no, panel in enumerate(parse_qwantz(Image.open(input_file_path)), start=1):
         print(f'Panel {panel_no}:')
         for line in panel:
             print(line)
 
 
 if __name__ == '__main__':
-    main()
+    import sys
+    main(sys.argv[1])
