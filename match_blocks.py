@@ -4,15 +4,18 @@ from detect_blocks import TextBlock
 from match_lines import Target, Character
 
 
-def match_blocks(line_matches: Iterable[tuple[Target, Target]]):
-    block_matches = {}
+def match_blocks(line_matches: Iterable[tuple[Target, Target]]) -> dict[int, Character | tuple[Character, Character]]:
+    block_matches: dict[int, Character | tuple[Character, Character]] = {}
     neighbors = []
     for target1, target2 in line_matches:
         if isinstance(target1, TextBlock) and isinstance(target2, TextBlock):
             neighbors.append((target1, target2))
         else:
             character, block = (target1, target2) if isinstance(target1, Character) else (target2, target1)
-            block_matches[id(block)] = character
+            if id(block) not in block_matches:
+                block_matches[id(block)] = character
+            else:
+                block_matches[id(block)] = (block_matches[id(block)], character)
     while neighbors:
         neighbors_left = []
         for block1, block2 in neighbors:

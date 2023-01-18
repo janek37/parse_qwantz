@@ -3,7 +3,7 @@ from typing import Iterable
 from PIL import Image, ImageDraw
 
 from colors import Color
-from detect_blocks import get_text_blocks
+from detect_blocks import get_text_blocks, TextBlock
 from elements import get_elements, NoMatchFound
 from match_blocks import match_blocks
 from match_lines import match_lines, Character, OFF_PANEL
@@ -66,24 +66,31 @@ def parse_panel(image: Image, characters: list[Character]) -> Iterable[str]:
     line_matches = match_lines(lines, text_blocks, characters, image)
     block_matches = match_blocks(line_matches)
     for block in text_blocks:
-        if block.color == Color.RED:
-            if block_matches.get(id(block)) != OFF_PANEL:
-                logger.warning('Red block not off-panel')
-            if block.font.name != 'Bold':
-                logger.warning('Red block not bold')
-            block_matches[id(block)] = Character('Devil', ((0, 0), (0, 0)))
-        elif block_matches.get(id(block)) == OFF_PANEL and block.font.name == 'Bold':
-            block_matches[id(block)] = Character('God', ((0, 0), (0, 0)))
+        if god_or_devil := handle_god_and_devil(block, block_matches.get(id(block)) == OFF_PANEL):
+            block_matches[id(block)] = god_or_devil
         if id(block) in block_matches:
             character = block_matches[id(block)]
-            if character.name in ('God', 'Devil'):
+            if isinstance(character, tuple):
+                yield f"{character[0]} and {character[1]}: {block}"
+            elif character.name in ('God', 'Devil'):
                 yield f"{character}: {block.content}"
             else:
                 yield f"{character}: {block}"
         else:
             if block.font.name != 'Bold':
                 logger.warning('Narrator not bold')
-            yield f"Narrator: {block.content}"
+            yield f"Narrator: [{block.font}] {block.content}"
+
+
+def handle_god_and_devil(block: TextBlock, is_off_panel: bool):
+    if block.color == Color.RED:
+        if not is_off_panel:
+            logger.warning('Red block not off-panel')
+        if block.font.name != 'Bold':
+            logger.warning('Red block not bold')
+        return Character('Devil', ((0, 0), (0, 0)))
+    elif is_off_panel and block.font.name == 'Bold':
+        return Character('God', ((0, 0), (0, 0)))
 
 
 def main(input_file_path: str):
