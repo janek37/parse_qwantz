@@ -3,7 +3,7 @@ from typing import Iterable, NamedTuple
 from character_shapes import Font, FONT_GROUPS
 from colors import Color
 from detect_text import TextLine
-from pixels import SimpleImage
+from pixels import SimpleImage, Pixel
 
 
 class TextBlock(NamedTuple):
@@ -12,8 +12,12 @@ class TextBlock(NamedTuple):
     font: Font
 
     @property
-    def start(self):
+    def start(self) -> Pixel:
         return self.lines[0].start
+
+    @property
+    def end(self) -> Pixel:
+        return Pixel(self.lines[-1].y_end, self.lines[-1].y_end)
 
     @property
     def content(self):
