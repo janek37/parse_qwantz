@@ -6,7 +6,7 @@ from colors import Color
 from detect_blocks import get_text_blocks, TextBlock
 from elements import get_elements, NoMatchFound
 from match_blocks import match_blocks
-from match_lines import match_lines, Character, OFF_PANEL
+from match_lines import match_lines, Character, OFF_PANEL, UnmatchedLine
 from pixels import SimpleImage, Pixel
 from prepare_image import apply_mask
 from logger import get_logger
@@ -58,6 +58,14 @@ def parse_qwantz(image: Image) -> Iterable[list[str]]:
             draw.rectangle(((x0 - 13, y0 - 13), (x0 + 13), (y0 + 13)), outline=(255, 0, 0))
             cropped.show()
             yield ["Error"] + text_lines
+        except UnmatchedLine as e:
+            line, boxes, text_blocks = e.args
+            draw = ImageDraw.Draw(cropped)
+            for box, _character in boxes:
+                draw.rectangle(box, outline=(0, 192, 0))
+            draw.line(line, fill=(255, 0, 0))
+            cropped.show()
+            yield ["Error"] + text_blocks
 
 
 def parse_panel(image: Image, characters: list[Character]) -> Iterable[str]:
@@ -78,8 +86,8 @@ def parse_panel(image: Image, characters: list[Character]) -> Iterable[str]:
                 yield f"{character}: {block}"
         else:
             if block.font.name != 'Bold':
-                logger.warning('Narrator not bold')
-            yield f"Narrator: [{block.font}] {block.content}"
+                logger.warning('Narrator not bold: %s', block.font.name)
+            yield f"Narrator: {block.content}"
 
 
 def handle_god_and_devil(block: TextBlock, is_off_panel: bool):

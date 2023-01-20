@@ -67,11 +67,11 @@ def match_lines(
             or closest2 is None
             or not (isinstance(closest1, TextBlock) or isinstance(closest2, TextBlock))
         ):
-            logger.error(f"Unmatched line: matches {closest1} to {closest2}")
-            raise UnmatchedLine(line)
+            logger.error(f"Unmatched line {line}: matches {closest1} to {closest2}")
+            raise UnmatchedLine(line, boxes, text_blocks)
         if closest1 == closest2:
-            logger.error(f"Line matches the same object: {closest1}")
-            raise UnmatchedLine(line)
+            logger.error(f"Line {line} matches the same object: {closest1}")
+            raise UnmatchedLine(line, boxes, text_blocks)
         yield closest1, closest2
 
 

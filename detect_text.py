@@ -11,6 +11,9 @@ class TextLine:
     character_boxes: list[CharacterBox]
     font: Font
 
+    def __repr__(self):
+        return f"TextLine({repr(self.start)}, {repr(self.content)}, {self.font.name})"
+
     @property
     def start(self) -> Pixel:
         return self.character_boxes[0].box[0]
