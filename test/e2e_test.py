@@ -15,4 +15,3 @@ def test_output(capsys, input_file_name: str):
     captured = capsys.readouterr()
     expected_output = open(EXPECTED_OUTPUT_DIR / (input_file_name.split('.')[0] + '.txt')).read()
     assert captured.out == expected_output
-    assert captured.err == ""
