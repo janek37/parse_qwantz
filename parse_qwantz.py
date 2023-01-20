@@ -38,9 +38,10 @@ CHARACTERS = {
     ],
     5: [
         Character('T-Rex', (Pixel(40, 70), Pixel(70, 200))),
+        Character('T-Rex', (Pixel(66, 70), Pixel(96, 103))),
         Character('Utahraptor', (Pixel(200, 80), Pixel(233, 145))),
     ],
-    6: [Character('T-Rex', (Pixel(74, 60), Pixel(107, 195)))],
+    6: [Character('T-Rex', (Pixel(74, 64), Pixel(120, 195)))],
 }
 
 
