@@ -75,6 +75,6 @@ def get_text_line(start: Pixel, image: SimpleImage, font: Font) -> TextLine | No
                 character_boxes.extend(spaces)
                 spaces = []
             character_boxes.append(char_box)
-    if len(character_boxes) == 1 and character_boxes[0].char in ",.'`|":
+    if len(character_boxes) <= 2 and all(char_box.char in ",.'`|-/\\" for char_box in character_boxes):
         return
     return TextLine(character_boxes, font)
