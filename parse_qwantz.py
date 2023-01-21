@@ -2,12 +2,14 @@ from typing import Iterable
 
 from PIL import Image, ImageDraw
 
+from box import Box
 from colors import Color
 from detect_blocks import get_text_blocks, TextBlock
 from elements import get_elements, NoMatchFound
 from match_blocks import match_blocks
 from match_lines import match_lines, Character, OFF_PANEL, UnmatchedLine
-from pixels import SimpleImage, Pixel
+from pixels import Pixel
+from simple_image import SimpleImage
 from prepare_image import apply_mask
 from logger import get_logger
 
@@ -24,24 +26,24 @@ PANELS = [
 ]
 
 CHARACTERS = {
-    1: [Character('T-Rex', (Pixel(104, 90), Pixel(170, 238)))],
-    2: [Character('T-Rex', (Pixel(4, 119), Pixel(105, 238)))],
+    1: [Character('T-Rex', Box(Pixel(104, 90), Pixel(170, 238)))],
+    2: [Character('T-Rex', Box(Pixel(4, 119), Pixel(105, 238)))],
     3: [
-        Character('T-Rex', (Pixel(80, 55), Pixel(115, 213))),
-        Character('Dromiceiomimus', (Pixel(325, 150), Pixel(357, 238))),
-        Character('House', (Pixel(115, 210), Pixel(163, 238))),
+        Character('T-Rex', Box(Pixel(80, 55), Pixel(115, 213))),
+        Character('Dromiceiomimus', Box(Pixel(325, 150), Pixel(357, 238))),
+        Character('House', Box(Pixel(115, 210), Pixel(163, 238))),
     ],
     4: [
-        Character('T-Rex', (Pixel(0, 77), Pixel(50, 190))),
-        Character('Utahraptor', (Pixel(103, 81), Pixel(138, 165))),
-        Character('Girl', (Pixel(0, 213), Pixel(8, 238))),
+        Character('T-Rex', Box(Pixel(0, 77), Pixel(50, 190))),
+        Character('Utahraptor', Box(Pixel(103, 81), Pixel(138, 165))),
+        Character('Girl', Box(Pixel(0, 213), Pixel(8, 238))),
     ],
     5: [
-        Character('T-Rex', (Pixel(40, 70), Pixel(70, 200))),
-        Character('T-Rex', (Pixel(66, 70), Pixel(96, 103))),
-        Character('Utahraptor', (Pixel(200, 80), Pixel(233, 145))),
+        Character('T-Rex', Box(Pixel(40, 70), Pixel(70, 200))),
+        Character('T-Rex', Box(Pixel(66, 70), Pixel(96, 103))),
+        Character('Utahraptor', Box(Pixel(200, 80), Pixel(233, 145))),
     ],
-    6: [Character('T-Rex', (Pixel(74, 64), Pixel(120, 195)))],
+    6: [Character('T-Rex', Box(Pixel(74, 64), Pixel(120, 195)))],
 }
 
 

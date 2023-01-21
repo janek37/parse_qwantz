@@ -3,7 +3,8 @@ from typing import Iterable, NamedTuple
 from character_shapes import Font, FONT_GROUPS
 from colors import Color
 from detect_text import TextLine
-from pixels import SimpleImage, Pixel
+from pixels import Pixel
+from simple_image import SimpleImage
 
 
 class TextBlock(NamedTuple):

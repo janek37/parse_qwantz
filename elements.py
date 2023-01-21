@@ -1,7 +1,9 @@
+from box import Box
 from character_shapes import ALL_FONTS
 from detect_lines import Line, get_line
 from detect_text import TextLine, try_text_line
-from pixels import SimpleImage, Pixel
+from pixels import Pixel
+from simple_image import SimpleImage
 
 
 class NoMatchFound(Exception):
@@ -37,7 +39,7 @@ def get_elements(image: SimpleImage) -> tuple[list[Line], list[TextLine]]:
     return lines, sorted(text_lines, key=lambda l: (l.start[1], l.start[0]))
 
 
-def remove_boxes(sorted_pixels: list[Pixel], boxes: list[tuple[Pixel, Pixel]]) -> list[Pixel]:
+def remove_boxes(sorted_pixels: list[Pixel], boxes: list[Box]) -> list[Pixel]:
     box_iter = iter(boxes)
     (x0, y0), (x1, y1) = next(box_iter)
     new_pixels = []

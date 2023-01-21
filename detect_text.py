@@ -2,8 +2,10 @@ from functools import cached_property
 
 from dataclasses import dataclass
 
+from box import Box
 from character_shapes import Font, CharacterBox
-from pixels import Pixel, SimpleImage
+from pixels import Pixel
+from simple_image import SimpleImage
 
 
 @dataclass
@@ -22,9 +24,9 @@ class TextLine:
     def content(self) -> str:
         return ''.join(char for char, box in self.character_boxes)
 
-    def box(self, margin: int = 0) -> tuple[Pixel, Pixel]:
+    def box(self, margin: int = 0) -> Box:
         x, y = self.start
-        return Pixel(x - margin, y - margin), Pixel(self.x_end + margin, self.y_end + margin)
+        return Box(Pixel(x - margin, y - margin), Pixel(self.x_end + margin, self.y_end + margin))
 
     @cached_property
     def x_end(self) -> int:
@@ -67,7 +69,7 @@ def get_text_line(start: Pixel, image: SimpleImage, font: Font) -> TextLine | No
         if char_box is None:
             break
         elif char_box.char == ' ':
-            spaces.append(CharacterBox(' ', (Pixel(x, y), Pixel(x + font.width, y + font.height))))
+            spaces.append(CharacterBox(' ', Box(Pixel(x, y), Pixel(x + font.width, y + font.height))))
             if len(spaces) > 2:
                 break
         else:

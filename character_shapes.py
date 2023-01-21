@@ -4,7 +4,9 @@ from typing import NamedTuple
 
 from PIL import Image
 
-from pixels import Pixel, SimpleImage
+from box import Box
+from pixels import Pixel
+from simple_image import SimpleImage
 
 PRINTABLE = string.printable.strip()
 
@@ -16,7 +18,7 @@ REGULAR8_SHAPE_FILE = 'img/regular8.png'
 
 class CharacterBox(NamedTuple):
     char: str
-    box: tuple[Pixel, Pixel]
+    box: Box
 
 
 @dataclass
@@ -31,15 +33,15 @@ class Font:
         bottom_right = Pixel(pixel.x + self.width, pixel.y + self.height)
         bitmask = self._get_bitmask(pixel, image)
         if bitmask == 0:
-            return CharacterBox(' ', (pixel, bottom_right))
+            return CharacterBox(' ', Box(pixel, bottom_right))
         if bitmask in self.shapes:
-            return CharacterBox(self.shapes[bitmask], (pixel, bottom_right))
+            return CharacterBox(self.shapes[bitmask], Box(pixel, bottom_right))
         for cut_bottom in range(1, 3):
             cut_bitmask = bitmask & -(1 << (self.width * cut_bottom))
             if cut_bitmask & -cut_bitmask > (1 << ((self.width + 1) * cut_bottom)):
                 if cut_bitmask in self.shapes:
                     right, bottom = bottom_right
-                    return CharacterBox(self.shapes[cut_bitmask], (pixel, Pixel(right, bottom - cut_bottom)))
+                    return CharacterBox(self.shapes[cut_bitmask], Box(pixel, Pixel(right, bottom - cut_bottom)))
 
     def _get_bitmask(self, pixel: Pixel, image: SimpleImage) -> int:
         return get_bitmask(pixel, image, self.width, self.height)

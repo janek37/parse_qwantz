@@ -2,10 +2,11 @@ import logging
 from dataclasses import dataclass
 from typing import Iterable
 
+from box import Box
 from detect_lines import Line
 from detect_blocks import TextBlock
-from pixels import Pixel, SimpleImage
-
+from pixels import Pixel
+from simple_image import SimpleImage
 
 logger = logging.getLogger()
 
@@ -13,14 +14,14 @@ logger = logging.getLogger()
 @dataclass
 class Character:
     name: str
-    box: tuple[Pixel, Pixel]
+    box: Box
 
     def __str__(self):
         return self.name
 
     @classmethod
     def from_name(cls, name: str):
-        return cls(name, (Pixel(0, 0), Pixel(0, 0)))
+        return cls(name, Box(Pixel(0, 0), Pixel(0, 0)))
 
 
 OFF_PANEL = Character.from_name("Off-Panel")
@@ -35,7 +36,7 @@ class UnmatchedLine(Exception):
 def match_lines(
     lines: list[Line], text_blocks: list[TextBlock], characters: list[Character], image: SimpleImage
 ) -> Iterable[tuple[Target, Target]]:
-    boxes: list[tuple[tuple[Pixel, Pixel], Target]] = [
+    boxes: list[tuple[Box, Target]] = [
         (text_line.box(margin=1), text_block)
         for text_block in text_blocks
         for text_line in text_block.lines
@@ -77,7 +78,7 @@ def match_lines(
         yield closest1, closest2
 
 
-def sides(box: tuple[Pixel, Pixel]) -> list[tuple[Pixel, Pixel]]:
+def sides(box: Box) -> list[Line]:
     top_left, bottom_right = box
     return [
         (top_left, (top_left.x, bottom_right.y)),
