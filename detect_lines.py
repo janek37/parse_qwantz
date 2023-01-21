@@ -25,6 +25,8 @@ def get_line(pixel: Pixel, image: SimpleImage) -> tuple[Line, list[Pixel]] | Non
         forward = False
     else:
         return None
+    if end1 == end2:
+        return None
     sorted_pixels = sorted(pixels)
     slices = [list(y for x, y in group) for key, group in groupby(sorted_pixels, key=lambda px: px[0])]
     # all slices are single intervals
@@ -37,12 +39,6 @@ def get_line(pixel: Pixel, image: SimpleImage) -> tuple[Line, list[Pixel]] | Non
             return None
         if not forward and (slice1[0] < slice2[0] or slice1[-1] < slice2[-1]):
             return None
-    # must contain 2x2 square
-    if not any(
-        (x + 1, y) in pixels and (x, y + 1) in pixels and (x + 1, y + 1) in pixels
-        for x, y in pixels
-    ):
-        return None
     for x, y in pixels:
         for i, j in product(range(3), range(3)):
             if (x + i, y + j) not in pixels:
@@ -67,4 +63,13 @@ def get_shape(pixel: Pixel, image: SimpleImage) -> dict[Pixel, Color]:
 
 def get_adjacent_pixels(pixel: Pixel):
     x, y = pixel
-    return [(x - 1, y), (x + 1, y), (x, y - 1), (x, y + 1)]
+    return [
+        (x - 1, y - 1),
+        (x - 1, y),
+        (x - 1, y + 1),
+        (x, y - 1),
+        (x, y + 1),
+        (x + 1, y - 1),
+        (x + 1, y),
+        (x + 1, y + 1),
+    ]
