@@ -1,4 +1,5 @@
 import logging
+import sys
 
 
 class CustomFormatter(logging.Formatter):
@@ -18,7 +19,10 @@ class CustomFormatter(logging.Formatter):
     }
 
     def format(self, record):
-        log_fmt = self.FORMATS.get(record.levelno)
+        if sys.stderr.isatty():
+            log_fmt = self.FORMATS.get(record.levelno)
+        else:
+            log_fmt = self.FORMAT
         formatter = logging.Formatter(log_fmt)
         return formatter.format(record)
 
