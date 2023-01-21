@@ -62,13 +62,15 @@ def match_lines(
                         distance2 = t
                         closest2 = target
                     break
-        if (
-            closest1 is None
-            or closest2 is None
-            or not (isinstance(closest1, TextBlock) or isinstance(closest2, TextBlock))
-        ):
+        if not (isinstance(closest1, TextBlock) or isinstance(closest2, TextBlock)) or closest1 is closest2 is None:
             logger.error(f"Unmatched line {line}: matches {closest1} to {closest2}")
             raise UnmatchedLine(line, boxes, text_blocks)
+        if (closest1 is None and closest2 is None) or (closest1 is not None and closest2 is None):
+            logger.warning(f"Unmatched line {line}, assuming off-panel")
+            if closest1 is None:
+                closest1 = OFF_PANEL
+            if closest2 is None:
+                closest2 = OFF_PANEL
         if closest1 == closest2:
             logger.error(f"Line {line} matches the same object: {closest1}")
             raise UnmatchedLine(line, boxes, text_blocks)
