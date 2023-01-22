@@ -8,8 +8,11 @@ from shape import get_shape, get_adjacent_pixels, get_box
 
 
 def get_thought(pixel: Pixel, image: SimpleImage) -> tuple[Box, list[Pixel]] | None:
-    pixels = get_shape(pixel, image)
-    box = get_box(pixels)
+    orig_pixels = get_shape(pixel, image)
+    box = get_box(orig_pixels)
+    pixels: set[Pixel] = set(orig_pixels)
+    for x, y in orig_pixels:
+        pixels.update({Pixel(x + 1, y), Pixel(x + 2, y)})
     x_range = range(box.left + 1, box.right)
     y_range = range(box.top + 1, box.bottom)
     outside = set()
@@ -25,15 +28,17 @@ def get_thought(pixel: Pixel, image: SimpleImage) -> tuple[Box, list[Pixel]] | N
         to_visit = deque([Pixel(x, y)])
         while to_visit:
             current = to_visit.popleft()
-            if current in visited or current in pixels or not box.includes(current):
+            if current in visited or current in pixels:
                 continue
             if current in outside:
                 outside.update(visited)
                 break
+            if not box.includes(current):
+                continue
             visited.add(current)
             to_visit.extend(get_adjacent_pixels(current))
         else:
             non_empty_interior = True
             break
     if non_empty_interior:
-        return box, sorted(pixels)
+        return box, sorted(orig_pixels)
