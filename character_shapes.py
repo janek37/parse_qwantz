@@ -13,6 +13,7 @@ PRINTABLE = string.printable.strip()
 REGULAR_SHAPE_FILE = 'img/regular.png'
 REGULAR12_SHAPE_FILE = 'img/regular12.png'
 REGULAR11_SHAPE_FILE = 'img/regular11.png'
+REGULAR9_SHAPE_FILE = 'img/regular9.png'
 REGULAR8_SHAPE_FILE = 'img/regular8.png'
 
 
@@ -112,10 +113,11 @@ REGULAR_FONT = Font('Regular', *get_regular_shapes(REGULAR_SHAPE_FILE, shifted_v
 BOLD_FONT = Font('Bold', *get_bold_shapes(REGULAR_FONT), True)
 CONDENSED_FONT = Font('Condensed', *get_regular_shapes(REGULAR12_SHAPE_FILE))
 SMALL_FONT = Font('Small', *get_regular_shapes(REGULAR11_SHAPE_FILE))
+MINI_FONT = Font('Mini', *get_regular_shapes(REGULAR9_SHAPE_FILE))
 TINY_FONT = Font('Tiny', *get_regular_shapes(REGULAR8_SHAPE_FILE))
 
 
-ALL_FONTS = [REGULAR_FONT, BOLD_FONT, SMALL_FONT, TINY_FONT, CONDENSED_FONT]
+ALL_FONTS = [REGULAR_FONT, BOLD_FONT, SMALL_FONT, TINY_FONT, CONDENSED_FONT, MINI_FONT]
 
 
 FONT_GROUPS = {
@@ -124,4 +126,5 @@ FONT_GROUPS = {
     SMALL_FONT.name: [SMALL_FONT],
     TINY_FONT.name: [TINY_FONT],
     CONDENSED_FONT.name: [CONDENSED_FONT],
+    MINI_FONT.name: [MINI_FONT],
 }
