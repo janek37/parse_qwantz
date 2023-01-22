@@ -8,6 +8,7 @@ from detect_blocks import get_text_blocks, TextBlock
 from elements import get_elements, NoMatchFound
 from match_blocks import match_blocks
 from match_lines import match_lines, Character, OFF_PANEL, UnmatchedLine
+from match_thought import match_thought
 from pixels import Pixel
 from simple_image import SimpleImage
 from prepare_image import apply_mask
@@ -31,12 +32,12 @@ CHARACTERS = {
     3: [
         Character('T-Rex', Box(Pixel(80, 55), Pixel(115, 213))),
         Character('Dromiceiomimus', Box(Pixel(325, 150), Pixel(357, 238))),
-        Character('House', Box(Pixel(115, 210), Pixel(163, 238))),
+        Character('House', Box(Pixel(115, 210), Pixel(163, 238)), can_think=False),
     ],
     4: [
         Character('T-Rex', Box(Pixel(0, 77), Pixel(50, 190))),
         Character('Utahraptor', Box(Pixel(103, 81), Pixel(138, 165))),
-        Character('Girl', Box(Pixel(0, 213), Pixel(8, 238))),
+        Character('Girl', Box(Pixel(0, 213), Pixel(8, 238)), can_think=False),
     ],
     5: [
         Character('T-Rex', Box(Pixel(40, 70), Pixel(70, 200))),
@@ -76,6 +77,14 @@ def parse_panel(image: Image, characters: list[Character]) -> Iterable[str]:
     text_blocks = sorted(get_text_blocks(text_lines, image), key=lambda b: (b.end.y, b.end.x))
     line_matches = match_lines(lines, text_blocks, characters, image)
     block_matches = match_blocks(line_matches)
+    unmatched_blocks = [block for block in text_blocks if id(block) not in block_matches]
+    thinking_characters = [character for character in characters if character.can_think]
+    thought_matches = {
+        id(block): character
+        for block, character in match_thought(thoughts, unmatched_blocks, thinking_characters)
+    }
+    if thoughts and not thought_matches:
+        logger.warning("Detected thought bubbles, but no thought text")
     for block in text_blocks:
         if god_or_devil := handle_god_and_devil(block, block_matches.get(id(block)) == OFF_PANEL):
             block_matches[id(block)] = god_or_devil
@@ -87,6 +96,9 @@ def parse_panel(image: Image, characters: list[Character]) -> Iterable[str]:
                 yield f"{character}: {block.content}"
             else:
                 yield f"{character}: {block}"
+        elif id(block) in thought_matches:
+            character = thought_matches[id(block)]
+            yield f"{character}: (thinks) {block.content}"
         else:
             if block.font.name != 'Bold':
                 logger.warning('Narrator not bold: %s', block.font.name)
