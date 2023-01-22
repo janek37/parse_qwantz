@@ -41,16 +41,16 @@ def get_elements(image: SimpleImage) -> tuple[list[Line], list[TextLine]]:
 
 def remove_boxes(sorted_pixels: list[Pixel], boxes: list[Box]) -> list[Pixel]:
     box_iter = iter(boxes)
-    (x0, y0), (x1, y1) = next(box_iter)
+    box = next(box_iter)
     new_pixels = []
     pass_through = False
     for pixel in sorted_pixels:
-        while not pass_through and pixel.x >= x1:
+        while not pass_through and pixel.x >= box.right:
             try:
-                (x0, y0), (x1, y1) = next(box_iter)
+                box = next(box_iter)
             except StopIteration:
                 pass_through = True
-        if pass_through or not (x0 <= pixel.x < x1 and y0 <= pixel.y < y1):
+        if pass_through or not box.includes(pixel):
             new_pixels.append(pixel)
     return new_pixels
 

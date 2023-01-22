@@ -79,12 +79,11 @@ def match_lines(
 
 
 def sides(box: Box) -> list[Line]:
-    top_left, bottom_right = box
     return [
-        (top_left, (top_left.x, bottom_right.y)),
-        ((top_left.x, bottom_right.y), bottom_right),
-        (bottom_right, (bottom_right.x, top_left.y)),
-        ((bottom_right.x, top_left.y), top_left),
+        (box.top_left, box.bottom_left),
+        (box.bottom_left, box.bottom_right),
+        (box.bottom_right, box.top_right),
+        (box.top_right, box.top_left),
     ]
 
 

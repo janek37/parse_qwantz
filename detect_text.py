@@ -18,7 +18,7 @@ class TextLine:
 
     @property
     def start(self) -> Pixel:
-        return self.character_boxes[0].box[0]
+        return self.character_boxes[0].box.top_left
 
     @cached_property
     def content(self) -> str:
@@ -30,7 +30,7 @@ class TextLine:
 
     @cached_property
     def x_end(self) -> int:
-        return self.character_boxes[-1].box[1].x
+        return self.character_boxes[-1].box.right
 
     @cached_property
     def y_end(self) -> int:

@@ -2,7 +2,7 @@ from itertools import groupby, product
 
 from pixels import Pixel
 from simple_image import SimpleImage
-from shape import get_shape
+from shape import get_shape, get_box
 
 Line = tuple[Pixel, Pixel]
 
@@ -11,18 +11,15 @@ def get_line(pixel: Pixel, image: SimpleImage) -> tuple[Line, list[Pixel]] | Non
     pixels = get_shape(pixel, image)
     if len(set(pixels.values())) != 1:
         return None
-    x_min = min(x for x, y in pixels)
-    x_max = max(x for x, y in pixels)
-    y_min = min(y for x, y in pixels)
-    y_max = max(y for x, y in pixels)
+    box = get_box(pixels)
     # \ or /
-    if (x_min, y_min) in pixels and (x_max, y_max) in pixels:
-        end1 = Pixel(x_min, y_min)
-        end2 = Pixel(x_max, y_max)
+    if box.top_left in pixels and box.bottom_right in pixels:
+        end1 = box.top_left
+        end2 = box.bottom_right
         forward = True
-    elif (x_min, y_max) in pixels and (x_max, y_min) in pixels:
-        end1 = Pixel(x_min, y_max)
-        end2 = Pixel(x_max, y_min)
+    elif box.bottom_left in pixels and box.top_right in pixels:
+        end1 = box.bottom_left
+        end2 = box.top_right
         forward = False
     else:
         return None

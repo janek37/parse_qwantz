@@ -1,6 +1,17 @@
+from typing import Collection
+
+from box import Box
 from colors import Color
 from pixels import Pixel
 from simple_image import SimpleImage
+
+
+def get_box(shape: Collection[Pixel]) -> Box:
+    x_min = min(x for x, y in shape)
+    x_max = max(x for x, y in shape)
+    y_min = min(y for x, y in shape)
+    y_max = max(y for x, y in shape)
+    return Box(Pixel(x_min, y_min), Pixel(x_max, y_max))
 
 
 def get_shape(pixel: Pixel, image: SimpleImage) -> dict[Pixel, Color]:
