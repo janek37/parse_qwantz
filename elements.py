@@ -42,7 +42,7 @@ def get_elements(image: SimpleImage) -> tuple[list[Line], list[Box], list[TextLi
                 sorted_pixels = remove_subsequence(sorted_pixels, thought_pixels)
             else:
                 raise NoMatchFound(pixel, text_lines)
-    return lines, thoughts, sorted(text_lines, key=lambda l: (l.start[1], l.start[0]))
+    return lines, thoughts, sorted(text_lines, key=lambda l: (l.start.y, l.start.x))
 
 
 def remove_boxes(sorted_pixels: list[Pixel], boxes: list[Box]) -> list[Pixel]:

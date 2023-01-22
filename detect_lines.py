@@ -26,7 +26,7 @@ def get_line(pixel: Pixel, image: SimpleImage) -> tuple[Line, list[Pixel]] | Non
     if end1 == end2:
         return None
     sorted_pixels = sorted(pixels)
-    slices = [list(y for x, y in group) for key, group in groupby(sorted_pixels, key=lambda px: px[0])]
+    slices = [list(y for x, y in group) for key, group in groupby(sorted_pixels, key=lambda px: px.x)]
     # all slices are single intervals
     for s in slices:
         if not all(y1 + 1 == y2 for y1, y2 in zip(s, s[1:])):

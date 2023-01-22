@@ -73,7 +73,7 @@ def parse_qwantz(image: Image) -> Iterable[list[str]]:
 
 def parse_panel(image: Image, characters: list[Character]) -> Iterable[str]:
     lines, thoughts, text_lines = get_elements(image)
-    text_blocks = sorted(get_text_blocks(text_lines, image), key=lambda b: (b.end[1], b.end[0]))
+    text_blocks = sorted(get_text_blocks(text_lines, image), key=lambda b: (b.end.y, b.end.x))
     line_matches = match_lines(lines, text_blocks, characters, image)
     block_matches = match_blocks(line_matches)
     for block in text_blocks:

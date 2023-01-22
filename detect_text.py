@@ -20,6 +20,10 @@ class TextLine:
     def start(self) -> Pixel:
         return self.character_boxes[0].box.top_left
 
+    @property
+    def end(self) -> Pixel:
+        return Pixel(self.x_end, self.y_end)
+
     @cached_property
     def content(self) -> str:
         return ''.join(char for char, box in self.character_boxes)

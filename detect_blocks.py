@@ -1,5 +1,6 @@
 from typing import Iterable, NamedTuple
 
+from box import Box, get_interval_distance
 from character_shapes import Font, FONT_GROUPS
 from colors import Color
 from detect_text import TextLine
@@ -18,7 +19,11 @@ class TextBlock(NamedTuple):
 
     @property
     def end(self) -> Pixel:
-        return Pixel(self.lines[-1].y_end, self.lines[-1].y_end)
+        return self.lines[-1].end
+
+    @property
+    def box(self) -> Box:
+        return Box(self.start, self.end)
 
     @property
     def content(self):
@@ -45,11 +50,15 @@ def get_text_blocks(text_lines: list[TextLine], image: SimpleImage) -> Iterable[
             new_block_lines = []
             for text_line in text_lines:
                 if text_line.font in FONT_GROUPS[font.name]:
-                    (x, y), (x_end, y_end) = text_line.box()
-                    line0 = new_block[-1]
-                    (x0, y0), (x1, y1) = line0.box()
-                    interval0, interval1 = sorted([(x, x_end), (x0, x1)])
-                    if y1 - 1 <= y <= y1 + 1 and interval0[1] > interval1[0]:
+                    text_box = text_line.box()
+                    previous_line = new_block[-1]
+                    previous_box = previous_line.box()
+                    intervals_intersect = get_interval_distance(
+                        (text_box.left, text_box.right),
+                        (previous_box.left, previous_box.right),
+                    ) == 0
+                    ceiling = previous_box.bottom
+                    if ceiling - 1 <= text_box.top <= ceiling + 1 and intervals_intersect:
                         new_block_lines.append(text_line)
                     else:
                         new_lines.append(text_line)
