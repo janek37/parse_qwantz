@@ -23,7 +23,11 @@ class TextBlock(NamedTuple):
 
     @property
     def box(self) -> Box:
-        return Box(self.start, self.end)
+        top = self.start.y
+        bottom = self.end.y
+        left = min(line.start.x for line in self.lines)
+        right = max(line.x_end for line in self.lines)
+        return Box(Pixel(left, top), Pixel(right, bottom))
 
     @property
     def content(self):
