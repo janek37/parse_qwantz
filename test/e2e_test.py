@@ -9,9 +9,9 @@ INPUT_FILE_DIR = Path('test/comics')
 EXPECTED_OUTPUT_DIR = Path('test/expected_outputs')
 
 
-@pytest.mark.parametrize('input_file_name', sorted(os.listdir(INPUT_FILE_DIR)))
-def test_output(capsys, input_file_name: str):
-    main(str(INPUT_FILE_DIR / input_file_name))
+@pytest.mark.parametrize('input_file_path', sorted(INPUT_FILE_DIR.iterdir()))
+def test_output(capsys, input_file_path: Path):
+    main(str(input_file_path))
     captured = capsys.readouterr()
-    expected_output = open(EXPECTED_OUTPUT_DIR / (input_file_name.split('.')[0] + '.txt')).read()
+    expected_output = open(EXPECTED_OUTPUT_DIR / (input_file_path.stem + '.txt')).read()
     assert captured.out == expected_output
