@@ -1,20 +1,22 @@
+from logging import getLogger
+
 from box import Box
 from character_shapes import ALL_FONTS
 from detect_lines import Line, get_line
 from detect_text import TextLine, try_text_line
 from detect_thought import get_thought
 from pixels import Pixel
+from shape import get_shape
 from simple_image import SimpleImage
 
-
-class NoMatchFound(Exception):
-    pass
+logger = getLogger()
 
 
-def get_elements(image: SimpleImage) -> tuple[list[Line], list[Box], list[TextLine]]:
+def get_elements(image: SimpleImage) -> tuple[list[Line], list[Box], list[TextLine], list[list[Pixel]]]:
     text_lines: list[TextLine] = []
     lines: list[Line] = []
     thoughts: list[Box] = []
+    unmatched: list[list[Pixel]] = []
     sorted_pixels = sorted(image.pixels)
     while sorted_pixels:
         pixel = sorted_pixels[0]
@@ -41,8 +43,11 @@ def get_elements(image: SimpleImage) -> tuple[list[Line], list[Box], list[TextLi
                 thoughts.append(box)
                 sorted_pixels = remove_subsequence(sorted_pixels, thought_pixels)
             else:
-                raise NoMatchFound(pixel, text_lines)
-    return lines, thoughts, sorted(text_lines, key=lambda l: (l.start.y, l.start.x))
+                logger.warning(f"No match found for shape at {(pixel.x, pixel.y)}")
+                unmatched_pixels = sorted(get_shape(pixel, tmp_image))
+                unmatched.append(unmatched_pixels)
+                sorted_pixels = remove_subsequence(sorted_pixels, unmatched_pixels)
+    return lines, thoughts, sorted(text_lines, key=lambda l: (l.start.y, l.start.x)), unmatched
 
 
 def remove_boxes(sorted_pixels: list[Pixel], boxes: list[Box]) -> list[Pixel]:

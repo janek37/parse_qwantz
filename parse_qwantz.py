@@ -5,11 +5,12 @@ from PIL import Image, ImageDraw
 from box import Box
 from colors import Color
 from detect_blocks import get_text_blocks, TextBlock
-from elements import get_elements, NoMatchFound
+from elements import get_elements
 from match_blocks import match_blocks
 from match_lines import match_lines, Character, OFF_PANEL, UnmatchedLine
 from match_thought import match_thought
 from pixels import Pixel
+from shape import get_box
 from simple_image import SimpleImage
 from prepare_image import apply_mask
 from logger import get_logger
@@ -55,13 +56,15 @@ def parse_qwantz(image: Image) -> Iterable[list[str]]:
         cropped = masked.crop((x, y, x + width, y + height))
         panel_image = SimpleImage.from_image(cropped)
         try:
-            yield list(parse_panel(panel_image, CHARACTERS[i]))
-        except NoMatchFound as e:
-            (x0, y0), text_lines = e.args
-            draw = ImageDraw.Draw(cropped)
-            draw.rectangle(((x0 - 13, y0 - 13), (x0 + 13), (y0 + 13)), outline=(255, 0, 0))
-            cropped.show()
-            yield ["Error"] + text_lines
+            script_lines, unmatched = parse_panel(panel_image, CHARACTERS[i])
+            for unmatched_shape in unmatched:
+                box = get_box(unmatched_shape, padding=3)
+                draw = ImageDraw.Draw(cropped)
+                draw.rectangle(box, outline=(255, 0, 0))
+                for pixel in unmatched_shape:
+                    draw.point(pixel, fill=(255, 0, 0))
+                cropped.show()
+            yield script_lines
         except UnmatchedLine as e:
             line, boxes, text_blocks = e.args
             draw = ImageDraw.Draw(cropped)
@@ -72,8 +75,8 @@ def parse_qwantz(image: Image) -> Iterable[list[str]]:
             yield ["Error"] + text_blocks
 
 
-def parse_panel(image: Image, characters: list[Character]) -> Iterable[str]:
-    lines, thoughts, text_lines = get_elements(image)
+def parse_panel(image: Image, characters: list[Character]) -> tuple[list[str], list[list[Pixel]]]:
+    lines, thoughts, text_lines, unmatched = get_elements(image)
     text_blocks = sorted(get_text_blocks(text_lines, image), key=lambda b: (b.end.y, b.end.x))
     line_matches = match_lines(lines, text_blocks, characters, image)
     block_matches = match_blocks(line_matches)
@@ -85,24 +88,26 @@ def parse_panel(image: Image, characters: list[Character]) -> Iterable[str]:
     }
     if thoughts and not thought_matches:
         logger.warning("Detected thought bubbles, but no thought text")
+    script_lines = []
     for block in text_blocks:
         if god_or_devil := handle_god_and_devil(block, block_matches.get(id(block)) == OFF_PANEL):
             block_matches[id(block)] = god_or_devil
         if id(block) in block_matches:
             character = block_matches[id(block)]
             if isinstance(character, tuple):
-                yield f"{character[0]} and {character[1]}: {block}"
+                script_lines.append(f"{character[0]} and {character[1]}: {block}")
             elif character.name in ('God', 'Devil'):
-                yield f"{character}: {block.content}"
+                script_lines.append(f"{character}: {block.content}")
             else:
-                yield f"{character}: {block}"
+                script_lines.append(f"{character}: {block}")
         elif id(block) in thought_matches:
             character = thought_matches[id(block)]
-            yield f"{character}: (thinks) {block.content}"
+            script_lines.append(f"{character}: (thinks) {block.content}")
         else:
             if block.font.name != 'Bold':
                 logger.warning('Narrator not bold: %s', block.font.name)
-            yield f"Narrator: {block.content}"
+            script_lines.append(f"Narrator: {block.content}")
+    return script_lines, unmatched
 
 
 def handle_god_and_devil(block: TextBlock, is_off_panel: bool):

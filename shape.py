@@ -6,12 +6,12 @@ from pixels import Pixel
 from simple_image import SimpleImage
 
 
-def get_box(shape: Collection[Pixel]) -> Box:
+def get_box(shape: Collection[Pixel], padding=0) -> Box:
     x_min = min(x for x, y in shape)
     x_max = max(x for x, y in shape)
     y_min = min(y for x, y in shape)
     y_max = max(y for x, y in shape)
-    return Box(Pixel(x_min, y_min), Pixel(x_max + 1, y_max + 1))
+    return Box(Pixel(x_min - padding, y_min - padding), Pixel(x_max + 1 + padding, y_max + 1 + padding))
 
 
 def get_shape(pixel: Pixel, image: SimpleImage) -> dict[Pixel, Color]:
