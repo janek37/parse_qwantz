@@ -26,7 +26,10 @@ class TextLine:
 
     @cached_property
     def content(self) -> str:
-        return ''.join(char for char, box in self.character_boxes)
+        content = ''.join(char for char, box in self.character_boxes)
+        if all(char == ' ' for char in content[1::2]):
+            return content[0::2]
+        return content
 
     def box(self, margin: int = 0) -> Box:
         x, y = self.start
@@ -74,7 +77,8 @@ def get_text_line(start: Pixel, image: SimpleImage, font: Font) -> TextLine | No
             break
         elif char_box.char == ' ':
             spaces.append(CharacterBox(' ', Box(Pixel(x, y), Pixel(x + font.width, y + font.height))))
-            if len(spaces) > 2:
+            exploded = all(char_box.char == ' ' for char_box in character_boxes[1::2])
+            if (not exploded and len(spaces) > 2) or (exploded and len(spaces) > 3):
                 break
         else:
             if spaces:
