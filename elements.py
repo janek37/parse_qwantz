@@ -31,12 +31,12 @@ def get_elements(image: SimpleImage) -> tuple[list[Line], list[Box], list[TextLi
                 sorted_pixels = remove_boxes(sorted_pixels, [char_box.box for char_box in text_line.character_boxes])
                 break
         else:
-            result = get_line(pixel, image)
+            result = get_line(pixel, tmp_image)
             if result:
                 line, line_pixels = result
                 lines.append(line)
                 sorted_pixels = remove_subsequence(sorted_pixels, line_pixels)
-            elif result := get_thought(pixel, image):
+            elif result := get_thought(pixel, tmp_image):
                 box, thought_pixels = result
                 thoughts.append(box)
                 sorted_pixels = remove_subsequence(sorted_pixels, thought_pixels)
