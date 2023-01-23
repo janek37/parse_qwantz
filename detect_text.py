@@ -31,9 +31,9 @@ class TextLine:
             return content[0::2]
         return content
 
-    def box(self, margin: int = 0) -> Box:
+    def box(self, padding: int = 0) -> Box:
         x, y = self.start
-        return Box(Pixel(x - margin, y - margin), Pixel(self.x_end + margin, self.y_end + margin))
+        return Box(Pixel(x - padding, y - padding), Pixel(self.x_end + padding, self.y_end + padding))
 
     @cached_property
     def x_end(self) -> int:

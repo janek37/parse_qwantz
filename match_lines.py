@@ -38,7 +38,7 @@ def match_lines(
     lines: list[Line], text_blocks: list[TextBlock], characters: list[Character], image: SimpleImage
 ) -> Iterable[tuple[Target, Target]]:
     boxes: list[tuple[Box, Target]] = [
-        (text_line.box(margin=1), text_block)
+        (text_line.box(padding=1), text_block)
         for text_block in text_blocks
         for text_line in text_block.lines
     ]
