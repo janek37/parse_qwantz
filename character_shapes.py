@@ -9,6 +9,7 @@ from pixels import Pixel
 from simple_image import SimpleImage
 
 PRINTABLE = string.printable.strip()
+FORBIDDEN_CHARS = '\\_`|'
 
 REGULAR_SHAPE_FILE = 'img/regular.png'
 REGULAR12_SHAPE_FILE = 'img/regular12.png'
@@ -35,17 +36,22 @@ class Font:
         bitmask = self._get_bitmask(pixel, image)
         if bitmask == 0:
             return CharacterBox(' ', Box(pixel, bottom_right))
-        if bitmask in self.shapes:
-            return CharacterBox(self.shapes[bitmask], Box(pixel, bottom_right))
+        if char := self._get_char_by_bitmask(bitmask):
+            return CharacterBox(char, Box(pixel, bottom_right))
         for cut_bottom in range(1, 3):
             cut_bitmask = bitmask & -(1 << (self.width * cut_bottom))
             if cut_bitmask & -cut_bitmask > (1 << ((self.width + 1) * cut_bottom)):
-                if cut_bitmask in self.shapes:
+                if char := self._get_char_by_bitmask(cut_bitmask):
                     right, bottom = bottom_right
-                    return CharacterBox(self.shapes[cut_bitmask], Box(pixel, Pixel(right, bottom - cut_bottom)))
+                    return CharacterBox(char, Box(pixel, Pixel(right, bottom - cut_bottom)))
 
     def _get_bitmask(self, pixel: Pixel, image: SimpleImage) -> int:
         return get_bitmask(pixel, image, self.width, self.height)
+
+    def _get_char_by_bitmask(self, bitmask: int) -> str | None:
+        char = self.shapes.get(bitmask)
+        if char and char not in FORBIDDEN_CHARS:
+            return char
 
     def __str__(self):
         return self.name
