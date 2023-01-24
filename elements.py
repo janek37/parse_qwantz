@@ -1,9 +1,9 @@
 from logging import getLogger
 
 from box import Box
-from character_shapes import ALL_FONTS
-from detect_lines import Line, get_line
-from detect_text import TextLine, try_text_line
+from fonts import ALL_FONTS
+from lines import Line, get_line
+from text_lines import TextLine, try_text_line
 from detect_thought import get_thought
 from pixels import Pixel
 from shape import get_shape
@@ -30,7 +30,7 @@ def get_elements(image: SimpleImage) -> tuple[list[Line], list[Box], list[TextLi
             text_line = try_text_line(pixel, tmp_image, font)
             if text_line:
                 text_lines.append(text_line)
-                sorted_pixels = remove_boxes(sorted_pixels, [char_box.box for char_box in text_line.character_boxes])
+                sorted_pixels = remove_boxes(sorted_pixels, [char_box.box for char_box in text_line.char_boxes])
                 break
         else:
             result = get_line(pixel, tmp_image)

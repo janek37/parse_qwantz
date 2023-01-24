@@ -3,8 +3,8 @@ from dataclasses import dataclass
 from typing import Iterable
 
 from box import Box
-from detect_lines import Line
-from detect_blocks import TextBlock
+from lines import Line
+from text_blocks import TextBlock
 from pixels import Pixel
 from simple_image import SimpleImage
 

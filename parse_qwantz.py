@@ -4,7 +4,7 @@ from PIL import Image, ImageDraw
 
 from box import Box
 from colors import Color
-from detect_blocks import get_text_blocks, TextBlock
+from text_blocks import get_text_blocks, TextBlock
 from elements import get_elements
 from match_blocks import match_blocks
 from match_lines import match_lines, Character, OFF_PANEL, UnmatchedLine

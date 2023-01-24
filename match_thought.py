@@ -1,7 +1,7 @@
 from typing import Iterable
 
 from box import Box
-from detect_blocks import TextBlock
+from text_blocks import TextBlock
 from match_lines import Character
 
 

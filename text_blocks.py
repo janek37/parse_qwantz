@@ -2,9 +2,9 @@ from itertools import chain, groupby
 from typing import Iterable, NamedTuple
 
 from box import Box, get_interval_distance
-from character_shapes import Font
+from fonts import Font
 from colors import Color
-from detect_text import TextLine, try_text_line
+from text_lines import TextLine, try_text_line
 from pixels import Pixel
 from simple_image import SimpleImage
 
@@ -85,7 +85,7 @@ def get_text_blocks(text_lines: list[TextLine], image: SimpleImage) -> Iterable[
             else:
                 new_lines.append(text_line)
         text_lines = new_lines
-        color = image.find_color(new_block[0].character_boxes[0].box)
+        color = image.find_color(new_block[0].char_boxes[0].box)
         yield TextBlock(new_block, color, font)
 
 
@@ -117,7 +117,7 @@ def join_text_lines(text_lines: list[TextLine], image: SimpleImage) -> list[Text
     for font in (line.font for line in text_lines):
         if font == text_lines[0].font:
             continue
-        first_pixel = image.find_pixel(text_lines[0].character_boxes[0].box)
+        first_pixel = image.find_pixel(text_lines[0].char_boxes[0].box)
         if joined_text_line := try_text_line(first_pixel, image, font):
             joined_box = joined_text_line.box()
             if abs(joined_box.right - text_lines[-1].box().right) < font.width // 2:
