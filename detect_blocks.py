@@ -1,9 +1,10 @@
+from itertools import chain
 from typing import Iterable, NamedTuple
 
 from box import Box, get_interval_distance
 from character_shapes import Font, FONT_GROUPS
 from colors import Color
-from detect_text import TextLine
+from detect_text import TextLine, try_text_line
 from pixels import Pixel
 from simple_image import SimpleImage
 
@@ -45,32 +46,64 @@ class TextBlock(NamedTuple):
 
 
 def get_text_blocks(text_lines: list[TextLine], image: SimpleImage) -> Iterable[TextBlock]:
+    grouped_lines = group_text_lines(text_lines)
+    text_lines = list(chain.from_iterable(join_text_lines(group, image) for group in grouped_lines))
     while text_lines:
         new_block = [text_lines[0]]
         font = text_lines[0].font
-        del text_lines[0]
-        while True:
-            new_lines: list[TextLine] = []
-            new_block_lines = []
-            for text_line in text_lines:
-                if text_line.font in FONT_GROUPS[font.name]:
-                    text_box = text_line.box()
-                    previous_line = new_block[-1]
-                    previous_box = previous_line.box()
-                    intervals_intersect = get_interval_distance(
-                        (text_box.left, text_box.right),
-                        (previous_box.left, previous_box.right),
-                    ) == 0
-                    ceiling = previous_box.bottom
-                    if ceiling - 1 <= text_box.top <= ceiling + 1 and intervals_intersect:
-                        new_block_lines.append(text_line)
-                    else:
-                        new_lines.append(text_line)
+        new_lines: list[TextLine] = []
+        for text_line in text_lines[1:]:
+            if text_line.font in FONT_GROUPS[font.name]:
+                text_box = text_line.box()
+                previous_line = new_block[-1]
+                previous_box = previous_line.box()
+                intervals_intersect = get_interval_distance(
+                    (text_box.left, text_box.right),
+                    (previous_box.left, previous_box.right),
+                ) == 0
+                ceiling = previous_box.bottom
+                if ceiling - 1 <= text_box.top <= ceiling + 1 and intervals_intersect:
+                    new_block.append(text_line)
                 else:
                     new_lines.append(text_line)
-            new_block.extend(new_block_lines)
-            text_lines = new_lines
-            if not new_block_lines:
-                break
+            else:
+                new_lines.append(text_line)
+        text_lines = new_lines
         color = image.find_color(new_block[0].character_boxes[0].box)
         yield TextBlock(new_block, color, font)
+
+
+def group_text_lines(text_lines: list[TextLine]) -> list[list[TextLine]]:
+    grouped_text_lines = []
+    used: set[int] = set()
+    for text_line in text_lines:
+        if id(text_line) in used:
+            continue
+        used.add(id(text_line))
+        group = [text_line]
+        box = text_line.box()
+        for other_text_line in text_lines:
+            if id(other_text_line) in used:
+                continue
+            other_box = other_text_line.box()
+            if abs(box.top - other_box.top) <= 1 or abs(box.bottom - other_box.bottom) <= 1:
+                distance = other_box.left - box.right
+                if -1 <= distance <= max(group[-1].font.width, other_text_line.font.width) * 2 + 1:
+                    group.append(other_text_line)
+                    used.add(id(other_text_line))
+        grouped_text_lines.append(group)
+    return grouped_text_lines
+
+
+def join_text_lines(text_lines: list[TextLine], image: SimpleImage) -> list[TextLine]:
+    if len(text_lines) == 1:
+        return text_lines
+    for font in (line.font for line in text_lines):
+        if font == text_lines[0].font:
+            continue
+        first_pixel = image.find_pixel(text_lines[0].character_boxes[0].box)
+        if joined_text_line := try_text_line(first_pixel, image, font):
+            joined_box = joined_text_line.box()
+            if abs(joined_box.right - text_lines[-1].box().right) < font.width // 2:
+                return [joined_text_line]
+    return text_lines
