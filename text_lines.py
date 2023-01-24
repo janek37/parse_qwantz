@@ -76,7 +76,7 @@ def try_text_line(start: Pixel, image: SimpleImage, font: Font) -> TextLine | No
 
 
 def get_text_line(start: Pixel, image: SimpleImage, font: Font) -> TextLine | None:
-    char_box = font.get_char(start, image=image)
+    char_box = font.get_char(start, image=image, expect_space=False)
     if char_box is None or char_box.char == ' ':
         return None
     char_boxes = [char_box]
@@ -91,7 +91,7 @@ def get_text_line(start: Pixel, image: SimpleImage, font: Font) -> TextLine | No
         if char_box is None and spaces:
             for offset in ((-2, 0), (-1, 0), (1, 0), (0, -1), (0, 1)):
                 off_x, off_y = offset
-                char_box = font.get_char(Pixel(x + off_x, y + off_y), image)
+                char_box = font.get_char(Pixel(x + off_x, y + off_y), image, expect_space=False)
                 if char_box and char_box.char == ' ':
                     char_box = None
                 if char_box is not None:

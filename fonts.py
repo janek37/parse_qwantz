@@ -33,12 +33,24 @@ class Font:
     shapes: dict[int, str]
     bold_shapes: dict[int, str]
 
-    def get_char(self, pixel: Pixel, image: SimpleImage, expect_bold: bool = False) -> CharBox | None:
-        if char_box := self.get_char_with_weight(pixel, image, is_bold=expect_bold):
+    def get_char(
+        self,
+        pixel: Pixel,
+        image: SimpleImage,
+        expect_bold: bool = False,
+        expect_space: bool = True,
+    ) -> CharBox | None:
+        if char_box := self.get_char_with_weight(pixel, image, is_bold=expect_bold, expect_space=expect_space):
             return char_box
-        return self.get_char_with_weight(pixel, image, is_bold=not expect_bold)
+        return self.get_char_with_weight(pixel, image, is_bold=not expect_bold, expect_space=expect_space)
 
-    def get_char_with_weight(self, pixel: Pixel, image: SimpleImage, is_bold: bool) -> CharBox | None:
+    def get_char_with_weight(
+        self,
+        pixel: Pixel,
+        image: SimpleImage,
+        is_bold: bool,
+        expect_space: bool,
+    ) -> CharBox | None:
         width = self.width + 1 if is_bold else self.width
         bottom_right = Pixel(pixel.x + width, pixel.y + self.height)
         bitmask = self._get_bitmask(pixel, image, is_bold)
@@ -52,12 +64,13 @@ class Font:
                 if char := self._get_char_by_bitmask(cut_bitmask, is_bold):
                     right, bottom = bottom_right
                     return CharBox(char, Box(pixel, Pixel(right, bottom - cut_bottom)), is_bold)
-        right, bottom = bottom_right
-        for x, y in product(range(pixel.x, right), range(pixel.y, bottom)):
-            if Pixel(x, y) in image.pixels:
-                if x >= right - 2:
-                    return CharBox(' ', Box(pixel, Pixel(x, bottom)), is_bold)
-                break
+        if expect_space:
+            right, bottom = bottom_right
+            for x, y in product(range(pixel.x, right), range(pixel.y, bottom)):
+                if Pixel(x, y) in image.pixels:
+                    if x >= right - 2:
+                        return CharBox(' ', Box(pixel, Pixel(x, bottom)), is_bold)
+                    break
 
     def _get_bitmask(self, pixel: Pixel, image: SimpleImage, is_bold: bool) -> int:
         width = self.width + 1 if is_bold else self.width
@@ -137,7 +150,7 @@ def get_bitmask(pixel: Pixel, image: SimpleImage, width: int, height: int) -> in
     return bitmask
 
 
-REGULAR_FONT = Font.from_file(REGULAR13_SHAPE_FILE, 'Regular', shifted_variants={',': 1, ':': 1, 'r': 1, '.': -1})
+REGULAR_FONT = Font.from_file(REGULAR13_SHAPE_FILE, 'Regular', shifted_variants={',': 1, ':': 1, '.': -1})
 CONDENSED_FONT = Font.from_file(REGULAR12_SHAPE_FILE, 'Condensed')
 SMALL_FONT = Font.from_file(REGULAR11_SHAPE_FILE, 'Small')
 MINI_FONT = Font.from_file(REGULAR9_SHAPE_FILE, 'Mini')
