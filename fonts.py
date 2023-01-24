@@ -75,23 +75,23 @@ class Font:
     def __repr__(self):
         return f"Font(name={self.name}, width={self.width}, height={self.height})"
 
-
-def get_shapes(
-    file_path: str, shifted_variants: dict[str, int] | None = None
-) -> tuple[int, int, dict[int, str], dict[int, str]]:
-    image = SimpleImage.from_image(Image.open(file_path))
-    width = image.width // len(PRINTABLE)
-    height = image.height
-    shapes = {}
-    for i, char in enumerate(PRINTABLE):
-        bitmask = get_bitmask(Pixel(width * i, 0), image=image, width=width, height=height)
-        shapes[bitmask] = char
-        if shifted_variants and char in shifted_variants:
-            shapes[get_shifted_variant(bitmask, width, height, shifted_variants[char])] = char
-        cut_bitmask = bitmask & -(1 << width)
-        if cut_bitmask != bitmask and char not in 'gq[]':
-            shapes[cut_bitmask] = char
-    return width, height, shapes, get_bold_shapes(width, height, shapes)
+    @classmethod
+    def from_file(
+        cls, file_path: str, name: str, shifted_variants: dict[str, int] | None = None
+    ) -> "Font":
+        image = SimpleImage.from_image(Image.open(file_path))
+        width = image.width // len(PRINTABLE)
+        height = image.height
+        shapes = {}
+        for i, char in enumerate(PRINTABLE):
+            bitmask = get_bitmask(Pixel(width * i, 0), image=image, width=width, height=height)
+            shapes[bitmask] = char
+            if shifted_variants and char in shifted_variants:
+                shapes[get_shifted_variant(bitmask, width, height, shifted_variants[char])] = char
+            cut_bitmask = bitmask & -(1 << width)
+            if cut_bitmask != bitmask and char not in 'gq[]':
+                shapes[cut_bitmask] = char
+        return cls(name, width, height, shapes, get_bold_shapes(width, height, shapes))
 
 
 def get_shifted_variant(shape: int, width: int, height: int, offset: int) -> int:
@@ -134,10 +134,10 @@ def get_bitmask(pixel: Pixel, image: SimpleImage, width: int, height: int) -> in
     return bitmask
 
 
-REGULAR_FONT = Font('Regular', *get_shapes(REGULAR13_SHAPE_FILE, shifted_variants={',': 1, ':': 1, 'r': 1}))
-CONDENSED_FONT = Font('Condensed', *get_shapes(REGULAR12_SHAPE_FILE))
-SMALL_FONT = Font('Small', *get_shapes(REGULAR11_SHAPE_FILE))
-MINI_FONT = Font('Mini', *get_shapes(REGULAR9_SHAPE_FILE))
-TINY_FONT = Font('Tiny', *get_shapes(REGULAR8_SHAPE_FILE))
+REGULAR_FONT = Font.from_file(REGULAR13_SHAPE_FILE, 'Regular', shifted_variants={',': 1, ':': 1, 'r': 1})
+CONDENSED_FONT = Font.from_file(REGULAR12_SHAPE_FILE, 'Condensed')
+SMALL_FONT = Font.from_file(REGULAR11_SHAPE_FILE, 'Small')
+MINI_FONT = Font.from_file(REGULAR9_SHAPE_FILE, 'Mini')
+TINY_FONT = Font.from_file(REGULAR8_SHAPE_FILE, 'Tiny')
 
 ALL_FONTS = [REGULAR_FONT, SMALL_FONT, TINY_FONT, CONDENSED_FONT, MINI_FONT]
