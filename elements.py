@@ -47,7 +47,7 @@ def get_elements(image: SimpleImage) -> tuple[list[Line], list[Box], list[TextLi
                 unmatched_pixels = sorted(get_shape(pixel, tmp_image))
                 unmatched.append(unmatched_pixels)
                 sorted_pixels = remove_subsequence(sorted_pixels, unmatched_pixels)
-    return lines, thoughts, sorted(text_lines, key=lambda l: (l.y_end, l.x_end)), unmatched
+    return lines, thoughts, sorted(text_lines, key=lambda l: l.start), unmatched
 
 
 def remove_boxes(sorted_pixels: list[Pixel], boxes: list[Box]) -> list[Pixel]:

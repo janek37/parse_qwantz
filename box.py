@@ -31,6 +31,14 @@ class Box(NamedTuple):
     def bottom(self) -> int:
         return self.bottom_right.y
 
+    @property
+    def width(self) -> int:
+        return self.right - self.left
+
+    @property
+    def height(self) -> int:
+        return self.bottom - self.top
+
     def includes(self, pixel: Pixel) -> bool:
         return self.left <= pixel.x < self.right and self.top <= pixel.y < self.bottom
 

@@ -26,10 +26,28 @@ class TextLine:
 
     @cached_property
     def content(self) -> str:
-        content = ''.join(char for char, box in self.character_boxes)
+        content = ''.join(char for char, box, is_bold in self.character_boxes)
         if all(char == ' ' for char in content[1::2]):
             return content[0::2]
         return content
+
+    @cached_property
+    def words(self) -> list["TextLine"]:
+        words = []
+        current_word = []
+        for char_box in self.character_boxes:
+            if char_box.char == ' ':
+                if current_word:
+                    words.append(TextLine(current_word, self.font))
+                    current_word = []
+            else:
+                current_word.append(char_box)
+        words.append(TextLine(current_word, self.font))
+        return words
+
+    @cached_property
+    def is_bold(self) -> bool:
+        return all(char_box.is_bold for char_box in self.character_boxes)
 
     def box(self, padding: int = 0) -> Box:
         x, y = self.start
@@ -41,7 +59,7 @@ class TextLine:
 
     @cached_property
     def y_end(self) -> int:
-        return max(y for _, (_, (_, y)) in self.character_boxes)
+        return max(y for _, (_, (_, y)), _ in self.character_boxes)
 
 
 def try_text_line(start: Pixel, image: SimpleImage, font: Font) -> TextLine | None:
@@ -59,16 +77,19 @@ def get_text_line(start: Pixel, image: SimpleImage, font: Font) -> TextLine | No
         return None
     character_boxes = [char_box]
     spaces = []
+    is_bold = char_box.is_bold
     x, y = start
     while True:
-        x += font.width
+        x += char_box.box.width
         if x > image.width - font.width:
             break
-        char_box = font.get_char(Pixel(x, y), image)
-        if char_box is None:
-            for offset in ((-1, 0), (1, 0), (0, -1), (0, 1)):
+        char_box = font.get_char(Pixel(x, y), image, expect_bold=is_bold)
+        if char_box is None and spaces:
+            for offset in ((-2, 0), (-1, 0), (1, 0), (0, -1), (0, 1)):
                 off_x, off_y = offset
                 char_box = font.get_char(Pixel(x + off_x, y + off_y), image)
+                if char_box and char_box.char == ' ':
+                    char_box = None
                 if char_box is not None:
                     x += off_x
                     y += off_y
@@ -76,7 +97,7 @@ def get_text_line(start: Pixel, image: SimpleImage, font: Font) -> TextLine | No
         if char_box is None:
             break
         elif char_box.char == ' ':
-            spaces.append(CharacterBox(' ', Box(Pixel(x, y), Pixel(x + font.width, y + font.height))))
+            spaces.append(CharacterBox(' ', Box(Pixel(x, y), Pixel(x + font.width, y + font.height)), is_bold))
             exploded = all(char_box.char == ' ' for char_box in character_boxes[1::2])
             if (not exploded and len(spaces) > 2) or (exploded and len(spaces) > 3):
                 break
@@ -85,6 +106,7 @@ def get_text_line(start: Pixel, image: SimpleImage, font: Font) -> TextLine | No
                 character_boxes.extend(spaces)
                 spaces = []
             character_boxes.append(char_box)
+            is_bold = char_box.is_bold
     if len(character_boxes) <= 2 and all(char_box.char in ",.'`|-/\\" for char_box in character_boxes):
         return
     return TextLine(character_boxes, font)

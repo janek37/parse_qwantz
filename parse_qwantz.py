@@ -97,16 +97,16 @@ def parse_panel(image: Image, characters: list[Character]) -> tuple[list[str], l
             if isinstance(character, tuple):
                 script_lines.append(f"{character[0]} and {character[1]}: {block}")
             elif character.name in ('God', 'Devil'):
-                script_lines.append(f"{character}: {block.content}")
+                script_lines.append(f"{character}: {block.content(mark_bold=False)}")
             else:
                 script_lines.append(f"{character}: {block}")
         elif id(block) in thought_matches:
             character = thought_matches[id(block)]
-            script_lines.append(f"{character}: (thinks) {block.content}")
+            script_lines.append(f"{character}: (thinks) {block.content()}")
         else:
-            if block.font.name != 'Bold':
+            if not block.is_bold:
                 logger.warning('Narrator not bold: %s', block.font.name)
-            script_lines.append(f"Narrator: {block.content}")
+            script_lines.append(f"Narrator: {block.content(mark_bold=False)}")
     return script_lines, unmatched
 
 

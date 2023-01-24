@@ -1,8 +1,8 @@
-from itertools import chain
+from itertools import chain, groupby
 from typing import Iterable, NamedTuple
 
 from box import Box, get_interval_distance
-from character_shapes import Font, FONT_GROUPS
+from character_shapes import Font
 from colors import Color
 from detect_text import TextLine, try_text_line
 from pixels import Pixel
@@ -23,6 +23,10 @@ class TextBlock(NamedTuple):
         return self.lines[-1].end
 
     @property
+    def is_bold(self) -> bool:
+        return all(line.is_bold for line in self.lines)
+
+    @property
     def box(self) -> Box:
         top = self.start.y
         bottom = self.end.y
@@ -30,30 +34,42 @@ class TextBlock(NamedTuple):
         right = max(line.x_end for line in self.lines)
         return Box(Pixel(left, top), Pixel(right, bottom))
 
-    @property
-    def content(self):
-        if all(line.font.is_bold for line in self.lines):
+    def content(self, mark_bold=True):
+        if not mark_bold:
             line_contents = (line.content for line in self.lines)
         else:
-            line_contents = (f'*{line.content}*' if line.font.is_bold else line.content for line in self.lines)
+            words = chain.from_iterable(line.words for line in self.lines)
+            grouped_words = groupby(words, key=lambda w: w.is_bold)
+            text_and_weight = (
+                (' '.join(word.content for word in group), is_bold)
+                for is_bold, group in grouped_words
+            )
+            line_contents = (
+                f'**{content}**' if is_bold else content
+                for content, is_bold in text_and_weight
+            )
+            line_contents = list(line_contents)
         return ' '.join(line_contents).replace('  ', ' ')
 
     def __str__(self):
         if self.font.name == 'Regular':
-            return self.content
+            return self.content()
         else:
-            return f"[{self.font}] {self.content}"
+            return f"[{self.font}] {self.content()}"
 
 
 def get_text_blocks(text_lines: list[TextLine], image: SimpleImage) -> Iterable[TextBlock]:
     grouped_lines = group_text_lines(text_lines)
-    text_lines = list(chain.from_iterable(join_text_lines(group, image) for group in grouped_lines))
+    text_lines = sorted(
+        chain.from_iterable(join_text_lines(group, image) for group in grouped_lines),
+        key=lambda l: (l.start.y, l.start.x)
+    )
     while text_lines:
         new_block = [text_lines[0]]
         font = text_lines[0].font
         new_lines: list[TextLine] = []
         for text_line in text_lines[1:]:
-            if text_line.font in FONT_GROUPS[font.name]:
+            if text_line.font == font:
                 text_box = text_line.box()
                 previous_line = new_block[-1]
                 previous_box = previous_line.box()

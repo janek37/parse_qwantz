@@ -1,5 +1,6 @@
 import string
 from dataclasses import dataclass
+from itertools import product
 from typing import NamedTuple
 
 from PIL import Image
@@ -9,7 +10,7 @@ from pixels import Pixel
 from simple_image import SimpleImage
 
 PRINTABLE = string.printable.strip()
-FORBIDDEN_CHARS = '\\_`|'
+FORBIDDEN_CHARS = '\\_`|~'
 
 REGULAR_SHAPE_FILE = 'img/regular.png'
 REGULAR12_SHAPE_FILE = 'img/regular12.png'
@@ -21,6 +22,7 @@ REGULAR8_SHAPE_FILE = 'img/regular8.png'
 class CharacterBox(NamedTuple):
     char: str
     box: Box
+    is_bold: bool
 
 
 @dataclass
@@ -29,27 +31,41 @@ class Font:
     width: int
     height: int
     shapes: dict[int, str]
-    is_bold: bool = False
+    bold_shapes: dict[int, str]
 
-    def get_char(self, pixel: Pixel, image: SimpleImage) -> CharacterBox | None:
-        bottom_right = Pixel(pixel.x + self.width, pixel.y + self.height)
-        bitmask = self._get_bitmask(pixel, image)
+    def get_char(self, pixel: Pixel, image: SimpleImage, expect_bold: bool = False) -> CharacterBox | None:
+        if char_box := self.get_char_with_weight(pixel, image, is_bold=expect_bold):
+            return char_box
+        return self.get_char_with_weight(pixel, image, is_bold=not expect_bold)
+
+    def get_char_with_weight(self, pixel: Pixel, image: SimpleImage, is_bold: bool) -> CharacterBox | None:
+        width = self.width + 1 if is_bold else self.width
+        bottom_right = Pixel(pixel.x + width, pixel.y + self.height)
+        bitmask = self._get_bitmask(pixel, image, is_bold)
         if bitmask == 0:
-            return CharacterBox(' ', Box(pixel, bottom_right))
-        if char := self._get_char_by_bitmask(bitmask):
-            return CharacterBox(char, Box(pixel, bottom_right))
+            return CharacterBox(' ', Box(pixel, bottom_right), is_bold)
+        if char := self._get_char_by_bitmask(bitmask, is_bold):
+            return CharacterBox(char, Box(pixel, bottom_right), is_bold)
         for cut_bottom in range(1, 3):
-            cut_bitmask = bitmask & -(1 << (self.width * cut_bottom))
-            if cut_bitmask & -cut_bitmask > (1 << (self.width * (cut_bottom + 1))):
-                if char := self._get_char_by_bitmask(cut_bitmask):
+            cut_bitmask = bitmask & -(1 << (width * cut_bottom))
+            if cut_bitmask & -cut_bitmask > (1 << (width * (cut_bottom + 1))):
+                if char := self._get_char_by_bitmask(cut_bitmask, is_bold):
                     right, bottom = bottom_right
-                    return CharacterBox(char, Box(pixel, Pixel(right, bottom - cut_bottom)))
+                    return CharacterBox(char, Box(pixel, Pixel(right, bottom - cut_bottom)), is_bold)
+        right, bottom = bottom_right
+        for x, y in product(range(pixel.x, right), range(pixel.y, bottom)):
+            if Pixel(x, y) in image.pixels:
+                if x >= right - 2:
+                    return CharacterBox(' ', Box(pixel, Pixel(x, bottom)), is_bold)
+                break
 
-    def _get_bitmask(self, pixel: Pixel, image: SimpleImage) -> int:
-        return get_bitmask(pixel, image, self.width, self.height)
+    def _get_bitmask(self, pixel: Pixel, image: SimpleImage, is_bold: bool) -> int:
+        width = self.width + 1 if is_bold else self.width
+        return get_bitmask(pixel, image, width, self.height)
 
-    def _get_char_by_bitmask(self, bitmask: int) -> str | None:
-        char = self.shapes.get(bitmask)
+    def _get_char_by_bitmask(self, bitmask: int, is_bold: bool) -> str | None:
+        shapes = self.bold_shapes if is_bold else self.shapes
+        char = shapes.get(bitmask)
         if char and char not in FORBIDDEN_CHARS:
             return char
 
@@ -60,9 +76,9 @@ class Font:
         return f"Font(name={self.name}, width={self.width}, height={self.height})"
 
 
-def get_regular_shapes(
+def get_shapes(
     file_path: str, shifted_variants: dict[str, int] | None = None
-) -> tuple[int, int, dict[int, str]]:
+) -> tuple[int, int, dict[int, str], dict[int, str]]:
     image = SimpleImage.from_image(Image.open(file_path))
     width = image.width // len(PRINTABLE)
     height = image.height
@@ -73,9 +89,9 @@ def get_regular_shapes(
         if shifted_variants and char in shifted_variants:
             shapes[get_shifted_variant(bitmask, width, height, shifted_variants[char])] = char
         cut_bitmask = bitmask & -(1 << width)
-        if cut_bitmask != bitmask and char not in 'gq':
+        if cut_bitmask != bitmask and char not in 'gq[]':
             shapes[cut_bitmask] = char
-    return width, height, shapes
+    return width, height, shapes, get_bold_shapes(width, height, shapes)
 
 
 def get_shifted_variant(shape: int, width: int, height: int, offset: int) -> int:
@@ -89,21 +105,21 @@ def get_shifted_variant(shape: int, width: int, height: int, offset: int) -> int
     return shifted
 
 
-def get_bold_shapes(regular_font: Font) -> tuple[int, int, dict[int, str]]:
-    return regular_font.width + 1, regular_font.height, {
-        regular_shape_to_bold(shape, regular_font): char
-        for shape, char in regular_font.shapes.items()
+def get_bold_shapes(width: int, height: int, shapes: dict[int, str]) -> dict[int, str]:
+    return {
+        regular_shape_to_bold(shape, width, height): char
+        for shape, char in shapes.items()
     }
 
 
-def regular_shape_to_bold(shape: int, regular_font: Font) -> int:
+def regular_shape_to_bold(shape: int, width: int, height: int) -> int:
     bold = 0
-    mask = (1 << regular_font.width) - 1
-    for level in range(regular_font.height):
+    mask = (1 << width) - 1
+    for level in range(height):
         line = shape & mask
         bold_line = line | (line << 1)
-        bold |= bold_line << (level * (regular_font.width + 1))
-        shape >>= regular_font.width
+        bold |= bold_line << (level * (width + 1))
+        shape >>= width
     return bold
 
 
@@ -118,22 +134,10 @@ def get_bitmask(pixel: Pixel, image: SimpleImage, width: int, height: int) -> in
     return bitmask
 
 
-REGULAR_FONT = Font('Regular', *get_regular_shapes(REGULAR_SHAPE_FILE, shifted_variants={',': 1, ':': 1}))
-BOLD_FONT = Font('Bold', *get_bold_shapes(REGULAR_FONT), True)
-CONDENSED_FONT = Font('Condensed', *get_regular_shapes(REGULAR12_SHAPE_FILE))
-SMALL_FONT = Font('Small', *get_regular_shapes(REGULAR11_SHAPE_FILE))
-MINI_FONT = Font('Mini', *get_regular_shapes(REGULAR9_SHAPE_FILE))
-TINY_FONT = Font('Tiny', *get_regular_shapes(REGULAR8_SHAPE_FILE))
+REGULAR_FONT = Font('Regular', *get_shapes(REGULAR_SHAPE_FILE, shifted_variants={',': 1, ':': 1, 'r': 1}))
+CONDENSED_FONT = Font('Condensed', *get_shapes(REGULAR12_SHAPE_FILE))
+SMALL_FONT = Font('Small', *get_shapes(REGULAR11_SHAPE_FILE))
+MINI_FONT = Font('Mini', *get_shapes(REGULAR9_SHAPE_FILE))
+TINY_FONT = Font('Tiny', *get_shapes(REGULAR8_SHAPE_FILE))
 
-
-ALL_FONTS = [REGULAR_FONT, BOLD_FONT, SMALL_FONT, TINY_FONT, CONDENSED_FONT, MINI_FONT]
-
-
-FONT_GROUPS = {
-    REGULAR_FONT.name: [REGULAR_FONT, BOLD_FONT],
-    BOLD_FONT.name: [REGULAR_FONT, BOLD_FONT],
-    SMALL_FONT.name: [SMALL_FONT],
-    TINY_FONT.name: [TINY_FONT],
-    CONDENSED_FONT.name: [CONDENSED_FONT],
-    MINI_FONT.name: [MINI_FONT],
-}
+ALL_FONTS = [REGULAR_FONT, SMALL_FONT, TINY_FONT, CONDENSED_FONT, MINI_FONT]
