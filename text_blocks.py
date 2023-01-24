@@ -69,19 +69,25 @@ def get_text_blocks(text_lines: list[TextLine], image: SimpleImage) -> Iterable[
         font = text_lines[0].font
         new_lines: list[TextLine] = []
         for text_line in text_lines[1:]:
+            append = False
             if text_line.font == font:
                 text_box = text_line.box()
                 previous_line = new_block[-1]
-                previous_box = previous_line.box()
-                intervals_intersect = get_interval_distance(
-                    (text_box.left, text_box.right),
-                    (previous_box.left, previous_box.right),
-                ) == 0
-                ceiling = previous_box.bottom
-                if ceiling - 1 <= text_box.top <= ceiling + 1 and intervals_intersect:
-                    new_block.append(text_line)
-                else:
-                    new_lines.append(text_line)
+                bold_mismatch = (
+                    (previous_line.is_bold and not text_line.contains_bold)
+                    or (not previous_line.contains_bold and text_line.is_bold)
+                )
+                if not bold_mismatch:
+                    previous_box = previous_line.box()
+                    intervals_intersect = get_interval_distance(
+                        (text_box.left, text_box.right),
+                        (previous_box.left, previous_box.right),
+                    ) == 0
+                    ceiling = previous_box.bottom
+                    if ceiling - 1 <= text_box.top <= ceiling + 1 and intervals_intersect:
+                        append = True
+            if append:
+                new_block.append(text_line)
             else:
                 new_lines.append(text_line)
         text_lines = new_lines

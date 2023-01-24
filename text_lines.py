@@ -49,6 +49,10 @@ class TextLine:
     def is_bold(self) -> bool:
         return all(char_box.is_bold for char_box in self.char_boxes)
 
+    @property
+    def contains_bold(self) -> bool:
+        return any(char_box.is_bold for char_box in self.char_boxes if char_box.char != ' ')
+
     def box(self, padding: int = 0) -> Box:
         x, y = self.start
         return Box(Pixel(x - padding, y - padding), Pixel(self.x_end + padding, self.y_end + padding))
