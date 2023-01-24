@@ -88,8 +88,12 @@ def get_text_line(start: Pixel, image: SimpleImage, font: Font) -> TextLine | No
         if x > image.width - font.width:
             break
         char_box = font.get_char(Pixel(x, y), image, expect_bold=is_bold)
-        if char_box is None and spaces:
-            for offset in ((-2, 0), (-1, 0), (1, 0), (0, -1), (0, 1)):
+        if char_box is None:
+            if spaces:
+                offsets = ((-2, 0), (-1, 0), (1, 0), (0, -1), (0, 1))
+            else:
+                offsets = ((-2, 0), (-1, 0), (1, 0))
+            for offset in offsets:
                 off_x, off_y = offset
                 char_box = font.get_char(Pixel(x + off_x, y + off_y), image, expect_space=False)
                 if char_box and char_box.char == ' ':
