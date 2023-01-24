@@ -72,6 +72,9 @@ def get_regular_shapes(
         shapes[bitmask] = char
         if shifted_variants and char in shifted_variants:
             shapes[get_shifted_variant(bitmask, width, height, shifted_variants[char])] = char
+        cut_bitmask = bitmask & -(1 << width)
+        if cut_bitmask != bitmask and char not in 'gq':
+            shapes[cut_bitmask] = char
     return width, height, shapes
 
 
