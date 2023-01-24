@@ -25,7 +25,7 @@ def get_pixels(image: Image) -> Iterable[tuple[Pixel, Color]]:
                 value = value[:3]
             elif palette is not None:
                 value = tuple(palette[value * 3: value * 3 + 3])
-            if value != Color.WHITE.value:
+            if value not in (Color.WHITE.value, Color.OFF_WHITE.value):
                 try:
                     yield Pixel(x, y), Color(value)
                 except ValueError:
