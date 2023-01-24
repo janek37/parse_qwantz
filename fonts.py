@@ -99,7 +99,10 @@ def get_shifted_variant(shape: int, width: int, height: int, offset: int) -> int
     mask = (1 << width) - 1
     for level in range(height):
         line = shape & mask
-        shifted_line = line >> offset
+        if offset >= 0:
+            shifted_line = line >> offset
+        else:
+            shifted_line = line << -offset
         shifted |= shifted_line << (level * width)
         shape >>= width
     return shifted
@@ -134,7 +137,7 @@ def get_bitmask(pixel: Pixel, image: SimpleImage, width: int, height: int) -> in
     return bitmask
 
 
-REGULAR_FONT = Font.from_file(REGULAR13_SHAPE_FILE, 'Regular', shifted_variants={',': 1, ':': 1, 'r': 1})
+REGULAR_FONT = Font.from_file(REGULAR13_SHAPE_FILE, 'Regular', shifted_variants={',': 1, ':': 1, 'r': 1, '.': -1})
 CONDENSED_FONT = Font.from_file(REGULAR12_SHAPE_FILE, 'Condensed')
 SMALL_FONT = Font.from_file(REGULAR11_SHAPE_FILE, 'Small')
 MINI_FONT = Font.from_file(REGULAR9_SHAPE_FILE, 'Mini')
