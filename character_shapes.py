@@ -40,7 +40,7 @@ class Font:
             return CharacterBox(char, Box(pixel, bottom_right))
         for cut_bottom in range(1, 3):
             cut_bitmask = bitmask & -(1 << (self.width * cut_bottom))
-            if cut_bitmask & -cut_bitmask > (1 << ((self.width + 1) * cut_bottom)):
+            if cut_bitmask & -cut_bitmask > (1 << (self.width * (cut_bottom + 1))):
                 if char := self._get_char_by_bitmask(cut_bitmask):
                     right, bottom = bottom_right
                     return CharacterBox(char, Box(pixel, Pixel(right, bottom - cut_bottom)))
