@@ -142,10 +142,10 @@ def regular_shape_to_bold(shape: int, width: int, height: int) -> int:
 def get_bitmask(pixel: Pixel, image: SimpleImage, width: int, height: int) -> int:
     bitmask = 0
     x0, y0 = pixel
-    for y in range(height):
-        for x in range(width):
+    for y in range(y0, y0 + height):
+        for x in range(x0, x0 + width):
             bitmask <<= 1
-            if (x0 + x, y0 + y) in image.pixels:
+            if (x, y) in image.pixels:
                 bitmask += 1
     return bitmask
 
