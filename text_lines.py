@@ -104,6 +104,9 @@ def get_text_line(start: Pixel, image: SimpleImage, font: Font) -> TextLine | No
                     break
         if char_box is None:
             break
+        # this is to avoid treating "i"/"j" dots as periods, but still allow lines starting with "..."
+        if len(char_boxes) == 1 and char_boxes[0].char == '.' and char_box.char != '.':
+            return None
         elif char_box.char == ' ':
             spaces.append(CharBox(' ', Box(Pixel(x, y), Pixel(x + font.width, y + font.height)), is_bold))
             exploded = all(char_box.char == ' ' for char_box in char_boxes[1::2])
