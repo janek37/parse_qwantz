@@ -70,6 +70,9 @@ class TextBlock(NamedTuple):
         else:
             return f"[{self.font}] {self.content()}"
 
+    def __hash__(self):
+        return id(self)
+
 
 def get_text_blocks(text_lines: list[TextLine], image: SimpleImage) -> Iterable[TextBlock]:
     grouped_lines = group_text_lines(text_lines)
@@ -123,22 +126,22 @@ def get_text_blocks(text_lines: list[TextLine], image: SimpleImage) -> Iterable[
 
 def group_text_lines(text_lines: list[TextLine]) -> list[list[TextLine]]:
     grouped_text_lines = []
-    used: set[int] = set()
+    used: set[TextLine] = set()
     for text_line in text_lines:
-        if id(text_line) in used:
+        if text_line in used:
             continue
-        used.add(id(text_line))
+        used.add(text_line)
         group = [text_line]
         box = text_line.box()
         for other_text_line in text_lines:
-            if id(other_text_line) in used:
+            if other_text_line in used:
                 continue
             other_box = other_text_line.box()
             if abs(box.top - other_box.top) <= 1 or abs(box.bottom - other_box.bottom) <= 1:
                 distance = other_box.left - box.right
                 if -1 <= distance <= max(group[-1].font.width, other_text_line.font.width) * 2 + 1:
                     group.append(other_text_line)
-                    used.add(id(other_text_line))
+                    used.add(other_text_line)
         grouped_text_lines.append(group)
     return grouped_text_lines
 

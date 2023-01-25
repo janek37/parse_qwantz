@@ -80,28 +80,28 @@ def parse_panel(image: Image, characters: list[Character]) -> tuple[list[str], l
     line_matches = match_lines(lines, text_blocks, characters, image)
     block_matches, text_blocks = match_blocks(line_matches, text_blocks)
     text_blocks = sorted(text_blocks, key=lambda b: (b.end.y, b.end.x))
-    unmatched_blocks = [block for block in text_blocks if id(block) not in block_matches]
+    unmatched_blocks = [block for block in text_blocks if block not in block_matches]
     thinking_characters = [character for character in characters if character.can_think]
     thought_matches = {
-        id(block): character
+        block: character
         for block, character in match_thought(thoughts, unmatched_blocks, thinking_characters)
     }
     if thoughts and not thought_matches:
         logger.warning("Detected thought bubbles, but no thought text")
     script_lines = []
     for block in text_blocks:
-        if god_or_devil := handle_god_and_devil(block, block_matches.get(id(block)) == OFF_PANEL):
-            block_matches[id(block)] = god_or_devil
-        if id(block) in block_matches:
-            character = block_matches[id(block)]
+        if god_or_devil := handle_god_and_devil(block, block_matches.get(block) == OFF_PANEL):
+            block_matches[block] = god_or_devil
+        if block in block_matches:
+            character = block_matches[block]
             if isinstance(character, tuple):
                 script_lines.append(f"{character[0]} and {character[1]}: {block}")
             elif character.name in ('God', 'Devil'):
                 script_lines.append(f"{character}: {block.content(mark_bold=False)}")
             else:
                 script_lines.append(f"{character}: {block}")
-        elif id(block) in thought_matches:
-            character = thought_matches[id(block)]
+        elif block in thought_matches:
+            character = thought_matches[block]
             script_lines.append(f"{character}: (thinks) {block.content()}")
         else:
             if not block.is_bold:

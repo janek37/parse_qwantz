@@ -65,6 +65,9 @@ class TextLine:
     def y_end(self) -> int:
         return max(y for _, (_, (_, y)), _ in self.char_boxes)
 
+    def __hash__(self):
+        return id(self)
+
 
 def try_text_line(start: Pixel, image: SimpleImage, font: Font) -> TextLine | None:
     x0, y0 = start
