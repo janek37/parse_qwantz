@@ -2,11 +2,11 @@ from typing import Iterable
 
 from PIL import Image, ImageDraw
 
-from box import Box
+from box import Box, get_interval_distance
 from colors import Color
 from text_blocks import get_text_blocks, TextBlock
 from elements import get_elements
-from match_blocks import match_blocks
+from match_blocks import match_blocks, Character_s
 from match_lines import match_lines, Character, OFF_PANEL, UnmatchedLine
 from match_thought import match_thought
 from pixels import Pixel
@@ -88,6 +88,8 @@ def parse_panel(image: Image, characters: list[Character]) -> tuple[list[str], l
     }
     if thoughts and not thought_matches:
         logger.warning("Detected thought bubbles, but no thought text")
+    unmatched_blocks = [block for block in unmatched_blocks if block not in thought_matches]
+    match_above_or_below(unmatched_blocks, block_matches)
     script_lines = []
     for block in text_blocks:
         if god_or_devil := handle_god_and_devil(block, block_matches.get(block) == OFF_PANEL):
@@ -108,6 +110,23 @@ def parse_panel(image: Image, characters: list[Character]) -> tuple[list[str], l
                 logger.warning('Narrator not bold: %s', block.font.name)
             script_lines.append(f"Narrator: {block.content(mark_bold=False)}")
     return script_lines, unmatched
+
+
+def match_above_or_below(unmatched_blocks: list[TextBlock], block_matches: dict[TextBlock, Character_s]) -> None:
+    for unmatched_block in unmatched_blocks:
+        box = unmatched_block.box
+        closest = None
+        best_distance = None
+        if not unmatched_block.is_bold:
+            for block, character in block_matches.items():
+                other_box = block.box
+                if get_interval_distance((box.left, box.right), (other_box.left, other_box.right)) == 0:
+                    distance = max(other_box.bottom - box.top, box.bottom - other_box.top)
+                    if best_distance is None or distance < best_distance:
+                        closest = character
+                        best_distance = distance
+        if closest:
+            block_matches[unmatched_block] = closest
 
 
 def handle_god_and_devil(block: TextBlock, is_off_panel: bool):
