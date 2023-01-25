@@ -110,7 +110,12 @@ def get_text_line(start: Pixel, image: SimpleImage, font: Font) -> TextLine | No
         elif char_box.char == ' ':
             spaces.append(CharBox(' ', Box(Pixel(x, y), Pixel(x + font.width, y + font.height)), is_bold))
             exploded = all(char_box.char == ' ' for char_box in char_boxes[1::2])
-            if (not exploded and len(spaces) > 2) or (exploded and len(spaces) > 3):
+            after_period = char_boxes[-1].char in '.?!"'
+            if not exploded and len(spaces) > 1 and not after_period:
+                break
+            if not exploded and len(spaces) > 2:
+                break
+            if len(spaces) > 3:
                 break
         else:
             if spaces:
