@@ -7,6 +7,7 @@ from lines import Line
 from text_blocks import TextBlock
 from pixels import Pixel
 from simple_image import SimpleImage
+from text_lines import TextLine
 
 logger = logging.getLogger()
 
@@ -27,7 +28,7 @@ class Character:
 
 OFF_PANEL = Character.from_name("Off-Panel")
 
-Target = TextBlock | Character
+Target = TextLine | Character
 
 
 class UnmatchedLine(Exception):
@@ -38,7 +39,7 @@ def match_lines(
     lines: list[Line], text_blocks: list[TextBlock], characters: list[Character], image: SimpleImage
 ) -> Iterable[tuple[Target, Target]]:
     boxes: list[tuple[Box, Target]] = [
-        (text_line.box(padding=1), text_block)
+        (text_line.box(padding=1), text_line)
         for text_block in text_blocks
         for text_line in text_block.lines
     ]
@@ -64,7 +65,7 @@ def match_lines(
                         distance2 = t
                         closest2 = target
                     break
-        if not (isinstance(closest1, TextBlock) or isinstance(closest2, TextBlock)) or closest1 is closest2 is None:
+        if not (isinstance(closest1, TextLine) or isinstance(closest2, TextLine)) or closest1 is closest2 is None:
             logger.error(f"Unmatched line {line}: matches {closest1} to {closest2}")
             raise UnmatchedLine(line, boxes, text_blocks)
         if (closest1 is None and closest2 is None) or (closest1 is not None and closest2 is None):

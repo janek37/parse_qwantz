@@ -11,6 +11,7 @@ from simple_image import SimpleImage
 
 class TextBlock(NamedTuple):
     lines: list[TextLine]
+    bond_strengths: list[int]
     color: Color
     font: Font
 
@@ -51,6 +52,18 @@ class TextBlock(NamedTuple):
             line_contents = list(line_contents)
         return ' '.join(line_contents).replace('  ', ' ')
 
+    def split(self, line1: TextLine, line2: TextLine) -> tuple["TextBlock", "TextBlock"]:
+        line1_index = self.lines.index(line1)
+        line2_index = self.lines.index(line2)
+        index1, index2 = sorted((line1_index, line2_index))
+        _, split_index = min((self.bond_strengths[i], i) for i in range(index1, index2))
+        block1 = TextBlock(self.lines[:split_index+1], self.bond_strengths[:split_index], self.color, self.font)
+        block2 = TextBlock(self.lines[split_index+1:], self.bond_strengths[split_index+1:], self.color, self.font)
+        if line1_index < line2_index:
+            return block1, block2
+        else:
+            return block2, block1
+
     def __str__(self):
         if self.font.name == 'Regular':
             return self.content()
@@ -66,10 +79,12 @@ def get_text_blocks(text_lines: list[TextLine], image: SimpleImage) -> Iterable[
     )
     while text_lines:
         new_block = [text_lines[0]]
+        bond_strengths = []
         font = text_lines[0].font
         new_lines: list[TextLine] = []
         for text_line in text_lines[1:]:
             append = False
+            bond_strength = 0
             if text_line.font == font:
                 text_box = text_line.box()
                 previous_line = new_block[-1]
@@ -84,15 +99,26 @@ def get_text_blocks(text_lines: list[TextLine], image: SimpleImage) -> Iterable[
                         (previous_box.left, previous_box.right),
                     ) == 0
                     ceiling = previous_box.bottom
+                    previous_height = previous_line.font.height
+                    previous_width = previous_line.font.width
                     if ceiling - 1 <= text_box.top <= ceiling + 1 and intervals_intersect:
+                        if previous_box.left == text_box.left:
+                            bond_strength += 5
+                        elif (previous_box.left - text_box.left) % previous_width == 0:
+                            bond_strength += 3
+                        if text_box.top <= ceiling:
+                            bond_strength += 10
+                        if text_box.top >= ceiling + previous_height:
+                            bond_strength -= 10
                         append = True
             if append:
                 new_block.append(text_line)
+                bond_strengths.append(bond_strength)
             else:
                 new_lines.append(text_line)
         text_lines = new_lines
         color = image.find_color(new_block[0].char_boxes[0].box)
-        yield TextBlock(new_block, color, font)
+        yield TextBlock(new_block, bond_strengths, color, font)
 
 
 def group_text_lines(text_lines: list[TextLine]) -> list[list[TextLine]]:

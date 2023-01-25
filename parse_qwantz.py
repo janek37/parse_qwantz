@@ -78,7 +78,8 @@ def parse_panel(image: Image, characters: list[Character]) -> tuple[list[str], l
     lines, thoughts, text_lines, unmatched = get_elements(image)
     text_blocks = sorted(get_text_blocks(text_lines, image), key=lambda b: (b.end.y, b.end.x))
     line_matches = match_lines(lines, text_blocks, characters, image)
-    block_matches = match_blocks(line_matches)
+    block_matches, text_blocks = match_blocks(line_matches, text_blocks)
+    text_blocks = sorted(text_blocks, key=lambda b: (b.end.y, b.end.x))
     unmatched_blocks = [block for block in text_blocks if id(block) not in block_matches]
     thinking_characters = [character for character in characters if character.can_think]
     thought_matches = {
