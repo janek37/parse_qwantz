@@ -104,7 +104,7 @@ def relative_distance_to_intersection(line: Line, segment: Line) -> float:
     if t > 1 or t < 0:
         return t
     else:
-        return 0 if is_left(line, segment[0]) else 1
+        return -t if is_left(line, segment[0]) else 2 - t
 
 
 def is_left(line: Line, point: Pixel) -> bool:
