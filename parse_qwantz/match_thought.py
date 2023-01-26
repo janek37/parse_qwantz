@@ -1,8 +1,8 @@
 from typing import Iterable
 
-from box import Box
-from text_blocks import TextBlock
-from match_lines import Character
+from parse_qwantz.box import Box
+from parse_qwantz.text_blocks import TextBlock
+from parse_qwantz.match_lines import Character
 
 
 def match_thought(

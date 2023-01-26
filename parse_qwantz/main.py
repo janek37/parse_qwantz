@@ -3,18 +3,18 @@ from typing import Iterable
 
 from PIL import Image, ImageDraw
 
-from box import Box, get_interval_distance
-from colors import Color
-from text_blocks import get_text_blocks, TextBlock
-from elements import get_elements
-from match_blocks import match_blocks, Character_s
-from match_lines import match_lines, Character, OFF_PANEL, UnmatchedLine
-from match_thought import match_thought
-from pixels import Pixel
-from shape import get_box
-from simple_image import SimpleImage
-from prepare_image import apply_mask
-from logger import get_logger
+from parse_qwantz.box import Box, get_interval_distance
+from parse_qwantz.colors import Color
+from parse_qwantz.text_blocks import get_text_blocks, TextBlock
+from parse_qwantz.elements import get_elements
+from parse_qwantz.match_blocks import match_blocks, Character_s
+from parse_qwantz.match_lines import match_lines, Character, OFF_PANEL, UnmatchedLine
+from parse_qwantz.match_thought import match_thought
+from parse_qwantz.pixels import Pixel
+from parse_qwantz.shape import get_box
+from parse_qwantz.simple_image import SimpleImage
+from parse_qwantz.prepare_image import apply_mask
+from parse_qwantz.logger import get_logger
 
 logger = get_logger()
 

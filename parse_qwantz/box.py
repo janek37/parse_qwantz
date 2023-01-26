@@ -1,6 +1,6 @@
 from typing import NamedTuple
 
-from pixels import Pixel
+from parse_qwantz.pixels import Pixel
 
 
 class Box(NamedTuple):

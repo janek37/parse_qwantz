@@ -1,10 +1,10 @@
 from collections import deque
 from itertools import product
 
-from box import Box
-from pixels import Pixel
-from simple_image import SimpleImage
-from shape import get_shape, get_adjacent_pixels, get_box
+from parse_qwantz.box import Box
+from parse_qwantz.pixels import Pixel
+from parse_qwantz.simple_image import SimpleImage
+from parse_qwantz.shape import get_shape, get_adjacent_pixels, get_box
 
 
 def get_thought(pixel: Pixel, image: SimpleImage) -> tuple[Box, list[Pixel]] | None:

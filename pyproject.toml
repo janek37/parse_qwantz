@@ -1,0 +1,29 @@
+[project]
+name = "parse_qwantz"
+authors = [{name = "Jan Szejko", email = "jan.szejko@gmail.com"}]
+version = "2023.1.26"
+description = "Transcript generator for Dinosaur Comics"
+requires-python = ">=3.10"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Programming Language :: Python :: 3.10",
+    "Environment :: Console",
+    "Intended Audience :: End Users/Desktop",
+    # "License :: OSI Approved :: BSD License",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Topic :: Multimedia :: Graphics :: Graphics Conversion",
+    "Scientific/Engineering :: Image Recognition",
+    "Typing :: Typed",
+]
+dependencies = [
+  "Pillow",
+  "typer",
+]
+# TODO: readme, license
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[project.scripts]
+parse-qwantz = "parse_qwantz:app"

@@ -2,10 +2,10 @@ from functools import cached_property
 
 from dataclasses import dataclass
 
-from box import Box
-from fonts import Font, CharBox
-from pixels import Pixel
-from simple_image import SimpleImage
+from parse_qwantz.box import Box
+from parse_qwantz.fonts import Font, CharBox
+from parse_qwantz.pixels import Pixel
+from parse_qwantz.simple_image import SimpleImage
 
 
 @dataclass

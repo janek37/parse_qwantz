@@ -3,7 +3,7 @@ from typing import Iterable, NamedTuple
 
 from PIL import Image
 
-from colors import Color
+from parse_qwantz.colors import Color
 
 
 class Pixel(NamedTuple):

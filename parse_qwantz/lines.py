@@ -1,8 +1,8 @@
 from itertools import groupby, product
 
-from pixels import Pixel
-from simple_image import SimpleImage
-from shape import get_shape, get_box
+from parse_qwantz.pixels import Pixel
+from parse_qwantz.simple_image import SimpleImage
+from parse_qwantz.shape import get_shape, get_box
 
 Line = tuple[Pixel, Pixel]
 

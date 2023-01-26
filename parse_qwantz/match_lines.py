@@ -2,12 +2,12 @@ import logging
 from dataclasses import dataclass
 from typing import Iterable
 
-from box import Box
-from lines import Line
-from text_blocks import TextBlock
-from pixels import Pixel
-from simple_image import SimpleImage
-from text_lines import TextLine
+from parse_qwantz.box import Box
+from parse_qwantz.lines import Line
+from parse_qwantz.text_blocks import TextBlock
+from parse_qwantz.pixels import Pixel
+from parse_qwantz.simple_image import SimpleImage
+from parse_qwantz.text_lines import TextLine
 
 logger = logging.getLogger()
 

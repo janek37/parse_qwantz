@@ -1,8 +1,8 @@
 from typing import Iterable
 
-from text_blocks import TextBlock
-from match_lines import Target, Character
-from text_lines import TextLine
+from parse_qwantz.text_blocks import TextBlock
+from parse_qwantz.match_lines import Target, Character
+from parse_qwantz.text_lines import TextLine
 
 Character_s = Character | tuple[Character, Character]
 

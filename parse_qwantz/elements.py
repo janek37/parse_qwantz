@@ -1,13 +1,13 @@
 from logging import getLogger
 
-from box import Box
-from fonts import ALL_FONTS
-from lines import Line, get_line
-from text_lines import TextLine, try_text_line
-from detect_thought import get_thought
-from pixels import Pixel
-from shape import get_shape
-from simple_image import SimpleImage
+from parse_qwantz.box import Box
+from parse_qwantz.fonts import ALL_FONTS
+from parse_qwantz.lines import Line, get_line
+from parse_qwantz.text_lines import TextLine, try_text_line
+from parse_qwantz.detect_thought import get_thought
+from parse_qwantz.pixels import Pixel
+from parse_qwantz.shape import get_shape
+from parse_qwantz.simple_image import SimpleImage
 
 logger = getLogger()
 

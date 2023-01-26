@@ -1,12 +1,12 @@
 from itertools import chain, groupby
 from typing import Iterable, NamedTuple
 
-from box import Box, get_interval_distance
-from fonts import Font
-from colors import Color
-from text_lines import TextLine, try_text_line
-from pixels import Pixel
-from simple_image import SimpleImage
+from parse_qwantz.box import Box, get_interval_distance
+from parse_qwantz.fonts import Font
+from parse_qwantz.colors import Color
+from parse_qwantz.text_lines import TextLine, try_text_line
+from parse_qwantz.pixels import Pixel
+from parse_qwantz.simple_image import SimpleImage
 
 
 class TextBlock(NamedTuple):

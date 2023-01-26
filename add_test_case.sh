@@ -3,5 +3,5 @@
 number="$1"
 
 stdout_file=test/expected_outputs/$number.txt
-python parse_qwantz.py $COMIC_DIR/"${number}"* > "$stdout_file"
+parse-qwantz $COMIC_DIR/"${number}"* > "$stdout_file"
 cp $COMIC_DIR/"${number}"* test/comics/$number.png

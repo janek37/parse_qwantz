@@ -1,9 +1,9 @@
 from typing import Collection
 
-from box import Box
-from colors import Color
-from pixels import Pixel
-from simple_image import SimpleImage
+from parse_qwantz.box import Box
+from parse_qwantz.colors import Color
+from parse_qwantz.pixels import Pixel
+from parse_qwantz.simple_image import SimpleImage
 
 
 def get_box(shape: Collection[Pixel], padding=0) -> Box:

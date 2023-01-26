@@ -2,9 +2,9 @@ from dataclasses import dataclass
 
 from PIL import Image
 
-from box import Box
-from colors import Color
-from pixels import Pixel, get_pixels
+from parse_qwantz.box import Box
+from parse_qwantz.colors import Color
+from parse_qwantz.pixels import Pixel, get_pixels
 
 
 @dataclass

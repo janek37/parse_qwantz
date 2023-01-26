@@ -1,22 +1,23 @@
 import string
 from dataclasses import dataclass
+from importlib.resources import as_file
 from itertools import product
-from typing import NamedTuple
+from pathlib import Path
+from typing import NamedTuple, ContextManager
 
 from PIL import Image
 
-from box import Box
-from pixels import Pixel
-from simple_image import SimpleImage
+from parse_qwantz.box import Box
+from parse_qwantz.pixels import Pixel
+from parse_qwantz.simple_image import SimpleImage
 
 PRINTABLE = string.printable.strip()
 FORBIDDEN_CHARS = '\\_`|~'
 
-REGULAR13_SHAPE_FILE = 'img/regular13.png'
-REGULAR12_SHAPE_FILE = 'img/regular12.png'
-REGULAR11_SHAPE_FILE = 'img/regular11.png'
-REGULAR9_SHAPE_FILE = 'img/regular9.png'
-REGULAR8_SHAPE_FILE = 'img/regular8.png'
+FONT_SIZES = [(13, 'Regular'), (12, 'Condensed'), (11, 'Small'), (9, 'Mini'), (8, 'Tiny')]
+SHIFTED_VARIANTS = {
+    13: {',': 1, ':': 1, '.': -1},
+}
 
 
 class CharBox(NamedTuple):
@@ -90,9 +91,10 @@ class Font:
 
     @classmethod
     def from_file(
-        cls, file_path: str, name: str, shifted_variants: dict[str, int] | None = None
+        cls, file_path_context_manager: ContextManager[Path], name: str, shifted_variants: dict[str, int] | None = None
     ) -> "Font":
-        image = SimpleImage.from_image(Image.open(file_path))
+        with file_path_context_manager as file_path:
+            image = SimpleImage.from_image(Image.open(file_path))
         width = image.width // len(PRINTABLE)
         height = image.height
         shapes = {}
@@ -150,10 +152,11 @@ def get_bitmask(pixel: Pixel, image: SimpleImage, width: int, height: int) -> in
     return bitmask
 
 
-REGULAR_FONT = Font.from_file(REGULAR13_SHAPE_FILE, 'Regular', shifted_variants={',': 1, ':': 1, '.': -1})
-CONDENSED_FONT = Font.from_file(REGULAR12_SHAPE_FILE, 'Condensed')
-SMALL_FONT = Font.from_file(REGULAR11_SHAPE_FILE, 'Small')
-MINI_FONT = Font.from_file(REGULAR9_SHAPE_FILE, 'Mini')
-TINY_FONT = Font.from_file(REGULAR8_SHAPE_FILE, 'Tiny')
-
-ALL_FONTS = [REGULAR_FONT, SMALL_FONT, TINY_FONT, CONDENSED_FONT, MINI_FONT]
+ALL_FONTS = [
+    Font.from_file(
+        file_path_context_manager=as_file(Path('parse_qwantz', 'img', f'regular{size}.png')),
+        name=name,
+        shifted_variants=SHIFTED_VARIANTS.get(size, {}),
+    )
+    for size, name in FONT_SIZES
+]
