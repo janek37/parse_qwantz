@@ -104,7 +104,7 @@ def get_text_blocks(text_lines: list[TextLine], image: SimpleImage) -> Iterable[
                     ceiling = previous_box.bottom
                     previous_height = previous_line.font.height
                     previous_width = previous_line.font.width
-                    if ceiling - 1 <= text_box.top <= ceiling + 1 and intervals_intersect:
+                    if ceiling - 1 <= text_box.top <= ceiling + previous_height // 6 and intervals_intersect:
                         if previous_box.left == text_box.left:
                             bond_strength += 5
                         elif (previous_box.left - text_box.left) % previous_width == 0:
