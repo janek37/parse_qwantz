@@ -1,3 +1,4 @@
+from pathlib import Path
 from typing import Iterable
 
 from PIL import Image, ImageDraw
@@ -48,7 +49,7 @@ CHARACTERS = {
 }
 
 
-def parse_qwantz(image: Image) -> Iterable[list[str]]:
+def parse_qwantz(image: Image, debug: bool) -> Iterable[list[str]]:
     masked = apply_mask(image)
     for i, (panel, characters) in enumerate(zip(PANELS, CHARACTERS), start=1):
         (width, height), (x, y) = panel
@@ -56,21 +57,23 @@ def parse_qwantz(image: Image) -> Iterable[list[str]]:
         panel_image = SimpleImage.from_image(cropped)
         try:
             script_lines, unmatched = parse_panel(panel_image, CHARACTERS[i])
-            for unmatched_shape in unmatched:
-                box = get_box(unmatched_shape, padding=3)
-                draw = ImageDraw.Draw(cropped)
-                draw.rectangle(box, outline=(255, 0, 0))
-                for pixel in unmatched_shape:
-                    draw.point(pixel, fill=(255, 0, 0))
-                cropped.show()
+            if debug:
+                for unmatched_shape in unmatched:
+                    box = get_box(unmatched_shape, padding=3)
+                    draw = ImageDraw.Draw(cropped)
+                    draw.rectangle(box, outline=(255, 0, 0))
+                    for pixel in unmatched_shape:
+                        draw.point(pixel, fill=(255, 0, 0))
+                    cropped.show()
             yield script_lines
         except UnmatchedLine as e:
             line, boxes, text_blocks = e.args
-            draw = ImageDraw.Draw(cropped)
-            for box, _character in boxes:
-                draw.rectangle(box, outline=(0, 192, 0))
-            draw.line(line, fill=(255, 0, 0))
-            cropped.show()
+            if debug:
+                draw = ImageDraw.Draw(cropped)
+                for box, _character in boxes:
+                    draw.rectangle(box, outline=(0, 192, 0))
+                draw.line(line, fill=(255, 0, 0))
+                cropped.show()
             yield ["Error"] + text_blocks
 
 
@@ -140,8 +143,8 @@ def handle_god_and_devil(block: TextBlock, is_off_panel: bool):
         return Character.from_name('God')
 
 
-def main(input_file_path: str):
-    for panel_no, panel in enumerate(parse_qwantz(Image.open(input_file_path)), start=1):
+def main(input_file_path: str | Path, debug: bool):
+    for panel_no, panel in enumerate(parse_qwantz(Image.open(input_file_path), debug=debug), start=1):
         print(f'Panel {panel_no}:')
         for line in panel:
             print(line)
@@ -149,4 +152,4 @@ def main(input_file_path: str):
 
 if __name__ == '__main__':
     import sys
-    main(sys.argv[1])
+    main(sys.argv[1], debug=True)
