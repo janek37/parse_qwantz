@@ -23,7 +23,7 @@ class Character:
 
     @classmethod
     def from_name(cls, name: str):
-        return cls(name, Box(Pixel(0, 0), Pixel(0, 0)))
+        return cls(name, Box.dummy())
 
 
 OFF_PANEL = Character.from_name("Off-Panel")

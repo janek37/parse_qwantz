@@ -32,20 +32,6 @@ class TextLine:
         return content
 
     @cached_property
-    def words(self) -> list["TextLine"]:
-        words = []
-        current_word = []
-        for char_box in self.char_boxes:
-            if char_box.char == ' ':
-                if current_word:
-                    words.append(TextLine(current_word, self.font))
-                    current_word = []
-            else:
-                current_word.append(char_box)
-        words.append(TextLine(current_word, self.font))
-        return words
-
-    @cached_property
     def is_bold(self) -> bool:
         return all(char_box.is_bold for char_box in self.char_boxes)
 

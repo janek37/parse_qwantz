@@ -25,6 +25,10 @@ class CharBox(NamedTuple):
     box: Box
     is_bold: bool
 
+    @classmethod
+    def space(cls, is_bold: bool) -> "CharBox":
+        return cls(char=' ', box=Box.dummy(), is_bold=is_bold)
+
 
 @dataclass
 class Font:

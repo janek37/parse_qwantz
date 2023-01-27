@@ -51,6 +51,10 @@ class Box(NamedTuple):
             + get_interval_distance((self.top, self.bottom), (box.top, box.bottom))**2
         )
 
+    @classmethod
+    def dummy(cls) -> "Box":
+        return cls(Pixel(0, 0), Pixel(0, 0))
+
 
 def get_interval_distance(interval1: tuple[int, int], interval2: tuple[int, int]) -> int:
     i1, i2 = sorted((interval1, interval2))

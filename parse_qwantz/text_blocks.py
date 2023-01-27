@@ -1,8 +1,9 @@
+import re
 from itertools import chain, groupby
 from typing import Iterable, NamedTuple
 
 from parse_qwantz.box import Box, get_interval_distance
-from parse_qwantz.fonts import Font
+from parse_qwantz.fonts import Font, CharBox
 from parse_qwantz.colors import Color
 from parse_qwantz.text_lines import TextLine, try_text_line
 from parse_qwantz.pixels import Pixel
@@ -37,20 +38,24 @@ class TextBlock(NamedTuple):
 
     def content(self, mark_bold=True):
         if not mark_bold:
-            line_contents = (line.content for line in self.lines)
+            content = ' '.join(line.content for line in self.lines)
         else:
-            words = chain.from_iterable(line.words for line in self.lines)
-            grouped_words = groupby(words, key=lambda w: w.is_bold)
+            char_boxes = []
+            for i, line in enumerate(self.lines):
+                if i != 0:
+                    char_boxes.append(CharBox.space(is_bold=char_boxes[-1].is_bold))
+                char_boxes.extend(line.char_boxes)
+
+            grouped_char_boxes = groupby(char_boxes, key=lambda cb: cb.is_bold)
             text_and_weight = (
-                (' '.join(word.content for word in group), is_bold)
-                for is_bold, group in grouped_words
+                (''.join(char_box.char for char_box in group), is_bold)
+                for is_bold, group in grouped_char_boxes
             )
-            line_contents = (
-                f'**{content}**' if is_bold else content
+            content = ''.join(
+                make_bold_excluding_trailing_spaces(content) if is_bold else content
                 for content, is_bold in text_and_weight
             )
-            line_contents = list(line_contents)
-        return ' '.join(line_contents).replace('  ', ' ')
+        return content.replace('  ', ' ')
 
     def split(self, line1: TextLine, line2: TextLine) -> tuple["TextBlock", "TextBlock"]:
         line1_index = self.lines.index(line1)
@@ -72,6 +77,11 @@ class TextBlock(NamedTuple):
 
     def __hash__(self):
         return id(self)
+
+
+def make_bold_excluding_trailing_spaces(s: str) -> str:
+    trailing_spaces = re.search(r" *$", s).group()
+    return f'**{s.rstrip()}**{trailing_spaces}'
 
 
 def get_text_blocks(text_lines: list[TextLine], image: SimpleImage) -> Iterable[TextBlock]:
