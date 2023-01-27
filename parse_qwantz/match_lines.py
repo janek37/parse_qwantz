@@ -68,7 +68,7 @@ def match_lines(
         if not (isinstance(closest1, TextLine) or isinstance(closest2, TextLine)) or closest1 is closest2 is None:
             logger.error(f"Unmatched line {line}: matches {closest1} to {closest2}")
             raise UnmatchedLine(line, boxes, text_blocks)
-        if (closest1 is None and closest2 is None) or (closest1 is not None and closest2 is None):
+        if (closest1 is None and closest2 is not None) or (closest1 is not None and closest2 is None):
             logger.warning(f"Unmatched line {line}, assuming off-panel")
             if closest1 is None:
                 closest1 = OFF_PANEL
