@@ -1,9 +1,11 @@
+from logging import getLogger
 from pathlib import Path
 from typing import Iterable
 
 from PIL import Image, ImageDraw
 
 from parse_qwantz.box import Box, get_interval_distance
+from parse_qwantz.color_logs import set_logging_formatter
 from parse_qwantz.colors import Color
 from parse_qwantz.text_blocks import get_text_blocks, TextBlock
 from parse_qwantz.elements import get_elements
@@ -14,9 +16,10 @@ from parse_qwantz.pixels import Pixel
 from parse_qwantz.shape import get_box
 from parse_qwantz.simple_image import SimpleImage
 from parse_qwantz.prepare_image import apply_mask
-from parse_qwantz.logger import get_logger
 
-logger = get_logger()
+set_logging_formatter()
+
+logger = getLogger()
 
 # size and offset
 PANELS = [
@@ -148,8 +151,3 @@ def main(input_file_path: str | Path, debug: bool):
         print(f'Panel {panel_no}:')
         for line in panel:
             print(line)
-
-
-if __name__ == '__main__':
-    import sys
-    main(sys.argv[1], debug=True)

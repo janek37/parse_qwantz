@@ -2,7 +2,7 @@ import logging
 import sys
 
 
-class CustomFormatter(logging.Formatter):
+class ColorFormatter(logging.Formatter):
     GREY = "\x1b[38;20m"
     YELLOW = "\x1b[33;20m"
     RED = "\x1b[31;20m"
@@ -27,13 +27,8 @@ class CustomFormatter(logging.Formatter):
         return formatter.format(record)
 
 
-def get_logger():
+def set_logging_formatter():
     logger = logging.getLogger()
-
-    # create console handler with a higher log level
-    ch = logging.StreamHandler()
-    ch.setLevel(logging.DEBUG)
-
-    ch.setFormatter(CustomFormatter())
-    logger.addHandler(ch)
-    return logger
+    handler = logging.StreamHandler()
+    handler.setFormatter(ColorFormatter())
+    logger.addHandler(handler)

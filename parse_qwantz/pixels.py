@@ -1,9 +1,12 @@
 from functools import cache
+from logging import getLogger
 from typing import Iterable, NamedTuple
 
 from PIL import Image
 
 from parse_qwantz.colors import Color
+
+logger = getLogger()
 
 
 class Pixel(NamedTuple):
@@ -22,15 +25,20 @@ def get_pixels(image: Image) -> Iterable[tuple[Pixel, Color]]:
     width = image.width
     white = Color.WHITE.value
     off_white = Color.OFF_WHITE.value
+    unknown_colors = False
     for i, value in enumerate(values):
         x = i % width
         y = i // width
         value = normalize_color(value, palette)
         if value != white and value != off_white:
             try:
-                yield Pixel(x, y), Color(value)
+                color = Color(value)
             except ValueError:
-                raise UnknownColor(value)
+                if not unknown_colors:
+                    unknown_colors = True
+                    logger.warning(f"Unknown color at {(x, y)}: {value}. Replacing with black.")
+                color = Color.BLACK
+            yield Pixel(x, y), color
 
 
 @cache
