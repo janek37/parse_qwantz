@@ -37,24 +37,21 @@ class TextBlock(NamedTuple):
         return Box(Pixel(left, top), Pixel(right, bottom))
 
     def content(self, mark_bold=True):
-        if not mark_bold:
-            content = ' '.join(line.content for line in self.lines)
-        else:
-            char_boxes = []
-            for i, line in enumerate(self.lines):
-                if i != 0:
-                    char_boxes.append(CharBox.space(is_bold=char_boxes[-1].is_bold))
-                char_boxes.extend(line.char_boxes)
+        char_boxes = []
+        for line in self.lines:
+            if char_boxes and (char_boxes[-1].char != '-' or char_boxes[-2].char == ' '):
+                char_boxes.append(CharBox.space(is_bold=char_boxes[-1].is_bold))
+            char_boxes.extend(line.char_boxes)
 
-            grouped_char_boxes = groupby(char_boxes, key=lambda cb: cb.is_bold)
-            text_and_weight = (
-                (''.join(char_box.char for char_box in group), is_bold)
-                for is_bold, group in grouped_char_boxes
-            )
-            content = ''.join(
-                make_bold_excluding_trailing_spaces(content) if is_bold else content
-                for content, is_bold in text_and_weight
-            )
+        grouped_char_boxes = groupby(char_boxes, key=lambda cb: cb.is_bold and mark_bold)
+        text_and_weight = (
+            (''.join(char_box.char for char_box in group), is_bold)
+            for is_bold, group in grouped_char_boxes
+        )
+        content = ''.join(
+            make_bold_excluding_trailing_spaces(content) if is_bold else content
+            for content, is_bold in text_and_weight
+        )
         return content.replace('  ', ' ')
 
     def split(self, line1: TextLine, line2: TextLine) -> tuple["TextBlock", "TextBlock"]:

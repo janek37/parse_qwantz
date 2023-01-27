@@ -26,9 +26,7 @@ class TextLine:
 
     @cached_property
     def content(self) -> str:
-        content = ''.join(char for char, box, is_bold in self.char_boxes)
-        if all(char == ' ' for char in content[1::2]):
-            return content[0::2]
+        content = ''.join(char_box.char for char_box in self.char_boxes)
         return content
 
     @cached_property
@@ -114,4 +112,6 @@ def get_text_line(start: Pixel, image: SimpleImage, font: Font) -> TextLine | No
             is_bold = char_box.is_bold
     if len(char_boxes) <= 2 and all(char_box.char in "\",.'`|-/\\" for char_box in char_boxes):
         return
+    if len(char_boxes) > 5 and all(char_box.char == ' ' for char_box in char_boxes[1::2]):
+        char_boxes = char_boxes[0::2]
     return TextLine(char_boxes, font)
