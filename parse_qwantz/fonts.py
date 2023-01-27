@@ -61,12 +61,20 @@ class Font:
         bitmask = self._get_bitmask(pixel, image, is_bold)
         if char := self._get_char_by_bitmask(bitmask, is_bold):
             return CharBox(char, Box(pixel, bottom_right), is_bold)
+
         for cut_bottom in range(1, 3):
             cut_bitmask = bitmask & -(1 << (width * cut_bottom))
             if cut_bitmask == 0 or cut_bitmask & -cut_bitmask > (1 << (width * (cut_bottom + 1))):
                 if char := self._get_char_by_bitmask(cut_bitmask, is_bold):
                     right, bottom = bottom_right
                     return CharBox(char, Box(pixel, Pixel(right, bottom - cut_bottom)), is_bold)
+
+        for cut_top in range(1, 2):
+            cut_bitmask = bitmask & ((1 << (width * (self.height - cut_top))) - 1)
+            if cut_bitmask == 0 or cut_bitmask < (1 << (width * (self.height - cut_top - 1))):
+                if char := self._get_char_by_bitmask(cut_bitmask, is_bold):
+                    return CharBox(char, Box(Pixel(pixel.x, pixel.y + cut_top), bottom_right), is_bold)
+
         if expect_space:
             right, bottom = bottom_right
             for x, y in product(range(pixel.x, right), range(pixel.y, bottom)):
