@@ -127,8 +127,9 @@ def match_above_or_below(unmatched_blocks: list[TextBlock], block_matches: dict[
             for block, character in block_matches.items():
                 other_box = block.box
                 if get_interval_distance((box.left, box.right), (other_box.left, other_box.right)) == 0:
-                    distance = max(other_box.bottom - box.top, box.bottom - other_box.top)
-                    if best_distance is None or distance < best_distance:
+                    distance = max(other_box.top - box.bottom, box.top - other_box.bottom)
+                    line_height = max(unmatched_block.font.height, block.font.height)
+                    if distance < line_height * 2 and (best_distance is None or distance < best_distance):
                         closest = character
                         best_distance = distance
         if closest:
