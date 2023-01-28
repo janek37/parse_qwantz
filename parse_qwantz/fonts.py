@@ -79,7 +79,7 @@ class Font:
             right, bottom = bottom_right
             for x, y in product(range(pixel.x, right), range(pixel.y, bottom)):
                 if Pixel(x, y) in image.pixels:
-                    if x >= right - 2:
+                    if x >= right - width // 2 - 1:
                         return CharBox(' ', Box(pixel, Pixel(x, bottom)), is_bold)
                     break
 
