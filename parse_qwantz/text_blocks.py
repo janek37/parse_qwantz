@@ -1,3 +1,4 @@
+import logging
 import re
 from itertools import chain, groupby
 from typing import Iterable, NamedTuple
@@ -8,6 +9,8 @@ from parse_qwantz.colors import Color
 from parse_qwantz.text_lines import TextLine, try_text_line
 from parse_qwantz.pixels import Pixel
 from parse_qwantz.simple_image import SimpleImage
+
+logger = logging.getLogger()
 
 
 class TextBlock(NamedTuple):
@@ -39,8 +42,11 @@ class TextBlock(NamedTuple):
     def content(self, mark_bold=True):
         char_boxes = []
         for line in self.lines:
-            if char_boxes and (char_boxes[-1].char != '-' or char_boxes[-2].char == ' '):
-                char_boxes.append(CharBox.space(is_bold=char_boxes[-1].is_bold))
+            if char_boxes:
+                if char_boxes[-1].char != '-' or char_boxes[-2].char == ' ':
+                    char_boxes.append(CharBox.space(is_bold=char_boxes[-1].is_bold))
+                else:
+                    logger.warning("Line ending with '-', ambiguous")
             char_boxes.extend(line.char_boxes)
 
         grouped_char_boxes = groupby(char_boxes, key=lambda cb: cb.is_bold and mark_bold)
