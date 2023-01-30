@@ -3,6 +3,7 @@ name = "parse_qwantz"
 authors = [{name = "Jan Szejko", email = "jan.szejko@gmail.com"}]
 version = "2023.1.26"
 description = "Transcript generator for Dinosaur Comics"
+readme = "README.md"
 requires-python = ">=3.10"
 classifiers = [
     "Development Status :: 3 - Alpha",
@@ -20,7 +21,7 @@ dependencies = [
   "Pillow",
   "typer",
 ]
-# TODO: readme, license
+# TODO: license
 
 [project.optional-dependencies]
 dev = ["pytest"]
