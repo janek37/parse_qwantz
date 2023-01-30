@@ -104,10 +104,7 @@ def get_text_blocks(text_lines: list[TextLine], image: SimpleImage) -> Iterable[
             if text_line.font == font:
                 text_box = text_line.box()
                 previous_line = new_block[-1]
-                bold_mismatch = (
-                    (previous_line.is_bold and not text_line.contains_bold)
-                    or (not previous_line.contains_bold and text_line.is_bold)
-                )
+                bold_mismatch = previous_line.is_bold and not text_line.contains_bold
                 if not bold_mismatch:
                     previous_box = previous_line.box()
                     intervals_intersect = get_interval_distance(
