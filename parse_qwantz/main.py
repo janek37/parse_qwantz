@@ -103,11 +103,11 @@ def parse_panel(image: Image, characters: list[Character]) -> tuple[list[str], l
         if block in block_matches:
             character = block_matches[block]
             if isinstance(character, tuple):
-                script_lines.append(f"{character[0]} and {character[1]}: {block}")
+                script_lines.append(f"{character[0]} and {character[1]}: {block.content(include_font_name=True)}")
             elif character.name in ('God', 'Devil'):
                 script_lines.append(f"{character}: {block.content(mark_bold=False)}")
             else:
-                script_lines.append(f"{character}: {block}")
+                script_lines.append(f"{character}: {block.content(include_font_name=True)}")
         elif block in thought_matches:
             character = thought_matches[block]
             script_lines.append(f"{character}: (thinks) {block.content()}")
@@ -152,3 +152,5 @@ def main(input_file_path: str | Path, debug: bool):
         print(f'Panel {panel_no}:')
         for line in panel:
             print(line)
+        if panel_no != 6:
+            print()

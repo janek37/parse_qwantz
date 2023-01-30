@@ -3,18 +3,23 @@ Narrator: COMPRESSED FILM COMICS
 Narrator: TODAY'S FILM:
 Narrator: JURASSIC PARK
 T-Rex: Sweet!
+
 Panel 2:
 T-Rex: Ooh! I get to be the T-Rex!
+
 Panel 3:
 Narrator: SOMEWHERE ON A PACIFIC ISLAND..
 T-Rex: Rawr! I represent nature and cannot be controlled! Watch as I destroy this house, representing humanity's folly!
 Dromiceiomimus: I too represent nature, but rather its nurturing aspect!
-House: [Tiny] Save us from the monsters we have created and were foolish enough to think we could control!
+House: (tiny) Save us from the monsters we have created and were foolish enough to think we could control!
+
 Panel 4:
 Utahraptor: Mankind was foolish to unleash us upon the world! Who are they to play God?
 T-Rex: You said it!
-Girl: [Tiny] This is Unix! I know this!
+Girl: (tiny) This is Unix! I know this!
+
 Panel 5:
-Utahraptor: [Condensed] Also, I and you as well represent the threat of castration. Recall that the raptors were introduced with the image of a fossilized claw being used to 'geld' the curious boy. Reading the dinosaurs as Woman (and recall that all the dinosaurs were cloned female) it appears that the message of the film is that femininity is dangerous and must be repressed!
+Utahraptor: (condensed) Also, I and you as well represent the threat of castration. Recall that the raptors were introduced with the image of a fossilized claw being used to 'geld' the curious boy. Reading the dinosaurs as Woman (and recall that all the dinosaurs were cloned female) it appears that the message of the film is that femininity is dangerous and must be repressed!
+
 Panel 6:
 T-Rex: Rawr!

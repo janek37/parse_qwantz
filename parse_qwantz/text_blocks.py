@@ -39,14 +39,14 @@ class TextBlock(NamedTuple):
         right = max(line.end.x for line in self.lines)
         return Box(Pixel(left, top), Pixel(right, bottom))
 
-    def content(self, mark_bold=True):
+    def content(self, mark_bold=True, include_font_name=False):
         char_boxes = []
         for line in self.lines:
             if char_boxes:
                 if char_boxes[-1].char != '-' or char_boxes[-2].char == ' ':
                     char_boxes.append(CharBox.space(is_bold=char_boxes[-1].is_bold))
                 else:
-                    logger.warning("Line ending with '-', ambiguous")
+                    logger.warning(f"Line ending with '-', ambiguous ({line.content.split()[-1]})")
             char_boxes.extend(line.char_boxes)
 
         grouped_char_boxes = groupby(char_boxes, key=lambda cb: cb.is_bold and mark_bold)
@@ -58,7 +58,12 @@ class TextBlock(NamedTuple):
             make_bold_excluding_trailing_spaces(content) if is_bold else content
             for content, is_bold in text_and_weight
         )
-        return content.replace('  ', ' ')
+        content = content.replace('  ', ' ')
+        if self.font.italic_offsets:
+            content = f'_{content}_'
+        if include_font_name and self.font.name != 'Regular':
+            content = f"({self.font.name.lower()}) {content}"
+        return content
 
     def split(self, line1: TextLine, line2: TextLine) -> tuple["TextBlock", "TextBlock"]:
         line1_index = self.lines.index(line1)
@@ -73,10 +78,7 @@ class TextBlock(NamedTuple):
             return block2, block1
 
     def __str__(self):
-        if self.font.name == 'Regular':
-            return self.content()
-        else:
-            return f"[{self.font}] {self.content()}"
+        return self.content()
 
     def __hash__(self):
         return id(self)
