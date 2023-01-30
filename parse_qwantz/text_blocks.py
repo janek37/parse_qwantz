@@ -36,7 +36,7 @@ class TextBlock(NamedTuple):
         top = self.start.y
         bottom = self.end.y
         left = min(line.start.x for line in self.lines)
-        right = max(line.x_end for line in self.lines)
+        right = max(line.end.x for line in self.lines)
         return Box(Pixel(left, top), Pixel(right, bottom))
 
     def content(self, mark_bold=True):
@@ -133,7 +133,8 @@ def get_text_blocks(text_lines: list[TextLine], image: SimpleImage) -> Iterable[
             else:
                 new_lines.append(text_line)
         text_lines = new_lines
-        color = image.find_color(new_block[0].char_boxes[0].box)
+        found_pixel = new_block[0].find_pixel(image)
+        color = image.pixels[found_pixel] if found_pixel else Color.WHITE
         yield TextBlock(new_block, bond_strengths, color, font)
 
 
@@ -165,7 +166,7 @@ def join_text_lines(text_lines: list[TextLine], image: SimpleImage) -> list[Text
     for font in (line.font for line in text_lines):
         if font == text_lines[0].font:
             continue
-        first_pixel = image.find_pixel(text_lines[0].char_boxes[0].box)
+        first_pixel = text_lines[0].find_pixel(image)
         if joined_text_line := try_text_line(first_pixel, image, font):
             joined_box = joined_text_line.box()
             if abs(joined_box.right - text_lines[-1].box().right) < font.width // 2:

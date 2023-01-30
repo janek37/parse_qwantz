@@ -21,20 +21,10 @@ class SimpleImage:
         # caution: no bounds checking!
         return self.pixels.get(pixel, Color.WHITE)
 
-    def find_color(self, box: Box) -> Color:
-        (x0, y0), (x1, y1) = box
-        for x in range(x0, x1):
-            for y in range(y0, y1):
-                if Pixel(x, y) in self.pixels:
-                    return self.pixels[Pixel(x, y)]
-        return Color.WHITE
-
-    def find_pixel(self, box: Box) -> Pixel | None:
-        (x0, y0), (x1, y1) = box
-        for x in range(x0, x1):
-            for y in range(y0, y1):
-                if Pixel(x, y) in self.pixels:
-                    return Pixel(x, y)
+    def find_pixel(self, pixels: list[Pixel]) -> Pixel | None:
+        for pixel in pixels:
+            if pixel in self.pixels:
+                return pixel
 
     def is_on_edge(self, pixel: Pixel) -> bool:
         x, y = pixel

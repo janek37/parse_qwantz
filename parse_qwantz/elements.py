@@ -30,7 +30,10 @@ def get_elements(image: SimpleImage) -> tuple[list[Line], list[Box], list[TextLi
             text_line = try_text_line(pixel, tmp_image, font)
             if text_line:
                 text_lines.append(text_line)
-                sorted_pixels = remove_boxes(sorted_pixels, [char_box.box for char_box in text_line.char_boxes])
+                if text_line.font.italic_offsets:
+                    sorted_pixels = remove_italic(sorted_pixels, text_line)
+                else:
+                    sorted_pixels = remove_boxes(sorted_pixels, [char_box.box for char_box in text_line.char_boxes])
                 break
         else:
             result = get_line(pixel, tmp_image)
@@ -64,6 +67,15 @@ def remove_boxes(sorted_pixels: list[Pixel], boxes: list[Box]) -> list[Pixel]:
         if pass_through or not box.includes(pixel):
             new_pixels.append(pixel)
     return new_pixels
+
+
+def remove_italic(sorted_pixels: list[Pixel], text_line: TextLine) -> list[Pixel]:
+    italic_pixels = []
+    for char_box in text_line.char_boxes:
+        italic_pixels.extend(
+            char_box.pixels(italic_offsets=text_line.font.italic_offsets)
+        )
+    return sorted(set(sorted_pixels) - set(italic_pixels))
 
 
 def remove_subsequence(sorted_pixels: list[Pixel], subsequence: list[Pixel]) -> list[Pixel]:

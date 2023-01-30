@@ -16,13 +16,16 @@ class TextLine:
     def __repr__(self):
         return f"TextLine({repr(self.start)}, {repr(self.content)}, {self.font.name})"
 
-    @property
+    @cached_property
     def start(self) -> Pixel:
         return self.char_boxes[0].box.top_left
 
-    @property
+    @cached_property
     def end(self) -> Pixel:
-        return Pixel(self.x_end, self.y_end)
+        return Pixel(
+            x=self.char_boxes[-1].box.right + len(self.font.italic_offsets),
+            y=max(y for _, (_, (_, y)), _ in self.char_boxes)
+        )
 
     @cached_property
     def content(self) -> str:
@@ -38,16 +41,12 @@ class TextLine:
         return any(char_box.is_bold for char_box in self.char_boxes if char_box.char != ' ')
 
     def box(self, padding: int = 0) -> Box:
-        x, y = self.start
-        return Box(Pixel(x - padding, y - padding), Pixel(self.x_end + padding, self.y_end + padding))
+        x0, y0 = self.start
+        x1, y1 = self.end
+        return Box(Pixel(x0 - padding, y0 - padding), Pixel(x1 + padding, y1 + padding))
 
-    @cached_property
-    def x_end(self) -> int:
-        return self.char_boxes[-1].box.right
-
-    @cached_property
-    def y_end(self) -> int:
-        return max(y for _, (_, (_, y)), _ in self.char_boxes)
+    def find_pixel(self, image) -> Pixel:
+        return image.find_pixel(self.char_boxes[0].pixels(self.font.italic_offsets))
 
     def __hash__(self):
         return id(self)

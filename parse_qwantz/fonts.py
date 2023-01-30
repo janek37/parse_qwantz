@@ -25,6 +25,23 @@ class CharBox(NamedTuple):
     box: Box
     is_bold: bool
 
+    def pixels(self, italic_offsets: set[int]):
+        if not italic_offsets:
+            return [
+                (x, y)
+                for x in range(self.box.left, self.box.right)
+                for y in range(self.box.top, self.box.bottom)
+            ]
+        else:
+            pixels = []
+            italic_offset = len(italic_offsets)
+            for y in range(self.box.top, self.box.bottom):
+                if y - self.box.top in italic_offsets:
+                    italic_offset -= 1
+                for x in range(self.box.left, self.box.right):
+                    pixels.append((x + italic_offset, y))
+            return pixels
+
     @classmethod
     def space(cls, is_bold: bool) -> "CharBox":
         return cls(char=' ', box=Box.dummy(), is_bold=is_bold)
@@ -37,6 +54,7 @@ class Font:
     height: int
     shapes: dict[int, str]
     bold_shapes: dict[int, str]
+    italic_offsets: set[int]
 
     def get_char(
         self,
@@ -85,7 +103,7 @@ class Font:
 
     def _get_bitmask(self, pixel: Pixel, image: SimpleImage, is_bold: bool) -> int:
         width = self.width + 1 if is_bold else self.width
-        return get_bitmask(pixel, image, width, self.height)
+        return get_bitmask(pixel, image, width, self.height, self.italic_offsets)
 
     def _get_char_by_bitmask(self, bitmask: int, is_bold: bool) -> str | None:
         if bitmask == 0:
@@ -103,7 +121,11 @@ class Font:
 
     @classmethod
     def from_file(
-        cls, file_path_context_manager: ContextManager[Path], name: str, shifted_variants: dict[str, int] | None = None
+        cls,
+        file_path_context_manager: ContextManager[Path],
+        name: str,
+        italic_offsets: set[int],
+        shifted_variants: dict[str, int] | None = None,
     ) -> "Font":
         with file_path_context_manager as file_path:
             image = SimpleImage.from_image(Image.open(file_path))
@@ -111,14 +133,16 @@ class Font:
         height = image.height
         shapes = {}
         for i, char in enumerate(PRINTABLE):
-            bitmask = get_bitmask(Pixel(width * i, 0), image=image, width=width, height=height)
+            bitmask = get_bitmask(
+                Pixel(width * i, 0), image=image, width=width, height=height, italic_offsets=italic_offsets
+            )
             shapes[bitmask] = char
             if shifted_variants and char in shifted_variants:
                 shapes[get_shifted_variant(bitmask, width, height, shifted_variants[char])] = char
             cut_bitmask = bitmask & -(1 << width)
             if cut_bitmask != bitmask and char not in 'gq[]':
                 shapes[cut_bitmask] = char
-        return cls(name, width, height, shapes, get_bold_shapes(width, height, shapes))
+        return cls(name, width, height, shapes, get_bold_shapes(width, height, shapes), italic_offsets)
 
 
 def get_shifted_variant(shape: int, width: int, height: int, offset: int) -> int:
@@ -153,13 +177,18 @@ def regular_shape_to_bold(shape: int, width: int, height: int) -> int:
     return bold
 
 
-def get_bitmask(pixel: Pixel, image: SimpleImage, width: int, height: int) -> int:
+def get_bitmask(
+    pixel: Pixel, image: SimpleImage, width: int, height: int, italic_offsets: set[int]
+) -> int:
     bitmask = 0
     x0, y0 = pixel
+    italic_offset = len(italic_offsets)
     for y in range(y0, y0 + height):
+        if y - y0 in italic_offsets:
+            italic_offset -= 1
         for x in range(x0, x0 + width):
             bitmask <<= 1
-            if (x, y) in image.pixels:
+            if (x + italic_offset, y) in image.pixels:
                 bitmask += 1
     return bitmask
 
@@ -168,7 +197,17 @@ ALL_FONTS = [
     Font.from_file(
         file_path_context_manager=as_file(Path('parse_qwantz', 'img', f'regular{size}.png')),
         name=name,
+        italic_offsets=set(),
         shifted_variants=SHIFTED_VARIANTS.get(size, {}),
     )
     for size, name in FONT_SIZES
 ]
+
+ALL_FONTS.append(
+    Font.from_file(
+        file_path_context_manager=as_file(Path('parse_qwantz', 'img', f'italic13.png')),
+        name='Italic',
+        italic_offsets={3, 5, 9, 11},
+        shifted_variants={},
+    )
+)
