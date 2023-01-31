@@ -54,8 +54,10 @@ class TextLine:
 
 def try_text_line(start: Pixel, image: SimpleImage, font: Font) -> TextLine | None:
     x0, y0 = start
-    for x in range(x0, x0 - font.width + 1, -1):
-        for y in range(y0, y0 - font.height + 1, -1):
+    max_x_offset = font.width - 4 if font.italic_offsets else min(font.left_pixel, font.width - 4)
+    max_y_offset = font.height - 3 if font.italic_offsets else min(font.top_pixel, font.height - 3)
+    for x in range(x0, x0 - max_x_offset - 1, -1):
+        for y in range(y0, y0 - max_y_offset - 1, -1):
             line = get_text_line(Pixel(x, y), image, font)
             if line:
                 return line

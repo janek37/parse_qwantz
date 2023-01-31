@@ -55,6 +55,8 @@ class Font:
     shapes: dict[int, str]
     bold_shapes: dict[int, str]
     italic_offsets: set[int]
+    top_pixel: int
+    left_pixel: int
 
     def get_char(
         self,
@@ -142,7 +144,33 @@ class Font:
             cut_bitmask = bitmask & -(1 << width)
             if cut_bitmask != bitmask and char not in 'gq[]':
                 shapes[cut_bitmask] = char
-        return cls(name, width, height, shapes, get_bold_shapes(width, height, shapes), italic_offsets)
+        top_pixel = max(get_top_pixel(bitmask, width, height) for bitmask in shapes)
+        left_pixel = max(get_left_pixel(bitmask, width, height) for bitmask in shapes)
+        return cls(
+            name,
+            width,
+            height,
+            shapes,
+            get_bold_shapes(width, height, shapes),
+            italic_offsets,
+            top_pixel,
+            left_pixel,
+        )
+
+
+def get_top_pixel(bitmask: int, width: int, height: int) -> int:
+    for j in range(height):
+        if bitmask & (((1 << width) - 1) << (width * (height - j - 1))):
+            return j
+    return 0
+
+
+def get_left_pixel(bitmask: int, width: int, height: int) -> int:
+    mask = sum(1 << (width * j) for j in range(height))
+    for j in range(width):
+        if bitmask & (mask << (width - j - 1)):
+            return j
+    return 0
 
 
 def get_shifted_variant(shape: int, width: int, height: int, offset: int) -> int:
