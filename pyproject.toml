@@ -4,13 +4,14 @@ authors = [{name = "Jan Szejko", email = "jan.szejko@gmail.com"}]
 version = "2023.1.26"
 description = "Transcript generator for Dinosaur Comics"
 readme = "README.md"
+license = {file = "LICENSE"}
 requires-python = ">=3.10"
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Programming Language :: Python :: 3.10",
     "Environment :: Console",
     "Intended Audience :: End Users/Desktop",
-    # "License :: OSI Approved :: BSD License",
+    "License :: OSI Approved :: MIT License",
     "Natural Language :: English",
     "Operating System :: OS Independent",
     "Topic :: Multimedia :: Graphics :: Graphics Conversion",
@@ -21,7 +22,6 @@ dependencies = [
   "Pillow",
   "typer",
 ]
-# TODO: license
 
 [project.optional-dependencies]
 dev = ["pytest"]
