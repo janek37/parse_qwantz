@@ -1,3 +1,4 @@
 __pycache__
 .envrc
 parse_qwantz.egg-info
+dist
