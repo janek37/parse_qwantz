@@ -31,9 +31,12 @@ def prepare_image(image: Image):
     if image.size != DIM:
         logger.error(f"Wrong image dimensions: {image.size}, only {DIM} is valid")
         sys.exit(1)
-    for pixel, color in SAMPLE:
-        if image.getpixel(pixel) != color:
-            logger.error("Invalid template")
+    for pixel, expected_color in SAMPLE:
+        color = image.getpixel(pixel)
+        if isinstance(color, tuple) and len(color) == 4:
+            color = color[:3]
+        if color != expected_color:
+            logger.error(f"Invalid template: expected {expected_color} at {pixel}; found {color}")
             sys.exit(1)
     all_white = Image.new(mode='RGB', size=DIM, color=(255, 255, 255))
     return Image.composite(image, all_white, get_mask_image())
