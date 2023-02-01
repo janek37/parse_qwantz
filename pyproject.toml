@@ -26,5 +26,8 @@ dependencies = [
 [project.optional-dependencies]
 dev = ["pytest"]
 
+[project.urls]
+homepage = "https://github.com/janek37/parse_qwantz"
+
 [project.scripts]
 parse-qwantz = "parse_qwantz:app"
