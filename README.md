@@ -14,7 +14,7 @@ Install `parse-qwantz` with `pip`
 
 You need to download the image file for the comic you want transcribed, for example https://qwantz.com/comics/comic2-02.png. Then run `parse-qwantz`:
 
-```bash
+```
 $ parse-qwantz comic2-02.png
 Panel 1:
 T-Rex: Today is a beautiful day to be stomping on things! As a dinosaur, stomping is the best part of my day indeed!
