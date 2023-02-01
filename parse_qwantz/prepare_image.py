@@ -1,16 +1,18 @@
 import logging
 import sys
 from functools import cache
-from importlib.resources import as_file
+from importlib.resources import as_file, files
 from pathlib import Path
 
 from PIL import Image
+
+import parse_qwantz
 
 logger = logging.getLogger()
 
 DIM = (735, 500)
 
-MASK_FILE_PATH = Path('parse_qwantz', 'img', 'mask.png')
+MASK_FILE_PATH = files(parse_qwantz).joinpath('img/mask.png')
 
 SAMPLE = [
     ((113, 183), (128, 255, 64)),

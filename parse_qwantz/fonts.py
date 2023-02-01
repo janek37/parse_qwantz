@@ -1,12 +1,13 @@
 import string
 from dataclasses import dataclass
-from importlib.resources import as_file
+from importlib.resources import as_file, files
 from itertools import product
 from pathlib import Path
 from typing import NamedTuple, ContextManager
 
 from PIL import Image
 
+import parse_qwantz
 from parse_qwantz.box import Box
 from parse_qwantz.pixels import Pixel
 from parse_qwantz.simple_image import SimpleImage
@@ -223,7 +224,7 @@ def get_bitmask(
 
 ALL_FONTS = [
     Font.from_file(
-        file_path_context_manager=as_file(Path('parse_qwantz', 'img', f'regular{size}.png')),
+        file_path_context_manager=as_file(files(parse_qwantz).joinpath(f'img/regular{size}.png')),
         name=name,
         italic_offsets=set(),
         shifted_variants=SHIFTED_VARIANTS.get(size, {}),
@@ -233,7 +234,7 @@ ALL_FONTS = [
 
 ALL_FONTS.append(
     Font.from_file(
-        file_path_context_manager=as_file(Path('parse_qwantz', 'img', f'italic13.png')),
+        file_path_context_manager=as_file(files(parse_qwantz).joinpath(f'img/italic13.png')),
         name='Italic',
         italic_offsets={3, 5, 9, 11},
         shifted_variants={},
