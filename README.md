@@ -4,10 +4,10 @@ A transcript generator for [Ryan North](https://www.ryannorth.ca/)'s [Dinosaur C
 
 ## Installation
 
-Install `qwantz_parse` with `pip`
+Install `parse-qwantz` with `pip`
 
 ```bash
-  pip install qwantz_parse
+  pip install parse-qwantz
 ```
 
 ## Usage
