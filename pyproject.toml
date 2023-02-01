@@ -15,7 +15,7 @@ classifiers = [
     "Natural Language :: English",
     "Operating System :: OS Independent",
     "Topic :: Multimedia :: Graphics :: Graphics Conversion",
-    "Scientific/Engineering :: Image Recognition",
+    "Topic :: Scientific/Engineering :: Image Recognition",
     "Typing :: Typed",
 ]
 dependencies = [
