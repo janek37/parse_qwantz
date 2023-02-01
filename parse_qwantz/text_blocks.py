@@ -61,7 +61,7 @@ class TextBlock(NamedTuple):
         content = content.replace('  ', ' ')
         if self.font.italic_offsets:
             content = f'_{content}_'
-        if include_font_name and self.font.name != 'Regular':
+        if include_font_name and self.font.name not in ('Regular', 'Italic'):
             content = f"({self.font.name.lower()}) {content}"
         return content
 
