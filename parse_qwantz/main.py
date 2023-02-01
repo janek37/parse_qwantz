@@ -15,7 +15,8 @@ from parse_qwantz.match_thought import match_thought
 from parse_qwantz.pixels import Pixel
 from parse_qwantz.shape import get_box
 from parse_qwantz.simple_image import SimpleImage
-from parse_qwantz.prepare_image import apply_mask
+from parse_qwantz.prepare_image import prepare_image
+from parse_qwantz.text_lines import TextLine
 
 set_logging_formatter()
 
@@ -31,42 +32,52 @@ PANELS = [
     ((239, 239), (494, 244)),
 ]
 
-CHARACTERS = {
-    1: [Character('T-Rex', Box(Pixel(104, 90), Pixel(170, 238)))],
-    2: [Character('T-Rex', Box(Pixel(4, 119), Pixel(105, 238)))],
-    3: [
+CHARACTERS = [
+    [Character('T-Rex', Box(Pixel(104, 90), Pixel(170, 238)))],
+    [Character('T-Rex', Box(Pixel(4, 119), Pixel(105, 238)))],
+    [
         Character('T-Rex', Box(Pixel(80, 55), Pixel(115, 213))),
         Character('Dromiceiomimus', Box(Pixel(325, 150), Pixel(357, 238))),
         Character('House', Box(Pixel(115, 210), Pixel(163, 238)), can_think=False),
     ],
-    4: [
+    [
         Character('T-Rex', Box(Pixel(0, 65), Pixel(30, 190))),
         Character('Utahraptor', Box(Pixel(103, 81), Pixel(138, 165))),
         Character('Girl', Box(Pixel(0, 213), Pixel(8, 238)), can_think=False),
     ],
-    5: [
+    [
         Character('T-Rex', Box(Pixel(40, 70), Pixel(96, 103))),
         Character('Utahraptor', Box(Pixel(200, 80), Pixel(233, 145))),
     ],
-    6: [Character('T-Rex', Box(Pixel(74, 64), Pixel(120, 195)))],
-}
+    [Character('T-Rex', Box(Pixel(74, 64), Pixel(120, 195)))],
+]
 
 
 def parse_qwantz(image: Image, debug: bool) -> Iterable[list[str]]:
-    masked = apply_mask(image)
-    for i, (panel, characters) in enumerate(zip(PANELS, CHARACTERS), start=1):
+    masked = prepare_image(image)
+    for (panel, characters) in zip(PANELS, CHARACTERS):
         (width, height), (x, y) = panel
         cropped = masked.crop((x, y, x + width, y + height))
         panel_image = SimpleImage.from_image(cropped)
         try:
-            script_lines, unmatched = parse_panel(panel_image, CHARACTERS[i])
+            script_lines, unmatched_shapes, unmatched_neighbors = parse_panel(panel_image, characters)
             if debug:
-                for unmatched_shape in unmatched:
+                draw = ImageDraw.Draw(cropped)
+                for unmatched_shape in unmatched_shapes:
                     box = get_box(unmatched_shape, padding=3)
-                    draw = ImageDraw.Draw(cropped)
                     draw.rectangle(box, outline=(255, 0, 0))
                     for pixel in unmatched_shape:
                         draw.point(pixel, fill=(255, 0, 0))
+                for text_line1, text_line2 in unmatched_neighbors:
+                    box1 = text_line1.box()
+                    box2 = text_line2.box()
+                    draw.rectangle(box1, outline=(0, 0, 192))
+                    draw.rectangle(box2, outline=(0, 0, 192))
+                    draw.line([
+                        ((box1.left + box1.right) // 2, (box1.top + box1.bottom) // 2),
+                        ((box2.left + box2.right) // 2, (box2.top + box2.bottom) // 2),
+                    ], fill=(0, 0, 255))
+                if unmatched_shapes or unmatched_neighbors:
                     cropped.show()
             yield script_lines
         except UnmatchedLine as e:
@@ -80,11 +91,13 @@ def parse_qwantz(image: Image, debug: bool) -> Iterable[list[str]]:
             yield ["Error"] + text_blocks
 
 
-def parse_panel(image: Image, characters: list[Character]) -> tuple[list[str], list[list[Pixel]]]:
+def parse_panel(
+    image: Image, characters: list[Character]
+) -> tuple[list[str], list[list[Pixel]], list[tuple[TextLine, TextLine]]]:
     lines, thoughts, text_lines, unmatched = get_elements(image)
     text_blocks = sorted(get_text_blocks(text_lines, image), key=lambda b: (b.end.y, b.end.x))
     line_matches = match_lines(lines, text_blocks, characters, image)
-    block_matches, text_blocks = match_blocks(line_matches, text_blocks)
+    block_matches, text_blocks, unmatched_neighbors = match_blocks(line_matches, text_blocks)
     text_blocks = sorted(text_blocks, key=lambda b: (b.end.y, b.end.x))
     unmatched_blocks = [block for block in text_blocks if block not in block_matches]
     thinking_characters = [character for character in characters if character.can_think]
@@ -115,7 +128,7 @@ def parse_panel(image: Image, characters: list[Character]) -> tuple[list[str], l
             if not block.is_bold:
                 logger.warning('Narrator not bold: %s', block.font.name)
             script_lines.append(f"Narrator: {block.content(mark_bold=False)}")
-    return script_lines, unmatched
+    return script_lines, unmatched, unmatched_neighbors
 
 
 def match_above_or_below(unmatched_blocks: list[TextBlock], block_matches: dict[TextBlock, Character_s]) -> None:

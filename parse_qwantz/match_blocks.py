@@ -1,15 +1,18 @@
+import logging
 from typing import Iterable
 
 from parse_qwantz.text_blocks import TextBlock
 from parse_qwantz.match_lines import Target, Character
 from parse_qwantz.text_lines import TextLine
 
+logger = logging.getLogger()
+
 Character_s = Character | tuple[Character, Character]
 
 
 def match_blocks(
     line_matches: Iterable[tuple[Target, Target]], text_blocks: list[TextBlock]
-) -> tuple[dict[TextBlock, Character_s], list[TextBlock]]:
+) -> tuple[dict[TextBlock, Character_s], list[TextBlock], list[tuple[TextLine, TextLine]]]:
     block_matches: dict[TextBlock, tuple[Character_s, TextLine]] = {}
     blocks_by_line: dict[TextLine, TextBlock] = {line: block for block in text_blocks for line in block.lines}
     neighbors: list[tuple[TextLine, TextLine]] = []
@@ -58,7 +61,10 @@ def match_blocks(
                 block_matches[block1] = block_matches[block2]
             else:
                 neighbors_left.append((line1, line2))
+        if neighbors == neighbors_left:
+            logger.warning(f"Unmatched connected text lines: {neighbors}")
+            break
         neighbors = neighbors_left
     final_block_matches = {block_id: character for block_id, (character, line) in block_matches.items()}
     text_blocks = list(set(blocks_by_line.values()))
-    return final_block_matches, text_blocks
+    return final_block_matches, text_blocks, neighbors
