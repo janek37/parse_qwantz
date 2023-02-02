@@ -2,11 +2,12 @@ import logging
 import sys
 from functools import cache
 from importlib.resources import as_file, files
-from pathlib import Path
 
 from PIL import Image
 
 import parse_qwantz
+from parse_qwantz.colors import square_distance, COLOR_THRESHOLD
+from parse_qwantz.pixels import normalize_color
 
 logger = logging.getLogger()
 
@@ -33,11 +34,12 @@ def prepare_image(image: Image):
     if image.size != DIM:
         logger.error(f"Wrong image dimensions: {image.size}, only {DIM} is valid")
         sys.exit(1)
+    palette = image.getpalette()
+    palette = tuple(palette) if palette else None
     for pixel, expected_color in SAMPLE:
         color = image.getpixel(pixel)
-        if isinstance(color, tuple) and len(color) == 4:
-            color = color[:3]
-        if color != expected_color:
+        color = normalize_color(color, palette)
+        if square_distance(color, expected_color) > COLOR_THRESHOLD:
             logger.error(f"Invalid template: expected {expected_color} at {pixel}; found {color}")
             sys.exit(1)
     all_white = Image.new(mode='RGB', size=DIM, color=(255, 255, 255))

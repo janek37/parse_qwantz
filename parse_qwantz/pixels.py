@@ -24,26 +24,30 @@ def get_pixels(image: Image) -> Iterable[tuple[Pixel, Color]]:
     values = image.getdata()
     width = image.width
     white = Color.WHITE.value
-    off_white = Color.OFF_WHITE.value
     unknown_colors = False
     for i, value in enumerate(values):
         x = i % width
         y = i // width
         value = normalize_color(value, palette)
-        if value != white and value != off_white:
+        if value != white:
             try:
                 color = Color(value)
             except ValueError:
-                if not unknown_colors:
-                    unknown_colors = True
-                    logger.warning(f"Unknown color at {(x, y)}: {value}. Replacing with black.")
-                color = Color.BLACK
-            yield Pixel(x, y), color
+                color = Color.get_with_threshold(value)
+                if value == (254, 254, 254) and color != Color.WHITE:
+                    print(color, value)
+                if not color:
+                    if not unknown_colors:
+                        unknown_colors = True
+                        logger.warning(f"Unknown color at {(x, y)}: {value}. Replacing with black.")
+                    color = Color.BLACK
+            if color != Color.WHITE:
+                yield Pixel(x, y), color
 
 
 @cache
 def normalize_color(
-    color: int | tuple[int, int, int] | tuple[int, int, int, int], palette: tuple[int, ...]
+    color: int | tuple[int, int, int] | tuple[int, int, int, int], palette: tuple[int, ...] | None
 ) -> tuple[int, int, int]:
     if palette is None and isinstance(color, int):
         color = (color, color, color)
