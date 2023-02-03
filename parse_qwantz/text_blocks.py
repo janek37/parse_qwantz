@@ -46,7 +46,12 @@ class TextBlock(NamedTuple):
                 if char_boxes[-1].char != '-' or char_boxes[-2].char == ' ':
                     char_boxes.append(CharBox.space(is_bold=char_boxes[-1].is_bold))
                 else:
-                    logger.warning(f"Line ending with '-', ambiguous ({line.content.split()[-1]})")
+                    last_word = ''
+                    for char_box in char_boxes[::-1]:
+                        if char_box.char == ' ':
+                            break
+                        last_word = char_box.char + last_word
+                    logger.warning(f"Line ending with '-', ambiguous ({last_word}{line.content.split()[0]})")
             char_boxes.extend(line.char_boxes)
 
         grouped_char_boxes = groupby(char_boxes, key=lambda cb: cb.is_bold and mark_bold)
