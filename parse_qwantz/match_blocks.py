@@ -9,10 +9,12 @@ logger = logging.getLogger()
 
 Character_s = Character | tuple[Character, Character]
 
+MatchDict = dict[TextBlock, Character_s]
+
 
 def match_blocks(
     line_matches: Iterable[tuple[Target, Target]], text_blocks: list[TextBlock]
-) -> tuple[dict[TextBlock, Character_s], list[TextBlock], list[tuple[TextLine, TextLine]]]:
+) -> tuple[MatchDict, list[TextBlock], list[tuple[TextLine, TextLine]]]:
     block_matches: dict[TextBlock, tuple[Character_s, TextLine]] = {}
     blocks_by_line: dict[TextLine, TextBlock] = {line: block for block in text_blocks for line in block.lines}
     neighbors: list[tuple[TextLine, TextLine]] = []

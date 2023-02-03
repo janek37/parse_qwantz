@@ -7,9 +7,10 @@ from PIL import Image, ImageDraw
 from parse_qwantz.box import Box, get_interval_distance
 from parse_qwantz.color_logs import set_logging_formatter
 from parse_qwantz.colors import Color
+from parse_qwantz.lines import Line
 from parse_qwantz.text_blocks import get_text_blocks, TextBlock
 from parse_qwantz.elements import get_elements
-from parse_qwantz.match_blocks import match_blocks, Character_s
+from parse_qwantz.match_blocks import match_blocks, Character_s, MatchDict
 from parse_qwantz.match_lines import match_lines, Character, OFF_PANEL, UnmatchedLine
 from parse_qwantz.match_thought import match_thought
 from parse_qwantz.pixels import Pixel
@@ -95,40 +96,51 @@ def parse_panel(
     image: Image, characters: list[Character]
 ) -> tuple[list[str], list[list[Pixel]], list[tuple[TextLine, TextLine]]]:
     lines, thoughts, text_lines, unmatched = get_elements(image)
+    text_blocks, block_matches, thought_matches, unmatched_neighbors = match_stuff(
+        characters, image, lines, text_lines, thoughts
+    )
+    script_lines = get_script_lines(text_blocks, block_matches, thought_matches)
+    return list(script_lines), unmatched, unmatched_neighbors
+
+
+def match_stuff(
+    characters: list[Character], image: SimpleImage, lines: list[Line], text_lines: list[TextLine], thoughts: list[Box]
+) -> tuple[list[TextBlock], MatchDict, MatchDict, list[tuple[TextLine, TextLine]]]:
     text_blocks = sorted(get_text_blocks(text_lines, image), key=lambda b: (b.end.y, b.end.x))
     line_matches = match_lines(lines, text_blocks, characters, image)
     block_matches, text_blocks, unmatched_neighbors = match_blocks(line_matches, text_blocks)
     text_blocks = sorted(text_blocks, key=lambda b: (b.end.y, b.end.x))
     unmatched_blocks = [block for block in text_blocks if block not in block_matches]
     thinking_characters = [character for character in characters if character.can_think]
-    thought_matches = {
-        block: character
-        for block, character in match_thought(thoughts, unmatched_blocks, thinking_characters)
-    }
+    thought_matches = dict(match_thought(thoughts, unmatched_blocks, thinking_characters))
     if thoughts and not thought_matches:
         logger.warning("Detected thought bubbles, but no thought text")
     unmatched_blocks = [block for block in unmatched_blocks if block not in thought_matches]
     match_above_or_below(unmatched_blocks, block_matches)
-    script_lines = []
+    return text_blocks, block_matches, thought_matches, unmatched_neighbors
+
+
+def get_script_lines(
+    text_blocks: list[TextBlock], block_matches: MatchDict, thought_matches: MatchDict
+) -> Iterable[str]:
     for block in text_blocks:
         if god_or_devil := handle_god_and_devil(block, block_matches.get(block) == OFF_PANEL):
             block_matches[block] = god_or_devil
         if block in block_matches:
             character = block_matches[block]
             if isinstance(character, tuple):
-                script_lines.append(f"{character[0]} and {character[1]}: {block.content(include_font_name=True)}")
+                yield f"{character[0]} and {character[1]}: {block.content(include_font_name=True)}"
             elif character.name in ('God', 'Devil'):
-                script_lines.append(f"{character}: {block.content(mark_bold=False)}")
+                yield f"{character}: {block.content(mark_bold=False)}"
             else:
-                script_lines.append(f"{character}: {block.content(include_font_name=True)}")
+                yield f"{character}: {block.content(include_font_name=True)}"
         elif block in thought_matches:
             character = thought_matches[block]
-            script_lines.append(f"{character}: (thinks) {block.content()}")
+            yield f"{character}: (thinks) {block.content()}"
         else:
             if not block.is_bold:
                 logger.warning('Narrator not bold: %s', block.font.name)
-            script_lines.append(f"Narrator: {block.content(mark_bold=False)}")
-    return script_lines, unmatched, unmatched_neighbors
+            yield f"Narrator: {block.content(mark_bold=False)}"
 
 
 def match_above_or_below(unmatched_blocks: list[TextBlock], block_matches: dict[TextBlock, Character_s]) -> None:
