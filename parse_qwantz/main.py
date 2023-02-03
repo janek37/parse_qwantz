@@ -153,10 +153,10 @@ def handle_god_and_devil(block: TextBlock, is_off_panel: bool):
     if block.color == Color.RED:
         if not is_off_panel:
             logger.warning('Red block not off-panel')
-        if block.font.name != 'Bold':
+        if not block.is_bold:
             logger.warning('Red block not bold')
         return Character.from_name('Devil')
-    elif is_off_panel and block.font.name == 'Bold':
+    elif is_off_panel and block.is_bold:
         return Character.from_name('God')
 
 
