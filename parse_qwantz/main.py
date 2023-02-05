@@ -164,10 +164,19 @@ def handle_god_and_devil(block: TextBlock, is_off_panel: bool):
         return Character.from_name('God')
 
 
-def main(input_file_path: str | Path, debug: bool):
-    for panel_no, panel in enumerate(parse_qwantz(Image.open(input_file_path), debug=debug), start=1):
+def main(input_file_path: str | Path, debug: bool, show_boxes: bool = False):
+    image = Image.open(input_file_path)
+    for panel_no, panel in enumerate(parse_qwantz(image, debug=debug), start=1):
         print(f'Panel {panel_no}:')
         for line in panel:
             print(line)
         if panel_no != 6:
             print()
+    if show_boxes:
+        draw = ImageDraw.Draw(image)
+        for (panel, characters) in zip(PANELS, CHARACTERS):
+            _, (x, y) = panel
+            for character in characters:
+                (x0, y0), (x1, y1) = character.box
+                draw.rectangle(((x0 + x, y0 + y), (x1 + x, y1 + y)), outline=(0, 128, 0))
+        image.show()
