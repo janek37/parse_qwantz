@@ -11,7 +11,7 @@ from parse_qwantz.lines import Line
 from parse_qwantz.text_blocks import get_text_blocks, TextBlock
 from parse_qwantz.elements import get_elements
 from parse_qwantz.match_blocks import match_blocks, Character_s, MatchDict
-from parse_qwantz.match_lines import match_lines, Character, OFF_PANEL, UnmatchedLine
+from parse_qwantz.match_lines import match_lines, Character, OFF_PANEL
 from parse_qwantz.match_thought import match_thought
 from parse_qwantz.pixels import Pixel
 from parse_qwantz.shape import get_box
@@ -60,54 +60,21 @@ def parse_qwantz(image: Image, debug: bool) -> Iterable[list[str]]:
         (width, height), (x, y) = panel
         cropped = masked.crop((x, y, x + width, y + height))
         panel_image = SimpleImage.from_image(cropped)
-        try:
-            script_lines, unmatched_shapes, unmatched_neighbors = parse_panel(panel_image, characters)
-            if debug:
-                draw = ImageDraw.Draw(cropped)
-                for unmatched_shape in unmatched_shapes:
-                    box = get_box(unmatched_shape, padding=3)
-                    draw.rectangle(box, outline=(255, 0, 0))
-                    for pixel in unmatched_shape:
-                        draw.point(pixel, fill=(255, 0, 0))
-                for text_line1, text_line2 in unmatched_neighbors:
-                    box1 = text_line1.box()
-                    box2 = text_line2.box()
-                    draw.rectangle(box1, outline=(0, 0, 192))
-                    draw.rectangle(box2, outline=(0, 0, 192))
-                    draw.line([
-                        ((box1.left + box1.right) // 2, (box1.top + box1.bottom) // 2),
-                        ((box2.left + box2.right) // 2, (box2.top + box2.bottom) // 2),
-                    ], fill=(0, 0, 255))
-                if unmatched_shapes or unmatched_neighbors:
-                    cropped.show()
-            yield script_lines
-        except UnmatchedLine as e:
-            line, boxes, text_blocks = e.args
-            if debug:
-                draw = ImageDraw.Draw(cropped)
-                for box, _character in boxes:
-                    draw.rectangle(box, outline=(0, 192, 0))
-                draw.line(line, fill=(255, 0, 0))
-                cropped.show()
-            yield ["Error"] + text_blocks
-
-
-def parse_panel(
-    image: Image, characters: list[Character]
-) -> tuple[list[str], list[list[Pixel]], list[tuple[TextLine, TextLine]]]:
-    lines, thoughts, text_lines, unmatched = get_elements(image)
-    text_blocks, block_matches, thought_matches, unmatched_neighbors = match_stuff(
-        characters, image, lines, text_lines, thoughts
-    )
-    script_lines = get_script_lines(text_blocks, block_matches, thought_matches)
-    return list(script_lines), unmatched, unmatched_neighbors
+        lines, thoughts, text_lines, unmatched_shapes = get_elements(panel_image)
+        text_blocks, block_matches, thought_matches, unmatched_neighbors, unmatched_lines = match_stuff(
+            characters, panel_image, lines, text_lines, thoughts
+        )
+        script_lines = get_script_lines(text_blocks, block_matches, thought_matches)
+        if debug and (unmatched_shapes or unmatched_neighbors or unmatched_lines):
+            handle_debug(cropped, text_blocks, unmatched_shapes, unmatched_neighbors, unmatched_lines)
+        yield list(script_lines)
 
 
 def match_stuff(
     characters: list[Character], image: SimpleImage, lines: list[Line], text_lines: list[TextLine], thoughts: list[Box]
-) -> tuple[list[TextBlock], MatchDict, MatchDict, list[tuple[TextLine, TextLine]]]:
+) -> tuple[list[TextBlock], MatchDict, MatchDict, list[tuple[TextLine, TextLine]], list[Line]]:
     text_blocks = sorted(get_text_blocks(text_lines, image), key=lambda b: (b.end.y, b.end.x))
-    line_matches = match_lines(lines, text_blocks, characters, image)
+    line_matches, unmatched_lines = match_lines(lines, text_blocks, characters, image)
     block_matches, text_blocks, unmatched_neighbors = match_blocks(line_matches, text_blocks)
     text_blocks = sorted(text_blocks, key=lambda b: (b.end.y, b.end.x))
     unmatched_blocks = [block for block in text_blocks if block not in block_matches]
@@ -117,7 +84,7 @@ def match_stuff(
         logger.warning("Detected thought bubbles, but no thought text")
     unmatched_blocks = [block for block in unmatched_blocks if block not in thought_matches]
     match_above_or_below(unmatched_blocks, block_matches)
-    return text_blocks, block_matches, thought_matches, unmatched_neighbors
+    return text_blocks, block_matches, thought_matches, unmatched_neighbors, unmatched_lines
 
 
 def get_script_lines(
@@ -141,6 +108,31 @@ def get_script_lines(
             if not block.is_bold:
                 logger.warning('Narrator not bold: %s', block.font.name)
             yield f"Narrator: {block.content(mark_bold=False)}"
+
+
+def handle_debug(image, text_blocks, unmatched_shapes, unmatched_neighbors, unmatched_lines):
+    draw = ImageDraw.Draw(image)
+    for unmatched_shape in unmatched_shapes:
+        box = get_box(unmatched_shape, padding=3)
+        draw.rectangle(box, outline=(255, 0, 0))
+        for pixel in unmatched_shape:
+            draw.point(pixel, fill=(255, 0, 0))
+    for text_line1, text_line2 in unmatched_neighbors:
+        box1 = text_line1.box()
+        box2 = text_line2.box()
+        draw.rectangle(box1, outline=(0, 0, 192))
+        draw.rectangle(box2, outline=(0, 0, 192))
+        draw.line([
+            ((box1.left + box1.right) // 2, (box1.top + box1.bottom) // 2),
+            ((box2.left + box2.right) // 2, (box2.top + box2.bottom) // 2),
+        ], fill=(0, 0, 255))
+    for line in unmatched_lines:
+        draw.line(line, fill=(255, 0, 0))
+        for block in text_blocks:
+            for text_line in block.lines:
+                box = text_line.box(padding=1)
+                draw.rectangle(box, outline=(0, 192, 0))
+    image.show()
 
 
 def match_above_or_below(unmatched_blocks: list[TextBlock], block_matches: dict[TextBlock, Character_s]) -> None:

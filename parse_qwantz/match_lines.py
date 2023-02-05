@@ -1,6 +1,5 @@
 import logging
 from dataclasses import dataclass
-from typing import Iterable
 
 from parse_qwantz.box import Box
 from parse_qwantz.lines import Line
@@ -31,19 +30,17 @@ OFF_PANEL = Character.from_name("Off-Panel")
 Target = TextLine | Character
 
 
-class UnmatchedLine(Exception):
-    pass
-
-
 def match_lines(
     lines: list[Line], text_blocks: list[TextBlock], characters: list[Character], image: SimpleImage
-) -> Iterable[tuple[Target, Target]]:
+) -> tuple[list[tuple[Target, Target]], list[Line]]:
     boxes: list[tuple[Box, Target]] = [
         (text_line.box(padding=1), text_line)
         for text_block in text_blocks
         for text_line in text_block.lines
     ]
     boxes.extend((character.box, character) for character in characters)
+    unmatched_lines = []
+    matches = []
     for line in lines:
         end1, end2 = line
         distance1 = distance2 = None
@@ -65,19 +62,21 @@ def match_lines(
                         distance2 = t
                         closest2 = target
                     break
-        if not (isinstance(closest1, TextLine) or isinstance(closest2, TextLine)) or closest1 is closest2 is None:
-            logger.error(f"Unmatched line {line}: matches {closest1} to {closest2}")
-            raise UnmatchedLine(line, boxes, text_blocks)
         if (closest1 is None and closest2 is not None) or (closest1 is not None and closest2 is None):
             logger.warning(f"Unmatched line {line}, assuming off-panel")
             if closest1 is None:
                 closest1 = OFF_PANEL
             if closest2 is None:
                 closest2 = OFF_PANEL
-        if closest1 == closest2:
-            logger.error(f"Line {line} matches the same object: {closest1}")
-            raise UnmatchedLine(line, boxes, text_blocks)
-        yield closest1, closest2
+        if closest1 == closest2 and closest1 is not None:
+            logger.warning(f"Line {line} matches the same object: {closest1}")
+            unmatched_lines.append(line)
+        elif not (isinstance(closest1, TextLine) or isinstance(closest2, TextLine)):
+            logger.warning(f"Unmatched line {line}: matches {closest1} to {closest2}")
+            unmatched_lines.append(line)
+        else:
+            matches.append((closest1, closest2))
+    return matches, unmatched_lines
 
 
 def sides(box: Box) -> list[Line]:
