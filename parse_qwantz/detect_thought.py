@@ -17,8 +17,8 @@ def get_thought(pixel: Pixel, image: SimpleImage) -> tuple[Box, list[Pixel]] | N
     y_range = range(box.top + 1, box.bottom - 1)
     outside = set()
     outside.update(Pixel(box.left, y) for y in y_range)
-    outside.update(Pixel(box.right, y) for y in y_range)
-    outside.update((Pixel(x, box.top - 1) for x in x_range))
+    outside.update(Pixel(box.right - 1, y) for y in y_range)
+    outside.update((Pixel(x, box.top) for x in x_range))
     outside.update((Pixel(x, box.bottom - 1) for x in x_range))
     non_empty_interior = False
     for x, y in product(x_range, y_range):
@@ -28,7 +28,8 @@ def get_thought(pixel: Pixel, image: SimpleImage) -> tuple[Box, list[Pixel]] | N
         to_visit = deque([Pixel(x, y)])
         while to_visit:
             current = to_visit.popleft()
-            if current in visited or current in pixels or not box.includes(current):
+            on_image_border = current.x in (0, image.width - 1) or current.y in (0, image.height - 1)
+            if current in visited or current in pixels or not box.includes(current) or on_image_border:
                 continue
             if current in outside:
                 outside.update(visited)
