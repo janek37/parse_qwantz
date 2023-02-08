@@ -6,6 +6,7 @@ from typing import Iterable, NamedTuple
 from parse_qwantz.box import Box, get_interval_distance
 from parse_qwantz.fonts import Font, CharBox
 from parse_qwantz.colors import Color
+from parse_qwantz.hyphens import disambiguate_hyphen
 from parse_qwantz.text_lines import TextLine, try_text_line
 from parse_qwantz.pixels import Pixel
 from parse_qwantz.simple_image import SimpleImage
@@ -43,15 +44,22 @@ class TextBlock(NamedTuple):
         char_boxes = []
         for line in self.lines:
             if char_boxes:
-                if char_boxes[-1].char != '-' or char_boxes[-2].char == ' ':
+                if char_boxes[-1].char != '-' or char_boxes[-2].char in ' -':
                     char_boxes.append(CharBox.space(is_bold=char_boxes[-1].is_bold))
                 else:
-                    last_word = ''
-                    for char_box in char_boxes[::-1]:
-                        if char_box.char == ' ':
+                    last_words = ''
+                    for char_box in char_boxes[-2::-1]:
+                        if char_box.char in '.,!?" ':
                             break
-                        last_word = char_box.char + last_word
-                    logger.warning(f"Line ending with '-', ambiguous ({last_word}{line.content.split()[0]})")
+                        last_words = char_box.char + last_words
+                    next_words = re.match(r'[^.,!?" ]*', line.content).group()
+                    last_word = last_words.rsplit('-', 1)[-1]
+                    next_word = next_words.split('-', 1)[0]
+                    if not disambiguate_hyphen(last_word, next_word):
+                        char_boxes.pop()
+                    else:
+                        last_words += '-'
+                    logger.info(f"Line ending with hyphen ({last_words}/{next_words})")
             char_boxes.extend(line.char_boxes)
 
         grouped_char_boxes = groupby(char_boxes, key=lambda cb: cb.is_bold and mark_bold)
