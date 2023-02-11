@@ -47,7 +47,9 @@ CHARACTERS = [
         Character('Girl', Box(Pixel(0, 213), Pixel(8, 238)), can_think=False),
     ],
     [
-        Character('T-Rex', Box(Pixel(40, 70), Pixel(93, 120))),
+        Character('T-Rex', Box(Pixel(40, 70), Pixel(93, 103))),
+        Character('T-Rex', Box(Pixel(40, 104), Pixel(70, 140))),
+        Character('T-Rex', Box(Pixel(40, 141), Pixel(90, 180))),
         Character('Utahraptor', Box(Pixel(200, 80), Pixel(233, 145))),
     ],
     [Character('T-Rex', Box(Pixel(74, 64), Pixel(120, 195)))],
