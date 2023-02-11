@@ -113,6 +113,6 @@ def get_text_line(start: Pixel, image: SimpleImage, font: Font) -> TextLine | No
             is_bold = char_box.is_bold
     if len(char_boxes) <= 2 and all(char_box.char in "\",.'`|-/\\" for char_box in char_boxes):
         return
-    if len(char_boxes) > 5 and all(char_box.char == ' ' for char_box in char_boxes[1::2]):
+    if len(char_boxes) >= 5 and all(char_box.char == ' ' for char_box in char_boxes[1::2]):
         char_boxes = char_boxes[0::2]
     return TextLine(char_boxes, font)
