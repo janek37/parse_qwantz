@@ -34,8 +34,6 @@ def get_pixels(image: Image) -> Iterable[tuple[Pixel, Color]]:
                 color = Color(value)
             except ValueError:
                 color = Color.get_with_threshold(value)
-                if value == (254, 254, 254) and color != Color.WHITE:
-                    print(color, value)
                 if not color:
                     if not unknown_colors:
                         unknown_colors = True
