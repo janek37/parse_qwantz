@@ -1,4 +1,3 @@
-import string
 from dataclasses import dataclass
 from importlib.resources import as_file, files
 from itertools import product
@@ -12,8 +11,8 @@ from parse_qwantz.box import Box
 from parse_qwantz.pixels import Pixel
 from parse_qwantz.simple_image import SimpleImage
 
-PRINTABLE = string.printable.strip()
-FORBIDDEN_CHARS = '\\_`|~'
+CHARS = """0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!"#$%&'()*+,-./:;<=>?@[]^{|}‘’“”·•™é"""
+FORBIDDEN_FIRST_CHARS = "!%&')+,/:;=?@]^|}’”·™"
 
 FONT_SIZES = [(13, 'Regular'), (12, 'Condensed'), (11, 'Small'), (9, 'Mini'), (8, 'Tiny')]
 SHIFTED_VARIANTS = {
@@ -56,8 +55,6 @@ class Font:
     shapes: dict[int, str]
     bold_shapes: dict[int, str]
     italic_offsets: set[int]
-    top_pixel: int
-    left_pixel: int
 
     def get_char(
         self,
@@ -65,10 +62,14 @@ class Font:
         image: SimpleImage,
         expect_bold: bool = False,
         expect_space: bool = True,
+        is_first: bool = False,
     ) -> CharBox | None:
-        if char_box := self.get_char_with_weight(pixel, image, is_bold=expect_bold, expect_space=expect_space):
-            return char_box
-        return self.get_char_with_weight(pixel, image, is_bold=not expect_bold, expect_space=expect_space)
+        for bold in (expect_bold, not expect_bold):
+            char_box = self.get_char_with_weight(
+                pixel, image, is_bold=bold, expect_space=expect_space, is_first=is_first
+            )
+            if char_box:
+                return char_box
 
     def get_char_with_weight(
         self,
@@ -76,24 +77,25 @@ class Font:
         image: SimpleImage,
         is_bold: bool,
         expect_space: bool,
+        is_first: bool,
     ) -> CharBox | None:
         width = self.width + 1 if is_bold else self.width
         bottom_right = Pixel(pixel.x + width, pixel.y + self.height)
         bitmask = self._get_bitmask(pixel, image, is_bold)
-        if char := self._get_char_by_bitmask(bitmask, is_bold):
+        if char := self._get_char_by_bitmask(bitmask, is_bold, is_first):
             return CharBox(char, Box(pixel, bottom_right), is_bold)
 
         for cut_bottom in range(1, 3):
             cut_bitmask = bitmask & -(1 << (width * cut_bottom))
             if cut_bitmask == 0 or cut_bitmask & -cut_bitmask > (1 << (width * (cut_bottom + 1))):
-                if char := self._get_char_by_bitmask(cut_bitmask, is_bold):
+                if char := self._get_char_by_bitmask(cut_bitmask, is_bold, is_first):
                     right, bottom = bottom_right
                     return CharBox(char, Box(pixel, Pixel(right, bottom - cut_bottom)), is_bold)
 
         for cut_top in range(1, 2):
             cut_bitmask = bitmask & ((1 << (width * (self.height - cut_top))) - 1)
             if cut_bitmask == 0 or cut_bitmask < (1 << (width * (self.height - cut_top - 1))):
-                if char := self._get_char_by_bitmask(cut_bitmask, is_bold):
+                if char := self._get_char_by_bitmask(cut_bitmask, is_bold, is_first):
                     return CharBox(char, Box(Pixel(pixel.x, pixel.y + cut_top), bottom_right), is_bold)
 
         if expect_space:
@@ -108,12 +110,12 @@ class Font:
         width = self.width + 1 if is_bold else self.width
         return get_bitmask(pixel, image, width, self.height, self.italic_offsets)
 
-    def _get_char_by_bitmask(self, bitmask: int, is_bold: bool) -> str | None:
+    def _get_char_by_bitmask(self, bitmask: int, is_bold: bool, is_first: bool) -> str | None:
         if bitmask == 0:
             return ' '
         shapes = self.bold_shapes if is_bold else self.shapes
         char = shapes.get(bitmask)
-        if char and char not in FORBIDDEN_CHARS:
+        if char and not (is_first and char in FORBIDDEN_FIRST_CHARS):
             return char
 
     def __str__(self):
@@ -132,21 +134,21 @@ class Font:
     ) -> "Font":
         with file_path_context_manager as file_path:
             image = SimpleImage.from_image(Image.open(file_path))
-        width = image.width // len(PRINTABLE)
+        width = image.width // len(CHARS)
         height = image.height
         shapes = {}
-        for i, char in enumerate(PRINTABLE):
+        for i, char in enumerate(CHARS):
             bitmask = get_bitmask(
                 Pixel(width * i, 0), image=image, width=width, height=height, italic_offsets=italic_offsets
             )
-            shapes[bitmask] = char
-            if shifted_variants and char in shifted_variants:
-                shapes[get_shifted_variant(bitmask, width, height, shifted_variants[char])] = char
-            cut_bitmask = bitmask & -(1 << width)
-            if cut_bitmask != bitmask and char not in 'gq[]':
-                shapes[cut_bitmask] = char
-        top_pixel = max(get_top_pixel(bitmask, width, height) for bitmask in shapes)
-        left_pixel = max(get_left_pixel(bitmask, width, height) for bitmask in shapes)
+            # “ and ” look the same as " in some sizes
+            if bitmask not in shapes:
+                shapes[bitmask] = char
+                if shifted_variants and char in shifted_variants:
+                    shapes[get_shifted_variant(bitmask, width, height, shifted_variants[char])] = char
+                cut_bitmask = bitmask & -(1 << width)
+                if cut_bitmask != bitmask and char not in 'gq[]':
+                    shapes[cut_bitmask] = char
         return cls(
             name,
             width,
@@ -154,24 +156,7 @@ class Font:
             shapes,
             get_bold_shapes(width, height, shapes),
             italic_offsets,
-            top_pixel,
-            left_pixel,
         )
-
-
-def get_top_pixel(bitmask: int, width: int, height: int) -> int:
-    for j in range(height):
-        if bitmask & (((1 << width) - 1) << (width * (height - j - 1))):
-            return j
-    return 0
-
-
-def get_left_pixel(bitmask: int, width: int, height: int) -> int:
-    mask = sum(1 << (width * j) for j in range(height))
-    for j in range(width):
-        if bitmask & (mask << (width - j - 1)):
-            return j
-    return 0
 
 
 def get_shifted_variant(shape: int, width: int, height: int, offset: int) -> int:
