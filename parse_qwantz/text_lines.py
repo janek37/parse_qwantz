@@ -54,8 +54,8 @@ class TextLine:
 
 def try_text_line(start: Pixel, image: SimpleImage, font: Font) -> TextLine | None:
     x0, y0 = start
-    max_x_offset = font.width - 4
-    max_y_offset = font.height - 3
+    max_x_offset = font.width - 3
+    max_y_offset = font.height - 1
     for x in range(x0, x0 - max_x_offset - 1, -1):
         for y in range(y0, y0 - max_y_offset - 1, -1):
             line = get_text_line(Pixel(x, y), image, font)
@@ -111,7 +111,7 @@ def get_text_line(start: Pixel, image: SimpleImage, font: Font) -> TextLine | No
                 spaces = []
             char_boxes.append(char_box)
             is_bold = char_box.is_bold
-    if len(char_boxes) <= 2 and all(char_box.char in "\",.'`|-/\\" for char_box in char_boxes):
+    if len(char_boxes) <= 2 and all(char_box.char in "\",.'‘’“”|-/" for char_box in char_boxes):
         return
     if len(char_boxes) >= 5 and all(char_box.char == ' ' for char_box in char_boxes[1::2]):
         char_boxes = char_boxes[0::2]
