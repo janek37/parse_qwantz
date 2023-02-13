@@ -32,6 +32,9 @@ def match_blocks(
                     block_matches[block] = ((prev_character, character), line)
                 else:
                     block1, block2 = block.split(prev_line, line)
+                    logger.warning(
+                        f"Splitting blocks: [{block1.content()}], [{block2.content()}]"
+                    )
                     for b1line in block1.lines:
                         blocks_by_line[b1line] = block1
                     for b2line in block2.lines:

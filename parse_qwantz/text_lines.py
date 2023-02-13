@@ -1,3 +1,4 @@
+import logging
 from functools import cached_property
 
 from dataclasses import dataclass
@@ -6,6 +7,8 @@ from parse_qwantz.box import Box
 from parse_qwantz.fonts import Font, CharBox
 from parse_qwantz.pixels import Pixel
 from parse_qwantz.simple_image import SimpleImage
+
+logger = logging.getLogger()
 
 
 @dataclass
@@ -88,6 +91,12 @@ def get_text_line(start: Pixel, image: SimpleImage, font: Font) -> TextLine | No
                 if char_box and char_box.char == ' ':
                     char_box = None
                 if char_box is not None:
+                    content_so_far = ''.join(char_box.char for char_box in char_boxes)
+                    if off_x == -2 or off_y != 0:
+                        logger.warning(
+                            f"Inline offset after {content_so_far + ' '*len(spaces)!r},"
+                            f" before {char_box.char!r}: {(off_x, off_y)}"
+                        )
                     x += off_x
                     y += off_y
                     break
