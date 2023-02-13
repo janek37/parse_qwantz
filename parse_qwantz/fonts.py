@@ -63,10 +63,16 @@ class Font:
         expect_bold: bool = False,
         expect_space: bool = True,
         is_first: bool = False,
+        allow_short_space: bool = False,
     ) -> CharBox | None:
         for bold in (expect_bold, not expect_bold):
             char_box = self.get_char_with_weight(
-                pixel, image, is_bold=bold, expect_space=expect_space, is_first=is_first
+                pixel,
+                image,
+                is_bold=bold,
+                expect_space=expect_space,
+                is_first=is_first,
+                allow_short_space=allow_short_space,
             )
             if char_box:
                 return char_box
@@ -78,6 +84,7 @@ class Font:
         is_bold: bool,
         expect_space: bool,
         is_first: bool,
+        allow_short_space: bool,
     ) -> CharBox | None:
         width = self.width + 1 if is_bold else self.width
         bottom_right = Pixel(pixel.x + width, pixel.y + self.height)
@@ -102,7 +109,10 @@ class Font:
             right, bottom = bottom_right
             for x, y in product(range(pixel.x, right), range(pixel.y, bottom)):
                 if Pixel(x, y) in image.pixels:
-                    if x >= right - width // 2 - 1:
+                    min_space_width = width // 2
+                    if allow_short_space:
+                        min_space_width -= 1
+                    if x >= pixel.x + min_space_width:
                         return CharBox(' ', Box(pixel, Pixel(x, bottom)), is_bold)
                     break
 

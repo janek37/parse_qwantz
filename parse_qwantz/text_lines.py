@@ -75,12 +75,13 @@ def get_text_line(start: Pixel, image: SimpleImage, font: Font) -> TextLine | No
         x += char_box.box.width
         if x > image.width - font.width:
             break
-        char_box = font.get_char(Pixel(x, y), image, expect_bold=is_bold)
+        allow_short_space = not spaces and char_boxes[-1].char == '.'
+        char_box = font.get_char(Pixel(x, y), image, expect_bold=is_bold, allow_short_space=allow_short_space)
         if char_box is None:
             if spaces:
                 offsets = ((-2, 0), (-1, 0), (1, 0), (0, -1), (0, 1))
             else:
-                offsets = ((-2, 0), (-1, 0), (1, 0))
+                offsets = ((-1, 0), (1, 0))
             for offset in offsets:
                 off_x, off_y = offset
                 char_box = font.get_char(Pixel(x + off_x, y + off_y), image, expect_space=False)
