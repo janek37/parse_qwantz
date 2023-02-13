@@ -1,5 +1,4 @@
 import logging
-import sys
 from functools import cache
 from importlib.resources import as_file, files
 
@@ -24,6 +23,10 @@ SAMPLE = [
 ]
 
 
+class ImageError(Exception):
+    pass
+
+
 @cache
 def get_mask_image():
     with as_file(MASK_FILE_PATH) as image_path:
@@ -33,7 +36,7 @@ def get_mask_image():
 def prepare_image(image: Image):
     if image.size != DIM:
         logger.error(f"Wrong image dimensions: {image.size}, only {DIM} is valid")
-        sys.exit(1)
+        raise ImageError(f"Wrong image dimensions: {image.size}, only {DIM} is valid")
     palette = image.getpalette()
     palette = tuple(palette) if palette else None
     for pixel, expected_color in SAMPLE:
@@ -41,6 +44,6 @@ def prepare_image(image: Image):
         color = normalize_color(color, palette)
         if square_distance(color, expected_color) > COLOR_THRESHOLD:
             logger.error(f"Invalid template: expected {expected_color} at {pixel}; found {color}")
-            sys.exit(1)
+            raise ImageError(f"Invalid template: expected {expected_color} at {pixel}; found {color}")
     all_white = Image.new(mode='RGB', size=DIM, color=(255, 255, 255))
     return Image.composite(image, all_white, get_mask_image())

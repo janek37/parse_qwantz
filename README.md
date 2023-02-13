@@ -43,6 +43,14 @@ You can also call it with
 python -m parse_qwantz
 ```
 
+The argument can also be a directory path instead of a file path. In such case the program will run on all files in the specified directory.
+
+## Options
+
+### `--output-dir`
+
+By default, the program outputs to stdout and logs to stderr. With this option, when processing file `image_name.png` it will output to `OUTPUT_DIR/image_name.txt` and log to `OUTPUT_DIR/image_name.log`.
+
 ## Notes
 
 This program will not work on all DC strips. [Some](https://qwantz.com/?comic=12) [are](https://qwantz.com/?comic=45) [fairly](http://qwantz.com/?comic=70) [non-standard](https://qwantz.com/?comic=31) (including [the mirror universe](https://qwantz.com/?comic=35), [Morris the bug](https://qwantz.com/index.php?comic=674), [guest comics](https://qwantz.com/?comic=1486) etc.), while others might just not work correctly for more or less apparent reasons: there might be warning or error messages, or it might just generate an inaccurate transcript silently. It should however work correctly for most comics.

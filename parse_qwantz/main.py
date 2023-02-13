@@ -1,3 +1,5 @@
+import logging
+import sys
 from logging import getLogger
 from pathlib import Path
 from typing import Iterable
@@ -166,8 +168,11 @@ def handle_god_and_devil(block: TextBlock, is_off_panel: bool):
         return Character.from_name('God')
 
 
-def main(input_file_path: str | Path, debug: bool, show_boxes: bool = False):
+def main(input_file_path: Path, output_dir: Path | None = None, debug: bool = False, show_boxes: bool = False):
     image = Image.open(input_file_path)
+    if output_dir:
+        sys.stdout = (output_dir / (input_file_path.stem + '.txt')).open('w')
+        logging.basicConfig(filename=output_dir / (input_file_path.stem + '.log'), filemode='w', force=True)
     for panel_no, panel in enumerate(parse_qwantz(image, debug=debug), start=1):
         print(f'Panel {panel_no}:')
         for line in panel:
