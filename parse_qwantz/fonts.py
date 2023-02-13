@@ -12,7 +12,7 @@ from parse_qwantz.pixels import Pixel
 from parse_qwantz.simple_image import SimpleImage
 
 CHARS = """0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!"#$%&'()*+,-./:;<=>?@[]^{|}‘’“”·•™é"""
-FORBIDDEN_FIRST_CHARS = "!%&)+,/:;=?@]^|}”·™"
+FORBIDDEN_FIRST_CHARS = "%&)+,/:;=@]^|}”·™"
 
 FONT_SIZES = [(13, 'Regular'), (12, 'Condensed'), (11, 'Small'), (9, 'Mini'), (8, 'Tiny')]
 SHIFTED_VARIANTS = {
