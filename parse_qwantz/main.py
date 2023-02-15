@@ -70,7 +70,7 @@ def parse_qwantz(image: Image, debug: bool) -> Iterable[list[str]]:
         )
         script_lines = get_script_lines(text_blocks, block_matches, thought_matches)
         if debug and (unmatched_shapes or unmatched_neighbors or unmatched_lines):
-            handle_debug(cropped, text_blocks, unmatched_shapes, unmatched_neighbors, unmatched_lines)
+            handle_debug(cropped, text_blocks, unmatched_shapes, unmatched_neighbors, unmatched_lines, characters)
         yield list(script_lines)
 
 
@@ -114,7 +114,7 @@ def get_script_lines(
             yield f"Narrator: {block.content(mark_bold=False)}"
 
 
-def handle_debug(image, text_blocks, unmatched_shapes, unmatched_neighbors, unmatched_lines):
+def handle_debug(image, text_blocks, unmatched_shapes, unmatched_neighbors, unmatched_lines, characters):
     draw = ImageDraw.Draw(image)
     for unmatched_shape in unmatched_shapes:
         box = get_box(unmatched_shape, padding=3)
@@ -136,6 +136,9 @@ def handle_debug(image, text_blocks, unmatched_shapes, unmatched_neighbors, unma
             for text_line in block.lines:
                 box = text_line.box(padding=1)
                 draw.rectangle(box, outline=(0, 192, 0))
+    if unmatched_neighbors or unmatched_lines:
+        for character in characters:
+            draw.rectangle(character.box, outline=(0, 128, 0))
     image.show()
 
 
