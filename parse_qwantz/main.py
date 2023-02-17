@@ -134,7 +134,7 @@ def handle_debug(image, text_blocks, unmatched_shapes, unmatched_neighbors, unma
         draw.line(line, fill=(255, 0, 0))
         for block in text_blocks:
             for text_line in block.lines:
-                box = text_line.box(padding=1)
+                box = text_line.box()
                 draw.rectangle(box, outline=(0, 192, 0))
     if unmatched_neighbors or unmatched_lines:
         for character in characters:

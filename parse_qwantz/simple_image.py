@@ -29,3 +29,6 @@ class SimpleImage:
     def is_on_edge(self, pixel: Pixel) -> bool:
         x, y = pixel
         return x in (0, self.width - 1) or y in (0, self.height - 1)
+
+    def distance_to_edge(self, pixel: Pixel) -> int:
+        return min(pixel.x, pixel.y, self.width - pixel.x - 1, self.height - pixel.y - 1)
