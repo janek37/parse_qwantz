@@ -22,6 +22,12 @@ WORD_SET = make_word_set(
 
 
 def disambiguate_hyphen(part1: str, part2: str):
+    if not part1:
+        logger.warning(f"Hyphenation after other punctuation")
+        return False
+    if not part2:
+        logger.warning(f"Hyphenation before other punctuation")
+        return False
     if part1[-1].islower() and part2[0].isupper():
         return True
     part1_lower = part1.lower()
