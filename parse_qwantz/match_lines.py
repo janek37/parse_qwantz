@@ -136,21 +136,19 @@ class CandidateResolver:
     def resolve(self) -> tuple[list[tuple[Target, Target]], list[Line]]:
         choices: list[tuple[Target, Target]] = []
         unmatched_lines: list[Line] = []
-        remaining_candidates: list[tuple[list[Target], list[Target]]] = []
         for line, candidates1, candidates2 in self.line_candidates:
             if self.is_simple_case(candidates1) and isinstance(candidates1[0], TextLine):
-                self.matched_blocks.add(self.block_mapping[candidates1[0]])
+                self.update_matched_blocks(candidates1[0])
             if self.is_simple_case(candidates2) and isinstance(candidates2[0], TextLine):
-                self.matched_blocks.add(self.block_mapping[candidates2[0]])
+                self.update_matched_blocks(candidates2[0])
+        for line, candidates1, candidates2 in self.line_candidates:
             result = self.first_pass(candidates1, candidates2, line)
             if result == 'unmatched':
                 unmatched_lines.append(line)
             elif result == 'simple case':
                 choices.append((candidates1[0], candidates2[0]))
             else:
-                remaining_candidates.append((candidates1, candidates2))
-        for candidates_pair in remaining_candidates:
-            self.second_pass(candidates_pair, choices)
+                choices.append(self.second_pass((candidates1, candidates2)))
         return choices, unmatched_lines
 
     def first_pass(
@@ -208,8 +206,11 @@ class CandidateResolver:
         ]
         for target in choice:
             if isinstance(target, TextLine):
-                self.matched_blocks.add(self.block_mapping[target])
+                self.update_matched_blocks(target)
         return choice[0], choice[1]
+
+    def update_matched_blocks(self, text_line: TextLine) -> None:
+        self.matched_blocks.add(self.block_mapping[text_line])
 
     def is_simple_case(self, candidates: list[Target]) -> bool:
         if len(candidates) == 1:
