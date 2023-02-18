@@ -8,7 +8,7 @@ class ColorFormatter(logging.Formatter):
     RED = "\x1b[31;20m"
     BOLD_RED = "\x1b[31;1m"
     RESET = "\x1b[0m"
-    FORMAT = "%(levelname)s: %(message)s"
+    FORMAT = "%(levelname)s:%(panel)s %(message)s"
 
     FORMATS = {
         logging.DEBUG: GREY + FORMAT + RESET,
@@ -18,12 +18,16 @@ class ColorFormatter(logging.Formatter):
         logging.CRITICAL: BOLD_RED + FORMAT + RESET
     }
 
+    def __init__(self, *args, defaults=None, **kwargs):
+        self._defaults = defaults
+        super().__init__(*args, defaults=defaults, **kwargs)
+
     def format(self, record):
         if sys.stderr.isatty():
             log_fmt = self.FORMATS.get(record.levelno)
         else:
             log_fmt = self.FORMAT
-        formatter = logging.Formatter(log_fmt)
+        formatter = logging.Formatter(log_fmt, defaults=self._defaults)
         return formatter.format(record)
 
 

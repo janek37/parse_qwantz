@@ -7,7 +7,7 @@ from typing import Iterable
 from PIL import Image, ImageDraw
 
 from parse_qwantz.box import Box, get_interval_distance
-from parse_qwantz.color_logs import set_logging_formatter
+from parse_qwantz.color_logs import set_logging_formatter, ColorFormatter
 from parse_qwantz.colors import Color
 from parse_qwantz.lines import Line
 from parse_qwantz.text_blocks import get_text_blocks, TextBlock
@@ -60,7 +60,8 @@ CHARACTERS = [
 
 def parse_qwantz(image: Image, debug: bool) -> Iterable[list[str]]:
     masked = prepare_image(image)
-    for (panel, characters) in zip(PANELS, CHARACTERS):
+    for i, (panel, characters) in enumerate(zip(PANELS, CHARACTERS), start=1):
+        set_current_panel(i)
         (width, height), (x, y) = panel
         cropped = masked.crop((x, y, x + width, y + height))
         panel_image = SimpleImage.from_image(cropped)
@@ -169,6 +170,11 @@ def handle_god_and_devil(block: TextBlock, is_off_panel: bool):
         return Character.from_name('Devil')
     elif is_off_panel and block.is_bold:
         return Character.from_name('God')
+
+
+def set_current_panel(panel: int | None = None):
+    panel_name = f" Panel {panel}:" if panel is not None else ""
+    logger.handlers[0].setFormatter(ColorFormatter(defaults={"panel": panel_name}))
 
 
 def main(input_file_path: Path, output_dir: Path | None = None, debug: bool = False, show_boxes: bool = False):
