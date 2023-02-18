@@ -50,6 +50,9 @@ def get_elements(image: SimpleImage) -> tuple[list[Line], list[Box], list[TextLi
                 unmatched_pixels = sorted(get_shape(pixel, tmp_image))
                 unmatched.append(unmatched_pixels)
                 sorted_pixels = remove_subsequence(sorted_pixels, unmatched_pixels)
+                if len(unmatched_pixels) == 5:
+                    logger.warning("At least five unmatched objects detected, aborting")
+                    break
     return lines, thoughts, sorted(text_lines, key=lambda l: l.start), unmatched
 
 
