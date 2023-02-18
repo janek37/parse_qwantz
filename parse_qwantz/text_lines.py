@@ -105,6 +105,8 @@ def get_text_line(start: Pixel, image: SimpleImage, font: Font) -> TextLine | No
         # this is to avoid treating "i"/"j" dots as periods, but still allow lines starting with "..."
         if len(char_boxes) == 1 and char_boxes[0].char == '.' and char_box.char != '.':
             return None
+        if len(char_boxes) == 1 and char_boxes[0].char in "'‘’“\"" and not char_box.char.isalpha():
+            return None
         elif char_box.char == ' ':
             spaces.append(CharBox(' ', Box(Pixel(x, y), Pixel(x + font.width, y + font.height)), is_bold))
             exploded = all(char_box.char == ' ' for char_box in char_boxes[1::2])
@@ -121,7 +123,7 @@ def get_text_line(start: Pixel, image: SimpleImage, font: Font) -> TextLine | No
                 spaces = []
             char_boxes.append(char_box)
             is_bold = char_box.is_bold
-    if len(char_boxes) <= 2 and all(char_box.char in "\",.'‘’“”|-/" for char_box in char_boxes):
+    if len(char_boxes) <= 2 and all(char_box.char in "\",.'‘’“”|-/·•" for char_box in char_boxes):
         return
     if len(char_boxes) >= 5 and all(char_box.char == ' ' for char_box in char_boxes[1::2]):
         char_boxes = char_boxes[0::2]
