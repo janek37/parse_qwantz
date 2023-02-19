@@ -165,6 +165,7 @@ def match_above_or_below(unmatched_blocks: list[TextBlock], block_matches: dict[
                         closest = characters
                         best_distance = distance
         if closest:
+            logger.warning("Matching disconnected blocks")
             block_matches[unmatched_block] = closest
 
 
