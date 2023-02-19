@@ -7,15 +7,11 @@ from parse_qwantz.text_lines import TextLine
 
 logger = logging.getLogger()
 
-Character_s = Character | tuple[Character, Character]
-
-MatchDict = dict[TextBlock, Character_s]
-
 
 def match_blocks(
     line_matches: Iterable[tuple[Target, Target]], text_blocks: list[TextBlock]
-) -> tuple[MatchDict, list[TextBlock], list[tuple[TextLine, TextLine]]]:
-    block_matches: dict[TextBlock, tuple[Character_s, TextLine]] = {}
+) -> tuple[dict[TextBlock, list[Character]], list[TextBlock], list[tuple[TextLine, TextLine]]]:
+    block_matches: dict[TextBlock, tuple[list[Character], TextLine]] = {}
     blocks_by_line: dict[TextLine, TextBlock] = {line: block for block in text_blocks for line in block.lines}
     neighbors: list[tuple[TextLine, TextLine]] = []
     for target1, target2 in line_matches:
@@ -25,11 +21,13 @@ def match_blocks(
             character, line = (target1, target2) if isinstance(target1, Character) else (target2, target1)
             block = blocks_by_line[line]
             if block not in block_matches:
-                block_matches[block] = (character, line)
+                block_matches[block] = ([character], line)
             else:
-                prev_character, prev_line = block_matches[block]
+                prev_characters, prev_line = block_matches[block]
                 if prev_line == line:
-                    block_matches[block] = ((prev_character, character), line)
+                    if len(prev_characters) == 2:
+                        logger.warning("More than two characters share a line")
+                    block_matches[block] = (prev_characters + [character], line)
                 else:
                     block1, block2 = block.split(prev_line, line)
                     logger.warning(
@@ -40,8 +38,8 @@ def match_blocks(
                     for b2line in block2.lines:
                         blocks_by_line[b2line] = block2
                     del block_matches[block]
-                    block_matches[block1] = (prev_character, prev_line)
-                    block_matches[block2] = (character, line)
+                    block_matches[block1] = (prev_characters, prev_line)
+                    block_matches[block2] = ([character], line)
     while neighbors:
         neighbors_left = []
         for line1, line2 in neighbors:
@@ -53,10 +51,10 @@ def match_blocks(
                 for b2line in block2.lines:
                     blocks_by_line[b2line] = block2
                 if block in block_matches:
-                    character, line = block_matches[block]
+                    characters, line = block_matches[block]
                     del block_matches[block]
-                    block_matches[block1] = (character, line)
-                    block_matches[block2] = (character, line)
+                    block_matches[block1] = (characters, line)
+                    block_matches[block2] = (characters, line)
             else:
                 block1 = blocks_by_line[line1]
                 block2 = blocks_by_line[line2]
@@ -70,6 +68,6 @@ def match_blocks(
             logger.warning(f"Unmatched connected text lines: {neighbors}")
             break
         neighbors = neighbors_left
-    final_block_matches = {block_id: character for block_id, (character, line) in block_matches.items()}
+    final_block_matches = {block_id: characters for block_id, (characters, line) in block_matches.items()}
     text_blocks = list(set(blocks_by_line.values()))
     return final_block_matches, text_blocks, neighbors

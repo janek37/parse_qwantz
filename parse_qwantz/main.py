@@ -12,7 +12,7 @@ from parse_qwantz.colors import Color
 from parse_qwantz.lines import Line
 from parse_qwantz.text_blocks import get_text_blocks, TextBlock
 from parse_qwantz.elements import get_elements
-from parse_qwantz.match_blocks import match_blocks, Character_s, MatchDict
+from parse_qwantz.match_blocks import match_blocks
 from parse_qwantz.match_lines import match_lines, Character, OFF_PANEL
 from parse_qwantz.match_thought import match_thought
 from parse_qwantz.pixels import Pixel
@@ -77,7 +77,13 @@ def parse_qwantz(image: Image, debug: bool) -> Iterable[list[str]]:
 
 def match_stuff(
     characters: list[Character], image: SimpleImage, lines: list[Line], text_lines: list[TextLine], thoughts: list[Box]
-) -> tuple[list[TextBlock], MatchDict, MatchDict, list[tuple[TextLine, TextLine]], list[Line]]:
+) -> tuple[
+    list[TextBlock],
+    dict[TextBlock, list[Character]],
+    dict[TextBlock, Character],
+    list[tuple[TextLine, TextLine]],
+    list[Line]
+]:
     text_blocks = sorted(get_text_blocks(text_lines, image), key=lambda b: (b.end.y, b.end.x))
     line_matches, unmatched_lines = match_lines(lines, text_blocks, characters, image)
     block_matches, text_blocks, unmatched_neighbors = match_blocks(line_matches, text_blocks)
@@ -93,19 +99,20 @@ def match_stuff(
 
 
 def get_script_lines(
-    text_blocks: list[TextBlock], block_matches: MatchDict, thought_matches: MatchDict
+    text_blocks: list[TextBlock],
+    block_matches: dict[TextBlock, list[Character]],
+    thought_matches: dict[TextBlock, Character]
 ) -> Iterable[str]:
     for block in text_blocks:
-        if god_or_devil := handle_god_and_devil(block, block_matches.get(block) == OFF_PANEL):
-            block_matches[block] = god_or_devil
+        if god_or_devil := handle_god_and_devil(block, block_matches.get(block) == [OFF_PANEL]):
+            block_matches[block] = [god_or_devil]
         if block in block_matches:
-            character = block_matches[block]
-            if isinstance(character, tuple):
-                yield f"{character[0]} and {character[1]}: {block.content(include_font_name=True)}"
-            elif character.name in ('God', 'Devil'):
-                yield f"{character}: {block.content(mark_bold=False)}"
+            characters = block_matches[block]
+            if god_or_devil:
+                content = block.content(mark_bold=False)
             else:
-                yield f"{character}: {block.content(include_font_name=True)}"
+                content = block.content(include_font_name=True)
+            yield f"{' and '.join(ch.name for ch in characters)}: {content}"
         elif block in thought_matches:
             character = thought_matches[block]
             yield f"{character}: (thinks) {block.content()}"
@@ -143,31 +150,32 @@ def handle_debug(image, text_blocks, unmatched_shapes, unmatched_neighbors, unma
     image.show()
 
 
-def match_above_or_below(unmatched_blocks: list[TextBlock], block_matches: dict[TextBlock, Character_s]) -> None:
+def match_above_or_below(unmatched_blocks: list[TextBlock], block_matches: dict[TextBlock, list[Character]]) -> None:
     for unmatched_block in unmatched_blocks:
         box = unmatched_block.box
         closest = None
         best_distance = None
         if not unmatched_block.is_bold:
-            for block, character in block_matches.items():
+            for block, characters in block_matches.items():
                 other_box = block.box
                 if get_interval_distance((box.left, box.right), (other_box.left, other_box.right)) == 0:
                     distance = max(other_box.top - box.bottom, box.top - other_box.bottom)
                     line_height = max(unmatched_block.font.height, block.font.height)
                     if distance < line_height * 2 and (best_distance is None or distance < best_distance):
-                        closest = character
+                        closest = characters
                         best_distance = distance
         if closest:
             block_matches[unmatched_block] = closest
 
 
-def handle_god_and_devil(block: TextBlock, is_off_panel: bool):
+def handle_god_and_devil(block: TextBlock, is_off_panel: bool) -> Character | None:
     if block.color == Color.RED:
         if not is_off_panel:
             logger.warning('Red block not off-panel')
-        if not block.is_bold:
+        elif not block.is_bold:
             logger.warning('Red block not bold')
-        return Character.from_name('Devil')
+        else:
+            return Character.from_name('Devil')
     elif is_off_panel and block.is_bold:
         return Character.from_name('God')
 
