@@ -72,6 +72,7 @@ def get_text_line(start: Pixel, image: SimpleImage, font: Font) -> TextLine | No
         return None
     char_boxes = [char_box]
     spaces = []
+    short_space = False
     is_bold = char_box.is_bold
     x, y = start
     while True:
@@ -108,6 +109,8 @@ def get_text_line(start: Pixel, image: SimpleImage, font: Font) -> TextLine | No
         if len(char_boxes) == 1 and char_boxes[0].char in "'‘’“\"" and not char_box.char.isalpha():
             return None
         elif char_box.char == ' ':
+            if char_box.box.width < font.width:
+                short_space = True
             spaces.append(CharBox(' ', Box(Pixel(x, y), Pixel(x + font.width, y + font.height)), is_bold))
             exploded = all(char_box.char == ' ' for char_box in char_boxes[1::2])
             after_period = char_boxes[-1].char in '.,?!"'
@@ -121,6 +124,9 @@ def get_text_line(start: Pixel, image: SimpleImage, font: Font) -> TextLine | No
             if spaces:
                 char_boxes.extend(spaces)
                 spaces = []
+                if short_space:
+                    logger.warning(f'Short space after {"".join(cb.char for cb in char_boxes)}: {char_box.box.width}')
+                    short_space = False
             char_boxes.append(char_box)
             is_bold = char_box.is_bold
     if len(char_boxes) <= 2 and all(char_box.char in "\",.'‘’“”|-/·•" for char_box in char_boxes):
