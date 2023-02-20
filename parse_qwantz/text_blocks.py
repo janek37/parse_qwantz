@@ -109,32 +109,8 @@ def get_text_blocks(text_lines: list[TextLine], image: SimpleImage) -> Iterable[
         font = text_lines[0].font
         new_lines: list[TextLine] = []
         for text_line in text_lines[1:]:
-            append = False
-            bond_strength = 0
-            if text_line.font == font:
-                text_box = text_line.box()
-                previous_line = new_block[-1]
-                bold_mismatch = previous_line.is_bold and not text_line.contains_bold
-                if not bold_mismatch:
-                    previous_box = previous_line.box()
-                    intervals_intersect = get_interval_distance(
-                        (text_box.left, text_box.right),
-                        (previous_box.left, previous_box.right),
-                    ) == 0
-                    ceiling = previous_box.bottom
-                    previous_height = previous_line.font.height
-                    previous_width = previous_line.font.width
-                    if ceiling - 1 <= text_box.top <= ceiling + previous_height // 6 and intervals_intersect:
-                        if previous_box.left == text_box.left:
-                            bond_strength += 5
-                        elif (previous_box.left - text_box.left) % previous_width == 0:
-                            bond_strength += 3
-                        if text_box.top <= ceiling:
-                            bond_strength += 10
-                        if text_box.top >= ceiling + previous_height:
-                            bond_strength -= 10
-                        append = True
-            if append:
+            bond_strength = fit_to_block(text_line, new_block[-1], font)
+            if bond_strength is not None:
                 new_block.append(text_line)
                 bond_strengths.append(bond_strength)
             else:
@@ -143,3 +119,32 @@ def get_text_blocks(text_lines: list[TextLine], image: SimpleImage) -> Iterable[
         found_pixel = new_block[0].find_pixel(image)
         color = image.pixels[found_pixel] if found_pixel else Color.WHITE
         yield TextBlock(new_block, bond_strengths, color, font)
+
+
+def fit_to_block(text_line: TextLine, previous_line: TextLine, font: Font) -> int | None:
+    if text_line.font != font:
+        return None
+    text_box = text_line.box()
+    if previous_line.is_bold and not text_line.contains_bold:
+        return None
+    previous_box = previous_line.box()
+    if get_interval_distance(
+        (text_box.left, text_box.right),
+        (previous_box.left, previous_box.right),
+    ) != 0:
+        return None
+    ceiling = previous_box.bottom
+    previous_height = previous_line.font.height
+    previous_width = previous_line.font.width
+    if ceiling - 1 <= text_box.top <= ceiling + previous_height // 6:
+        bond_strength = 0
+        if previous_box.left == text_box.left:
+            bond_strength += 5
+        elif (previous_box.left - text_box.left) % previous_width == 0:
+            bond_strength += 3
+        if text_box.top <= ceiling:
+            bond_strength += 10
+        if text_box.top >= ceiling + previous_height:
+            bond_strength -= 10
+        return bond_strength
+    return None
