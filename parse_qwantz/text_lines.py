@@ -2,6 +2,7 @@ import logging
 from functools import cached_property
 
 from dataclasses import dataclass
+from itertools import chain
 
 from parse_qwantz.box import Box
 from parse_qwantz.fonts import Font, CharBox
@@ -134,3 +135,47 @@ def get_text_line(start: Pixel, image: SimpleImage, font: Font) -> TextLine | No
     if len(char_boxes) >= 5 and all(char_box.char == ' ' for char_box in char_boxes[1::2]):
         char_boxes = char_boxes[0::2]
     return TextLine(char_boxes, font)
+
+
+def cleanup_text_lines(text_lines: list[TextLine], image: SimpleImage) -> list[TextLine]:
+    grouped_lines = _group_text_lines(text_lines)
+    return sorted(
+        chain.from_iterable(_join_text_lines(group, image) for group in grouped_lines),
+        key=lambda l: (l.start.y, l.start.x)
+    )
+
+
+def _group_text_lines(text_lines: list[TextLine]) -> list[list[TextLine]]:
+    grouped_text_lines = []
+    used: set[TextLine] = set()
+    for text_line in sorted(text_lines, key=lambda l: l.start):
+        if text_line in used:
+            continue
+        used.add(text_line)
+        group = [text_line]
+        box = text_line.box()
+        for other_text_line in text_lines:
+            if other_text_line in used:
+                continue
+            other_box = other_text_line.box()
+            if abs(box.top - other_box.top) <= 1 or abs(box.bottom - other_box.bottom) <= 1:
+                distance = other_box.left - box.right
+                if -1 <= distance <= max(group[-1].font.width, other_text_line.font.width) * 2 + 1:
+                    group.append(other_text_line)
+                    used.add(other_text_line)
+        grouped_text_lines.append(group)
+    return grouped_text_lines
+
+
+def _join_text_lines(text_lines: list[TextLine], image: SimpleImage) -> list[TextLine]:
+    if len(text_lines) == 1:
+        return text_lines
+    for font in (line.font for line in text_lines):
+        if font == text_lines[0].font:
+            continue
+        first_pixel = text_lines[0].find_pixel(image)
+        if joined_text_line := try_text_line(first_pixel, image, font):
+            joined_box = joined_text_line.box()
+            if abs(joined_box.right - text_lines[-1].box().right) < font.width // 2:
+                return [joined_text_line]
+    return text_lines

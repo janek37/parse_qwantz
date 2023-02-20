@@ -3,7 +3,7 @@ from logging import getLogger
 from parse_qwantz.box import Box
 from parse_qwantz.fonts import ALL_FONTS
 from parse_qwantz.lines import Line, get_line
-from parse_qwantz.text_lines import TextLine, try_text_line
+from parse_qwantz.text_lines import TextLine, try_text_line, cleanup_text_lines
 from parse_qwantz.detect_thought import get_thought
 from parse_qwantz.pixels import Pixel
 from parse_qwantz.shape import get_shape
@@ -53,7 +53,7 @@ def get_elements(image: SimpleImage) -> tuple[list[Line], list[Box], list[TextLi
                 if len(unmatched_pixels) == 5:
                     logger.warning("At least five unmatched objects detected, aborting")
                     break
-    return lines, thoughts, sorted(text_lines, key=lambda l: l.start), unmatched
+    return lines, thoughts, cleanup_text_lines(text_lines, image), unmatched
 
 
 def remove_boxes(sorted_pixels: list[Pixel], boxes: list[Box]) -> list[Pixel]:

@@ -1,13 +1,13 @@
 import logging
 import re
-from itertools import chain, groupby
+from itertools import groupby
 from typing import Iterable, NamedTuple
 
 from parse_qwantz.box import Box, get_interval_distance
 from parse_qwantz.fonts import Font, CharBox
 from parse_qwantz.colors import Color
 from parse_qwantz.hyphens import disambiguate_hyphen
-from parse_qwantz.text_lines import TextLine, try_text_line
+from parse_qwantz.text_lines import TextLine
 from parse_qwantz.pixels import Pixel
 from parse_qwantz.simple_image import SimpleImage
 
@@ -103,11 +103,6 @@ def make_bold_excluding_trailing_spaces(s: str) -> str:
 
 
 def get_text_blocks(text_lines: list[TextLine], image: SimpleImage) -> Iterable[TextBlock]:
-    grouped_lines = group_text_lines(text_lines)
-    text_lines = sorted(
-        chain.from_iterable(join_text_lines(group, image) for group in grouped_lines),
-        key=lambda l: (l.start.y, l.start.x)
-    )
     while text_lines:
         new_block = [text_lines[0]]
         bond_strengths = []
@@ -148,39 +143,3 @@ def get_text_blocks(text_lines: list[TextLine], image: SimpleImage) -> Iterable[
         found_pixel = new_block[0].find_pixel(image)
         color = image.pixels[found_pixel] if found_pixel else Color.WHITE
         yield TextBlock(new_block, bond_strengths, color, font)
-
-
-def group_text_lines(text_lines: list[TextLine]) -> list[list[TextLine]]:
-    grouped_text_lines = []
-    used: set[TextLine] = set()
-    for text_line in text_lines:
-        if text_line in used:
-            continue
-        used.add(text_line)
-        group = [text_line]
-        box = text_line.box()
-        for other_text_line in text_lines:
-            if other_text_line in used:
-                continue
-            other_box = other_text_line.box()
-            if abs(box.top - other_box.top) <= 1 or abs(box.bottom - other_box.bottom) <= 1:
-                distance = other_box.left - box.right
-                if -1 <= distance <= max(group[-1].font.width, other_text_line.font.width) * 2 + 1:
-                    group.append(other_text_line)
-                    used.add(other_text_line)
-        grouped_text_lines.append(group)
-    return grouped_text_lines
-
-
-def join_text_lines(text_lines: list[TextLine], image: SimpleImage) -> list[TextLine]:
-    if len(text_lines) == 1:
-        return text_lines
-    for font in (line.font for line in text_lines):
-        if font == text_lines[0].font:
-            continue
-        first_pixel = text_lines[0].find_pixel(image)
-        if joined_text_line := try_text_line(first_pixel, image, font):
-            joined_box = joined_text_line.box()
-            if abs(joined_box.right - text_lines[-1].box().right) < font.width // 2:
-                return [joined_text_line]
-    return text_lines
