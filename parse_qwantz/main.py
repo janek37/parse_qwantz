@@ -54,7 +54,7 @@ CHARACTERS = [
         Character('T-Rex', Box(Pixel(40, 141), Pixel(90, 180))),
         Character('Utahraptor', Box(Pixel(200, 80), Pixel(233, 145))),
     ],
-    [Character('T-Rex', Box(Pixel(74, 64), Pixel(120, 195)))],
+    [Character('T-Rex', Box(Pixel(74, 64), Pixel(120, 129)))],
 ]
 
 
