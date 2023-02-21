@@ -138,29 +138,35 @@ def get_text_line(start: Pixel, image: SimpleImage, font: Font) -> TextLine | No
 
 
 def cleanup_text_lines(text_lines: list[TextLine], image: SimpleImage) -> list[TextLine]:
-    grouped_lines = _group_text_lines(text_lines)
+    grouped_lines = group_text_lines(sorted(text_lines, key=lambda l: l.start))
     return sorted(
         chain.from_iterable(_join_text_lines(group, image) for group in grouped_lines),
         key=lambda l: (l.start.y, l.start.x)
     )
 
 
-def _group_text_lines(text_lines: list[TextLine]) -> list[list[TextLine]]:
+def group_text_lines(
+    text_lines: list[TextLine], same_font: bool = False, long_space: bool = False
+) -> list[list[TextLine]]:
     grouped_text_lines = []
     used: set[TextLine] = set()
-    for text_line in sorted(text_lines, key=lambda l: l.start):
+    for text_line in text_lines:
         if text_line in used:
             continue
         used.add(text_line)
         group = [text_line]
-        box = text_line.box()
         for other_text_line in text_lines:
             if other_text_line in used:
                 continue
+            if same_font and other_text_line.font != text_line.font:
+                continue
+            box = group[-1].box()
             other_box = other_text_line.box()
             if abs(box.top - other_box.top) <= 1 or abs(box.bottom - other_box.bottom) <= 1:
                 distance = other_box.left - box.right
-                if -1 <= distance <= max(group[-1].font.width, other_text_line.font.width) * 2 + 1:
+                width = max(group[-1].font.width, other_text_line.font.width)
+                max_distance = width * 3 if long_space else width * 2 + 1
+                if -1 <= distance <= max_distance:
                     group.append(other_text_line)
                     used.add(other_text_line)
         grouped_text_lines.append(group)
