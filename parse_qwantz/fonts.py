@@ -24,6 +24,7 @@ class CharBox(NamedTuple):
     char: str
     box: Box
     is_bold: bool
+    is_italic: bool
 
     def pixels(self, italic_offsets: set[int]):
         if not italic_offsets:
@@ -43,8 +44,8 @@ class CharBox(NamedTuple):
             return pixels
 
     @classmethod
-    def space(cls, is_bold: bool) -> "CharBox":
-        return cls(char=' ', box=Box.dummy(), is_bold=is_bold)
+    def space(cls, is_bold: bool, is_italic: bool) -> "CharBox":
+        return cls(char=' ', box=Box.dummy(), is_bold=is_bold, is_italic=is_italic)
 
 
 @dataclass
@@ -55,6 +56,7 @@ class Font:
     shapes: dict[int, str]
     bold_shapes: dict[int, str]
     italic_offsets: set[int]
+    group: str
 
     def get_char(
         self,
@@ -89,21 +91,22 @@ class Font:
         width = self.width + 1 if is_bold else self.width
         bottom_right = Pixel(pixel.x + width, pixel.y + self.height)
         bitmask = self._get_bitmask(pixel, image, is_bold)
+        is_italic = bool(self.italic_offsets)
         if char := self._get_char_by_bitmask(bitmask, is_bold, is_first):
-            return CharBox(char, Box(pixel, bottom_right), is_bold)
+            return CharBox(char, Box(pixel, bottom_right), is_bold, is_italic)
 
         for cut_bottom in range(1, 3):
             cut_bitmask = bitmask & -(1 << (width * cut_bottom))
             if cut_bitmask == 0 or cut_bitmask & -cut_bitmask > (1 << (width * (cut_bottom + 1))):
                 if char := self._get_char_by_bitmask(cut_bitmask, is_bold, is_first):
                     right, bottom = bottom_right
-                    return CharBox(char, Box(pixel, Pixel(right, bottom - cut_bottom)), is_bold)
+                    return CharBox(char, Box(pixel, Pixel(right, bottom - cut_bottom)), is_bold, is_italic)
 
         for cut_top in range(1, 2):
             cut_bitmask = bitmask & ((1 << (width * (self.height - cut_top))) - 1)
             if cut_bitmask == 0 or cut_bitmask < (1 << (width * (self.height - cut_top - 1))):
                 if char := self._get_char_by_bitmask(cut_bitmask, is_bold, is_first):
-                    return CharBox(char, Box(Pixel(pixel.x, pixel.y + cut_top), bottom_right), is_bold)
+                    return CharBox(char, Box(Pixel(pixel.x, pixel.y + cut_top), bottom_right), is_bold, is_italic)
 
         if expect_space:
             right, bottom = bottom_right
@@ -113,7 +116,7 @@ class Font:
                     if allow_short_space:
                         min_space_width -= 1
                     if x >= pixel.x + min_space_width:
-                        return CharBox(' ', Box(pixel, Pixel(x, bottom)), is_bold)
+                        return CharBox(' ', Box(pixel, Pixel(x, bottom)), is_bold, is_italic)
                     break
 
     def _get_bitmask(self, pixel: Pixel, image: SimpleImage, is_bold: bool) -> int:
@@ -140,6 +143,7 @@ class Font:
         file_path_context_manager: ContextManager[Path],
         name: str,
         italic_offsets: set[int],
+        group: str,
         shifted_variants: dict[str, int] | None = None,
     ) -> "Font":
         with file_path_context_manager as file_path:
@@ -170,6 +174,7 @@ class Font:
             shapes,
             get_bold_shapes(width, height, shapes),
             italic_offsets,
+            group
         )
 
 
@@ -227,6 +232,7 @@ ALL_FONTS = [
         name=name,
         italic_offsets=set(),
         shifted_variants=SHIFTED_VARIANTS.get(size, {}),
+        group=f'LC{size}'
     )
     for size, name in FONT_SIZES
 ]
@@ -237,5 +243,6 @@ ALL_FONTS.append(
         name='Italic',
         italic_offsets={3, 5, 9, 11},
         shifted_variants={},
+        group='LC13',
     )
 )

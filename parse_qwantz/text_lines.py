@@ -28,7 +28,7 @@ class TextLine:
     def end(self) -> Pixel:
         return Pixel(
             x=self.char_boxes[-1].box.right + len(self.font.italic_offsets),
-            y=max(y for _, (_, (_, y)), _ in self.char_boxes)
+            y=max(char_box.box.bottom for char_box in self.char_boxes)
         )
 
     @cached_property
@@ -39,6 +39,10 @@ class TextLine:
     @cached_property
     def is_bold(self) -> bool:
         return all(char_box.is_bold for char_box in self.char_boxes)
+
+    @cached_property
+    def is_italic(self) -> bool:
+        return bool(self.font.italic_offsets)
 
     @property
     def contains_bold(self) -> bool:
@@ -75,6 +79,7 @@ def get_text_line(start: Pixel, image: SimpleImage, font: Font) -> TextLine | No
     spaces = []
     short_space = False
     is_bold = char_box.is_bold
+    is_italic = char_box.is_italic
     x, y = start
     while True:
         x += char_box.box.width
@@ -112,7 +117,7 @@ def get_text_line(start: Pixel, image: SimpleImage, font: Font) -> TextLine | No
         elif char_box.char == ' ':
             if char_box.box.width < font.width:
                 short_space = True
-            spaces.append(CharBox(' ', Box(Pixel(x, y), Pixel(x + font.width, y + font.height)), is_bold))
+            spaces.append(CharBox(' ', Box(Pixel(x, y), Pixel(x + font.width, y + font.height)), is_bold, is_italic))
             exploded = all(char_box.char == ' ' for char_box in char_boxes[1::2])
             after_period = char_boxes[-1].char in '.,?!"'
             if not exploded and len(spaces) > 1 and not after_period:
@@ -130,6 +135,7 @@ def get_text_line(start: Pixel, image: SimpleImage, font: Font) -> TextLine | No
                     short_space = False
             char_boxes.append(char_box)
             is_bold = char_box.is_bold
+            is_italic = char_box.is_italic
     if len(char_boxes) <= 2 and all(char_box.char in "\",.'‘’“”|-/·•" for char_box in char_boxes):
         return
     if len(char_boxes) >= 5 and all(char_box.char == ' ' for char_box in char_boxes[1::2]):
@@ -158,7 +164,7 @@ def group_text_lines(
         for other_text_line in text_lines:
             if other_text_line in used:
                 continue
-            if same_font and other_text_line.font != text_line.font:
+            if same_font and other_text_line.font.group != text_line.font.group:
                 continue
             box = group[-1].box()
             other_box = other_text_line.box()

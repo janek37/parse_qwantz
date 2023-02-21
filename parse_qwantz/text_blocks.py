@@ -50,7 +50,7 @@ class TextBlock(NamedTuple):
         for row in self.rows:
             if char_boxes:
                 if char_boxes[-1].char != '-' or char_boxes[-2].char in ' -':
-                    char_boxes.append(CharBox.space(is_bold=char_boxes[-1].is_bold))
+                    char_boxes.append(CharBox.space(is_bold=char_boxes[-1].is_bold, is_italic=char_boxes[-1].is_italic))
                 else:
                     last_words = ''
                     for char_box in char_boxes[-2::-1]:
@@ -65,25 +65,23 @@ class TextBlock(NamedTuple):
                     else:
                         last_words += '-'
                     logger.info(f"Line ending with hyphen ({last_words}/{next_words})")
-            previous_box = None
+            previous_line = None
             for line in row:
-                if previous_box and line.box().left - previous_box.right >= line.font.width // 2:
-                    char_boxes.append(CharBox.space(is_bold=line.is_bold))
+                if previous_line and line.box().left - previous_line.box().right >= line.font.width // 2:
+                    char_boxes.append(CharBox.space(is_bold=previous_line.is_bold, is_italic=previous_line.is_italic))
                 char_boxes.extend(line.char_boxes)
-                previous_box = line.box()
+                previous_line = line
 
-        grouped_char_boxes = groupby(char_boxes, key=lambda cb: cb.is_bold and mark_bold)
+        grouped_char_boxes = groupby(char_boxes, key=lambda cb: (cb.is_bold and mark_bold, cb.is_italic))
         text_and_weight = (
-            (''.join(char_box.char for char_box in group), is_bold)
-            for is_bold, group in grouped_char_boxes
+            (''.join(char_box.char for char_box in group), is_bold, is_italic)
+            for (is_bold, is_italic), group in grouped_char_boxes
         )
         content = ''.join(
-            make_bold_excluding_trailing_spaces(content) if is_bold else content
-            for content, is_bold in text_and_weight
+            mark_excluding_trailing_spaces(content, '**' if is_bold else '_') if is_bold or is_italic else content
+            for content, is_bold, is_italic in text_and_weight
         )
         content = content.replace('  ', ' ')
-        if self.font.italic_offsets:
-            content = f'_{content}_'
         if include_font_name and self.font.name not in ('Regular', 'Italic'):
             content = f"({self.font.name.lower()}) {content}"
         return content
@@ -107,9 +105,9 @@ class TextBlock(NamedTuple):
         return id(self)
 
 
-def make_bold_excluding_trailing_spaces(s: str) -> str:
+def mark_excluding_trailing_spaces(s: str, marker: str) -> str:
     trailing_spaces = re.search(r" *$", s).group()
-    return f'**{s.rstrip()}**{trailing_spaces}'
+    return f'{marker}{s.rstrip()}{marker}{trailing_spaces}'
 
 
 def get_text_blocks(text_lines: list[TextLine], image: SimpleImage) -> Iterable[TextBlock]:
@@ -133,7 +131,7 @@ def get_text_blocks(text_lines: list[TextLine], image: SimpleImage) -> Iterable[
 
 
 def fit_to_block(line_group: list[TextLine], previous_group: list[TextLine], font: Font) -> int | None:
-    if line_group[0].font != font:
+    if line_group[0].font.group != font.group:
         return None
     first_box = line_group[0].box()
     last_box = line_group[-1].box()
