@@ -3,6 +3,7 @@ from functools import cached_property
 
 from dataclasses import dataclass
 from itertools import chain
+from typing import Iterable
 
 from parse_qwantz.box import Box
 from parse_qwantz.fonts import Font, CharBox
@@ -72,29 +73,27 @@ def try_text_line(start: Pixel, image: SimpleImage, font: Font) -> TextLine | No
 
 
 def get_text_line(start: Pixel, image: SimpleImage, font: Font) -> TextLine | None:
-    char_box = font.get_char(start, image=image, expect_space=False, is_first=True)
+    char_box = font.get_char(start, image=image, is_first=True)
     if char_box is None or char_box.char == ' ':
         return None
     char_boxes = [char_box]
     spaces = []
-    short_space = False
     is_bold = char_box.is_bold
     is_italic = char_box.is_italic
     x, y = start
     while True:
-        x += char_box.box.width
-        if x > image.width - font.width:
+        x = char_box.box.right
+        if x >= image.width:
             break
-        allow_short_space = not spaces and char_boxes[-1].char == '.'
-        char_box = font.get_char(Pixel(x, y), image, expect_bold=is_bold, allow_short_space=allow_short_space)
+        char_box = font.get_char(Pixel(x, y), image)
         if char_box is None:
             if spaces:
-                offsets = ((-2, 0), (-1, 0), (1, 0), (0, -1), (0, 1))
+                offsets = ((0, -1), (0, 1))
             else:
-                offsets = ((-1, 0), (1, 0))
+                offsets = ()
             for offset in offsets:
                 off_x, off_y = offset
-                char_box = font.get_char(Pixel(x + off_x, y + off_y), image, expect_space=False)
+                char_box = font.get_char(Pixel(x + off_x, y + off_y), image)
                 if char_box and char_box.char == ' ':
                     char_box = None
                 if char_box is not None:
@@ -115,8 +114,6 @@ def get_text_line(start: Pixel, image: SimpleImage, font: Font) -> TextLine | No
         if len(char_boxes) == 1 and char_boxes[0].char in "'‘’“\"" and not char_box.char.isalpha():
             return None
         elif char_box.char == ' ':
-            if char_box.box.width < font.width:
-                short_space = True
             spaces.append(CharBox(' ', Box(Pixel(x, y), Pixel(x + font.width, y + font.height)), is_bold, is_italic))
             exploded = all(char_box.char == ' ' for char_box in char_boxes[1::2])
             after_period = char_boxes[-1].char in '.,?!"'
@@ -130,17 +127,29 @@ def get_text_line(start: Pixel, image: SimpleImage, font: Font) -> TextLine | No
             if spaces:
                 char_boxes.extend(spaces)
                 spaces = []
-                if short_space:
-                    logger.warning(f'Short space after {"".join(cb.char for cb in char_boxes)}: {char_box.box.width}')
-                    short_space = False
             char_boxes.append(char_box)
             is_bold = char_box.is_bold
             is_italic = char_box.is_italic
-    if len(char_boxes) <= 2 and all(char_box.char in "\",.'‘’“”|-/·•" for char_box in char_boxes):
+    if len(char_boxes) == 1 and not char_boxes[0].char.isalpha() and char_boxes[0].char not in '!?':
         return
+    if len(char_boxes) == 2 and all(char_box.char in "\",.'‘’“”|-/·•" for char_box in char_boxes):
+        return
+    char_boxes = list(adjust_spaces(char_boxes))
     if len(char_boxes) >= 5 and all(char_box.char == ' ' for char_box in char_boxes[1::2]):
         char_boxes = char_boxes[0::2]
     return TextLine(char_boxes, font)
+
+
+def adjust_spaces(char_boxes: list[CharBox]) -> Iterable[CharBox]:
+    for char_box, next_char_box in zip(char_boxes, chain(char_boxes[1:], [None])):
+        if char_box.char == ' ' and char_box.box.right > next_char_box.box.left:
+            new_box = Box(char_box.box.top_left, Pixel(next_char_box.box.left, char_box.box.bottom))
+            if new_box.width > 2:
+                # if new_box.width < width:
+                #     logger.warning(f'Short space after {"".join(cb.char for cb in char_boxes)}: {char_box.box.width}')
+                yield char_box.with_box(new_box)
+        else:
+            yield char_box
 
 
 def cleanup_text_lines(text_lines: list[TextLine], image: SimpleImage) -> list[TextLine]:
