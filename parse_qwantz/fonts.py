@@ -1,9 +1,8 @@
-import itertools
 from dataclasses import dataclass
 from importlib.resources import as_file, files
 from itertools import islice, chain
 from pathlib import Path
-from typing import NamedTuple, ContextManager, Iterator
+from typing import NamedTuple, ContextManager, Iterator, ForwardRef, Union
 
 from PIL import Image
 
@@ -14,6 +13,8 @@ from parse_qwantz.simple_image import SimpleImage
 
 CHARS = """0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!"#$%&'()*+,-./:;<=>?@[]^{|}‘’“”·•™é"""
 FORBIDDEN_FIRST_CHARS = "%&)+/;=@]^|}”·™"
+
+ACCEPT = -1
 
 FONT_SIZES = [
     (13, 'Regular', 2, 1),
@@ -63,13 +64,17 @@ class CharInfo:
     right_padding: int
 
 
+FSA_BACKREF = ForwardRef("FSA")
+
+FSA = dict[int, Union[FSA_BACKREF, CharInfo]]
+
+
 @dataclass
 class Font:
     name: str
     width: int
     height: int
-    automaton: dict[tuple[int, int], int]
-    accepting_states: dict[int, CharInfo]
+    automaton: FSA
     initial_padding: int
     final_padding: int
     is_bold: bool
@@ -112,14 +117,14 @@ class Font:
                 if column != 0:
                     return CharBox(' ', Box(pixel, Pixel(x, pixel.y + self.height)), self.is_bold, is_italic)
         x0 = x
-        state = 0
+        state = self.automaton
         for x, column in chain([(x0, column)], columns):
-            if (state, column) not in self.automaton:
+            if column not in state:
                 return
-            state = self.automaton[(state, column)]
-            if state in self.accepting_states:
+            state = state[column]
+            if ACCEPT in state:
                 break
-        char_info = self.accepting_states[state]
+        char_info: CharInfo = state[ACCEPT]
         if is_first and char_info.char in FORBIDDEN_FIRST_CHARS:
             return
         return CharBox(
@@ -166,27 +171,26 @@ class Font:
         input_width = image.width // len(CHARS)
         output_width = input_width + 1 if is_bold else input_width
         height = image.height
-        automaton: dict[tuple[int, int], int] = {}
-        accepting_states: dict[int, CharInfo] = {}
-        state_counter = itertools.count(1)
+        automaton: FSA = {}
+        accepting_states: list[CharInfo] = []
         for i, char in enumerate(CHARS):
             columns = get_input_columns(i, image, input_width, height, italic_offsets, is_bold)
-            update_automaton(char, columns, automaton, accepting_states, output_width, state_counter)
+            if maybe_char_info := update_automaton(char, columns, automaton, output_width):
+                accepting_states.append(maybe_char_info)
             if height > 12:
                 if char not in 'gq[]':
                     columns = get_input_columns(i, image, input_width, height, italic_offsets, is_bold, cut_bottom=1)
-                    update_automaton(char, columns, automaton, accepting_states, output_width, state_counter)
+                    update_automaton(char, columns, automaton, output_width)
                 if char not in 'fl':
                     columns = get_input_columns(i, image, input_width, height, italic_offsets, is_bold, cut_top=1)
-                    update_automaton(char, columns, automaton, accepting_states, output_width, state_counter)
-        initial_padding = max(char_info.left_padding for char_info in accepting_states.values())
-        final_padding = max(char_info.right_padding for char_info in accepting_states.values())
+                    update_automaton(char, columns, automaton, output_width)
+        initial_padding = max(char_info.left_padding for char_info in accepting_states)
+        final_padding = max(char_info.right_padding for char_info in accepting_states)
         return cls(
             name,
             output_width,
             height,
             automaton,
-            accepting_states,
             initial_padding,
             final_padding,
             is_bold,
@@ -237,11 +241,9 @@ def get_column(
 def update_automaton(
     char: str,
     columns: list[int],
-    automaton: dict[tuple[int, int], int],
-    accepting_states: dict[int, CharInfo],
+    automaton: FSA,
     width: int,
-    state_counter: Iterator[int],
-) -> None:
+) -> CharInfo | None:
     x = 0
     while columns[x] == 0:
         x += 1
@@ -250,15 +252,14 @@ def update_automaton(
     while columns[x] == 0:
         x -= 1
     right_padding = width - 1 - x
-    state = 0
+    state = automaton
     for column in columns[left_padding:]:
-        if (state, column) not in automaton:
-            automaton[(state, column)] = next(state_counter)
-        state = automaton[(state, column)]
+        state = state.setdefault(column, {})
     # “ and ” look the same as " in some sizes,
     # but we prefer O than 0 when they look the same
-    if state not in accepting_states or char == "O":
-        accepting_states[state] = CharInfo(char, left_padding, right_padding)
+    if ACCEPT not in state or char == "O":
+        state[ACCEPT] = CharInfo(char, left_padding, right_padding)
+        return state[ACCEPT]
 
 
 ALL_FONTS = [
