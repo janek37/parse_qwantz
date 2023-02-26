@@ -41,7 +41,7 @@ def prepare_image(image: Image):
     palette = tuple(palette) if palette else None
     corner = Color.get_with_threshold(normalize_color(image.getpixel((2, 2)), palette))
     if corner == Color.WHITE:
-        # there's one-pixel shift in three comics: #3479, #3636: #3787
+        # there's one-pixel shift in three comics: #3479, #3636, #3787
         cropped = image.crop((0, 0, DIM[0] - 1, DIM[1]))
         image = ImageOps.pad(cropped, DIM, color="black", centering=(1, 0))
     for pixel, expected_color in SAMPLE:

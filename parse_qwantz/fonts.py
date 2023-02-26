@@ -15,7 +15,14 @@ from parse_qwantz.simple_image import SimpleImage
 CHARS = """0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!"#$%&'()*+,-./:;<=>?@[]^{|}‘’“”·•™é"""
 FORBIDDEN_FIRST_CHARS = "%&)+/;=@]^|}”·™"
 
-FONT_SIZES = [(13, 'Regular'), (12, 'Condensed'), (11, 'Small'), (10, 'Petite'), (9, 'Mini'), (8, 'Tiny')]
+FONT_SIZES = [
+    (13, 'Regular', 2, 1),
+    (12, 'Condensed', 0, 0),
+    (11, 'Small', 0, 0),
+    (10, 'Petite', 0, 0),
+    (9, 'Mini', 0, 0),
+    (8, 'Tiny', 0, 0),
+]
 
 
 class CharBox(NamedTuple):
@@ -68,6 +75,8 @@ class Font:
     is_bold: bool
     italic_offsets: set[int]
     group: str
+    max_cut_bottom: int
+    max_cut_top: int
 
     def get_char(
         self,
@@ -78,13 +87,13 @@ class Font:
         if char_box := self._get_char_box_from_columns(pixel, self._get_columns(pixel, image), is_first):
             return char_box
 
-        for cut_bottom in range(1, 3):
+        for cut_bottom in range(1, self.max_cut_bottom + 1):
             columns = self._get_columns(pixel, image, cut_bottom=cut_bottom)
             if char_box := self._get_char_box_from_columns(pixel, columns, is_first):
                 box = char_box.box
                 return char_box.with_box(Box(box.top_left, Pixel(box.right, box.bottom - cut_bottom)))
 
-        for cut_top in range(1, 2):
+        for cut_top in range(1, self.max_cut_top + 1):
             columns = self._get_columns(pixel, image, cut_top=cut_top)
             if char_box := self._get_char_box_from_columns(pixel, columns, is_first):
                 box = char_box.box
@@ -149,6 +158,8 @@ class Font:
         italic_offsets: set[int],
         is_bold: bool,
         group: str,
+        max_cut_bottom: int,
+        max_cut_top: int,
     ) -> "Font":
         with file_path_context_manager as file_path:
             image = SimpleImage.from_image(Image.open(file_path))
@@ -180,7 +191,9 @@ class Font:
             final_padding,
             is_bold,
             italic_offsets,
-            group
+            group,
+            max_cut_bottom,
+            max_cut_top,
         )
 
 
@@ -255,8 +268,10 @@ ALL_FONTS = [
         italic_offsets=set(),
         is_bold=is_bold,
         group=f'LC{size}',
+        max_cut_bottom=max_cut_bottom,
+        max_cut_top=max_cut_top,
     )
-    for size, name in FONT_SIZES
+    for size, name, max_cut_bottom, max_cut_top in FONT_SIZES
     for is_bold in (False, True)
 ]
 
@@ -267,5 +282,7 @@ ALL_FONTS.append(
         italic_offsets={3, 5, 9, 11},
         is_bold=False,
         group='LC13',
+        max_cut_bottom=0,
+        max_cut_top=0,
     )
 )
