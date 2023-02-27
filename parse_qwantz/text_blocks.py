@@ -67,7 +67,7 @@ class TextBlock(NamedTuple):
                     logger.info(f"Line ending with hyphen ({last_words}/{next_words})")
             previous_line = None
             for line in row:
-                if previous_line and line.box().left - previous_line.box().right >= line.font.width // 2:
+                if previous_line and line.box().left - previous_line.box().right >= line.font.space_width // 2:
                     char_boxes.append(CharBox.space(is_bold=previous_line.is_bold, is_italic=previous_line.is_italic))
                 char_boxes.extend(line.char_boxes)
                 previous_line = line
@@ -151,12 +151,12 @@ def fit_to_block(line_group: list[TextLine], previous_group: list[TextLine], fon
     ) != 0:
         return None
     previous_height = font.height
-    previous_width = font.width
+    previous_width = font.space_width
     if previous_bottom - 1 <= top <= previous_bottom + previous_height // 6:
         bond_strength = 0
         if previous_left == left:
             bond_strength += 5
-        elif (previous_left - left) % previous_width == 0:
+        elif (previous_left - left) % previous_width == 0 and font.is_mono:
             bond_strength += 3
         if top <= previous_bottom:
             bond_strength += 10

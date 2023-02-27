@@ -72,7 +72,7 @@ FSA = dict[int, Union[FSA_BACKREF, CharInfo]]
 @dataclass
 class Font:
     name: str
-    width: int
+    space_width: int
     height: int
     automaton: FSA
     initial_padding: int
@@ -82,6 +82,7 @@ class Font:
     group: str
     max_cut_bottom: int
     max_cut_top: int
+    is_mono: bool = NotImplemented
 
     def get_char(
         self,
@@ -143,7 +144,7 @@ class Font:
         cut_bottom: int = 0,
         cut_top: int = 0,
     ) -> Iterator[tuple[int, int]]:
-        for x in range(pixel.x, min(image.width + self.final_padding, pixel.x + self.width * 3)):
+        for x in range(pixel.x, min(image.width + self.final_padding, pixel.x + self.space_width * 3)):
             yield x, self._get_column(x, pixel.y, image, cut_bottom, cut_top)
 
     def _get_column(self, x: int, y: int, image: SimpleImage, cut_bottom: int, cut_top: int) -> int:
@@ -153,7 +154,10 @@ class Font:
         return self.name
 
     def __repr__(self):
-        return f"Font(name={self.name}, width={self.width}, height={self.height})"
+        return (
+            f"Font(name={self.name}, height={self.height}, "
+            f"is_bold={self.is_bold}, is_italic={bool(self.italic_offsets)})"
+        )
 
     @classmethod
     def from_file(
@@ -199,6 +203,10 @@ class Font:
             max_cut_bottom,
             max_cut_top,
         )
+
+
+class MonospaceFont(Font):
+    is_mono = True
 
 
 def get_input_columns(
@@ -263,7 +271,7 @@ def update_automaton(
 
 
 ALL_FONTS = [
-    Font.from_file(
+    MonospaceFont.from_file(
         file_path_context_manager=as_file(files(parse_qwantz).joinpath(f'img/regular{size}.png')),
         name=name,
         italic_offsets=set(),
@@ -277,7 +285,7 @@ ALL_FONTS = [
 ]
 
 ALL_FONTS.append(
-    Font.from_file(
+    MonospaceFont.from_file(
         file_path_context_manager=as_file(files(parse_qwantz).joinpath(f'img/italic13.png')),
         name='Italic',
         italic_offsets={3, 5, 9, 11},

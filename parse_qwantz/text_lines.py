@@ -64,7 +64,7 @@ class TextLine:
 def try_text_line(start: Pixel, image: SimpleImage, font: Font) -> TextLine | None:
     x0, y0 = start
     if font.italic_offsets:
-        max_x_offset = font.width - 3
+        max_x_offset = font.space_width - 3
     else:
         max_x_offset = 0
     max_y_offset = font.height - 1
@@ -113,7 +113,9 @@ def get_text_line(start: Pixel, image: SimpleImage, font: Font) -> TextLine | No
         if len(char_boxes) == 1 and char_boxes[0].char in "'‘’“\"" and not char_box.char.isalpha():
             return None
         elif char_box.char == ' ':
-            spaces.append(CharBox(' ', Box(Pixel(x, y), Pixel(x + font.width, y + font.height)), is_bold, is_italic))
+            spaces.append(
+                CharBox(' ', Box(Pixel(x, y), Pixel(x + font.space_width, y + font.height)), is_bold, is_italic)
+            )
             exploded = all(char_box.char == ' ' for char_box in char_boxes[1::2])
             after_period = char_boxes[-1].char in '.,?!"'
             if not exploded and len(spaces) > 1 and not after_period:
@@ -178,7 +180,7 @@ def group_text_lines(
             other_box = other_text_line.box()
             if abs(box.top - other_box.top) <= 1 or abs(box.bottom - other_box.bottom) <= 1:
                 distance = other_box.left - box.right
-                width = max(group[-1].font.width, other_text_line.font.width)
+                width = max(group[-1].font.space_width, other_text_line.font.space_width)
                 max_distance = width * 3 if long_space else width * 2 + 1
                 if -1 <= distance <= max_distance:
                     group.append(other_text_line)
@@ -196,6 +198,6 @@ def _join_text_lines(text_lines: list[TextLine], image: SimpleImage) -> list[Tex
         first_pixel = text_lines[0].find_pixel(image)
         if joined_text_line := try_text_line(first_pixel, image, font):
             joined_box = joined_text_line.box()
-            if abs(joined_box.right - text_lines[-1].box().right) < font.width // 2:
+            if abs(joined_box.right - text_lines[-1].box().right) < font.space_width // 2:
                 return [joined_text_line]
     return text_lines
