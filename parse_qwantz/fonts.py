@@ -82,7 +82,7 @@ class Font:
     group: str
     max_cut_bottom: int
     max_cut_top: int
-    is_mono: bool = NotImplemented
+    is_mono: bool = True
 
     def get_char(
         self,
@@ -121,10 +121,10 @@ class Font:
         state = self.automaton
         for x, column in chain([(x0, column)], columns):
             if column not in state:
+                if ACCEPT in state:
+                    break
                 return
             state = state[column]
-            if ACCEPT in state:
-                break
         char_info: CharInfo = state[ACCEPT]
         if is_first and char_info.char in FORBIDDEN_FIRST_CHARS:
             return
@@ -132,7 +132,7 @@ class Font:
             char_info.char,
             Box(
                 Pixel(x0 - char_info.left_padding, pixel.y),
-                Pixel(x + 1, pixel.y + self.height),
+                Pixel(x, pixel.y + self.height),
             ),
             self.is_bold,
             is_italic,
