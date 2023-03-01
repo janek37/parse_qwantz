@@ -2,10 +2,10 @@ import logging
 from functools import cache
 from importlib.resources import as_file, files
 
-from PIL import Image, ImageOps
+from PIL import Image
 
 import parse_qwantz
-from parse_qwantz.colors import square_distance, COLOR_THRESHOLD, Color
+from parse_qwantz.colors import square_distance, COLOR_THRESHOLD
 from parse_qwantz.pixels import normalize_color
 
 logger = logging.getLogger()
@@ -39,11 +39,6 @@ def prepare_image(image: Image):
         raise ImageError(f"Wrong image dimensions: {image.size}, only {DIM} is valid")
     palette = image.getpalette()
     palette = tuple(palette) if palette else None
-    corner = Color.get_with_threshold(normalize_color(image.getpixel((2, 2)), palette))
-    if corner == Color.WHITE:
-        # there's one-pixel shift in three comics: #3479, #3636, #3787
-        cropped = image.crop((0, 0, DIM[0] - 1, DIM[1]))
-        image = ImageOps.pad(cropped, DIM, color="black", centering=(1, 0))
     for pixel, expected_color in SAMPLE:
         color = image.getpixel(pixel)
         color = normalize_color(color, palette)
