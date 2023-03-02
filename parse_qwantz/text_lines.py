@@ -54,8 +54,8 @@ class TextLine:
         x1, y1 = self.end
         return Box(Pixel(x0 - padding, y0 - padding), Pixel(x1 + padding, y1 + padding))
 
-    def find_pixel(self, image) -> Pixel:
-        return image.find_pixel(self.char_boxes[0].pixels(self.font.italic_offsets))
+    def find_pixel(self) -> Pixel:
+        return min(self.char_boxes[0].pixels)
 
     def __hash__(self):
         return id(self)
@@ -114,7 +114,7 @@ def get_text_line(start: Pixel, image: SimpleImage, font: Font) -> TextLine | No
             return None
         elif char_box.char == ' ':
             spaces.append(
-                CharBox(' ', Box(Pixel(x, y), Pixel(x + font.space_width, y + font.height)), is_bold, is_italic)
+                CharBox(' ', Box(Pixel(x, y), Pixel(x + font.space_width, y + font.height)), is_bold, is_italic, set())
             )
             exploded = all(char_box.char == ' ' for char_box in char_boxes[1::2])
             after_period = char_boxes[-1].char in '.,?!"'
@@ -195,7 +195,7 @@ def _join_text_lines(text_lines: list[TextLine], image: SimpleImage) -> list[Tex
     for font in (line.font for line in text_lines):
         if font == text_lines[0].font:
             continue
-        first_pixel = text_lines[0].find_pixel(image)
+        first_pixel = text_lines[0].find_pixel()
         if joined_text_line := try_text_line(first_pixel, image, font):
             joined_box = joined_text_line.box()
             if abs(joined_box.right - text_lines[-1].box().right) < font.space_width // 2:

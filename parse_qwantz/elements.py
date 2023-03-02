@@ -1,3 +1,4 @@
+from functools import reduce
 from logging import getLogger
 
 from parse_qwantz.box import Box
@@ -30,10 +31,8 @@ def get_elements(image: SimpleImage) -> tuple[list[Line], list[Box], list[TextLi
             text_line = try_text_line(pixel, tmp_image, font)
             if text_line:
                 text_lines.append(text_line)
-                if text_line.font.italic_offsets:
-                    sorted_pixels = remove_italic(sorted_pixels, text_line)
-                else:
-                    sorted_pixels = remove_boxes(sorted_pixels, [char_box.box for char_box in text_line.char_boxes])
+                pixels = reduce(set.union, (char_box.pixels for char_box in text_line.char_boxes))
+                sorted_pixels = remove_subsequence(sorted_pixels, sorted(pixels))
                 break
         else:
             result = get_line(pixel, tmp_image)
@@ -54,31 +53,6 @@ def get_elements(image: SimpleImage) -> tuple[list[Line], list[Box], list[TextLi
                     logger.warning("At least five unmatched objects detected, aborting")
                     break
     return lines, thoughts, cleanup_text_lines(text_lines, image), unmatched
-
-
-def remove_boxes(sorted_pixels: list[Pixel], boxes: list[Box]) -> list[Pixel]:
-    box_iter = iter(boxes)
-    box = next(box_iter)
-    new_pixels = []
-    pass_through = False
-    for pixel in sorted_pixels:
-        while not pass_through and pixel.x >= box.right:
-            try:
-                box = next(box_iter)
-            except StopIteration:
-                pass_through = True
-        if pass_through or not box.includes(pixel):
-            new_pixels.append(pixel)
-    return new_pixels
-
-
-def remove_italic(sorted_pixels: list[Pixel], text_line: TextLine) -> list[Pixel]:
-    italic_pixels = []
-    for char_box in text_line.char_boxes:
-        italic_pixels.extend(
-            char_box.pixels(italic_offsets=text_line.font.italic_offsets)
-        )
-    return sorted(set(sorted_pixels) - set(italic_pixels))
 
 
 def remove_subsequence(sorted_pixels: list[Pixel], subsequence: list[Pixel]) -> list[Pixel]:

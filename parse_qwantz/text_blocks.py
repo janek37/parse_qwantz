@@ -125,7 +125,7 @@ def get_text_blocks(text_lines: list[TextLine], image: SimpleImage) -> Iterable[
             else:
                 new_lines.append(text_line_group)
         grouped_lines = new_lines
-        found_pixel = new_block[0][0].find_pixel(image)
+        found_pixel = new_block[0][0].find_pixel()
         color = image.pixels[found_pixel] if found_pixel else Color.WHITE
         yield TextBlock(new_block, bond_strengths, color, font)
 

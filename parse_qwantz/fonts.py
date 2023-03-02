@@ -33,30 +33,14 @@ class CharBox(NamedTuple):
     box: Box
     is_bold: bool
     is_italic: bool
-
-    def pixels(self, italic_offsets: set[int]):
-        if not italic_offsets:
-            return [
-                (x, y)
-                for x in range(self.box.left, self.box.right)
-                for y in range(self.box.top, self.box.bottom)
-            ]
-        else:
-            pixels = []
-            italic_offset = len(italic_offsets)
-            for y in range(self.box.top, self.box.bottom):
-                if y - self.box.top in italic_offsets:
-                    italic_offset -= 1
-                for x in range(self.box.left, self.box.right):
-                    pixels.append((x + italic_offset, y))
-            return pixels
+    pixels: set[Pixel]
 
     def with_box(self, box: Box):
-        return CharBox(self.char, box, self.is_bold, self.is_italic)
+        return CharBox(self.char, box, self.is_bold, self.is_italic, self.pixels)
 
     @classmethod
     def space(cls, is_bold: bool, is_italic: bool) -> "CharBox":
-        return cls(char=' ', box=Box.dummy(), is_bold=is_bold, is_italic=is_italic)
+        return cls(char=' ', box=Box.dummy(), is_bold=is_bold, is_italic=is_italic, pixels=set())
 
 
 @dataclass
@@ -103,15 +87,13 @@ class Font(ABC):
             columns = self._get_columns(pixel, image, cut_bottom=cut_bottom)
             char_box, complement = self._get_char_box_from_columns(pixel, columns, is_first, first_column)
             if char_box:
-                box = char_box.box
-                return char_box.with_box(Box(box.top_left, Pixel(box.right, box.bottom - cut_bottom))), complement
+                return char_box, complement
 
         for cut_top in range(1, self.max_cut_top + 1):
             columns = self._get_columns(pixel, image, cut_top=cut_top)
             char_box, complement = self._get_char_box_from_columns(pixel, columns, is_first, first_column)
             if char_box:
-                box = char_box.box
-                return char_box.with_box(Box(Pixel(box.left, box.top + cut_top), box.bottom_right)), complement
+                return char_box, complement
         return None, None
 
     def _get_char_box_from_columns(
@@ -129,10 +111,18 @@ class Font(ABC):
             else:
                 for x, column in columns:
                     if column != 0:
-                        return CharBox(' ', Box(pixel, Pixel(x, pixel.y + self.height)), self.is_bold, is_italic), None
+                        char_box = CharBox(
+                            ' ',
+                            Box(pixel, Pixel(x, pixel.y + self.height)),
+                            self.is_bold,
+                            is_italic,
+                            set(),
+                        )
+                        return char_box, None
             x0 = x
         state = self.automaton
         accepted = None
+        char_columns = []
         for x, column in chain([(x0, column)], columns):
             if column not in state:
                 if not self.is_mono and len(state) == 1:
@@ -140,18 +130,21 @@ class Font(ABC):
                     if actual_column != -1 and ACCEPT in next_state and column | actual_column == column:
                         complement = column & ~actual_column
                         if complement in self.automaton:
-                            accepted = (x, next_state[ACCEPT], complement)
+                            char_columns.append(actual_column)
+                            accepted = (x, next_state[ACCEPT], complement, char_columns)
                 if accepted:
                     break
                 return None, None
             state = state[column]
+            char_columns.append(column)
             if ACCEPT in state:
-                accepted = (x, state[ACCEPT], None)
+                accepted = (x, state[ACCEPT], None, list(char_columns))
         else:
             return None, None
-        x, char_info, complement = accepted
+        x, char_info, complement, char_columns = accepted
         if is_first and char_info.char in FORBIDDEN_FIRST_CHARS:
             return None, None
+        pixels = get_pixels_from_columns(char_columns, self.height, x0, pixel.y, self.italic_offsets)
         return CharBox(
             char_info.char,
             Box(
@@ -160,6 +153,7 @@ class Font(ABC):
             ),
             self.is_bold,
             is_italic,
+            pixels,
         ), complement
 
     def _get_columns(
@@ -352,6 +346,21 @@ def update_automaton(
     if ACCEPT not in state or char in ("O", "l"):
         state[ACCEPT] = CharInfo(char, left_padding, right_padding)
         return state[ACCEPT]
+
+
+def get_pixels_from_columns(columns: list[int], height: int, x0: int, y0: int, italic_offsets: set[int]) -> set[Pixel]:
+    pixels = set()
+    for x, column in enumerate(columns, start=x0):
+        italic_offset = 0
+        for y in range(y0 + height - 1, y0 - 1, -1):
+            if column == 0:
+                break
+            if column & 1 == 1:
+                pixels.add(Pixel(x + italic_offset, y))
+            if y - y0 in italic_offsets:
+                italic_offset += 1
+            column >>= 1
+    return pixels
 
 
 ALL_FONTS: list[Font] = [

@@ -21,11 +21,6 @@ class SimpleImage:
         # caution: no bounds checking!
         return self.pixels.get(pixel, Color.WHITE)
 
-    def find_pixel(self, pixels: list[Pixel]) -> Pixel | None:
-        for pixel in pixels:
-            if pixel in self.pixels:
-                return pixel
-
     def is_on_edge(self, pixel: Pixel) -> bool:
         x, y = pixel
         return x in (0, self.width - 1) or y in (0, self.height - 1)
