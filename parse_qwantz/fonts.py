@@ -1,8 +1,10 @@
+import itertools
+from abc import ABC, abstractmethod
 from dataclasses import dataclass
 from importlib.resources import as_file, files
 from itertools import islice, chain
 from pathlib import Path
-from typing import NamedTuple, ContextManager, Iterator, ForwardRef, Union
+from typing import NamedTuple, ContextManager, Iterator, ForwardRef, Union, Any
 
 from PIL import Image
 
@@ -70,7 +72,7 @@ FSA = dict[int, Union[FSA_BACKREF, CharInfo]]
 
 
 @dataclass
-class Font:
+class Font(ABC):
     name: str
     space_width: int
     height: int
@@ -89,54 +91,76 @@ class Font:
         pixel: Pixel,
         image: SimpleImage,
         is_first: bool = False,
-    ) -> CharBox | None:
-        if char_box := self._get_char_box_from_columns(pixel, self._get_columns(pixel, image), is_first):
-            return char_box
+        first_column: int | None = None,
+    ) -> tuple[CharBox | None, int | None]:
+        char_box, complement = self._get_char_box_from_columns(
+            pixel, self._get_columns(pixel, image), is_first, first_column
+        )
+        if char_box:
+            return char_box, complement
 
         for cut_bottom in range(1, self.max_cut_bottom + 1):
             columns = self._get_columns(pixel, image, cut_bottom=cut_bottom)
-            if char_box := self._get_char_box_from_columns(pixel, columns, is_first):
+            char_box, complement = self._get_char_box_from_columns(pixel, columns, is_first, first_column)
+            if char_box:
                 box = char_box.box
-                return char_box.with_box(Box(box.top_left, Pixel(box.right, box.bottom - cut_bottom)))
+                return char_box.with_box(Box(box.top_left, Pixel(box.right, box.bottom - cut_bottom))), complement
 
         for cut_top in range(1, self.max_cut_top + 1):
             columns = self._get_columns(pixel, image, cut_top=cut_top)
-            if char_box := self._get_char_box_from_columns(pixel, columns, is_first):
+            char_box, complement = self._get_char_box_from_columns(pixel, columns, is_first, first_column)
+            if char_box:
                 box = char_box.box
-                return char_box.with_box(Box(Pixel(box.left, box.top + cut_top), box.bottom_right))
+                return char_box.with_box(Box(Pixel(box.left, box.top + cut_top), box.bottom_right)), complement
+        return None, None
 
     def _get_char_box_from_columns(
-        self, pixel: Pixel, columns: Iterator[tuple[int, int]], is_first: bool
-    ) -> CharBox | None:
+        self, pixel: Pixel, columns: Iterator[tuple[int, int]], is_first: bool, first_column: int | None
+    ) -> tuple[CharBox | None, int | None]:
         is_italic = bool(self.italic_offsets)
-        x = column = 0  # to satisfy linters; columns are never empty
-        for x, column in islice(columns, self.initial_padding + 1):
-            if column != 0:
-                break
+        if first_column:
+            x0 = pixel.x - 1
+            column = first_column
         else:
-            for x, column in columns:
+            x = column = 0  # to satisfy linters; columns are never empty
+            for x, column in islice(columns, self.initial_padding + 1):
                 if column != 0:
-                    return CharBox(' ', Box(pixel, Pixel(x, pixel.y + self.height)), self.is_bold, is_italic)
-        x0 = x
+                    break
+            else:
+                for x, column in columns:
+                    if column != 0:
+                        return CharBox(' ', Box(pixel, Pixel(x, pixel.y + self.height)), self.is_bold, is_italic), None
+            x0 = x
         state = self.automaton
+        accepted = None
         for x, column in chain([(x0, column)], columns):
             if column not in state:
-                if ACCEPT in state:
+                if not self.is_mono and len(state) == 1:
+                    actual_column, next_state = next(iter(state.items()))
+                    if actual_column != -1 and ACCEPT in next_state and column | actual_column == column:
+                        complement = column & ~actual_column
+                        if complement in self.automaton:
+                            accepted = (x, next_state[ACCEPT], complement)
+                if accepted:
                     break
-                return
+                return None, None
             state = state[column]
-        char_info: CharInfo = state[ACCEPT]
+            if ACCEPT in state:
+                accepted = (x, state[ACCEPT], None)
+        else:
+            return None, None
+        x, char_info, complement = accepted
         if is_first and char_info.char in FORBIDDEN_FIRST_CHARS:
-            return
+            return None, None
         return CharBox(
             char_info.char,
             Box(
                 Pixel(x0 - char_info.left_padding, pixel.y),
-                Pixel(x, pixel.y + self.height),
+                Pixel(x + 1, pixel.y + self.height),
             ),
             self.is_bold,
             is_italic,
-        )
+        ), complement
 
     def _get_columns(
         self, pixel: Pixel,
@@ -144,7 +168,10 @@ class Font:
         cut_bottom: int = 0,
         cut_top: int = 0,
     ) -> Iterator[tuple[int, int]]:
-        for x in range(pixel.x, min(image.width + self.final_padding, pixel.x + self.space_width * 3)):
+        max_x = image.width + self.final_padding
+        if self.is_mono:
+            max_x = min(max_x, pixel.x + self.space_width * 3)
+        for x in range(pixel.x, max_x):
             yield x, self._get_column(x, pixel.y, image, cut_bottom, cut_top)
 
     def _get_column(self, x: int, y: int, image: SimpleImage, cut_bottom: int, cut_top: int) -> int:
@@ -169,30 +196,30 @@ class Font:
         group: str,
         max_cut_bottom: int,
         max_cut_top: int,
+        **kwargs: Any,
     ) -> "Font":
         with file_path_context_manager as file_path:
             image = SimpleImage.from_image(Image.open(file_path))
-        input_width = image.width // len(CHARS)
-        output_width = input_width + 1 if is_bold else input_width
         height = image.height
         automaton: FSA = {}
         accepting_states: list[CharInfo] = []
-        for i, char in enumerate(CHARS):
-            columns = get_input_columns(i, image, input_width, height, italic_offsets, is_bold)
-            if maybe_char_info := update_automaton(char, columns, automaton, output_width):
+        for i, (char, columns) in enumerate(zip(CHARS, cls.get_input_columns(image, italic_offsets, is_bold))):
+            if maybe_char_info := update_automaton(char, columns, automaton):
                 accepting_states.append(maybe_char_info)
             if height > 12:
                 if char not in 'gq[]':
-                    columns = get_input_columns(i, image, input_width, height, italic_offsets, is_bold, cut_bottom=1)
-                    update_automaton(char, columns, automaton, output_width)
+                    cut_columns = [cut_column(c, height, cut_bottom=1) for c in columns]
+                    update_automaton(char, cut_columns, automaton)
                 if char not in 'fl':
-                    columns = get_input_columns(i, image, input_width, height, italic_offsets, is_bold, cut_top=1)
-                    update_automaton(char, columns, automaton, output_width)
+                    cut_columns = [cut_column(c, height, cut_top=1) for c in columns]
+                    update_automaton(char, cut_columns, automaton)
         initial_padding = max(char_info.left_padding for char_info in accepting_states)
+        if not cls.is_mono:
+            initial_padding = 2
         final_padding = max(char_info.right_padding for char_info in accepting_states)
         return cls(
             name,
-            output_width,
+            cls.get_space_width(image, is_bold, **kwargs),
             height,
             automaton,
             initial_padding,
@@ -204,32 +231,85 @@ class Font:
             max_cut_top,
         )
 
+    @classmethod
+    @abstractmethod
+    def get_input_columns(
+        cls,
+        image: SimpleImage,
+        italic_offsets: set[int],
+        is_bold: bool,
+    ) -> Iterator[list[int]]:
+        pass
+
+    @classmethod
+    @abstractmethod
+    def get_space_width(cls, image: SimpleImage, is_bold: bool, **kwargs: Any) -> int:
+        pass
+
 
 class MonospaceFont(Font):
-    is_mono = True
+    @classmethod
+    def get_input_columns(
+        cls,
+        image: SimpleImage,
+        italic_offsets: set[int],
+        is_bold: bool,
+    ) -> Iterator[list[int]]:
+        width = image.width // len(CHARS)
+        height = image.height
+        for i in itertools.count():
+            columns = [
+                get_column(width * i + j, 0, image, height, italic_offsets)
+                for j in range(width)
+            ]
+            if is_bold:
+                columns = [column1 | column2 for column1, column2 in zip([0] + columns, columns + [0])]
+            yield columns
+
+    @classmethod
+    def get_space_width(cls, image: SimpleImage, is_bold: bool, **kwargs: Any) -> int:
+        input_width = image.width // len(CHARS)
+        return input_width + 1 if is_bold else input_width
 
 
-def get_input_columns(
-    index: int,
-    image: SimpleImage,
-    width: int,
-    height: int,
-    italic_offsets: set[int],
-    is_bold: bool,
-    cut_bottom: int = 0,
-    cut_top: int = 0,
-):
-    columns = [
-        get_column(width * index + j, 0, image, height, italic_offsets, cut_bottom, cut_top)
-        for j in range(width)
-    ]
-    if is_bold:
-        columns = [column1 | column2 for column1, column2 in zip([0] + columns, columns + [0])]
-    return columns
+@dataclass
+class ProportionalFont(Font):
+    is_mono: bool = False
+
+    @classmethod
+    def get_input_columns(
+        cls,
+        image: SimpleImage,
+        italic_offsets: set[int],
+        is_bold: bool,
+    ) -> Iterator[list[int]]:
+        height = image.height
+        columns = []
+        zero = False
+        for x in range(image.width):
+            column = get_column(x, 0, image, height, set())
+            if column != 0:
+                if zero:
+                    columns.append(0)
+                    zero = False
+                columns.append(column)
+            else:
+                if zero:
+                    yield columns
+                    columns = []
+                    zero = False
+                if columns:
+                    zero = True
+        if columns:
+            yield columns
+
+    @classmethod
+    def get_space_width(cls, image: SimpleImage, is_bold: bool, space_width: int = 0, **kwargs: Any) -> int:
+        return space_width
 
 
 def get_column(
-    x0: int, y0: int, image: SimpleImage, height: int, italic_offsets: set[int], cut_bottom: int, cut_top: int
+    x0: int, y0: int, image: SimpleImage, height: int, italic_offsets: set[int], cut_bottom: int = 0, cut_top: int = 0
 ) -> int:
     bitmask = 0
     italic_offset = len(italic_offsets)
@@ -239,6 +319,11 @@ def get_column(
         bitmask <<= 1
         if (x0 + italic_offset, y) in image.pixels:
             bitmask += 1
+    return cut_column(bitmask, height, cut_bottom, cut_top)
+
+
+def cut_column(column: int, height: int, cut_bottom: int = 0, cut_top: int = 0):
+    bitmask = column
     if cut_bottom:
         bitmask = bitmask & -(1 << cut_bottom)
     if cut_top:
@@ -250,27 +335,26 @@ def update_automaton(
     char: str,
     columns: list[int],
     automaton: FSA,
-    width: int,
 ) -> CharInfo | None:
     x = 0
     while columns[x] == 0:
         x += 1
     left_padding = x
-    x = width - 1
+    x = len(columns) - 1
     while columns[x] == 0:
         x -= 1
-    right_padding = width - 1 - x
+    right_padding = len(columns) - 1 - x
     state = automaton
     for column in columns[left_padding:]:
         state = state.setdefault(column, {})
     # “ and ” look the same as " in some sizes,
-    # but we prefer O than 0 when they look the same
-    if ACCEPT not in state or char == "O":
+    # but we prefer O to 0 and l to 1 when they look the same
+    if ACCEPT not in state or char in ("O", "l"):
         state[ACCEPT] = CharInfo(char, left_padding, right_padding)
         return state[ACCEPT]
 
 
-ALL_FONTS = [
+ALL_FONTS: list[Font] = [
     MonospaceFont.from_file(
         file_path_context_manager=as_file(files(parse_qwantz).joinpath(f'img/regular{size}.png')),
         name=name,
@@ -293,5 +377,18 @@ ALL_FONTS.append(
         group='LC13',
         max_cut_bottom=0,
         max_cut_top=0,
+    )
+)
+
+ALL_FONTS.append(
+    ProportionalFont.from_file(
+        file_path_context_manager=as_file(files(parse_qwantz).joinpath(f'img/serif15.png')),
+        name='Serif',
+        italic_offsets=set(),
+        is_bold=False,
+        group='TNR15',
+        max_cut_bottom=0,
+        max_cut_top=0,
+        space_width=3,
     )
 )

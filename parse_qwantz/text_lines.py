@@ -76,7 +76,7 @@ def try_text_line(start: Pixel, image: SimpleImage, font: Font) -> TextLine | No
 
 
 def get_text_line(start: Pixel, image: SimpleImage, font: Font) -> TextLine | None:
-    char_box = font.get_char(start, image=image, is_first=True)
+    char_box, complement = font.get_char(start, image=image, is_first=True)
     if char_box is None or char_box.char == ' ':
         return None
     char_boxes = [char_box]
@@ -88,11 +88,11 @@ def get_text_line(start: Pixel, image: SimpleImage, font: Font) -> TextLine | No
         x = char_box.box.right
         if x >= image.width:
             break
-        char_box = font.get_char(Pixel(x, y), image)
+        char_box, complement = font.get_char(Pixel(x, y), image, first_column=complement)
         if char_box is None and spaces:
             for offset in ((0, -1), (0, 1)):
                 off_x, off_y = offset
-                char_box = font.get_char(Pixel(x + off_x, y + off_y), image)
+                char_box, complement = font.get_char(Pixel(x + off_x, y + off_y), image)
                 if char_box and char_box.char == ' ':
                     char_box = None
                 if char_box is not None:
@@ -178,7 +178,7 @@ def group_text_lines(
                 continue
             box = group[-1].box()
             other_box = other_text_line.box()
-            if abs(box.top - other_box.top) <= 1 or abs(box.bottom - other_box.bottom) <= 1:
+            if abs(box.top - other_box.top) <= 2 or abs(box.bottom - other_box.bottom) <= 2:
                 distance = other_box.left - box.right
                 width = max(group[-1].font.space_width, other_text_line.font.space_width)
                 max_distance = width * 3 if long_space else width * 2 + 1
