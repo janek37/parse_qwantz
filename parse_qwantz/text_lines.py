@@ -114,7 +114,7 @@ def get_text_line(start: Pixel, image: SimpleImage, font: Font) -> TextLine | No
             return None
         elif char_box.char == ' ':
             spaces.append(
-                CharBox(' ', Box(Pixel(x, y), Pixel(x + font.space_width, y + font.height)), is_bold, is_italic, set())
+                CharBox.space(is_bold, is_italic, char_box.box)
             )
             exploded = all(char_box.char == ' ' for char_box in char_boxes[1::2])
             after_period = char_boxes[-1].char in '.,?!"'
@@ -146,8 +146,6 @@ def adjust_spaces(char_boxes: list[CharBox]) -> Iterable[CharBox]:
         if char_box.char == ' ' and char_box.box.right > next_char_box.box.left:
             new_box = Box(char_box.box.top_left, Pixel(next_char_box.box.left, char_box.box.bottom))
             if new_box.width > 2:
-                # if new_box.width < width:
-                #     logger.warning(f'Short space after {"".join(cb.char for cb in char_boxes)}: {char_box.box.width}')
                 yield char_box.with_box(new_box)
         else:
             yield char_box
@@ -178,7 +176,7 @@ def group_text_lines(
                 continue
             box = group[-1].box()
             other_box = other_text_line.box()
-            if abs(box.top - other_box.top) <= 2 or abs(box.bottom - other_box.bottom) <= 2:
+            if abs(box.top + text_line.font.base - (other_box.top + other_text_line.font.base)) <= 1:
                 distance = other_box.left - box.right
                 width = max(group[-1].font.space_width, other_text_line.font.space_width)
                 max_distance = width * 3 if long_space else width * 2 + 1

@@ -116,6 +116,8 @@ def get_script_lines(
         elif block in thought_matches:
             character = thought_matches[block]
             yield f"{character}: (thinks) {block.content()}"
+        elif not block.font.is_mono:
+            yield f"Text: {block.content()}"
         else:
             if not block.is_bold:
                 logger.warning('Narrator not bold: %s', block.font.name)
@@ -157,6 +159,8 @@ def match_above_or_below(unmatched_blocks: list[TextBlock], block_matches: dict[
         best_distance = None
         if not unmatched_block.is_bold:
             for block, characters in block_matches.items():
+                if block.font.group != unmatched_block.font.group:
+                    continue
                 other_box = block.box
                 if get_interval_distance((box.left, box.right), (other_box.left, other_box.right)) == 0:
                     distance = max(other_box.top - box.bottom, box.top - other_box.bottom)

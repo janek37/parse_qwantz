@@ -4,7 +4,7 @@ from dataclasses import dataclass
 from importlib.resources import as_file, files
 from itertools import islice, chain
 from pathlib import Path
-from typing import NamedTuple, ContextManager, Iterator, ForwardRef, Union, Any
+from typing import NamedTuple, ContextManager, Iterator, ForwardRef, Union, Any, Sequence
 
 from PIL import Image
 
@@ -14,7 +14,7 @@ from parse_qwantz.pixels import Pixel
 from parse_qwantz.simple_image import SimpleImage
 
 CHARS = """0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!"#$%&'()*+,-./:;<=>?@[]^{|}‘’“”·•™é"""
-FORBIDDEN_FIRST_CHARS = "%&)+/;=@]^|}”·™"
+FORBIDDEN_FIRST_CHARS = "%&)+/=@]^|}”·™"
 
 ACCEPT = -1
 
@@ -28,6 +28,13 @@ FONT_SIZES = [
 ]
 
 
+@dataclass
+class CharInfo:
+    char: str
+    left_padding: int
+    right_padding: int
+
+
 class CharBox(NamedTuple):
     char: str
     box: Box
@@ -39,15 +46,14 @@ class CharBox(NamedTuple):
         return CharBox(self.char, box, self.is_bold, self.is_italic, self.pixels)
 
     @classmethod
-    def space(cls, is_bold: bool, is_italic: bool) -> "CharBox":
-        return cls(char=' ', box=Box.dummy(), is_bold=is_bold, is_italic=is_italic, pixels=set())
-
-
-@dataclass
-class CharInfo:
-    char: str
-    left_padding: int
-    right_padding: int
+    def space(cls, is_bold: bool, is_italic: bool, box: Box | None = None) -> "CharBox":
+        return cls(
+            char=' ',
+            box=box or Box.dummy(),
+            is_bold=is_bold,
+            is_italic=is_italic,
+            pixels=set(),
+        )
 
 
 FSA_BACKREF = ForwardRef("FSA")
@@ -60,6 +66,7 @@ class Font(ABC):
     name: str
     space_width: int
     height: int
+    base: int
     automaton: FSA
     initial_padding: int
     final_padding: int
@@ -69,6 +76,10 @@ class Font(ABC):
     max_cut_bottom: int
     max_cut_top: int
     is_mono: bool = True
+
+    base_left_padding: int = 0
+    base_right_padding: int = 0
+    skip_chars: Sequence[str] = ()
 
     def get_char(
         self,
@@ -100,26 +111,23 @@ class Font(ABC):
         self, pixel: Pixel, columns: Iterator[tuple[int, int]], is_first: bool, first_column: int | None
     ) -> tuple[CharBox | None, int | None]:
         is_italic = bool(self.italic_offsets)
-        if first_column:
-            x0 = pixel.x - 1
-            column = first_column
+        if first_column is not None:
+            pixel = Pixel(pixel.x - 1, pixel.y)
+            columns = chain([(pixel.x, first_column)], columns)
+        x = column = 0  # to satisfy linters; columns are never empty
+        for x, column in islice(columns, self.initial_padding + 1):
+            if column != 0:
+                break
         else:
-            x = column = 0  # to satisfy linters; columns are never empty
-            for x, column in islice(columns, self.initial_padding + 1):
+            for x, column in columns:
                 if column != 0:
-                    break
-            else:
-                for x, column in columns:
-                    if column != 0:
-                        char_box = CharBox(
-                            ' ',
-                            Box(pixel, Pixel(x, pixel.y + self.height)),
-                            self.is_bold,
-                            is_italic,
-                            set(),
-                        )
-                        return char_box, None
-            x0 = x
+                    char_box = CharBox.space(
+                        self.is_bold,
+                        is_italic,
+                        Box(pixel, Pixel(x, pixel.y + self.height)),
+                    )
+                    return char_box, None
+        x0 = x
         state = self.automaton
         accepted = None
         char_columns = []
@@ -127,7 +135,7 @@ class Font(ABC):
             if column not in state:
                 if not self.is_mono and len(state) == 1:
                     actual_column, next_state = next(iter(state.items()))
-                    if actual_column != -1 and ACCEPT in next_state and column | actual_column == column:
+                    if actual_column != ACCEPT and ACCEPT in next_state and column | actual_column == column:
                         complement = column & ~actual_column
                         if complement in self.automaton:
                             char_columns.append(actual_column)
@@ -145,6 +153,8 @@ class Font(ABC):
         if is_first and char_info.char in FORBIDDEN_FIRST_CHARS:
             return None, None
         pixels = get_pixels_from_columns(char_columns, self.height, x0, pixel.y, self.italic_offsets)
+        if char_info.right_padding < 0 and complement is None:
+            complement = 0
         return CharBox(
             char_info.char,
             Box(
@@ -197,16 +207,24 @@ class Font(ABC):
         height = image.height
         automaton: FSA = {}
         accepting_states: list[CharInfo] = []
+        base = 0  # unused value
         for i, (char, columns) in enumerate(zip(CHARS, cls.get_input_columns(image, italic_offsets, is_bold))):
-            if maybe_char_info := update_automaton(char, columns, automaton):
+            if char in cls.skip_chars:
+                continue
+            if char == '0':
+                for y in range(height - 1, 0, -1):
+                    if any((1 << (height - 1 - y)) & column for column in columns):
+                        base = y
+                        break
+            if maybe_char_info := cls.update_automaton(char, columns, automaton):
                 accepting_states.append(maybe_char_info)
             if height > 12:
                 if char not in 'gq[]':
                     cut_columns = [cut_column(c, height, cut_bottom=1) for c in columns]
-                    update_automaton(char, cut_columns, automaton)
+                    cls.update_automaton(char, cut_columns, automaton)
                 if char not in 'fl':
                     cut_columns = [cut_column(c, height, cut_top=1) for c in columns]
-                    update_automaton(char, cut_columns, automaton)
+                    cls.update_automaton(char, cut_columns, automaton)
         initial_padding = max(char_info.left_padding for char_info in accepting_states)
         if not cls.is_mono:
             initial_padding = 2
@@ -215,6 +233,7 @@ class Font(ABC):
             name,
             cls.get_space_width(image, is_bold, **kwargs),
             height,
+            base,
             automaton,
             initial_padding,
             final_padding,
@@ -239,6 +258,35 @@ class Font(ABC):
     @abstractmethod
     def get_space_width(cls, image: SimpleImage, is_bold: bool, **kwargs: Any) -> int:
         pass
+
+    @classmethod
+    def update_automaton(
+        cls,
+        char: str,
+        columns: list[int],
+        automaton: FSA,
+    ) -> CharInfo | None:
+        x = 0
+        while columns[x] == 0:
+            x += 1
+        left_padding = cls.base_left_padding + x
+        x = len(columns) - 1
+        while columns[x] == 0:
+            x -= 1
+        right_padding = cls.base_right_padding + len(columns) - 1 - x
+        state = automaton
+        from_column = left_padding - cls.base_left_padding
+        if cls.is_mono:
+            to_column = len(columns)
+        else:
+            to_column = len(columns) + (cls.base_right_padding if right_padding >= 0 else 0)
+        for column in columns[from_column:to_column]:
+            state = state.setdefault(column, {})
+        # “ and ” look the same as " in some sizes,
+        # but we prefer O to 0 and l to 1 when they look the same
+        if ACCEPT not in state or char in ("O", "l"):
+            state[ACCEPT] = CharInfo(char, left_padding, right_padding)
+            return state[ACCEPT]
 
 
 class MonospaceFont(Font):
@@ -269,6 +317,11 @@ class MonospaceFont(Font):
 @dataclass
 class ProportionalFont(Font):
     is_mono: bool = False
+    separator: int = 16
+    prev_column_mask: int = 56
+    base_left_padding: int = -1
+    base_right_padding: int = -1
+    skip_chars = ["1"]  # hard to distinguish from "l"
 
     @classmethod
     def get_input_columns(
@@ -279,21 +332,19 @@ class ProportionalFont(Font):
     ) -> Iterator[list[int]]:
         height = image.height
         columns = []
-        zero = False
+        first_column = True
+        previous_column = 0
         for x in range(image.width):
             column = get_column(x, 0, image, height, set())
-            if column != 0:
-                if zero:
-                    columns.append(0)
-                    zero = False
-                columns.append(column)
+            if not first_column and column == cls.separator and previous_column & cls.prev_column_mask == 0:
+                yield columns
+                columns = []
+                first_column = True
             else:
-                if zero:
-                    yield columns
-                    columns = []
-                    zero = False
-                if columns:
-                    zero = True
+                columns.append(column)
+                if column != 0:
+                    first_column = False
+            previous_column = column
         if columns:
             yield columns
 
@@ -323,29 +374,6 @@ def cut_column(column: int, height: int, cut_bottom: int = 0, cut_top: int = 0):
     if cut_top:
         bitmask = bitmask & ((1 << height - cut_top) - 1)
     return bitmask
-
-
-def update_automaton(
-    char: str,
-    columns: list[int],
-    automaton: FSA,
-) -> CharInfo | None:
-    x = 0
-    while columns[x] == 0:
-        x += 1
-    left_padding = x
-    x = len(columns) - 1
-    while columns[x] == 0:
-        x -= 1
-    right_padding = len(columns) - 1 - x
-    state = automaton
-    for column in columns[left_padding:]:
-        state = state.setdefault(column, {})
-    # “ and ” look the same as " in some sizes,
-    # but we prefer O to 0 and l to 1 when they look the same
-    if ACCEPT not in state or char in ("O", "l"):
-        state[ACCEPT] = CharInfo(char, left_padding, right_padding)
-        return state[ACCEPT]
 
 
 def get_pixels_from_columns(columns: list[int], height: int, x0: int, y0: int, italic_offsets: set[int]) -> set[Pixel]:
