@@ -152,6 +152,12 @@ class Font(ABC):
         x, char_info, complement, char_columns = accepted
         if is_first and char_info.char in FORBIDDEN_FIRST_CHARS:
             return None, None
+        if char_info.left_padding < 0 and x0 - char_info.left_padding - pixel.x >= self.initial_padding:
+            return CharBox.space(
+                self.is_bold,
+                is_italic,
+                Box(pixel, Pixel(x0 - char_info.left_padding, pixel.y + self.height)),
+            ), char_columns[0]
         pixels = get_pixels_from_columns(char_columns, self.height, x0, pixel.y, self.italic_offsets)
         if char_info.right_padding < 0 and complement is None:
             complement = 0
