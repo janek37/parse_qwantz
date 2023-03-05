@@ -323,8 +323,8 @@ class MonospaceFont(Font):
 @dataclass
 class ProportionalFont(Font):
     is_mono: bool = False
-    separator: int = 16
-    prev_column_mask: int = 56
+    separator: int = 8
+    prev_column_mask: int = 28
     base_left_padding: int = -1
     base_right_padding: int = -1
     skip_chars = ["1"]  # hard to distinguish from "l"
@@ -425,11 +425,11 @@ ALL_FONTS.append(
 
 ALL_FONTS.append(
     ProportionalFont.from_file(
-        file_path_context_manager=as_file(files(parse_qwantz).joinpath(f'img/serif15.png')),
+        file_path_context_manager=as_file(files(parse_qwantz).joinpath(f'img/serif13.png')),
         name='Serif',
         italic_offsets=set(),
         is_bold=False,
-        group='TNR15',
+        group='TNR13',
         max_cut_bottom=0,
         max_cut_top=0,
         space_width=3,
