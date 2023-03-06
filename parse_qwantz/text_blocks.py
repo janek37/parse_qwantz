@@ -87,8 +87,8 @@ class TextBlock(NamedTuple):
         return content
 
     def split(self, line1: TextLine, line2: TextLine) -> tuple["TextBlock", "TextBlock"]:
-        line1_index = next(i for i, row in enumerate(self.rows) if line1 in row)
-        line2_index = next(i for i, row in enumerate(self.rows) if line2 in row)
+        line1_index = self.row_index(line1)
+        line2_index = self.row_index(line2)
         index1, index2 = sorted((line1_index, line2_index))
         _, split_index = min((self.bond_strengths[i], i) for i in range(index1, index2))
         block1 = TextBlock(self.rows[:split_index+1], self.bond_strengths[:split_index], self.color, self.font)
@@ -97,6 +97,9 @@ class TextBlock(NamedTuple):
             return block1, block2
         else:
             return block2, block1
+
+    def row_index(self, line: TextLine) -> int:
+        return next(i for i, row in enumerate(self.rows) if line in row)
 
     def __str__(self):
         return self.content()

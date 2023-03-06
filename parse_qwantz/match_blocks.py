@@ -19,14 +19,19 @@ def match_blocks(
             neighbors.append((target1, target2))
         else:
             character, line = (target1, target2) if isinstance(target1, Character) else (target2, target1)
+            line: TextLine
             block = blocks_by_line[line]
             if block not in block_matches:
                 block_matches[block] = ([character], line)
             else:
                 prev_characters, prev_line = block_matches[block]
-                if prev_line == line:
+                prev_row_index = block.row_index(prev_line)
+                row_index = block.row_index(line)
+                if prev_row_index == row_index:
                     if len(prev_characters) == 2:
                         logger.warning("More than two characters share a line")
+                    if prev_line != line:
+                        logger.warning("Shared separate lines in one row")
                     block_matches[block] = (prev_characters + [character], line)
                 else:
                     block1, block2 = block.split(prev_line, line)
@@ -45,6 +50,9 @@ def match_blocks(
         for line1, line2 in neighbors:
             if blocks_by_line[line1] == blocks_by_line[line2]:
                 block = blocks_by_line[line1]
+                if block.row_index(line1) == block.row_index(line2):
+                    logger.warning(f"Line connects two text lines in one row: {line1.content} -- {line2.content}")
+                    continue
                 block1, block2 = block.split(line1, line2)
                 for b1line in block1.lines:
                     blocks_by_line[b1line] = block1
