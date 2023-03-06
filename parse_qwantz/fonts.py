@@ -14,7 +14,7 @@ from parse_qwantz.pixels import Pixel
 from parse_qwantz.simple_image import SimpleImage
 
 CHARS = """0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!"#$%&'()*+,-./:;<=>?@[]^{|}‘’“”·•™é"""
-FORBIDDEN_FIRST_CHARS = "%&)+/=@]^|}”·™"
+FORBIDDEN_FIRST_CHARS = "%&)+=@]^|}”·™"
 
 ACCEPT = -1
 

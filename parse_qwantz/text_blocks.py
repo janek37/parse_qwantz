@@ -57,7 +57,7 @@ class TextBlock(NamedTuple):
                         if char_box.char in '.,!?" ':
                             break
                         last_words = char_box.char + last_words
-                    next_words = re.match(r'[^.,!?" ]*', row[0].content).group()
+                    next_words = re.match(r'[^].,!?" ]*', row[0].content).group()
                     last_word = last_words.rsplit('-', 1)[-1]
                     next_word = next_words.split('-', 1)[0]
                     if not disambiguate_hyphen(last_word, next_word):
