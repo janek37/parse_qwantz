@@ -18,12 +18,13 @@ class ColorFormatter(logging.Formatter):
         logging.CRITICAL: BOLD_RED + FORMAT + RESET
     }
 
-    def __init__(self, *args, defaults=None, **kwargs):
+    def __init__(self, *args, colors: bool = True, defaults=None, **kwargs):
         self._defaults = defaults
+        self._colors = colors
         super().__init__(*args, defaults=defaults, **kwargs)
 
     def format(self, record):
-        if sys.stderr.isatty():
+        if sys.stderr.isatty() and self._colors:
             log_fmt = self.FORMATS.get(record.levelno)
         else:
             log_fmt = self.FORMAT

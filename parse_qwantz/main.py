@@ -58,10 +58,10 @@ CHARACTERS = [
 ]
 
 
-def parse_qwantz(image: Image, debug: bool) -> Iterable[list[str]]:
+def parse_qwantz(image: Image, debug: bool, log_to_file: bool) -> Iterable[list[str]]:
     masked = prepare_image(image)
     for i, (panel, characters) in enumerate(zip(PANELS, CHARACTERS), start=1):
-        set_current_panel(i)
+        set_current_panel(i, log_to_file)
         (width, height), (x, y) = panel
         cropped = masked.crop((x, y, x + width, y + height))
         panel_image = SimpleImage.from_image(cropped)
@@ -185,9 +185,9 @@ def handle_god_and_devil(block: TextBlock, is_off_panel: bool) -> Character | No
         return Character.from_name('God')
 
 
-def set_current_panel(panel: int | None = None):
+def set_current_panel(panel: int | None = None, log_to_file: bool = False):
     panel_name = f" Panel {panel}:" if panel is not None else ""
-    logger.handlers[0].setFormatter(ColorFormatter(defaults={"panel": panel_name}))
+    logger.handlers[0].setFormatter(ColorFormatter(defaults={"panel": panel_name}, colors=not log_to_file))
 
 
 def main(input_file_path: Path, output_dir: Path | None = None, debug: bool = False, show_boxes: bool = False):
@@ -195,7 +195,7 @@ def main(input_file_path: Path, output_dir: Path | None = None, debug: bool = Fa
     if output_dir:
         sys.stdout = (output_dir / (input_file_path.stem + '.txt')).open('w')
         logging.basicConfig(filename=output_dir / (input_file_path.stem + '.log'), filemode='w', force=True)
-    for panel_no, panel in enumerate(parse_qwantz(image, debug=debug), start=1):
+    for panel_no, panel in enumerate(parse_qwantz(image, debug=debug, log_to_file=bool(output_dir)), start=1):
         print(f'Panel {panel_no}:')
         for line in panel:
             print(line)
