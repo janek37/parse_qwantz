@@ -31,5 +31,5 @@ def disambiguate_hyphen(part1: str, part2: str):
     no_hyphen = part1_lower + part2_lower in WORD_SET
     separate = part1_lower in WORD_SET and part2_lower in WORD_SET
     if no_hyphen == separate:
-        logger.warning(f"Ambiguous hyphen ({part1}/{part2}); {'both' if no_hyphen else 'none'} in dict")
+        logger.info(f"Ambiguous hyphen ({part1}/{part2}); {'both' if no_hyphen else 'none'} in dict")
     return not no_hyphen and separate
