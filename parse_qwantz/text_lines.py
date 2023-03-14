@@ -6,6 +6,7 @@ from itertools import chain
 from typing import Iterable
 
 from parse_qwantz.box import Box
+from parse_qwantz.colors import Color
 from parse_qwantz.fonts import Font, CharBox
 from parse_qwantz.pixels import Pixel
 from parse_qwantz.simple_image import SimpleImage
@@ -17,6 +18,7 @@ logger = logging.getLogger()
 class TextLine:
     char_boxes: list[CharBox]
     font: Font
+    color: Color
 
     def __repr__(self):
         return f"TextLine({repr(self.start)}, {repr(self.content)}, {self.font.name})"
@@ -138,7 +140,8 @@ def get_text_line(start: Pixel, image: SimpleImage, font: Font) -> TextLine | No
     char_boxes = list(adjust_spaces(char_boxes))
     if len(char_boxes) >= 5 and all(char_box.char == ' ' for char_box in char_boxes[1::2]):
         char_boxes = char_boxes[0::2]
-    return TextLine(char_boxes, font)
+    color = image.get_pixel(min(char_boxes[0].pixels))
+    return TextLine(char_boxes, font, color)
 
 
 def adjust_spaces(char_boxes: list[CharBox]) -> Iterable[CharBox]:

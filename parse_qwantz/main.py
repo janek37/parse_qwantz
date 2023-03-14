@@ -181,7 +181,7 @@ def match_above_or_below(unmatched_blocks: list[TextBlock], block_matches: dict[
         best_distance = None
         if not unmatched_block.is_bold:
             for block, characters in block_matches.items():
-                if block.font.group != unmatched_block.font.group:
+                if block.font.group != unmatched_block.font.group or block.color != unmatched_block.color:
                     continue
                 other_box = block.box
                 if get_interval_distance((box.left, box.right), (other_box.left, other_box.right)) == 0:
