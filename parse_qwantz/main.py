@@ -1,5 +1,6 @@
 import logging
 import sys
+from dataclasses import dataclass
 from logging import getLogger
 from pathlib import Path
 from typing import Iterable
@@ -58,6 +59,16 @@ CHARACTERS = [
 ]
 
 
+@dataclass
+class UnmatchedStuff:
+    neighbors: list[tuple[TextLine, TextLine]]
+    lines: list[Line]
+    thoughts: list[Box]
+
+    def __bool__(self):
+        return bool(self.neighbors or self.lines or self.thoughts)
+
+
 def parse_qwantz(image: Image, debug: bool, log_to_file: bool) -> Iterable[list[str]]:
     masked = prepare_image(image)
     for i, (panel, characters) in enumerate(zip(PANELS, CHARACTERS), start=1):
@@ -66,12 +77,12 @@ def parse_qwantz(image: Image, debug: bool, log_to_file: bool) -> Iterable[list[
         cropped = masked.crop((x, y, x + width, y + height))
         panel_image = SimpleImage.from_image(cropped)
         lines, thoughts, text_lines, unmatched_shapes = get_elements(panel_image)
-        text_blocks, block_matches, thought_matches, unmatched_neighbors, unmatched_lines = match_stuff(
+        text_blocks, block_matches, thought_matches, unmatched_stuff = match_stuff(
             characters, panel_image, lines, text_lines, thoughts
         )
         script_lines = get_script_lines(text_blocks, block_matches, thought_matches)
-        if debug and (unmatched_shapes or unmatched_neighbors or unmatched_lines):
-            handle_debug(cropped, text_blocks, unmatched_shapes, unmatched_neighbors, unmatched_lines, characters)
+        if debug and (unmatched_shapes or unmatched_stuff):
+            handle_debug(cropped, text_blocks, unmatched_shapes, unmatched_stuff, characters)
         yield list(script_lines)
 
 
@@ -81,8 +92,7 @@ def match_stuff(
     list[TextBlock],
     dict[TextBlock, list[Character]],
     dict[TextBlock, Character],
-    list[tuple[TextLine, TextLine]],
-    list[Line]
+    UnmatchedStuff,
 ]:
     text_blocks = sorted(get_text_blocks(text_lines, image), key=lambda b: (b.end.y, b.end.x))
     line_matches, unmatched_lines = match_lines(lines, text_blocks, characters, image)
@@ -93,9 +103,13 @@ def match_stuff(
     thought_matches = dict(match_thought(thoughts, unmatched_blocks, thinking_characters))
     if thoughts and not thought_matches:
         logger.warning("Detected thought bubbles, but no thought text")
+        unmatched_thoughts = thoughts
+    else:
+        unmatched_thoughts = []
     unmatched_blocks = [block for block in unmatched_blocks if block not in thought_matches]
     match_above_or_below(unmatched_blocks, block_matches)
-    return text_blocks, block_matches, thought_matches, unmatched_neighbors, unmatched_lines
+    unmatched_stuff = UnmatchedStuff(unmatched_neighbors, unmatched_lines, unmatched_thoughts)
+    return text_blocks, block_matches, thought_matches, unmatched_stuff
 
 
 def get_script_lines(
@@ -124,14 +138,22 @@ def get_script_lines(
             yield f"Narrator: {block.content(mark_bold=False)}"
 
 
-def handle_debug(image, text_blocks, unmatched_shapes, unmatched_neighbors, unmatched_lines, characters):
+def handle_debug(
+    image: Image,
+    text_blocks: list[TextBlock],
+    unmatched_shapes: list[list[Pixel]],
+    unmatched_stuff: UnmatchedStuff,
+    characters: list[Character],
+):
     draw = ImageDraw.Draw(image)
     for unmatched_shape in unmatched_shapes:
         box = get_box(unmatched_shape, padding=3)
         draw.rectangle(box, outline=(255, 0, 0))
         for pixel in unmatched_shape:
             draw.point(pixel, fill=(255, 0, 0))
-    for text_line1, text_line2 in unmatched_neighbors:
+    for thought_box in unmatched_stuff.thoughts:
+        draw.rectangle(thought_box, outline=(255, 0, 255))
+    for text_line1, text_line2 in unmatched_stuff.neighbors:
         box1 = text_line1.box()
         box2 = text_line2.box()
         draw.rectangle(box1, outline=(0, 0, 192))
@@ -140,13 +162,13 @@ def handle_debug(image, text_blocks, unmatched_shapes, unmatched_neighbors, unma
             ((box1.left + box1.right) // 2, (box1.top + box1.bottom) // 2),
             ((box2.left + box2.right) // 2, (box2.top + box2.bottom) // 2),
         ], fill=(0, 0, 255))
-    for line in unmatched_lines:
+    for line in unmatched_stuff.lines:
         draw.line(line, fill=(255, 0, 0))
         for block in text_blocks:
             for text_line in block.lines:
                 box = text_line.box()
                 draw.rectangle(box, outline=(0, 192, 0))
-    if unmatched_neighbors or unmatched_lines:
+    if unmatched_stuff.neighbors or unmatched_stuff.lines:
         for character in characters:
             draw.rectangle(character.box, outline=(0, 128, 0))
     image.show()
