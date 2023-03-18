@@ -32,7 +32,7 @@ def is_thought(pixels: set[Pixel], box: Box, image: SimpleImage) -> bool:
         to_visit = deque([Pixel(x, y)])
         while to_visit:
             current = to_visit.popleft()
-            on_image_border = current.x in (0, image.width - 1) or current.y in (0, image.height - 1)
+            on_image_border = image.is_on_edge(current)
             if current in visited or current in pixels or not box.includes(current) or on_image_border:
                 continue
             if current in outside:
