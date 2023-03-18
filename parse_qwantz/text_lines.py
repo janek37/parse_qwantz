@@ -199,6 +199,7 @@ def _join_text_lines(text_lines: list[TextLine], image: SimpleImage) -> list[Tex
         first_pixel = text_lines[0].find_pixel()
         if joined_text_line := try_text_line(first_pixel, image, font):
             joined_box = joined_text_line.box()
-            if abs(joined_box.right - text_lines[-1].box().right) < font.space_width // 2:
-                return [joined_text_line]
+            for i, text_line in enumerate(text_lines[1:], start=1):
+                if abs(joined_box.right - text_lines[i].box().right) < font.space_width // 2:
+                    return [joined_text_line, *text_lines[i+1:]]
     return text_lines
