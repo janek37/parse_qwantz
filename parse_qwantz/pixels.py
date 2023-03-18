@@ -54,3 +54,18 @@ def normalize_color(
     elif palette is not None:
         color = palette[color * 3: color * 3 + 3]
     return color
+
+
+def remove_subsequence(sorted_pixels: list[Pixel], subsequence: list[Pixel]) -> list[Pixel]:
+    sub_iter = iter(subsequence)
+    next_pixel = next(sub_iter)
+    pixels = []
+    for pixel in sorted_pixels:
+        while next_pixel is not None and pixel > next_pixel:
+            try:
+                next_pixel = next(sub_iter)
+            except StopIteration:
+                next_pixel = None
+        if pixel != next_pixel:
+            pixels.append(pixel)
+    return pixels

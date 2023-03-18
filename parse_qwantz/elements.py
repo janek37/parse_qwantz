@@ -6,7 +6,7 @@ from parse_qwantz.fonts import ALL_FONTS
 from parse_qwantz.lines import Line, get_line
 from parse_qwantz.text_lines import TextLine, try_text_line, cleanup_text_lines
 from parse_qwantz.detect_thought import get_thought
-from parse_qwantz.pixels import Pixel
+from parse_qwantz.pixels import Pixel, remove_subsequence
 from parse_qwantz.shape import get_shape
 from parse_qwantz.simple_image import SimpleImage
 
@@ -53,18 +53,3 @@ def get_elements(image: SimpleImage) -> tuple[list[Line], list[Box], list[TextLi
                     logger.warning("At least five unmatched objects detected, aborting")
                     break
     return lines, thoughts, cleanup_text_lines(text_lines, image), unmatched
-
-
-def remove_subsequence(sorted_pixels: list[Pixel], subsequence: list[Pixel]) -> list[Pixel]:
-    sub_iter = iter(subsequence)
-    next_pixel = next(sub_iter)
-    pixels = []
-    for pixel in sorted_pixels:
-        while next_pixel is not None and pixel > next_pixel:
-            try:
-                next_pixel = next(sub_iter)
-            except StopIteration:
-                next_pixel = None
-        if pixel != next_pixel:
-            pixels.append(pixel)
-    return pixels
