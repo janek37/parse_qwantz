@@ -41,11 +41,11 @@ def get_line(pixel: Pixel, image: SimpleImage) -> tuple[Line, list[Pixel]] | Non
             return None
         if not forward and (slice1[0] < slice2[0] or slice1[-1] < slice2[-1]):
             return None
-    for x, y in pixels:
-        for i, j in product(range(3), range(3)):
-            if (x + i, y + j) not in pixels:
-                break
-        else:
-            # contains 3x3 square
-            return None
-    return (end1, end2), sorted_pixels
+    neighbor_counts = set()
+    for pixel in pixels:
+        x, y = pixel
+        neighbor_counts.add(
+            sum(1 for i, j in product(range(x - 1, x + 2), range(y - 1, y + 2)) if (i, j) in pixels)
+        )
+    if max(neighbor_counts) == 3 or (min(neighbor_counts) >= 2 and 6 <= max(neighbor_counts) <= 8):
+        return (end1, end2), sorted_pixels
