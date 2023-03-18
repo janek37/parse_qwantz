@@ -180,7 +180,7 @@ class Font(ABC):
     ) -> Iterator[tuple[int, int]]:
         max_x = image.width + self.final_padding
         if self.is_mono:
-            max_x = min(max_x, pixel.x + self.space_width * 3)
+            max_x = min(max_x, pixel.x + self.space_width * 2 + 1)
         for x in range(pixel.x, max_x):
             yield x, self._get_column(x, pixel.y, image, cut_bottom, cut_top)
 
