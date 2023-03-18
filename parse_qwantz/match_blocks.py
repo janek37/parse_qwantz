@@ -54,6 +54,9 @@ def match_blocks(
                     logger.warning(f"Line connects two text lines in one row: {line1.content} -- {line2.content}")
                     continue
                 block1, block2 = block.split(line1, line2)
+                logger.warning(
+                    f"Splitting blocks from one character: [{block1.content()}], [{block2.content()}]"
+                )
                 for b1line in block1.lines:
                     blocks_by_line[b1line] = block1
                 for b2line in block2.lines:
