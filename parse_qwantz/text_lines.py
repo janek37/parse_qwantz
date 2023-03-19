@@ -8,6 +8,7 @@ from typing import Iterable
 from parse_qwantz.box import Box
 from parse_qwantz.colors import Color
 from parse_qwantz.fonts import Font, CharBox
+from parse_qwantz.lines import get_line
 from parse_qwantz.pixels import Pixel
 from parse_qwantz.simple_image import SimpleImage
 
@@ -91,6 +92,7 @@ def get_text_line(start: Pixel, image: SimpleImage, font: Font) -> TextLine | No
         if x >= image.width:
             break
         char_box, complement = font.get_char(Pixel(x, y), image, first_column=complement)
+        inline_offset_warning = None
         if char_box is None and spaces:
             for offset in ((0, -1), (0, 1)):
                 off_x, off_y = offset
@@ -100,7 +102,7 @@ def get_text_line(start: Pixel, image: SimpleImage, font: Font) -> TextLine | No
                 if char_box is not None:
                     content_so_far = ''.join(char_box.char for char_box in char_boxes)
                     if off_x == -2 or off_y != 0:
-                        logger.warning(
+                        inline_offset_warning = (
                             f"Inline offset after {content_so_far + ' '*len(spaces)!r},"
                             f" before {char_box.char!r}: {(off_x, off_y)}"
                         )
@@ -114,7 +116,21 @@ def get_text_line(start: Pixel, image: SimpleImage, font: Font) -> TextLine | No
             return None
         if len(char_boxes) == 1 and char_boxes[0].char in "'‘’“\"" and not char_box.char.isalpha():
             return None
-        elif char_box.char == ' ':
+        if char_box.char in "'|-":
+            any_pixel = next(iter(char_box.pixels))
+            result = get_line(any_pixel, image)
+            if result:
+                line, _pixels = result
+                if (
+                    min(line[0].x, line[1].x) < char_box.box.left
+                    or min(line[0].y, line[1].y) < char_box.box.top
+                    or max(line[0].x, line[1].x) > char_box.box.right
+                    or max(line[0].y, line[1].y) > char_box.box.bottom
+                ):
+                    break
+        if inline_offset_warning:
+            logger.warning(inline_offset_warning)
+        if char_box.char == ' ':
             spaces.append(
                 CharBox.space(is_bold, is_italic, char_box.box)
             )

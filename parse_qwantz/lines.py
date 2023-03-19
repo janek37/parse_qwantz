@@ -27,7 +27,8 @@ def get_line(pixel: Pixel, image: SimpleImage) -> tuple[Line, list[Pixel]] | Non
         return None
     if end1 == end2:
         return None
-    if not (image.is_on_edge(end1) or image.is_on_edge(end2)) and (end1.x - end2.x)**2 + (end1.y - end2.y)**2 < 8:
+    on_edge = image.is_on_edge(end1) or image.is_on_edge(end2)
+    if not on_edge and (end1.x - end2.x)**2 + (end1.y - end2.y)**2 < 8:
         return None
     sorted_pixels = sorted(pixels)
     slices = [list(y for x, y in group) for key, group in groupby(sorted_pixels, key=lambda px: px.x)]
@@ -47,5 +48,5 @@ def get_line(pixel: Pixel, image: SimpleImage) -> tuple[Line, list[Pixel]] | Non
         neighbor_counts.add(
             sum(1 for i, j in product(range(x - 1, x + 2), range(y - 1, y + 2)) if (i, j) in pixels)
         )
-    if max(neighbor_counts) == 3 or (min(neighbor_counts) >= 2 and 6 <= max(neighbor_counts) <= 8):
+    if on_edge or max(neighbor_counts) == 3 or (min(neighbor_counts) >= 2 and 6 <= max(neighbor_counts) <= 8):
         return (end1, end2), sorted_pixels
