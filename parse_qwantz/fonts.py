@@ -10,6 +10,7 @@ from PIL import Image
 
 import parse_qwantz
 from parse_qwantz.box import Box
+from parse_qwantz.char_variants import VARIANTS
 from parse_qwantz.pixels import Pixel
 from parse_qwantz.simple_image import SimpleImage
 
@@ -231,6 +232,9 @@ class Font(ABC):
                 if char not in 'fl':
                     cut_columns = [cut_column(c, height, cut_top=1) for c in columns]
                     cls.update_automaton(char, cut_columns, automaton)
+        for char, columns in VARIANTS.get((name, is_bold), []):
+            if maybe_char_info := cls.update_automaton(char, columns, automaton):
+                accepting_states.append(maybe_char_info)
         initial_padding = max(char_info.left_padding for char_info in accepting_states)
         if not cls.is_mono:
             initial_padding = 2
