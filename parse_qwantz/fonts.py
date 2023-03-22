@@ -290,8 +290,11 @@ class Font(ABC):
             to_column = len(columns)
         else:
             to_column = len(columns) + (cls.base_right_padding if right_padding >= 0 else 0)
-        for column in columns[from_column:to_column]:
+        for i, column in enumerate(columns[from_column:to_column]):
             state = state.setdefault(column, {})
+            if right_padding > 1 and i >= len(columns) - right_padding - 1:
+                if ACCEPT not in state or char in ("O", "l"):
+                    state[ACCEPT] = CharInfo(char, left_padding, len(columns) - i)
         # “ and ” look the same as " in some sizes,
         # but we prefer O to 0 and l to 1 when they look the same
         if ACCEPT not in state or char in ("O", "l"):
