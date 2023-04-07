@@ -1,3 +1,4 @@
+import hashlib
 import logging
 import sys
 from dataclasses import dataclass
@@ -11,6 +12,7 @@ from parse_qwantz.box import Box, get_interval_distance
 from parse_qwantz.color_logs import set_logging_formatter, ColorFormatter
 from parse_qwantz.colors import Color
 from parse_qwantz.lines import Line
+from parse_qwantz.panel_overrides import get_panel_overrides
 from parse_qwantz.text_blocks import get_text_blocks, TextBlock
 from parse_qwantz.elements import get_elements
 from parse_qwantz.match_blocks import match_blocks
@@ -74,8 +76,16 @@ class UnmatchedStuff:
 
 
 def parse_qwantz(image: Image, debug: bool, log_to_file: bool) -> Iterable[list[str]]:
-    masked = prepare_image(image)
+    md5 = hashlib.md5(image.tobytes()).hexdigest()
+    panel_overrides = get_panel_overrides().get(md5, {})
+    masked, good_panels = prepare_image(image)
     for i, (panel, characters) in enumerate(zip(PANELS, CHARACTERS), start=1):
+        if str(i) in panel_overrides:
+            yield panel_overrides[str(i)]
+            continue
+        if i not in good_panels:
+            logger.warning("Non-standard panel without an override")
+            continue
         set_current_panel(i, log_to_file)
         (width, height), (x, y) = panel
         cropped = masked.crop((x, y, x + width, y + height))
