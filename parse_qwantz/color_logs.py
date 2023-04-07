@@ -19,7 +19,7 @@ class ColorFormatter(logging.Formatter):
     }
 
     def __init__(self, *args, colors: bool = True, defaults=None, **kwargs):
-        self._defaults = defaults
+        self._defaults = defaults or {"panel": ""}
         self._colors = colors
         super().__init__(*args, defaults=defaults, **kwargs)
 
