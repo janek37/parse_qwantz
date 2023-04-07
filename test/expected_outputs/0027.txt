@@ -9,7 +9,7 @@ Narrator: PART ONE
 Panel 3:
 T-Rex: I see all of my relations in economic terms! You provide value to me by providing me a "sounding board" for my ideas, and also (potentially) as a mate!
 T-Rex: Conversely, this house provides no value to me, and my relation with it is understandably strained!
-Dromiceiomimus: (small) please leave me be
+Dromiceiomimus: {small} please leave me be
 
 Panel 4:
 T-Rex: You too provide no value to me, young woman! That is why I stomp you with impunity.

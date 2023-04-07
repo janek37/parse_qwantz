@@ -83,7 +83,7 @@ class TextBlock(NamedTuple):
         )
         content = content.replace('  ', ' ')
         if include_font_name and self.font.name not in ('Regular', 'Italic'):
-            content = f"({self.font.name.lower()}) {content}"
+            content = f"{{{self.font.name.lower()}}} {content}"
         return content
 
     def split(self, line1: TextLine, line2: TextLine) -> tuple["TextBlock", "TextBlock"]:

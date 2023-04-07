@@ -6,22 +6,22 @@ Narrator: if you do not like math then skip this comic
 Narrator: (seriously)
 
 Panel 2:
-T-Rex: (small) The circuit satisfiability problem is determining if there are some inputs that make the output of a circuit "true"!
+T-Rex: {small} The circuit satisfiability problem is determining if there are some inputs that make the output of a circuit "true"!
 
 Panel 3:
-T-Rex: (small) A closely related problem is the formula satisfiability problem, SAP, which can be mapped one-to-one, and in linear time, to the circuit satisfiability problem.
+T-Rex: {small} A closely related problem is the formula satisfiability problem, SAP, which can be mapped one-to-one, and in linear time, to the circuit satisfiability problem.
 
 Panel 4:
-Utahraptor: (small) So what does this mean?
-T-Rex: (small) If we can solve SAT problems in f(n) time, then circuit-SAT can be solved in O(n) + f(n) time!
+Utahraptor: {small} So what does this mean?
+T-Rex: {small} If we can solve SAT problems in f(n) time, then circuit-SAT can be solved in O(n) + f(n) time!
 
 Panel 5:
-Utahraptor: (small) But circuit-SAT can not be solved quickly.
-T-Rex: (small) Indeed. Therefore, SAT is as "hard" as circuit-SAT.
-T-Rex: (small) Similarly hard problems are "Clique", "Vertex-Cover" and the Travelling Salesman Problem.
+Utahraptor: {small} But circuit-SAT can not be solved quickly.
+T-Rex: {small} Indeed. Therefore, SAT is as "hard" as circuit-SAT.
+T-Rex: {small} Similarly hard problems are "Clique", "Vertex-Cover" and the Travelling Salesman Problem.
 
 Panel 6:
-T-Rex: (small) Solving these problems (P) can be accomplished in polynomial time!
-T-Rex: (small) Verifying solutions (NP) can also be done in polynomial time!
-T-Rex: (small) The question is...
-T-Rex: (small) does P = NP?
+T-Rex: {small} Solving these problems (P) can be accomplished in polynomial time!
+T-Rex: {small} Verifying solutions (NP) can also be done in polynomial time!
+T-Rex: {small} The question is...
+T-Rex: {small} does P = NP?

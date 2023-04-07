@@ -133,7 +133,7 @@ def get_script_lines(
             yield f"{' and '.join(ch.name for ch in characters)}: {content}"
         elif block in thought_matches:
             character = thought_matches[block]
-            yield f"{character}: (thinks) {block.content()}"
+            yield f"{character}: {{thinks}} {block.content()}"
         elif not block.font.is_mono:
             yield f"Text: {block.content()}"
         else:

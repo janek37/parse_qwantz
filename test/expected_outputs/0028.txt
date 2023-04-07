@@ -22,8 +22,8 @@ Utahraptor: Really! How much thought did you put into stepping on that woman jus
 Narrator: * last panel! -Ed.
 
 Panel 6:
-T-Rex: (thinks) He's right!
-T-Rex: (thinks) Is this the portrait...
-T-Rex: (thinks) ...of a dinosaur in crisis?
+T-Rex: {thinks} He's right!
+T-Rex: {thinks} Is this the portrait...
+T-Rex: {thinks} ...of a dinosaur in crisis?
 Narrator: TAKE HEED
 Narrator: fin

@@ -19,4 +19,4 @@ Utahraptor: I'm just sayin'.
 
 Panel 6:
 Narrator: THAT EVENING...
-T-Rex: (thinks) _Does no-one realize that this is a very sensitive issue for me?!_
+T-Rex: {thinks} _Does no-one realize that this is a very sensitive issue for me?!_

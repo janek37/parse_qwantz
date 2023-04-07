@@ -8,13 +8,13 @@ Panel 3:
 T-Rex: But I guess no matter where he is, this is the end of our daily conversations... I don't know what I'm going to do with the second half of my day if he's not around.
 
 Panel 4:
-T-Rex: (small) *sigh*
-Utahraptor: T-Rex?
+T-Rex: {small} *sigh*
+Evil Utahraptor: T-Rex?
 
 Panel 5:
 T-Rex: Utahraptor, it's you! You're back from the alternate Universe! But... something's different...
-Utahraptor: No! Nothing is different!
-Utahraptor: I am the same Utahraptor as always!
+Evil Utahraptor: No! Nothing is different!
+Evil Utahraptor: I am the same Utahraptor as always!
 
 Panel 6:
 T-Rex: Prove it!

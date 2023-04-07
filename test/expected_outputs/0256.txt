@@ -19,4 +19,4 @@ T-Rex: Ha ha!
 T-Rex: **NO**, I didn't commit some horrible crime!
 
 Panel 6:
-T-Rex: (thinks) _Right?_
+T-Rex: {thinks} _Right?_

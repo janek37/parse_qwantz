@@ -21,4 +21,4 @@ T-Rex: That is the plan!
 Utahraptor: Wouldn't you get more out of your days if you spent less time destroying and more time considering YOUR SOUL?
 
 Panel 6:
-T-Rex: (thinks) Dinosaurs have souls?!
+T-Rex: {thinks} Dinosaurs have souls?!
