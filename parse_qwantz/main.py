@@ -108,7 +108,7 @@ def match_stuff(
     dict[TextBlock, Character],
     UnmatchedStuff,
 ]:
-    text_blocks = sorted(get_text_blocks(text_lines, image), key=lambda b: (b.end.y, b.end.x))
+    text_blocks = sorted(get_text_blocks(text_lines), key=lambda b: (b.end.y, b.end.x))
     line_matches, unmatched_lines = match_lines(lines, text_blocks, characters, image)
     block_matches, text_blocks, unmatched_neighbors = match_blocks(line_matches, text_blocks)
     text_blocks = sorted(text_blocks, key=lambda b: (b.end.y, b.end.x))

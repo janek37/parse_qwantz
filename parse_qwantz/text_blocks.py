@@ -1,7 +1,9 @@
 import logging
 import re
+from dataclasses import dataclass
+from functools import cached_property
 from itertools import groupby
-from typing import Iterable, NamedTuple
+from typing import Iterable
 
 from parse_qwantz.box import Box, get_interval_distance
 from parse_qwantz.fonts import Font, CharBox
@@ -9,14 +11,14 @@ from parse_qwantz.colors import Color
 from parse_qwantz.hyphens import disambiguate_hyphen
 from parse_qwantz.text_lines import TextLine, group_text_lines
 from parse_qwantz.pixels import Pixel
-from parse_qwantz.simple_image import SimpleImage
 
 logger = logging.getLogger()
 
 
-class TextBlock(NamedTuple):
+@dataclass
+class TextBlock:
     rows: list[list[TextLine]]
-    bond_strengths: list[int]
+    alignments: list["Alignment"]
     color: Color
     font: Font
 
@@ -44,6 +46,10 @@ class TextBlock(NamedTuple):
     def lines(self) -> Iterable[TextLine]:
         for row in self.rows:
             yield from row
+
+    @cached_property
+    def bond_strengths(self) -> list[int]:
+        return [alignment.strength for alignment in self.alignments]
 
     def content(self, mark_bold=True, include_font_name=False):
         char_boxes = []
@@ -91,8 +97,8 @@ class TextBlock(NamedTuple):
         line2_index = self.row_index(line2)
         index1, index2 = sorted((line1_index, line2_index))
         _, split_index = min((self.bond_strengths[i], i) for i in range(index1, index2))
-        block1 = TextBlock(self.rows[:split_index+1], self.bond_strengths[:split_index], self.color, self.font)
-        block2 = TextBlock(self.rows[split_index+1:], self.bond_strengths[split_index+1:], self.color, self.font)
+        block1 = TextBlock(self.rows[:split_index+1], self.alignments[:split_index], self.color, self.font)
+        block2 = TextBlock(self.rows[split_index+1:], self.alignments[split_index+1:], self.color, self.font)
         if line1_index < line2_index:
             return block1, block2
         else:
@@ -113,26 +119,44 @@ def mark_excluding_trailing_spaces(s: str, marker: str) -> str:
     return f'{marker}{s.rstrip()}{marker}{trailing_spaces}'
 
 
-def get_text_blocks(text_lines: list[TextLine], image: SimpleImage) -> Iterable[TextBlock]:
+@dataclass
+class Alignment:
+    left_aligned: bool
+    char_aligned: bool
+    no_gap: bool
+
+    @property
+    def strength(self):
+        bond_strength = 0
+        if self.left_aligned:
+            bond_strength += 5
+        elif self.char_aligned:
+            bond_strength += 3
+        if self.no_gap:
+            bond_strength += 10
+        return bond_strength
+
+
+def get_text_blocks(text_lines: list[TextLine]) -> Iterable[TextBlock]:
     grouped_lines = group_text_lines(text_lines, same_font=True, long_space=True)
     while grouped_lines:
         new_block = [grouped_lines[0]]
-        bond_strengths = []
+        alignments = []
         font = grouped_lines[0][0].font
         new_lines: list[list[TextLine]] = []
         for text_line_group in grouped_lines[1:]:
-            bond_strength = fit_to_block(text_line_group, new_block[-1], font)
-            if bond_strength is not None:
+            alignment = fit_to_block(text_line_group, new_block[-1], font)
+            if alignment is not None:
                 new_block.append(text_line_group)
-                bond_strengths.append(bond_strength)
+                alignments.append(alignment)
             else:
                 new_lines.append(text_line_group)
         grouped_lines = new_lines
         color = new_block[0][0].color
-        yield TextBlock(new_block, bond_strengths, color, font)
+        yield TextBlock(new_block, alignments, color, font)
 
 
-def fit_to_block(line_group: list[TextLine], previous_group: list[TextLine], font: Font) -> int | None:
+def fit_to_block(line_group: list[TextLine], previous_group: list[TextLine], font: Font) -> Alignment | None:
     if line_group[0].font.group != font.group:
         return None
     if line_group[0].color != previous_group[0].color:
@@ -157,14 +181,9 @@ def fit_to_block(line_group: list[TextLine], previous_group: list[TextLine], fon
     previous_height = font.height
     previous_width = font.space_width
     if previous_bottom - 1 <= top <= previous_bottom + previous_height // 6:
-        bond_strength = 0
-        if previous_left == left:
-            bond_strength += 5
-        elif (previous_left - left) % previous_width == 0 and font.is_mono:
-            bond_strength += 3
-        if top <= previous_bottom:
-            bond_strength += 10
-        if top >= previous_bottom + previous_height:
-            bond_strength -= 10
-        return bond_strength
+        return Alignment(
+            left_aligned=previous_left == left,
+            char_aligned=(previous_left - left) % previous_width == 0 and font.is_mono,
+            no_gap=top <= previous_bottom,
+        )
     return None
