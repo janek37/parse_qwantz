@@ -92,17 +92,20 @@ class TextBlock:
             content = f"{{{self.font.name.lower()}}} {content}"
         return content
 
-    def split(self, line1: TextLine, line2: TextLine) -> tuple["TextBlock", "TextBlock"]:
+    def split(self, line1: TextLine, line2: TextLine) -> tuple["TextBlock", "TextBlock", "Alignment"]:
         line1_index = self.row_index(line1)
         line2_index = self.row_index(line2)
         index1, index2 = sorted((line1_index, line2_index))
         _, split_index = min((self.bond_strengths[i], i) for i in range(index1, index2))
+        breaking_strength = self.bond_strengths[split_index]
+        if self.bond_strengths[index1:index2].count(breaking_strength) > 1:
+            logger.warning(f"Non-unique breaking point for splitting (strength: {breaking_strength})")
         block1 = TextBlock(self.rows[:split_index+1], self.alignments[:split_index], self.color, self.font)
         block2 = TextBlock(self.rows[split_index+1:], self.alignments[split_index+1:], self.color, self.font)
         if line1_index < line2_index:
-            return block1, block2
+            return block1, block2, self.alignments[split_index]
         else:
-            return block2, block1
+            return block2, block1, self.alignments[split_index]
 
     def row_index(self, line: TextLine) -> int:
         return next(i for i, row in enumerate(self.rows) if line in row)

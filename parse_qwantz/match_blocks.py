@@ -34,10 +34,11 @@ def match_blocks(
                         logger.warning("Shared separate lines in one row")
                     block_matches[block] = (prev_characters + [character], line)
                 else:
-                    block1, block2 = block.split(prev_line, line)
-                    logger.warning(
-                        f"Splitting blocks: [{block1.content()}], [{block2.content()}]"
-                    )
+                    block1, block2, alignment = block.split(prev_line, line)
+                    if alignment.no_gap and (alignment.left_aligned or alignment.char_aligned):
+                        logger.warning(
+                            f"Splitting blocks: [{block1.content()[:12]}], [{block2.content()[:12]}]"
+                        )
                     for b1line in block1.lines:
                         blocks_by_line[b1line] = block1
                     for b2line in block2.lines:
@@ -53,7 +54,7 @@ def match_blocks(
                 if block.row_index(line1) == block.row_index(line2):
                     logger.warning(f"Line connects two text lines in one row: {line1.content} -- {line2.content}")
                     continue
-                block1, block2 = block.split(line1, line2)
+                block1, block2, _ = block.split(line1, line2)
                 logger.warning(
                     f"Splitting blocks from one character: [{block1.content()}], [{block2.content()}]"
                 )
