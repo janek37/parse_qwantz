@@ -2,10 +2,12 @@ import logging
 from typing import Iterable
 
 from parse_qwantz.text_blocks import TextBlock
-from parse_qwantz.match_lines import Target, Character
+from parse_qwantz.match_lines import Target, Character, OFF_PANEL
 from parse_qwantz.text_lines import TextLine
 
 logger = logging.getLogger()
+
+MULTI_OFF_PANEL = Character.from_name("Multiple off-panel voices")
 
 
 def match_blocks(
@@ -32,7 +34,14 @@ def match_blocks(
                         logger.warning("More than two characters share a line")
                     if prev_line != line:
                         logger.warning("Shared separate lines in one row")
-                    block_matches[block] = (prev_characters + [character], line)
+                    if character == OFF_PANEL and OFF_PANEL in prev_characters:
+                        prev_characters.remove(OFF_PANEL)
+                        new_characters = prev_characters + [MULTI_OFF_PANEL]
+                    elif character == OFF_PANEL and MULTI_OFF_PANEL in prev_characters:
+                        new_characters = prev_characters
+                    else:
+                        new_characters = prev_characters + [character]
+                    block_matches[block] = (new_characters, line)
                 else:
                     block1, block2, alignment = block.split(prev_line, line)
                     if alignment.no_gap and (alignment.left_aligned or alignment.char_aligned):
