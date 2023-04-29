@@ -40,7 +40,10 @@ PANELS = [
 
 CHARACTERS = [
     [Character('T-Rex', Box(Pixel(104, 90), Pixel(170, 238)))],
-    [Character('T-Rex', Box(Pixel(4, 119), Pixel(105, 238)))],
+    [
+        Character('T-Rex', Box(Pixel(4, 119), Pixel(105, 150))),
+        Character('T-Rex', Box(Pixel(4, 150), Pixel(60, 238))),
+    ],
     [
         Character('T-Rex', Box(Pixel(80, 55), Pixel(115, 213))),
         Character('Dromiceiomimus', Box(Pixel(325, 150), Pixel(357, 238))),
