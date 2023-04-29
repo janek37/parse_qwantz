@@ -58,26 +58,23 @@ def match_line(
     for i, end in enumerate(line):
         if image.is_on_edge(end):
             candidates[i] = [OFF_PANEL]
-    boxes_distances = [
-        (inner_box, target, relative_distance_to_box(line, outer_box))
-        for inner_box, outer_box, target in boxes
-    ]
-    aligned_boxes = [
-        sorted((-t, inner_box, target) for inner_box, target, t in boxes_distances if t is not None and t <= 0),
-        sorted((t, inner_box, target) for inner_box, target, t in boxes_distances if t is not None and t > 0),
-    ]
-    for i, sorted_boxes in enumerate(aligned_boxes):
+    for i, sorted_boxes in enumerate(get_aligned_boxes(line, boxes)):
         for _t, inner_box, target in sorted_boxes:
             candidates[i].append(target)
             if relative_distance_to_box(line, inner_box) is not None:
                 break
-    if candidates.count([]) == 1:
-        for i in range(2):
-            if not candidates[i] and any(isinstance(c, TextLine) for c in candidates[1-i]):
-                distance = image.distance_to_edge(line[i])
-                logger.warning(f"Unmatched line {line}, assuming off-panel (distance to edge: {distance})")
-                candidates[i] = [OFF_PANEL]
     return candidates[0], candidates[1]
+
+
+def get_aligned_boxes(line: Line, boxes: list[tuple[Box, Box, Target]]) -> list[list[tuple[float, Box, Target]]]:
+    boxes_distances = [
+        (inner_box, target, relative_distance_to_box(line, outer_box))
+        for inner_box, outer_box, target in boxes
+    ]
+    return [
+        sorted((-t, inner_box, target) for inner_box, target, t in boxes_distances if t is not None and t <= 0),
+        sorted((t, inner_box, target) for inner_box, target, t in boxes_distances if t is not None and t > 0),
+    ]
 
 
 def relative_distance_to_box(line: Line, box: Box) -> float | None:
