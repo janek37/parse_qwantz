@@ -46,6 +46,7 @@ CHARACTERS = [
     ],
     [
         Character('T-Rex', Box(Pixel(80, 55), Pixel(115, 213))),
+        Character('T-Rex', Box(Pixel(115, 75), Pixel(130, 90))),
         Character('Dromiceiomimus', Box(Pixel(325, 146), Pixel(357, 238))),
         Character('House', Box(Pixel(115, 210), Pixel(163, 238)), can_think=False),
     ],
