@@ -41,6 +41,7 @@ PANELS = [
 CHARACTERS = [
     [Character('T-Rex', Box(Pixel(104, 90), Pixel(170, 238)))],
     [
+        Character('T-Rex', Box(Pixel(30, 105), Pixel(75, 119))),
         Character('T-Rex', Box(Pixel(4, 119), Pixel(105, 150))),
         Character('T-Rex', Box(Pixel(4, 150), Pixel(60, 238))),
     ],
@@ -67,6 +68,7 @@ CHARACTERS = [
     [
         Character('T-Rex', Box(Pixel(80, 64), Pixel(134, 84))),
         Character('T-Rex', Box(Pixel(80, 84), Pixel(100, 169))),
+        Character('T-Rex', Box(Pixel(100, 110), Pixel(125, 120))),
     ],
 ]
 

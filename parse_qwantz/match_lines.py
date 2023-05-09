@@ -33,48 +33,63 @@ Target = TextLine | Character
 def match_lines(
     lines: list[Line], text_blocks: list[TextBlock], characters: list[Character], image: SimpleImage
 ) -> tuple[list[tuple[Target, Target]], list[Line]]:
-    boxes = get_boxes(text_blocks, characters, inner_padding=-1, outer_padding=3)
+    boxes = get_boxes(text_blocks, characters, inner_padding=-1)
     line_candidates = [(line,) + match_line(line, boxes, image) for line in lines]
     block_mapping = {text_line: block for block in text_blocks for text_line in block.lines}
     return CandidateResolver(line_candidates, block_mapping).resolve()
 
 
 def get_boxes(
-    text_blocks: list[TextBlock], characters: list[Character], inner_padding: int, outer_padding: int
-) -> list[tuple[Box, Box, Target]]:
-    boxes: list[tuple[Box, Box, Target]] = [
-        (text_line.box(inner_padding), text_line.box(outer_padding), text_line)
+    text_blocks: list[TextBlock], characters: list[Character], inner_padding: int
+) -> list[tuple[Box, Target]]:
+    boxes: list[tuple[Box, Target]] = [
+        (text_line.box(inner_padding), text_line)
+        # (text_line.base_box(inner_padding), text_line)
         for text_block in text_blocks
         for text_line in text_block.lines
     ]
-    boxes.extend((character.box, character.box, character) for character in characters)
+    boxes.extend((character.box, character) for character in characters)
     return boxes
 
 
 def match_line(
-    line: Line, boxes: list[tuple[Box, Box, Target]], image: SimpleImage
+    line: Line, boxes: list[tuple[Box, Target]], image: SimpleImage
 ) -> tuple[list[Target], list[Target]]:
     candidates: list[list[Target]] = [[], []]
     for i, end in enumerate(line):
         if image.is_on_edge(end):
             candidates[i] = [OFF_PANEL]
-    for i, sorted_boxes in enumerate(get_aligned_boxes(line, boxes)):
-        for _t, inner_box, target in sorted_boxes:
-            candidates[i].append(target)
-            if relative_distance_to_box(line, inner_box) is not None:
-                break
+        else:
+            boxes_with_distances = ((box, target, get_box_distance(box, line, i)) for box, target in boxes)
+            sorted_boxes = sorted(
+                (distance, box, target)
+                for box, target, distance in boxes_with_distances
+                if distance is not None
+            )
+            candidates[i] = [target for distance, box, target in sorted_boxes if distance < sorted_boxes[0][0] + 10]
     return candidates[0], candidates[1]
 
 
-def get_aligned_boxes(line: Line, boxes: list[tuple[Box, Box, Target]]) -> list[list[tuple[float, Box, Target]]]:
-    boxes_distances = [
-        (inner_box, target, relative_distance_to_box(line, outer_box))
-        for inner_box, outer_box, target in boxes
-    ]
-    return [
-        sorted((-t, inner_box, target) for inner_box, target, t in boxes_distances if t is not None and t <= 0),
-        sorted((t, inner_box, target) for inner_box, target, t in boxes_distances if t is not None and t > 0),
-    ]
+def get_box_distance(box: Box, line: Line, end_no: int) -> float | None:
+    distance = box.distance(line[end_no])
+    if distance > 28:
+        return None
+    this_end = line[end_no]
+    other_end = line[1 - end_no]
+    if distance > box.distance(other_end):
+        return None
+    perpendicular_line = (
+        this_end,
+        Pixel(
+            this_end.x + this_end.y - other_end.y,
+            this_end.y - this_end.x + other_end.x,
+        )
+    )
+    corners = (box.top_left, box.top_right, box.bottom_left, box.bottom_right)
+    if any(intersects(perpendicular_line, (other_end, corner)) for corner in corners):
+        return distance
+    else:
+        return None
 
 
 def relative_distance_to_box(line: Line, box: Box) -> float | None:
@@ -196,7 +211,12 @@ class CandidateResolver:
                 prefer = [TextLine, Character]
             else:
                 # both types on both ends, both have unmatched blocks
-                prefer = [TextLine, Character]
+                if isinstance(candidates_pair[0][0], TextLine) and isinstance(candidates_pair[1][0], Character):
+                    prefer = [TextLine, Character]
+                elif isinstance(candidates_pair[0][0], Character) and isinstance(candidates_pair[1][0], TextLine):
+                    prefer = [Character, TextLine]
+                else:
+                    prefer = [TextLine, Character]
         choice = [
             self.select_candidate(candidates, preferred_type == Character)
             for candidates, preferred_type in zip(candidates_pair, prefer)
