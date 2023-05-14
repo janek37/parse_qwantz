@@ -174,7 +174,7 @@ def fit_to_block(line_group: list[TextLine], previous_group: list[TextLine], fon
     previous_first_box = previous_group[0].box()
     previous_last_box = previous_group[-1].box()
     previous_left = previous_first_box.left
-    previous_right = previous_first_box.right
+    previous_right = previous_last_box.right
     previous_bottom = max(previous_first_box.bottom, previous_last_box.bottom)
     if get_interval_distance(
         (left, right),
