@@ -60,7 +60,10 @@ def match_line(
         if image.is_on_edge(end):
             candidates[i] = [OFF_PANEL]
         else:
-            boxes_with_distances = ((box, target, get_box_distance(box, line, i)) for box, target in boxes)
+            boxes_with_distances = (
+                (box, target, get_box_distance(box, line, i, isinstance(target, Character)))
+                for box, target in boxes
+            )
             sorted_boxes = sorted(
                 (distance, box, target)
                 for box, target, distance in boxes_with_distances
@@ -70,13 +73,15 @@ def match_line(
     return candidates[0], candidates[1]
 
 
-def get_box_distance(box: Box, line: Line, end_no: int) -> float | None:
+def get_box_distance(box: Box, line: Line, end_no: int, is_character: bool) -> float | None:
     distance = box.distance(line[end_no])
     if distance > 28:
         return None
     this_end = line[end_no]
     other_end = line[1 - end_no]
     if distance > box.distance(other_end):
+        return None
+    if is_character and not any(intersects(line, side) for side in sides(box)):
         return None
     perpendicular_line = (
         this_end,

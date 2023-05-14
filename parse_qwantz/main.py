@@ -68,6 +68,7 @@ CHARACTERS = [
     [
         Character('T-Rex', Box(Pixel(80, 64), Pixel(134, 84))),
         Character('T-Rex', Box(Pixel(80, 84), Pixel(100, 169))),
+        Character('T-Rex', Box(Pixel(100, 84), Pixel(120, 120))),
         Character('T-Rex', Box(Pixel(100, 110), Pixel(125, 120))),
     ],
 ]
