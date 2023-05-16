@@ -79,6 +79,11 @@ def match_blocks(
             else:
                 block1 = blocks_by_line[line1]
                 block2 = blocks_by_line[line2]
+                if (
+                    block1.row_index(line1) not in (0, len(block1.rows) - 1)
+                    or block2.row_index(line2) not in (0, len(block2.rows) - 1)
+                ):
+                    logger.warning(f"Matching a non-edge line to another line: {line1.content} -- {line2.content}")
             if block1 in block_matches:
                 block_matches[block2] = block_matches[block1]
             elif block2 in block_matches:
