@@ -27,13 +27,11 @@ def match_blocks(
                 block_matches[block] = ([character], line)
             else:
                 prev_characters, prev_line = block_matches[block]
-                prev_row_index = block.row_index(prev_line)
-                row_index = block.row_index(line)
-                if prev_row_index == row_index:
+                if not block.can_split(prev_line, line):
                     if len(prev_characters) == 2:
                         logger.warning("More than two characters share a line")
                     if prev_line != line:
-                        logger.warning("Shared separate lines in one row")
+                        logger.warning("Shared separate lines")
                     if character == OFF_PANEL and OFF_PANEL in prev_characters:
                         prev_characters.remove(OFF_PANEL)
                         new_characters = prev_characters + [MULTI_OFF_PANEL]
