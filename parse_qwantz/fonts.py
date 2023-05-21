@@ -14,18 +14,26 @@ from parse_qwantz.char_variants import VARIANTS
 from parse_qwantz.pixels import Pixel
 from parse_qwantz.simple_image import SimpleImage
 
-CHARS = """0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!"#$%&'()*+,-./:;<=>?@[]^{|}‘’“”·•™é"""
-FORBIDDEN_FIRST_CHARS = "%&)+=]^|}”·™"
+CHARS = (
+    "0123456789"
+    "abcdefghijklmnopqrstuvwxyz"
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    """!"#$%&'()*+,-./:;<=>?@[]^{|}‘’“”·•™"""
+    "éÉïçêáÁèàßû"
+    "®♪♫±_~¡"
+    "αάβγδεέζηήθιίκλμνξοόπρσςτυύφχψωώ"
+)
+FORBIDDEN_FIRST_CHARS = "%&)+=]^|}”·™_"
 
 ACCEPT = -1
 
 FONT_SIZES = [
-    (13, 'Regular', 2, 1),
-    (12, 'Condensed', 0, 0),
-    (11, 'Small', 0, 0),
-    (10, 'Petite', 0, 0),
-    (9, 'Mini', 0, 0),
-    (8, 'Tiny', 0, 0),
+    (13, 'Regular', 8, 2, 1),
+    (12, 'Condensed', 7, 0, 0),
+    (11, 'Small', 7, 0, 0),
+    (10, 'Petite', 6, 0, 0),
+    (9, 'Mini', 5, 0, 0),
+    (8, 'Tiny', 5, 0, 0),
 ]
 
 
@@ -202,6 +210,7 @@ class Font(ABC):
         cls,
         file_path_context_manager: ContextManager[Path],
         name: str,
+        width: int,
         italic_offsets: set[int],
         is_bold: bool,
         group: str,
@@ -215,7 +224,7 @@ class Font(ABC):
         automaton: FSA = {}
         accepting_states: list[CharInfo] = []
         base = 0  # unused value
-        for i, (char, columns) in enumerate(zip(CHARS, cls.get_input_columns(image, italic_offsets, is_bold))):
+        for i, (char, columns) in enumerate(zip(CHARS, cls.get_input_columns(image, width, italic_offsets, is_bold))):
             if char in cls.skip_chars:
                 continue
             if char == '0':
@@ -241,7 +250,7 @@ class Font(ABC):
         final_padding = max(char_info.right_padding for char_info in accepting_states)
         return cls(
             name,
-            cls.get_space_width(image, is_bold, **kwargs),
+            cls.get_space_width(image, width, is_bold, **kwargs),
             height,
             base,
             automaton,
@@ -259,6 +268,7 @@ class Font(ABC):
     def get_input_columns(
         cls,
         image: SimpleImage,
+        width: int,
         italic_offsets: set[int],
         is_bold: bool,
     ) -> Iterator[list[int]]:
@@ -266,7 +276,7 @@ class Font(ABC):
 
     @classmethod
     @abstractmethod
-    def get_space_width(cls, image: SimpleImage, is_bold: bool, **kwargs: Any) -> int:
+    def get_space_width(cls, image: SimpleImage, width: int, is_bold: bool, **kwargs: Any) -> int:
         pass
 
     @classmethod
@@ -307,12 +317,14 @@ class MonospaceFont(Font):
     def get_input_columns(
         cls,
         image: SimpleImage,
+        width: int,
         italic_offsets: set[int],
         is_bold: bool,
     ) -> Iterator[list[int]]:
-        width = image.width // len(CHARS)
         height = image.height
         for i in itertools.count():
+            if width * (i+1) > image.width:
+                return
             columns = [
                 get_column(width * i + j, 0, image, height, italic_offsets)
                 for j in range(width)
@@ -322,9 +334,8 @@ class MonospaceFont(Font):
             yield columns
 
     @classmethod
-    def get_space_width(cls, image: SimpleImage, is_bold: bool, **kwargs: Any) -> int:
-        input_width = image.width // len(CHARS)
-        return input_width + 1 if is_bold else input_width
+    def get_space_width(cls, image: SimpleImage, width: int, is_bold: bool, **kwargs: Any) -> int:
+        return width + 1 if is_bold else width
 
 
 @dataclass
@@ -340,6 +351,7 @@ class ProportionalFont(Font):
     def get_input_columns(
         cls,
         image: SimpleImage,
+        width: int,
         italic_offsets: set[int],
         is_bold: bool,
     ) -> Iterator[list[int]]:
@@ -362,7 +374,7 @@ class ProportionalFont(Font):
             yield columns
 
     @classmethod
-    def get_space_width(cls, image: SimpleImage, is_bold: bool, space_width: int = 0, **kwargs: Any) -> int:
+    def get_space_width(cls, image: SimpleImage, width: int, is_bold: bool, space_width: int = 0, **kwargs: Any) -> int:
         return space_width
 
 
@@ -408,13 +420,14 @@ ALL_FONTS: list[Font] = [
     MonospaceFont.from_file(
         file_path_context_manager=as_file(files(parse_qwantz).joinpath(f'img/regular{size}.png')),
         name=name,
+        width=width,
         italic_offsets=set(),
         is_bold=is_bold,
         group=f'LC{size}',
         max_cut_bottom=max_cut_bottom,
         max_cut_top=max_cut_top,
     )
-    for size, name, max_cut_bottom, max_cut_top in FONT_SIZES
+    for size, name, width, max_cut_bottom, max_cut_top in FONT_SIZES
     for is_bold in (False, True)
 ]
 
@@ -422,6 +435,7 @@ ALL_FONTS.append(
     MonospaceFont.from_file(
         file_path_context_manager=as_file(files(parse_qwantz).joinpath(f'img/italic13.png')),
         name='Italic',
+        width=8,
         italic_offsets={3, 5, 9, 11},
         is_bold=False,
         group='LC13',
@@ -434,6 +448,7 @@ ALL_FONTS.append(
     ProportionalFont.from_file(
         file_path_context_manager=as_file(files(parse_qwantz).joinpath(f'img/serif13.png')),
         name='Serif',
+        width=0,
         italic_offsets=set(),
         is_bold=False,
         group='TNR13',
