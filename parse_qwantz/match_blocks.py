@@ -82,7 +82,15 @@ def match_blocks(
                     or block2.row_index(line2) not in (0, len(block2.rows) - 1)
                 ):
                     logger.warning(f"Matching a non-edge line to another line: {line1.content} -- {line2.content}")
-            if block1 in block_matches:
+            if block1 in block_matches and block2 in block_matches:
+                if block1.start.y < block2.start.y:
+                    first_block, second_block = block1, block2
+                else:
+                    first_block, second_block = block2, block1
+                characters, line = block_matches[first_block]
+                other_characters, _ = block_matches[second_block]
+                block_matches[second_block] = characters + other_characters, line
+            elif block1 in block_matches:
                 block_matches[block2] = block_matches[block1]
             elif block2 in block_matches:
                 block_matches[block1] = block_matches[block2]
