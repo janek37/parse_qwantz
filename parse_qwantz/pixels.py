@@ -69,3 +69,13 @@ def remove_subsequence(sorted_pixels: list[Pixel], subsequence: list[Pixel]) -> 
         if pixel != next_pixel:
             pixels.append(pixel)
     return pixels
+
+
+def is_ask_professor_science(image: Image) -> bool:
+    palette = image.getpalette()
+    palette = tuple(palette) if palette else None
+    for x in range(109, 113):
+        for y in range(1, 6):
+            if normalize_color(image.getpixel((x, y)), palette) == (224, 231, 248):
+                return True
+    return False

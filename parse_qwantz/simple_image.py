@@ -14,8 +14,12 @@ class SimpleImage:
     pixels: dict[Pixel, Color]
 
     @classmethod
-    def from_image(cls, image: Image):
-        return cls(image.width, image.height, dict(get_pixels(image)))
+    def from_image(cls, image: Image, trim_top: bool = False):
+        if trim_top:
+            pixels = {pixel: color for pixel, color in get_pixels(image) if pixel.y > 46}
+        else:
+            pixels = dict(get_pixels(image))
+        return cls(image.width, image.height, pixels)
 
     def get_pixel(self, pixel: Pixel) -> Color:
         # caution: no bounds checking!

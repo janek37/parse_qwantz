@@ -18,7 +18,7 @@ from parse_qwantz.elements import get_elements
 from parse_qwantz.match_blocks import match_blocks
 from parse_qwantz.match_lines import match_lines, Character, OFF_PANEL
 from parse_qwantz.match_thought import match_thought
-from parse_qwantz.pixels import Pixel
+from parse_qwantz.pixels import Pixel, is_ask_professor_science
 from parse_qwantz.shape import get_box
 from parse_qwantz.simple_image import SimpleImage
 from parse_qwantz.prepare_image import prepare_image
@@ -98,12 +98,13 @@ def parse_qwantz(image: Image, debug: bool, log_to_file: bool) -> Iterable[list[
         set_current_panel(i, log_to_file)
         (width, height), (x, y) = panel
         cropped = masked.crop((x, y, x + width, y + height))
-        panel_image = SimpleImage.from_image(cropped)
+        ask_professor_science = is_ask_professor_science(cropped)
+        panel_image = SimpleImage.from_image(cropped, ask_professor_science)
         lines, thoughts, text_lines, unmatched_shapes = get_elements(panel_image)
         text_blocks, block_matches, thought_matches, unmatched_stuff = match_stuff(
             characters, panel_image, lines, text_lines, thoughts
         )
-        script_lines = get_script_lines(text_blocks, block_matches, thought_matches)
+        script_lines = get_script_lines(text_blocks, block_matches, thought_matches, ask_professor_science)
         if debug and (unmatched_shapes or unmatched_stuff):
             handle_debug(cropped, text_blocks, unmatched_shapes, unmatched_stuff, characters)
         yield list(script_lines)
@@ -138,8 +139,11 @@ def match_stuff(
 def get_script_lines(
     text_blocks: list[TextBlock],
     block_matches: dict[TextBlock, list[Character]],
-    thought_matches: dict[TextBlock, Character]
+    thought_matches: dict[TextBlock, Character],
+    ask_professor_science: bool,
 ) -> Iterable[str]:
+    if ask_professor_science:
+        yield "Sign: ASK PROFESSOR SCIENCE"
     for block in text_blocks:
         if god_or_devil := handle_god_and_devil(block, block_matches.get(block) == [OFF_PANEL]):
             block_matches[block] = [god_or_devil]
