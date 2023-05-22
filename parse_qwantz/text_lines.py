@@ -149,7 +149,12 @@ def get_text_line(start: Pixel, image: SimpleImage, font: Font) -> TextLine | No
             char_boxes.append(char_box)
             is_bold = char_box.is_bold
             is_italic = char_box.is_italic
-    if len(char_boxes) == 1 and not char_boxes[0].char.isalpha() and char_boxes[0].char not in '!?':
+    first_char = char_boxes[0].char
+    if (
+        len(char_boxes) == 1 and not first_char.isalpha()
+        and first_char not in '!?'
+        and not (first_char == '-' and font.group == 'LC13')
+    ):
         return
     if len(char_boxes) == 2 and all(char_box.char in "\",.'‘’“”|-/·•" for char_box in char_boxes):
         return
