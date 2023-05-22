@@ -71,7 +71,7 @@ def try_text_line(start: Pixel, image: SimpleImage, font: Font) -> TextLine | No
     else:
         max_x_offset = 0
     max_y_offset = font.height - 1
-    for x in range(x0, x0 - max_x_offset - 1, -1):
+    for x in range(x0 - max_x_offset, x0 + 1):
         for y in range(y0, y0 - max_y_offset - 1, -1):
             line = get_text_line(Pixel(x, y), image, font)
             if line:
