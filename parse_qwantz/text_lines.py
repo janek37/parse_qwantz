@@ -114,7 +114,11 @@ def get_text_line(start: Pixel, image: SimpleImage, font: Font) -> TextLine | No
         # this is to avoid treating "i"/"j" dots as periods, but still allow lines starting with "..."
         if len(char_boxes) == 1 and char_boxes[0].char == '.' and char_box.char != '.':
             return None
-        if len(char_boxes) == 1 and char_boxes[0].char in "'‘’“\"" and not char_box.char.isalpha():
+        if (
+            len(char_boxes) == 1
+            and char_boxes[0].char in "'‘’“\""
+            and not (char_box.char.isalpha() or char_box.char in "-.,")
+        ):
             return None
         if char_box.char in "'|-":
             any_pixel = next(iter(char_box.pixels))
