@@ -157,7 +157,8 @@ class Font(ABC):
             if ACCEPT in state:
                 accepted = (x, state[ACCEPT], None, list(char_columns))
         else:
-            return None, None
+            if not accepted:
+                return None, None
         x, char_info, complement, char_columns = accepted
         if is_first and char_info.char in FORBIDDEN_FIRST_CHARS:
             return None, None
