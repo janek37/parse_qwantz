@@ -945,6 +945,18 @@
       ]
     }
   },
+  "03275be51227d077dcc281fe98a8ab99": {
+    "comic_id": 1021,
+    "file_name": "comic2-1048.png",
+    "panels": {
+      "6": [
+        "T-Rex: Aw, MAN! Best wish ever?",
+        "{T-Rex imagines a dialog}",
+        "Happy women with steaks: {off thought bubble} t-rex, these steaks are starting to make us sad.",
+        "Imaginary T-Rex: {holding a steak} not allowed, ladies!!"
+      ]
+    }
+  },
   "fe4cebd6506520d54c37f1ba2ad62eb7": {
     "comic_id": 1024,
     "file_name": "comic2-1051.png",
@@ -1261,6 +1273,34 @@
       ]
     }
   },
+  "6fe1dd2a4cd87e56ba6e3994947236fe": {
+    "comic_id": 1173,
+    "file_name": "comic2-1200.png",
+    "panels": {
+      "6": [
+        "T-Rex: FINE. You know what? FINE. I'm done dreaming!",
+        "Imaginary ladies room sign: t-rex we symbolically represent sexy babes who forgot our clothes today! wooo!",
+        "T-Rex: Okay, NOW I'm done dreaming.",
+        "Imaginary ladies room sign: we're still here woooo"
+      ]
+    }
+  },
+  "17f526ed018c3a7f9789751661129d28": {
+    "comic_id": 1182,
+    "file_name": "comic2-1209.png",
+    "panels": {
+      "5": [
+        "Off-Panel: THERE.IS.NO.NEED.T-REX.BECAUSE.I.AM.RIGHT.HERE",
+        "T-Rex: Wow! You taught it to recognize me?",
+        "Utahraptor: Yes!",
+        "Off-Panel: PLEASE.DON'T.TALK.LIKE.I'M.NOT.HERE.T-REX",
+        "Off-Panel: IT.MAKES.ME.WANT.TO.NOT.VACUUM.FOR.YOU"
+      ],
+      "6": [
+        "Off-Panel: VACUUM.ROBOT.DIRECTIVE.THREE.SPECIFIES.THAT.THIS.IS.THE.WORST.THING"
+      ]
+    }
+  },
   "19e3131c5d6cf1bfbf50d19eefd234fa": {
     "comic_id": 1225,
     "file_name": "comic2-1252.png",
@@ -1419,6 +1459,20 @@
       ]
     }
   },
+  "dbc7fe4ebc219856a87559f061d2a508": {
+    "comic_id": 1550,
+    "file_name": "comic2-1571.png",
+    "panels": {
+      "6": [
+        "Off-Panel: Oh man! Can you imagine a secretary drinking coffee out of an \"Is This All There Is?\" mug?",
+        "T-Rex: I can!!",
+        "{T-Rex imagines a dialog}",
+        "Imaginary Batman: You can be my new roommate, Spider-man. I GUESS.",
+        "Imaginary Spider-Man: woooo!",
+        "T-Rex: ...LATER."
+      ]
+    }
+  },
   "bc023c001f181049783b857dfd0e5656": {
     "comic_id": 1563,
     "file_name": "comic2-1584.png",
@@ -1537,6 +1591,43 @@
         "{Dromiceiomimus's daydream}",
         "T-Rex: Guys, guys!!",
         "T-Rex: Watch as I believe anything anyone tells me for at least ten minutes!!"
+      ]
+    }
+  },
+  "5f2a6b8c8c3c834ccbbeb0a088ffd5e4": {
+    "comic_id": 1730,
+    "file_name": "comic2-1754.png",
+    "panels": {
+      "1": [
+        "Devil: GREETINGS T-REX IT'S THE DEVIL GUESS WHERE I WENT DOWN TO LAST WEEK",
+        "T-Rex: Man! Georgia?",
+        "Devil: WHAT",
+        "Devil: CORRECT",
+        "Clock: 10 AM"
+      ],
+      "3": [
+        "God: HEY T-REX GUESS WHAT I DID LAST NIGHT",
+        "T-Rex: Um - you caught up on your reading, focusing mainly on periodicals?",
+        "God: T-REX DID YOU FORGET THAT I AM GOD AND THAT READING OLD MAGAZINES IS SOMETHING ONLY NON-GODS DO",
+        "God: BECAUSE IF SO THERE WILL BE VERY FEW RAISED EYEBROWS WHEN I ANSWER YES TO YOUR QUESTION",
+        "Clock: 1:30 PM"
+      ],
+      "4": [
+        "T-Rex: Guess what I just ate, Utahraptor!",
+        "Utahraptor: Um -",
+        "T-Rex: ALL THE CHEERIOS",
+        "Clock: 3 PM"
+      ],
+      "5": [
+        "T-Rex: So in conclusion that's TOTALLY how I ate all the Cheerios!",
+        "Utahraptor: Wow, I can really see why you'd want to talk about this for over an hour!",
+        "T-Rex: Was that sarcastic? Sorry, I couldn't quite hear you over ALL THE CHEERIOS I ATE, UTAHRAPTOR.",
+        "Clock: 4:05 PM"
+      ],
+      "6": [
+        "Clock: 9:30 PM",
+        "T-Rex: Utahraptor, hi! It's me, T-Rex! On speakerphone!!",
+        "T-Rex: Listen, my tummy hurts"
       ]
     }
   },
@@ -1685,6 +1776,21 @@
       "6": [
         "Utahraptor: {off-panel; speech bubble containing only a photo of a black swallower}",
         "{T-Rex is crying black tears}"
+      ]
+    }
+  },
+  "ce982a3141055c505fd62ede2e6a2e6d": {
+    "comic_id": 2111,
+    "file_name": "comic2-2123.png",
+    "panels": {
+      "6": [
+        "Narrator: LATER:",
+        "{motion lines}",
+        "Off-Panel: My table! She is so flipped!!",
+        "T-Rex: Hah hah hah!!",
+        "T-Rex: I",
+        "T-Rex: LOVE",
+        "T-Rex: NEGOTIATING"
       ]
     }
   },
@@ -1876,6 +1982,16 @@
         "Narrator: TELEPATHIC HOTTIE CHAT:",
         "T-Rex: {thinks} Hey baby do u like to kiss on dudes?? bc IM A DUDE",
         "T-Rex: {thinks in a different font} SEND TO: all hotties / REGIONS: all / FLAGS: important, must-read, NOT A JOKE"
+      ]
+    }
+  },
+  "7513bfe902c4acc1aa78f7fc0ae53546": {
+    "comic_id": 2572,
+    "file_name": "comic2-2583.png",
+    "panels": {
+      "6": [
+        "Narrator: IF YOU FOUND THIS WALLET, IMAGINE THE KIND OF PERSON WHO'D CARRY AROUND THIS COMIC IN IT. KINDA MAKES YOU WANT TO RETURN THEIR WALLET, HUH? GIVE THEM A CALL, THEIR NUMBER IS ___________!",
+        "IF THERE'S NO NUMBER, DUDE, SCORE, ENJOY THE FREE WALLET"
       ]
     }
   },
@@ -2110,6 +2226,19 @@
         "Banner: Thanks to robots, love can now technically last forever!!",
         "T-Rex: Wait. is \"technically\" a pun there?",
         "Banner: Technically, yes."
+      ]
+    }
+  },
+  "2dd1ecc90f8da6944663952427ee7853": {
+    "comic_id": 2860,
+    "file_name": "comic2-2869.png",
+    "panels": {
+      "6": [
+        "Narrator: MEANWHILE, IN A PARALLEL UNIVERSE:",
+        "Mosquito: I'm gonna pierce your skin and consume your blood!",
+        "T-Rex: This was bad enough before you could talk, mosquitos!!",
+        "Another mosquito: We're using language to hunt in packs and are developing technology",
+        "T-Rex: DANG IT"
       ]
     }
   },
@@ -2357,6 +2486,17 @@
         "Utahraptor: {off-panel} Oh man! Let's imagine that right now!",
         "T-Rex: ...",
         "T-Rex and Utahraptor: AAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH"
+      ]
+    }
+  },
+  "b162c887462796ed6ed3b7b23cbb6168": {
+    "comic_id": 3381,
+    "file_name": "comic2-3386.png",
+    "panels": {
+      "6": [
+        "Imaginary Utahraptor: I TAKE IT BACK AND YOU RULE",
+        "Utahraptor: {off-panel} Are you imagining me saying \"I take it back and you rule\"??",
+        "T-Rex: UH... NOT HARD ENOUGH, EVIDENTLY??"
       ]
     }
   },
