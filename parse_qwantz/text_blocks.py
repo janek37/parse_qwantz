@@ -1,7 +1,7 @@
 import logging
 import re
 from dataclasses import dataclass
-from functools import cached_property
+from functools import cached_property, cmp_to_key
 from itertools import groupby
 from typing import Iterable
 
@@ -127,6 +127,32 @@ class TextBlock:
 
     def __hash__(self):
         return id(self)
+
+
+def compare_text_blocks(block1: TextBlock, block2: TextBlock):
+    if block1.end.y - block2.font.height / 2 <= block2.start.y:
+        return -1
+    if block1.start.y >= block2.end.y - block2.font.height / 2:
+        return 1
+    if block1.start.x < block2.start.x:
+        if block1.start.y - block1.font.height*1.5 <= block2.start.y:
+            return -1
+        if block1.end.y <= block2.end.y:
+            return -1
+        logger.warning(f"Ambiguous block order {block1.box} {block2.box} {block1.font.height}")
+        return 1
+    if block1.start.x > block2.start.x:
+        if block1.start.y >= block2.start.y - block2.font.height*1.5:
+            return 1
+        if block1.end.y >= block2.end.y:
+            return 1
+        logger.warning(f"Ambiguous block order {block2.box} {block1.box} {block2.font.height}")
+        return -1
+    return 0
+
+
+def sort_text_blocks(text_blocks: Iterable[TextBlock]) -> list[TextBlock]:
+    return sorted(text_blocks, key=cmp_to_key(compare_text_blocks))
 
 
 def mark_excluding_trailing_spaces(s: str, marker: str) -> str:

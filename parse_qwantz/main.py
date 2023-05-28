@@ -13,7 +13,7 @@ from parse_qwantz.color_logs import set_logging_formatter, ColorFormatter
 from parse_qwantz.colors import Color
 from parse_qwantz.lines import Line
 from parse_qwantz.panel_overrides import get_panel_overrides
-from parse_qwantz.text_blocks import get_text_blocks, TextBlock
+from parse_qwantz.text_blocks import get_text_blocks, TextBlock, sort_text_blocks
 from parse_qwantz.elements import get_elements
 from parse_qwantz.match_blocks import match_blocks
 from parse_qwantz.match_lines import match_lines, Character, OFF_PANEL
@@ -118,10 +118,10 @@ def match_stuff(
     dict[TextBlock, Character],
     UnmatchedStuff,
 ]:
-    text_blocks = sorted(get_text_blocks(text_lines), key=lambda b: (b.end.y, b.end.x))
+    text_blocks = sort_text_blocks(get_text_blocks(text_lines))
     line_matches, unmatched_lines = match_lines(lines, text_blocks, characters, image)
     block_matches, text_blocks, unmatched_neighbors = match_blocks(line_matches, text_blocks)
-    text_blocks = sorted(text_blocks, key=lambda b: (b.end.y, b.end.x))
+    text_blocks = sort_text_blocks(text_blocks)
     unmatched_blocks = [block for block in text_blocks if block not in block_matches]
     thinking_characters = [character for character in characters if character.can_think]
     thought_matches = dict(match_thought(thoughts, unmatched_blocks, thinking_characters))
