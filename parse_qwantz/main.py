@@ -100,13 +100,13 @@ def parse_qwantz(image: Image, debug: bool, log_to_file: bool) -> Iterable[list[
         cropped = masked.crop((x, y, x + width, y + height))
         ask_professor_science = is_ask_professor_science(cropped)
         panel_image = SimpleImage.from_image(cropped, ask_professor_science)
-        lines, thoughts, text_lines, unmatched_shapes = get_elements(panel_image)
+        lines, thoughts, text_lines, extra_characters, unmatched_shapes = get_elements(panel_image)
         text_blocks, block_matches, thought_matches, unmatched_stuff = match_stuff(
-            characters, panel_image, lines, text_lines, thoughts
+            characters + extra_characters, panel_image, lines, text_lines, thoughts
         )
         script_lines = get_script_lines(text_blocks, block_matches, thought_matches, ask_professor_science)
         if debug and (unmatched_shapes or unmatched_stuff):
-            handle_debug(cropped, text_blocks, unmatched_shapes, unmatched_stuff, characters)
+            handle_debug(cropped, text_blocks, unmatched_shapes, unmatched_stuff, characters + extra_characters)
         yield list(script_lines)
 
 
@@ -151,6 +151,8 @@ def get_script_lines(
             characters = block_matches[block]
             if god_or_devil:
                 content = block.content(mark_bold=False)
+            elif characters[0].name == "Floating Batman head":
+                content = block.content()
             else:
                 content = block.content(include_font_name=True)
             yield f"{' and '.join(ch.name for ch in characters)}: {content}"

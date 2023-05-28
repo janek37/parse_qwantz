@@ -4,6 +4,7 @@ from logging import getLogger
 from parse_qwantz.box import Box
 from parse_qwantz.fonts import ALL_FONTS
 from parse_qwantz.lines import Line, get_line
+from parse_qwantz.match_lines import Character
 from parse_qwantz.text_lines import TextLine, try_text_line, cleanup_text_lines
 from parse_qwantz.detect_thought import get_thought
 from parse_qwantz.pixels import Pixel, remove_subsequence
@@ -13,12 +14,15 @@ from parse_qwantz.simple_image import SimpleImage
 logger = getLogger()
 
 
-def get_elements(image: SimpleImage) -> tuple[list[Line], list[Box], list[TextLine], list[list[Pixel]]]:
+def get_elements(
+    image: SimpleImage
+) -> tuple[list[Line], list[Box], list[TextLine], list[Character], list[list[Pixel]]]:
     text_lines: list[TextLine] = []
     lines: list[Line] = []
     thoughts: list[Box] = []
     unmatched: list[list[Pixel]] = []
     sorted_pixels = sorted(image.pixels)
+    extra_characters = []
     while sorted_pixels:
         pixel = sorted_pixels[0]
         pixels = set(sorted_pixels)
@@ -40,6 +44,10 @@ def get_elements(image: SimpleImage) -> tuple[list[Line], list[Box], list[TextLi
                 line, line_pixels = result
                 lines.append(line)
                 sorted_pixels = remove_subsequence(sorted_pixels, line_pixels)
+            elif result := get_batman(pixel, tmp_image):
+                batman_box, batman_pixels = result
+                extra_characters.append(Character("Floating Batman head", batman_box, can_think=False))
+                sorted_pixels = remove_subsequence(sorted_pixels, batman_pixels)
             elif result := get_thought(pixel, tmp_image):
                 box, thought_pixels = result
                 thoughts.append(box)
@@ -52,4 +60,15 @@ def get_elements(image: SimpleImage) -> tuple[list[Line], list[Box], list[TextLi
                 if len(unmatched) == 5:
                     logger.warning("At least five unmatched objects detected, aborting")
                     break
-    return lines, thoughts, cleanup_text_lines(text_lines, image), unmatched
+    return lines, thoughts, cleanup_text_lines(text_lines, image), extra_characters, unmatched
+
+
+def get_batman(pixel: Pixel, image: SimpleImage) -> tuple[Box, list[Pixel]] | None:
+    pixels = get_shape(pixel, image)
+    if len(pixels) != 187:
+        return None
+    if Pixel(pixel.x + 11, pixel.y - 7) in pixels and Pixel(pixel.x + 11, pixel.y - 8) not in pixels:
+        return Box(Pixel(pixel.x, pixel.y - 7), Pixel(pixel.x + 14, pixel.y + 11)), sorted(pixels)
+    if Pixel(pixel.x + 2, pixel.y - 17) in pixels and Pixel(pixel.x + 2, pixel.y - 18) not in pixels:
+        return Box(Pixel(pixel.x, pixel.y - 7), Pixel(pixel.x + 14, pixel.y + 11)), sorted(pixels)
+    return None
