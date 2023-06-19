@@ -99,13 +99,12 @@ def get_text_line(start: Pixel, image: SimpleImage, font: Font) -> TextLine | No
                 char_box, complement = font.get_char(Pixel(x + off_x, y + off_y), image)
                 if char_box and char_box.char == ' ':
                     char_box = None
-                if char_box is not None:
+                if char_box is not None and char_box.char not in "_'":
                     content_so_far = ''.join(char_box.char for char_box in char_boxes)
-                    if off_x == -2 or off_y != 0:
-                        inline_offset_warning = (
-                            f"Inline offset after {content_so_far + ' '*len(spaces)!r},"
-                            f" before {char_box.char!r}: {(off_x, off_y)}"
-                        )
+                    inline_offset_warning = (
+                        f"Inline offset after {content_so_far + ' '*len(spaces)!r},"
+                        f" before {char_box.char!r}: {(off_x, off_y)}"
+                    )
                     x += off_x
                     y += off_y
                     break
@@ -113,12 +112,6 @@ def get_text_line(start: Pixel, image: SimpleImage, font: Font) -> TextLine | No
             break
         # this is to avoid treating "i"/"j" dots as periods, but still allow lines starting with "..."
         if len(char_boxes) == 1 and char_boxes[0].char == '.' and char_box.char != '.':
-            return None
-        if (
-            len(char_boxes) == 1
-            and char_boxes[0].char in "'‘’“\""
-            and not (char_box.char.isalpha() or char_box.char in "-.,")
-        ):
             return None
         if char_box.char in "'|-":
             any_pixel = next(iter(char_box.pixels))
@@ -160,8 +153,9 @@ def get_text_line(start: Pixel, image: SimpleImage, font: Font) -> TextLine | No
         and not (first_char == '-' and font.group == 'LC13')
     ):
         return
-    if len(char_boxes) == 2 and all(char_box.char in "\",.'‘’“”|-/·•" for char_box in char_boxes):
-        return
+    if len(char_boxes) >= 2 and all(char_box.char in "\",.'‘’“”|-/·•" for char_box in char_boxes):
+        if ''.join(char_box.char for char_box in char_boxes) != "...":
+            return
     char_boxes = list(adjust_spaces(char_boxes))
     if len(char_boxes) >= 5 and all(char_box.char == ' ' for char_box in char_boxes[1::2]):
         char_boxes = char_boxes[0::2]
