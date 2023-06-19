@@ -53,10 +53,10 @@ def get_elements(
                 thoughts.append(box)
                 sorted_pixels = remove_subsequence(sorted_pixels, thought_pixels)
             else:
-                logger.warning(f"No match found for shape at {(pixel.x, pixel.y)}")
                 unmatched_pixels = sorted(get_shape(pixel, tmp_image))
                 unmatched.append(unmatched_pixels)
                 sorted_pixels = remove_subsequence(sorted_pixels, unmatched_pixels)
+                logger.warning(f"No match found for shape at {(pixel.x, pixel.y)} ({len(unmatched_pixels)} pixels)")
                 if len(unmatched) == 5:
                     logger.warning("At least five unmatched objects detected, aborting")
                     break
