@@ -148,12 +148,12 @@ def get_text_line(start: Pixel, image: SimpleImage, font: Font) -> TextLine | No
             is_italic = char_box.is_italic
     first_char = char_boxes[0].char
     if (
-        len(char_boxes) == 1 and not first_char.isalpha()
+        len(char_boxes) == 1 and not first_char.isalnum()
         and first_char not in '!?'
         and not (first_char == '-' and font.group == 'LC13')
     ):
         return
-    if len(char_boxes) >= 2 and all(char_box.char in "\",.'‘’“”|-/·•" for char_box in char_boxes):
+    if len(char_boxes) >= 2 and all(char_box.char in " \",.'‘’“”|-/·•" for char_box in char_boxes):
         if ''.join(char_box.char for char_box in char_boxes) != "...":
             return
     char_boxes = list(adjust_spaces(char_boxes))
