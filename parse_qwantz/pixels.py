@@ -4,7 +4,7 @@ from typing import Iterable, NamedTuple
 
 from PIL import Image
 
-from parse_qwantz.colors import Color
+from parse_qwantz.colors import Color, square_distance
 
 logger = getLogger()
 
@@ -76,6 +76,9 @@ def is_ask_professor_science(image: Image) -> bool:
     palette = tuple(palette) if palette else None
     for x in range(109, 113):
         for y in range(1, 6):
-            if normalize_color(image.getpixel((x, y)), palette) == (224, 231, 248):
+            pixel_color = normalize_color(image.getpixel((x, y)), palette)
+            if square_distance(pixel_color, (224, 231, 248)) <= 3:
+                return True
+            if square_distance(pixel_color, (209, 220, 244)) <= 3:
                 return True
     return False
