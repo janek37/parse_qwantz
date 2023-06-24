@@ -10,6 +10,12 @@ from parse_qwantz.shape import get_shape, get_adjacent_pixels, get_box
 def get_thought(pixel: Pixel, image: SimpleImage) -> tuple[Box, list[Pixel]] | None:
     orig_pixels = get_shape(pixel, image)
     box = get_box(orig_pixels)
+    if any(x == 0 for x, y in orig_pixels) and any(x == image.width - 1 for x, y in orig_pixels):
+        if len(set(y for x, y in orig_pixels)) > 2:
+            box = Box(Pixel(0, 0), box.bottom_right)
+            return box, sorted(orig_pixels)
+        else:
+            return None
     tripled_pixels: set[Pixel] = set(orig_pixels)
     for x, y in orig_pixels:
         tripled_pixels.update({Pixel(x + 1, y), Pixel(x + 2, y)})

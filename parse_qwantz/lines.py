@@ -27,6 +27,8 @@ def get_line(pixel: Pixel, image: SimpleImage) -> tuple[Line, list[Pixel]] | Non
         return None
     if end1 == end2:
         return None
+    if image.is_on_edge(end1) and image.is_on_edge(end2):
+        return None
     on_edge = image.is_on_edge(end1) or image.is_on_edge(end2)
     if not on_edge and (end1.x - end2.x)**2 + (end1.y - end2.y)**2 < 8:
         return None
