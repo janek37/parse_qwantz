@@ -159,6 +159,8 @@ def get_text_line(start: Pixel, image: SimpleImage, font: Font) -> TextLine | No
     char_boxes = list(adjust_spaces(char_boxes))
     if len(char_boxes) >= 5 and all(char_box.char == ' ' for char_box in char_boxes[1::2]):
         char_boxes = char_boxes[0::2]
+    if len(char_boxes) > 2 and char_boxes[-1].char == "'" and char_boxes[-2].char == " ":
+        char_boxes = char_boxes[:-2]
     color = image.get_pixel(min(char_boxes[0].pixels))
     return TextLine(char_boxes, font, color)
 
