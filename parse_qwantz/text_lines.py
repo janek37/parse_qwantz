@@ -128,6 +128,8 @@ def get_text_line(start: Pixel, image: SimpleImage, font: Font) -> TextLine | No
         if inline_offset_warning:
             logger.warning(inline_offset_warning)
         if char_box.char == ' ':
+            if len(char_boxes) == 1 and char_boxes[0].char == "'":
+                return
             spaces.append(
                 CharBox.space(is_bold, is_italic, char_box.box)
             )
