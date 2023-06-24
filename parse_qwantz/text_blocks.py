@@ -55,9 +55,7 @@ class TextBlock:
         char_boxes = []
         for row in self.rows:
             if char_boxes:
-                if char_boxes[-1].char != '-' or char_boxes[-2].char in ' -':
-                    char_boxes.append(CharBox.space(is_bold=char_boxes[-1].is_bold, is_italic=char_boxes[-1].is_italic))
-                else:
+                if char_boxes[-1].char == '-' and char_boxes[-2].char not in ' -':
                     last_words = ''
                     for char_box in char_boxes[-2::-1]:
                         if char_box.char in '.,!?" ':
@@ -71,6 +69,8 @@ class TextBlock:
                     else:
                         last_words += '-'
                     logger.info(f"Line ending with hyphen ({last_words}/{next_words})")
+                elif not (row[0].content.startswith("+") and row[0].content[1] != " "):
+                    char_boxes.append(CharBox.space(is_bold=char_boxes[-1].is_bold, is_italic=char_boxes[-1].is_italic))
             previous_line = None
             for line in row:
                 if previous_line and line.box().left - previous_line.box().right >= line.font.space_width // 2:
