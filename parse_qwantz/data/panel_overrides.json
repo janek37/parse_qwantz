@@ -6,7 +6,7 @@
       "6": [
         "Narrator: LATER...",
         "T-Rex: {large} !",
-        "T-Rex: {thinks} **I** was his roommate!"
+        "T-Rex: {thinks} ◖I◗ was his roommate!"
       ]
     }
   },
@@ -235,7 +235,7 @@
       "6": [
         "{Utahraptor's speech is partly obscured by T-Rex's speech bubble, the reconstructed obscured parts are in [brackets]}",
         "Utahraptor: {off-panel} image is that? Plus, you can't b[ring a date t]o such a resta[urant, because ev]en if you don['t eat anythin]g cheap, it becomes All-You-Can-Politely-Eat, since you're trying to impress your date and thus can't go all-out. Food should be a delight, not a symbolic stop at a gas station. I find",
-        "T-Rex: I'm going to eat **SO MANY WINGS!**"
+        "T-Rex: I'm going to eat ◖SO MANY WINGS!◗"
       ]
     }
   },
@@ -343,7 +343,7 @@
       ],
       "5": [
         "{Utahraptor's daydream}",
-        "T-Rex: {small} ... like _this_?",
+        "T-Rex: {small} ... like ▹this◃?",
         "Sound effect: {near T-Rex's foot} squish!",
         "Utahraptor: {stops daydreaming}",
         "Utahraptor: Hm... maybe I'll just stay home today!"
@@ -433,7 +433,7 @@
         "T-Rex: This is a very dull panel. What is on the next panel?"
       ],
       "2": [
-        "T-Rex: {the first sentence in red} **WHAT DID THAT SAY?** Did that say there will be a dinosaur at the end of this comic?"
+        "T-Rex: {the first sentence in red} ◖WHAT DID THAT SAY?◗ Did that say there will be a dinosaur at the end of this comic?"
       ],
       "3": [
         "T-Rex: It did? Oh, I am so scared of dinosaurs!!",
@@ -442,7 +442,7 @@
         "T-Rex: {small} so please do not read the next panel."
       ],
       "4": [
-        "Utahraptor: {dark red} **THEY READ THE PANEL!**",
+        "Utahraptor: {dark red} ◖THEY READ THE PANEL!◗",
         "T-Rex: {'doing' in dark red} Maybe you do not understand! You do not know what you are doing to me!"
       ],
       "5": [
@@ -452,7 +452,7 @@
       ],
       "6": [
         "T-Rex: {'ME' is dark blue} Well, look at that! This is the end of the comic, and the only one here is ME!",
-        "T-Rex: {'T-Rex' is green} I, lovable, scaly old **T-Rex** am the dinosaur at the end of this comic!",
+        "T-Rex: {'T-Rex' is green} I, lovable, scaly old ◖T-Rex◗ am the dinosaur at the end of this comic!",
         "T-Rex: {both 'told' are underlined} And you were so scared! I told you and told you there was nothing to be afraid of!"
       ]
     }
@@ -477,7 +477,7 @@
         "T-Rex: ALL THE MONEY"
       ],
       "6": [
-        "Narrator: LATER THE UTAHRAPTOR USES THE MIND-CONTROL RAY ON HIMSELF, AND BECOMES... _A KINDER PERSON!_",
+        "Narrator: LATER THE UTAHRAPTOR USES THE MIND-CONTROL RAY ON HIMSELF, AND BECOMES... ▹A KINDER PERSON!◃",
         "T-Rex: Thanks for the cookies!"
       ]
     }
@@ -580,8 +580,8 @@
       ],
       "6": [
         "{T-Rex's daydream}",
-        "Off-Panel: Miss **Fitzhenry**?!",
-        "T-Rex: Bugsy... _Brown._"
+        "Off-Panel: Miss ◖Fitzhenry◗?!",
+        "T-Rex: Bugsy... ▹Brown.◃"
       ]
     }
   },
@@ -600,7 +600,7 @@
     "file_name": "comic2-411.png",
     "panels": {
       "6": [
-        "T-Rex's stomach: _NO WE DIDN'T_"
+        "T-Rex's stomach: ▹NO WE DIDN'T◃"
       ]
     }
   },
@@ -666,7 +666,7 @@
         "{magazine cover with hot pink sans-serif text}",
         "Magazine cover: teen magazine by t-rex",
         "Magazine cover: “friends with benefits”: pretty hot",
-        "Magazine cover: are you fully aware of **sex**? maybe not?",
+        "Magazine cover: are you fully aware of ◖sex◗? maybe not?",
         "Magazine cover: special feature: stories where people lose their pants and are thus embarrassed",
         "Magazine cover: PLUS: understanding europe"
       ]
@@ -746,7 +746,7 @@
     "file_name": "comic2-642-2.png",
     "panels": {
       "6": [
-        "Narrator: T-REX NEVER SPEAKS AGAIN... _IN THE PARALLEL UNIVERSE WHERE EVERYTHING IS CRAZY!_",
+        "Narrator: T-REX NEVER SPEAKS AGAIN... ▹IN THE PARALLEL UNIVERSE WHERE EVERYTHING IS CRAZY!◃",
         "Off-Panel: I'm wearing underpants on my head AND passing my driver's test!",
         "Off-Panel: Isn't that SO crazy??"
       ]
@@ -922,7 +922,7 @@
       "6": [
         "Off-Panel: Well look at YOU, Mr. \"I write a book about a tugboat that employs superseded scientific theories for locomotion\"!",
         "T-Rex: Yes! Look at me! at me and buy my story and find out if Tuggy saves us all!",
-        "T-Rex: {small} _the answer is yes_"
+        "T-Rex: {small} ▹the answer is yes◃"
       ]
     }
   },
@@ -1045,7 +1045,7 @@
     "file_name": "comic2-1070.png",
     "panels": {
       "6": [
-        "T-Rex: {small} it's _Not Modified_"
+        "T-Rex: {small} it's ▹Not Modified◃"
       ]
     }
   },
@@ -1221,9 +1221,9 @@
     "file_name": "comic2-1114.png",
     "panels": {
       "6": [
-        "Movie Poster: THE **GUY** WHO KEPT TAKING **BITES** OUT OF **ANIMALS**",
+        "Movie Poster: THE ◖GUY◗ WHO KEPT TAKING ◖BITES◗ OUT OF ◖ANIMALS◗",
         "Movie Poster: Once In a Lifetime Comes a Movie (In The German Expressionist Tradition) In Which A Dinosaur Takes Cartoony Bites out of Cows and Then Tries to Avoid Punishment for That.™",
-        "Movie Poster Text: “**BITINGLY** hilarious!” --Everyone??"
+        "Movie Poster Text: “◖BITINGLY◗ hilarious!” --Everyone??"
       ]
     }
   },
@@ -1392,7 +1392,7 @@
     "panels": {
       "6": [
         "T-Rex: My boy, my boy, my boy.",
-        "T-Rex: {small} _Myyy boyyyyyyyy_"
+        "T-Rex: {small} ▹Myyy boyyyyyyyy◃"
       ]
     }
   },
@@ -1653,7 +1653,7 @@
         "T-Rex: Surveys get people with opinions, and the bored, and the lonely. not the apathetic and the jerkasses! You know what jerkasses do when some stranger calls up and asks them questions?",
         "Utahraptor: Hang up the phone?",
         "T-Rex: Utahraptor",
-        "T-Rex: {small} _sometimes they curse first_"
+        "T-Rex: {small} ▹sometimes they curse first◃"
       ]
     }
   },
@@ -1694,7 +1694,7 @@
       "6": [
         "Narrator: LATER, T-REX GETS THE FLU!",
         "T-Rex: I've got thousands of microscopic flu gods inside me!!",
-        "T-Rex: {small} _...jerks._"
+        "T-Rex: {small} ▹...jerks.◃"
       ]
     }
   },
@@ -2340,7 +2340,7 @@
     "file_name": "comic2-2757.png",
     "panels": {
       "6": [
-        "T-Rex: {small} _My characters kiss on each other, like, ALL the time_"
+        "T-Rex: {small} ▹My characters kiss on each other, like, ALL the time◃"
       ]
     }
   },
@@ -2480,10 +2480,10 @@
     "panels": {
       "6": [
         "{a book cover with text in Batman The Animated Series font}",
-        "Book cover: THE DAY **BATMAN** BECAME IMMORTAL, AND ALSO REAL",
+        "Book cover: THE DAY ◖BATMAN◗ BECAME IMMORTAL, AND ALSO REAL",
         "Book cover: AND ALSO MY BEST FRIEND",
         "Book cover: ALSO, I BECAME IMMORTAL TOO",
-        "Book cover: I DON'T WANT TO GIVE THE WHOLE STORY AWAY IN MY BOOK TITLE SO I'LL STOP NOW, BUT LET ME SAY THIS: WE **DEFINITELY** KISS"
+        "Book cover: I DON'T WANT TO GIVE THE WHOLE STORY AWAY IN MY BOOK TITLE SO I'LL STOP NOW, BUT LET ME SAY THIS: WE ◖DEFINITELY◗ KISS"
       ]
     }
   },
@@ -2560,7 +2560,7 @@
     "panels": {
       "1": [
         "Narrator: SOCIAL MEDIA",
-        "Narrator: _for seniors_"
+        "Narrator: ▹for seniors◃"
       ]
     }
   },
@@ -2612,7 +2612,7 @@
       ],
       "6": [
         "Narrator: T-REX TRIES TO HUM AND WHISTLE AT THE SAME TIME AND DISCOVERS A) HE CAN DO IT AND B) IT SOUNDS LIKE A ROBOT MALFUNCTIONING",
-        "T-Rex: _BRRRVVVRRRRTT_",
+        "T-Rex: ▹BRRRVVVRRRRTT◃",
         "T-Rex: holy crap",
         "T-Rex: no gods can judge me"
       ]
@@ -2636,7 +2636,7 @@
       "6": [
         "T-Rex: Meanwhile, I burned my grilled cheese sandwich today: a meal so simple, its recipe is fully contained within its name!!",
         "Off-Panel: Hah hah!",
-        "Smoke detector: {off-panel} _**BEEP BEEP BEEP**_",
+        "Smoke detector: {off-panel} ▹◖BEEP BEEP BEEP◗◃",
         "Off-Panel: Aw crap, MY grilled cheese!!"
       ]
     }
@@ -2807,7 +2807,7 @@
       "6": [
         "Off-Panel: I'm not doing a crime and then dying for you, T-Rex.",
         "T-Rex: Right. RIGHT! ME NEITHER, UTAHRAPTOR! NO CRIMES HERE, THAT'S FOR DARN SURE!",
-        "T-Rex: {small} _We'll talk later_"
+        "T-Rex: {small} ▹We'll talk later◃"
       ]
     }
   },

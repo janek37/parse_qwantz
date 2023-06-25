@@ -84,7 +84,7 @@ class TextBlock:
             for (is_bold, is_italic), group in grouped_char_boxes
         )
         content = ''.join(
-            mark_excluding_trailing_spaces(content, '**' if is_bold else '_') if is_bold or is_italic else content
+            mark_excluding_trailing_spaces(content, '◖◗' if is_bold else '▹◃') if is_bold or is_italic else content
             for content, is_bold, is_italic in text_and_weight
         )
         content = content.replace('  ', ' ')
@@ -155,9 +155,9 @@ def sort_text_blocks(text_blocks: Iterable[TextBlock]) -> list[TextBlock]:
     return sorted(text_blocks, key=cmp_to_key(compare_text_blocks))
 
 
-def mark_excluding_trailing_spaces(s: str, marker: str) -> str:
+def mark_excluding_trailing_spaces(s: str, markers: str) -> str:
     trailing_spaces = re.search(r" *$", s).group()
-    return f'{marker}{s.rstrip()}{marker}{trailing_spaces}'
+    return f'{markers[0]}{s.rstrip()}{markers[1]}{trailing_spaces}'
 
 
 @dataclass

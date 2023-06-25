@@ -2,7 +2,7 @@ Panel 1:
 T-Rex: Guess what I got last night?
 
 Panel 2:
-T-Rex: A **dog**!
+T-Rex: A ◖dog◗!
 
 Panel 3:
 T-Rex: Did you know that dogs and dinosaurs co-existed?
