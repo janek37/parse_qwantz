@@ -253,6 +253,16 @@
       ]
     }
   },
+  "d5ad40bcab16d06b00e4e49f7a32a0b3": {
+    "comic_id": 68,
+    "file_name": "comic2-78.2.png",
+    "panels": {
+      "2": [
+        "T-Rex: For such a skilled dinosaur as myself, it should be simple!",
+        "Narrator: {with an arrow poining at T-Rex's arm} tiny arms (plot point)"
+      ]
+    }
+  },
   "4dd2d7610217a4b5ce23826c2c189a3a": {
     "comic_id": 70,
     "file_name": "comic2-17.png",
@@ -360,7 +370,7 @@
         "Utahraptor: {dressed as T-Rex} Trick or treat, or I'll stomp on your house!",
         "Off-Panel: Ooh! What a scary costume!",
         "Utahraptor: Thank you ma'am! I stayed up all night working on it!",
-        "Narrator: The vestigial arms are made of paper mache!"
+        "Utahraptor: {small} The vestigial arms are made of paper mache!"
       ]
     }
   },
@@ -815,6 +825,27 @@
       ]
     }
   },
+  "d6fc627137b80649f629d3f0d8314b6d": {
+    "comic_id": 798,
+    "file_name": "comic2-829.png",
+    "panels": {
+      "6": [
+        "Narrator: EARLIER:",
+        "T-Rex: What's this, a radio?",
+        "Off-Panel: {small, song} we want pre-nup"
+      ]
+    }
+  },
+  "49bf56c8f5aa2b110c349b8bfc1ce61e": {
+    "comic_id": 799,
+    "file_name": "comic2-830.png",
+    "panels": {
+      "6": [
+        "T-Rex: People who've made bad decisions: I salute you!",
+        "Visual effect: {arrows pointing at T-Rex's raised arms} SALUTE!"
+      ]
+    }
+  },
   "157cd5effb2b9e4d13429580ce9b1ff6": {
     "comic_id": 840,
     "file_name": "comic2-871.png",
@@ -879,6 +910,19 @@
       ]
     }
   },
+  "8c6b90f62251d643232a189e7c0742a8": {
+    "comic_id": 867,
+    "file_name": "comic2-898-3.png",
+    "panels": {
+      "6": [
+        "Narrator: THE PAST BREAKUP CAM:",
+        "{vertical motion lines above T-Rex}",
+        "T-Rex: We jumped out of an orbital tower and are now freefalling from outer space onto giant trampolines!",
+        "Off-Panel: I know! I think we should see other people, baby!",
+        "T-Rex: That's cool!"
+      ]
+    }
+  },
   "b1335b8157e7973e9bee2c588ffebe9d": {
     "comic_id": 916,
     "file_name": "comic2-948.png",
@@ -903,6 +947,16 @@
       ]
     }
   },
+  "1a269fd18f880072ae9bb2562d9b1c83": {
+    "comic_id": 949,
+    "file_name": "comic2-981-2.png",
+    "panels": {
+      "6": [
+        "Narrator: UTAHRAPTOR'S T-REX SIMULATOR:",
+        "T-Rex: {mini} booooooooooooooners"
+      ]
+    }
+  },
   "f1206287674b12c8051fd90d771e6ff5": {
     "comic_id": 950,
     "file_name": "comic2-982.png",
@@ -923,6 +977,15 @@
         "Off-Panel: Well look at YOU, Mr. \"I write a book about a tugboat that employs superseded scientific theories for locomotion\"!",
         "T-Rex: Yes! Look at me! at me and buy my story and find out if Tuggy saves us all!",
         "T-Rex: {small} ▹the answer is yes◃"
+      ]
+    }
+  },
+  "1877cedb552fb7236cabc5cd15f51bc2": {
+    "comic_id": 969,
+    "file_name": "comic2-1001.png",
+    "panels": {
+      "3": [
+        "T-Rex: I told them that we like birthdays and cool presents and when they are nice. Now chicks will know what we like! I know there are some men out there who would have preferred I'd given more SALACIOUS tips, like \"how to please a man in the milieu of the bed-room\", but that is ridiculous. Here is how you please a man in the milieu of the bed-room: I DUNNO, MAYBE SEXUAL INTERCOURSE WILL DO THE TRICK??"
       ]
     }
   },
@@ -1019,6 +1082,17 @@
       ]
     }
   },
+  "309a1cf1240101a7e7c29a9cbcdec10f": {
+    "comic_id": 1033,
+    "file_name": "comic2-1060.png",
+    "panels": {
+      "3": [
+        "Text: The number of people who could be here, in my place, outnumber the sand grains of Sahara. If you think about all the different ways in which our genes could be permuted, you and I are quite grotesquely lucky to be here. The number of events that had to happen in order for you to exist, in order for me to exist...",
+        "T-Rex: I like chicken. I could bread it, or I could roast it.",
+        "T-Rex: Maybe I could put a lemon inside."
+      ]
+    }
+  },
   "738aa83fc3bee667e3c742e6ec9f7328": {
     "comic_id": 1034,
     "file_name": "comic2-1061.png",
@@ -1090,7 +1164,7 @@
       ],
       "6": [
         "Utahraptor: {off-panel} It's just - you seem distracted!",
-        "T-Rex: I'm not! I'm not!! I'm CERTAINLY not writing erotica in my head right now.",
+        "T-Rex: {daydreaming} I'm not! I'm not!! I'm CERTAINLY not writing erotica in my head right now.",
         "T-Rex: {thinks} Aw man! Why would I even say that??"
       ]
     }
@@ -1409,6 +1483,16 @@
       ]
     }
   },
+  "c060d511fa66ede91e75238707b25389": {
+    "comic_id": 1236,
+    "file_name": "comic2-1263.png",
+    "panels": {
+      "6": [
+        "Banner: SUICIDE IN COMICS",
+        "Narrator: \"WHAT IS THE DEAL\""
+      ]
+    }
+  },
   "404678226c7ed491f8bda6f1b79a250d": {
     "comic_id": 1246,
     "file_name": "comic2-1273.png",
@@ -1432,6 +1516,18 @@
         "Text: Okay you are bidding on some protest signs that I'm selling because I was gonna be fascist, but not anymore!! There's a picture of me and beneath it they say \"T-REX IS IN CHARGE NOW: I GUESS WE'LL ALL JUST HAVE TO DEAL\" They have many uses such as pretending I am in charge and that you are all, \"no WAY is that guy in charge, what will i do, oh wait my sign says i should just deal\"",
         "Text: STARTING BID: $100",
         "Text: {form input} YOUR BID: $[0   ]"
+      ]
+    }
+  },
+  "ea47476fb927b0510f6459393b28720b": {
+    "comic_id": 1261,
+    "file_name": "comic2-1288.png",
+    "panels": {
+      "1": [
+        "Narrator: EARLY ONE MORNING:",
+        "Off-Panel: Police report a rash of interior vandalism: members of the public are waking up to find their interior walls defaced!",
+        "T-Rex: What's that, radio?",
+        "T-Rex: Street artists have moved indoors?"
       ]
     }
   },
@@ -1471,6 +1567,17 @@
         "{T-Rex's daydream}",
         "Off-Panel: Reports indicate the \"ghost plane\" drifted for years over Europe before being found. The plane was undamaged, but in-flight meals were only partially eaten, as if abandoned in haste.",
         "T-Rex: Um, even in the heady realm of fantasy I don't see how this could happen!!"
+      ]
+    }
+  },
+  "11b8e2444c94d4cf7f96d527a98db36a": {
+    "comic_id": 1396,
+    "file_name": "comic2-1423.png",
+    "panels": {
+      "6": [
+        "Narrator: LATER:",
+        "T-Rex: {imagines having purple bat-like wings}",
+        "T-Rex: {thinks} I used to be better at imagination"
       ]
     }
   },
@@ -1554,6 +1661,16 @@
       ]
     }
   },
+  "39990fe9ae17cb1729702564e0cf836c": {
+    "comic_id": 1495,
+    "file_name": "comic2-1516.png",
+    "panels": {
+      "4": [
+        "Off-Panel: Hey I like your styyyyyyyle",
+        "Utahraptor: Holy crap! That was amazing!!"
+      ]
+    }
+  },
   "e5d6cd21b332dbd373b0bda5e74b992c": {
     "comic_id": 1503,
     "file_name": "comic2-1523.png",
@@ -1561,6 +1678,16 @@
       "6": [
         "T-Rex: And that brings us to today's Proof We're Not Living In The Best Of All Possible Worlds!",
         "Parchment scroll: “None of us are friends with Fartnoise Fartnoise Junior”"
+      ]
+    }
+  },
+  "d50f24401cf10dfe9b0787df4fad3b69": {
+    "comic_id": 1548,
+    "file_name": "comic2-1569.png",
+    "panels": {
+      "6": [
+        "T-Rex: And that brings us to today's Proof We're Not Living In The Best Of All Possible Worlds!",
+        "Parchment scroll: \"Doctors never talk about inflammation of the arse ropes\""
       ]
     }
   },
@@ -1698,6 +1825,29 @@
       ]
     }
   },
+  "9e84e3cf154bc1f386055fe1bff9a2a4": {
+    "comic_id": 1644,
+    "file_name": "comic2-1666.png",
+    "panels": {
+      "6": [
+        "Narrator: AT THE PARTY:",
+        "T-Rex: {sings} You can't stop the rock, can't stop the rock; you can't stop the rock, can't stop the rock!!",
+        "Off-Panel: T-Rex I know you are enjoying that song",
+        "Off-Panel: but a woman DIED"
+      ]
+    }
+  },
+  "33b48901a3179e65db844852a1733325": {
+    "comic_id": 1665,
+    "file_name": "comic2-1690.png",
+    "panels": {
+      "5": [
+        "T-Rex: Anyone intelligent could've come up with a \"power punch\", sure, but imagining a bear that can punch other punches? That requires what can only be called... \"super genius\"",
+        "Utahraptor: {talking over T-Rex} Wish fulfillment.",
+        "T-Rex: ..."
+      ]
+    }
+  },
   "eb67f24aff3308bbd85ac7af0afb2b96": {
     "comic_id": 1666,
     "file_name": "comic2-1691.png",
@@ -1771,6 +1921,29 @@
       ]
     }
   },
+  "98814d7080f2dc83ed9978de8a602d2f": {
+    "comic_id": 1744,
+    "file_name": "comic2-1768.png",
+    "panels": {
+      "6": [
+        "T-Rex: {petite} beewooowoooooooooo",
+        "T-Rex: OH MY GOD I THINK IT IS"
+      ]
+    }
+  },
+  "df8768edbc9b47feb2dc8c58d85f20a6": {
+    "comic_id": 1820,
+    "file_name": "comic2-1831.png",
+    "panels": {
+      "6": [
+        "{T-Rex is wearing a pink crown and is surrounded by stars and a round stamp}",
+        "Stamp: T-REX STAMP OF APPROVAL",
+        "Stamp: OKAY, THIS PARTY SEEMS *AWESOME*",
+        "Off-Panel: T-Rex",
+        "Off-Panel: I can't see what I assume you're imagining"
+      ]
+    }
+  },
   "ea4dfa812f0183808abbe20e536cd686": {
     "comic_id": 1838,
     "file_name": "comic2-1849.png",
@@ -1779,6 +1952,27 @@
         "Book cover: I'm Sincerely Surprised By How Poorly My Erotic Imagination Prepared Me For Solving Such Serious World Issues",
         "Book cover: The T-Rex Story",
         "Book cover: “A biography full of surprises, not the least of which is how poorly T-Rex's erotic imagination fared on the world stage.\" -The New Yorker"
+      ]
+    }
+  },
+  "19ca167461c6f923a4618f698107d81d": {
+    "comic_id": 1843,
+    "file_name": "comic2-1854.png",
+    "panels": {
+      "6": [
+        "T-Rex's back: ▹*pop*◃",
+        "T-Rex: Utahraptor I think I made a problem that can only be solved by hospitals"
+      ]
+    }
+  },
+  "c3f0fe95a8f081eec23a6b48d875da96": {
+    "comic_id": 1845,
+    "file_name": "comic2-1856.png",
+    "panels": {
+      "6": [
+        "T-Rex's back: ▹*pop*◃",
+        "T-Rex: Oh crap!",
+        "T-Rex: Utahraptor I still think I have that hospitals problem"
       ]
     }
   },
@@ -1842,7 +2036,7 @@
     "file_name": "comic2-1935.png",
     "panels": {
       "6": [
-        "T-Rex's brain: *pop*",
+        "T-Rex's head: *pop*",
         "T-Rex: Utahraptor if you heard that it was the sound of my brain exploding at the thought of a lifetime of missed sexy opportunities",
         "T-Rex: This is where my story ends"
       ]
@@ -1945,6 +2139,38 @@
       ]
     }
   },
+  "cc2942c96e112e19e59842f7692498ce": {
+    "comic_id": 2180,
+    "file_name": "comic2-2192.png",
+    "panels": {
+      "4": [
+        "T-Rex: {stops daydreaming}",
+        "T-Rex: Man, I totally just lost an imaginary rap battle!",
+        "Utahraptor: But you won too!"
+      ]
+    }
+  },
+  "6dd9c6f600dd79810903c56302bb0bda": {
+    "comic_id": 2184,
+    "file_name": "comic2-2196.png",
+    "panels": {
+      "6": [
+        "T-Rex: {stops daydreaming}",
+        "T-Rex: ...",
+        "T-Rex: Whatever man, flossing is BORING"
+      ]
+    }
+  },
+  "fcd4dc1a1b4b30f80717b9ca2380f9df": {
+    "comic_id": 2190,
+    "file_name": "comic2-2202.png",
+    "panels": {
+      "6": [
+        "T-Rex: I don't know! WHAT THE HELL ARE OUR CLOCKS MEASURING?? aaaarrrRRRRGHHH",
+        "T-Rex's head: *pop*"
+      ]
+    }
+  },
   "08b4c22bda81886f5aed82c5d06e438d": {
     "comic_id": 2193,
     "file_name": "comic2-2205.png",
@@ -1952,6 +2178,15 @@
       "5": [
         "Utahraptor: I want an expression like \"I burned my mouth on that friggn' pizza, thanks to {the integral form of Fourier's law}!\"",
         "T-Rex: WHOAH!!"
+      ]
+    }
+  },
+  "2364e0a7777a9ad71a1df5edc25d930a": {
+    "comic_id": 2198,
+    "file_name": "comic2-2210.png",
+    "panels": {
+      "6": [
+        "T-Rex: AAAAAAAAAHHHHHHHHHHHHHHHHHHHH"
       ]
     }
   },
@@ -2033,6 +2268,16 @@
         "Off-Panel: YET I WILL LIVE FOREVER // HOW IRONIC",
         "Off-Panel: IRON-IC // GET IT",
         "Off-Panel: FUN FACT // I WAS ALSO PROGRAMMED FOR JOKES"
+      ]
+    }
+  },
+  "a4c38be0039e77f79b096c612201fc22": {
+    "comic_id": 2287,
+    "file_name": "comic2-2298.png",
+    "panels": {
+      "1": [
+        "Off-Panel: T-Rex, I'm having dinner with a coworker and I'm not sure if it's a date or not!",
+        "T-Rex: Not a problem, dude on speakerphone!"
       ]
     }
   },
@@ -2125,6 +2370,18 @@
       ]
     }
   },
+  "8635c80af575c09119ba5eaca7d23b95": {
+    "comic_id": 2477,
+    "file_name": "comic2-2488.png",
+    "panels": {
+      "6": [
+        "Off-Panel: A tattoo on your butt that folds in when you clench to reveal the message \"FLEX TO MEET YOU\"?",
+        "T-Rex's head: *crack*",
+        "T-Rex: !!",
+        "T-Rex: Oh man, now you've done it"
+      ]
+    }
+  },
   "d7c24da4418e567b82b36af963a22984": {
     "comic_id": 2544,
     "file_name": "comic2-2555.png",
@@ -2133,6 +2390,16 @@
         "Narrator: TELEPATHIC HOTTIE CHAT:",
         "T-Rex: {thinks} Hey baby do u like to kiss on dudes?? bc IM A DUDE",
         "T-Rex: {thinks in a different font} SEND TO: all hotties / REGIONS: all / FLAGS: important, must-read, NOT A JOKE"
+      ]
+    }
+  },
+  "1f6faf0f4075a23b209114bd3797a04f": {
+    "comic_id": 2551,
+    "file_name": "comic2-2562.png",
+    "panels": {
+      "6": [
+        "T-Rex: Well, that's not true. I'd read a lot more drama, and I'd be really into that drama, and then SUPER into that drama, and then SUPER SUPER into that drama, and then suddenly not into the drama at all and reaaaal sleepy.",
+        "T-Rex: Real talk??"
       ]
     }
   },
@@ -2268,6 +2535,23 @@
       ]
     }
   },
+  "d7e1efc131d8b6294412112269623126": {
+    "comic_id": 2656,
+    "file_name": "comic2-2666.png",
+    "panels": {
+      "2": [
+        "Narrator: BUT THAT NIGHT:",
+        "Off-Panel: ▹rrrring rrrrrring◃",
+        "T-Rex: WHAAAAAAAT"
+      ],
+      "6": [
+        "Narrator: THAT NIGHT:",
+        "Off-Panel: ▹bzzzzzzzzzzzzzzzzzzzzzzzzzzz◃",
+        "T-Rex: Oh wow, the ghost of my noisy CPU fan that died fifteen years ago!",
+        "T-Rex: The afterlife sure is awesome and definitely not full of garbage at all!!"
+      ]
+    }
+  },
   "cb7dffddf1ccd093cb30169eaaab0ee7": {
     "comic_id": 2660,
     "file_name": "comic2-2670.png",
@@ -2288,6 +2572,18 @@
     "panels": {
       "6": [
         "Banner: We are all jerkin' it in the gutters, but some of us are looking at the stars"
+      ]
+    }
+  },
+  "389a0c44d861cc6e5fd4195c7b517a06": {
+    "comic_id": 2678,
+    "file_name": "comic2-2688.png",
+    "panels": {
+      "6": [
+        "Narrator: {'VEGETABLES' is pink} T-REX PRESENTS: VEGETABLES™!",
+        "Narrator: TRY ALL 40,000 VARIETIES",
+        "Narrator: SOME OF THEM ARE POISONOUS THOUGH",
+        "Narrator: SO ACTUALLY MAYBE DON'T TRY ALL 40,000 VARIETIES AFTER ALL"
       ]
     }
   },
@@ -2344,6 +2640,16 @@
       ]
     }
   },
+  "569c98da7fda7f960760ceaee757d66b": {
+    "comic_id": 2749,
+    "file_name": "comic2-2761.png",
+    "panels": {
+      "3": [
+        "T-Rex: We were wrong. The {word obscured by a black bar} protocol has confirmed our worst fears: while \"Frosty\"'s MOVEMENT was exceptional and initiated by the \"old silk hat\" (Case File #4523), his sentience was not. To be perfectly clear, Agents: while they live and die fully immobile, each and every snow man, woman, and child is a living, sentient creature.",
+        "T-Rex: And they have been surveilling us for generations."
+      ]
+    }
+  },
   "2271fb8eba00d46e33706942cf0ed378": {
     "comic_id": 2775,
     "file_name": "comic2-2785.png",
@@ -2364,6 +2670,48 @@
         "T-Rex: FACT: Dogs are good at smelling but not so good at seeing. They can't even see the colour red!",
         "Dromiceiomimus: But red is like the #1 easiest colour to see!",
         "T-Rex: I KNOW!! But dogs are all \"geez my body isn't built to see this dang colour, geez, I bet I could smell it though\"."
+      ]
+    }
+  },
+  "bf1d93a626860326dc13817d061346b8": {
+    "comic_id": 2804,
+    "file_name": "comic2-2814.png",
+    "panels": {
+      "6": [
+        "Banner: ROBYN for World President"
+      ]
+    }
+  },
+  "8d7560dde1f0a093c878ecaaceca70fe": {
+    "comic_id": 2813,
+    "file_name": "comic2-2823.png",
+    "panels": {
+      "6": [
+        "Banner: GRAPEFRUITS: TOTALLY AWESOME",
+        "T-Rex: Also!",
+        "T-Rex: GARDENING: Uh, WAY more badass than I was led to believe??"
+      ]
+    }
+  },
+  "3fdaf71c0ead24e8d384d4184739dd16": {
+    "comic_id": 2827,
+    "file_name": "comic2-2837.png",
+    "panels": {
+      "6": [
+        "Banner: Happy \"T-Rex Missed The Chance To Make A Pun\" Day",
+        "T-Rex: Attention, everyone!!",
+        "T-Rex: I HATE THIS DAY"
+      ]
+    }
+  },
+  "494e5ebad47c7023855d04ded1f58b72": {
+    "comic_id": 2832,
+    "file_name": "comic2-2842.png",
+    "panels": {
+      "6": [
+        "Banner: EATING RULES",
+        "T-Rex: Attention, world!!",
+        "T-Rex: Uh, my life was WAY EASIER before this sassy banner followed me around all the time"
       ]
     }
   },
@@ -2410,7 +2758,7 @@
       "6": [
         "Banner: Thanks to robots, love can now technically last forever!!",
         "T-Rex: Wait. is \"technically\" a pun there?",
-        "Banner: Technically, yes."
+        "Banner: Technically, yes"
       ]
     }
   },
@@ -2435,6 +2783,16 @@
         "Off-Panel: Hey, how are you?",
         "T-Rex: I'm a skeleton wrapped in meat that thinks it's alive!!",
         "T-Rex and Off-Panel: AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH"
+      ]
+    }
+  },
+  "635da323e20a7a802239aa740bcc8027": {
+    "comic_id": 2888,
+    "file_name": "comic2-2897.png",
+    "panels": {
+      "6": [
+        "Banner: Sex is weird",
+        "Banner: And bodies are gross"
       ]
     }
   },
@@ -2590,6 +2948,53 @@
       ]
     }
   },
+  "54896c0df0d81c848328d897057b40b5": {
+    "comic_id": 3072,
+    "file_name": "comic2-3078.png",
+    "panels": {
+      "5": [
+        "T-Rex: Sorry tweens. Instead of becoming a twisted abomination of flesh and bone, parts of you are just getting bigger while others get smellier. Happens to the best of us. Maybe take some more showers.",
+        "T-Rex: {small} But if your eyes become mouths filled with teeth then you have been chosen to cleanse the world"
+      ]
+    }
+  },
+  "b14e5f46a76d8c678e96320a48f6d25d": {
+    "comic_id": 3079,
+    "file_name": "comic2-3084.png",
+    "panels": {
+      "3": [
+        "Narrator: A SHORT ONE-PANEL PLAY IN WHICH DROMICEIOMIMUS PLAYS MICHELANGELO AND T-REX PLAYS POPE ALEXANDER VI:",
+        "Dromiceiomimus: I'm gonna sculpt David because I love religion!",
+        "T-Rex: Cool!",
+        "Dromiceiomimus: He's gonna be 5m tall!",
+        "T-Rex: Nice!",
+        "Dromiceiomimus: And his dick's out, obvs!!",
+        "T-Rex: OBVS",
+        "Narrator: ▹fin◃"
+      ]
+    }
+  },
+  "9bfd6e4154f1c39f630ab3cee89d392f": {
+    "comic_id": 3081,
+    "file_name": "comic2-3086.png",
+    "panels": {
+      "6": [
+        "T-Rex: In conclusion, I got that \"colonize your lungs so you cough up and then swallow their babies which lets them grow inside your stomach\" from real-life parasitic worms; the world is horrifying.",
+        "Off-Panel: AHHHHHHHHHHHHHH"
+      ]
+    }
+  },
+  "ce0dcb22e51bd95ce96e2967a95dc435": {
+    "comic_id": 3101,
+    "file_name": "comic2-3106.png",
+    "panels": {
+      "6": [
+        "Banner: BEING A BACHELOR IS EASY",
+        "T-Rex: As hunting and gathering was dominant for over 90% of our history, odds are we've ALREADY solved your housekeeping problem!",
+        "Banner: You're welcome"
+      ]
+    }
+  },
   "3b58cb91bcba7eb2e30d12e2fae716c1": {
     "comic_id": 3112,
     "file_name": "comic2-3117.png",
@@ -2629,6 +3034,32 @@
       ]
     }
   },
+  "8fd17fa35f8984bf2341bab118aeb6b9": {
+    "comic_id": 3145,
+    "file_name": "comic2-3150.png",
+    "panels": {
+      "1": [
+        "Off-Panel: Who do you want to dedicate this song to?",
+        "T-Rex: I'd like to send it out to my friends Utahraptor and Dromiceiomimus!",
+        "Narrator: You got it, caller!"
+      ],
+      "3": [
+        "Off-Panel: Who do you want to dedicate this song to?",
+        "T-Rex: I'd like to send it out to the inventor of the speakerphone, which is the device I am currently speaking to you on! It's very small!",
+        "Narrator: Ah yes, the all-time classic dedication!"
+      ],
+      "4": [
+        "Off-Panel: Who do you want to dedicate this song to?",
+        "T-Rex: Alan Turi--",
+        "Utahraptor: NO, HE MEANS ME"
+      ],
+      "5": [
+        "Off-Panel: Who do you want to dedicate this song to?",
+        "Off-Panel: I do not dedicate songs, because I've already dedicated every day to our Lord and Saviour, and -",
+        "T-Rex and Utahraptor: COME ON MAN, AT LEAST PICK THE INVENTOR OF THE SPEAKERPHONE"
+      ]
+    }
+  },
   "4fb7c6b117baed424b0c4a74754bd30e": {
     "comic_id": 3152,
     "file_name": "comic2-3157.png",
@@ -2653,6 +3084,17 @@
       ]
     }
   },
+  "de6b55fd5e6c7ad081d44a487be29d70": {
+    "comic_id": 3279,
+    "file_name": "comic2-3284.png",
+    "panels": {
+      "6": [
+        "Banner: Romance",
+        "T-Rex: We were in the same mall bathroom for 15.4 seconds twenty years ago! Here's a timestamped security image!",
+        "Off-Panel: Wow, I can't believe you found each other"
+      ]
+    }
+  },
   "88ab327523d97d5d35b3babd6d96627f": {
     "comic_id": 3283,
     "file_name": "comic2-3288.png",
@@ -2660,6 +3102,15 @@
       "6": [
         "Narrator: LATER:",
         "T-Rex: {crying black tears} no regrets"
+      ]
+    }
+  },
+  "986789aabeee5414d03c12e9831442f9": {
+    "comic_id": 3289,
+    "file_name": "comic2-3294.png",
+    "panels": {
+      "6": [
+        "Banner: Cowritten by Neil deGrasse Tyson"
       ]
     }
   },
@@ -2726,6 +3177,16 @@
       ]
     }
   },
+  "40d23b99a2ebf138342198e8b804091d": {
+    "comic_id": 3396,
+    "file_name": "comic2-3401.png",
+    "panels": {
+      "6": [
+        "T-Rex: {tries to imagine a horse and fails}",
+        "T-Rex: This feels like a personal attack."
+      ]
+    }
+  },
   "57dcd1f717d9c63aa519c6cf4a345a23": {
     "comic_id": 3419,
     "file_name": "comic2-3422.png",
@@ -2789,6 +3250,56 @@
       ]
     }
   },
+  "3bc4bd1b14d5408686da0adbb24e95f7": {
+    "comic_id": 3565,
+    "file_name": "comic2-3566.png",
+    "panels": {
+      "5": [
+        "T-Rex: I can't rely on the same misunderstanding to get me the same fruit (vegetable??) EVER again. If I love it, it's nothing more than a LIFETIME of eating different, lesser, unfamiliar produce, forever chasing that original high I got decades ago, knowing I'll probably never have it again."
+      ]
+    }
+  },
+  "d04cda306a0340a0f5baa0ee225dd095": {
+    "comic_id": 3569,
+    "file_name": "comic2-3570.png",
+    "panels": {
+      "6": [
+        "Banner: NARRATIVES: they happen to you whether you want them to or not",
+        "T-Rex: People really like stories, I dunno!!"
+      ]
+    }
+  },
+  "180a841ab07797afe88eceb14b62ed7a": {
+    "comic_id": 3689,
+    "file_name": "comic2-3890.png",
+    "panels": {
+      "6": [
+        "Banner: Happy 2021, the year of being good enough already",
+        "T-Rex: Honestly your comment could not be worse timed, given the unfolding of the above banner"
+      ]
+    }
+  },
+  "fe03ac778e046c37daf63b3570d9779a": {
+    "comic_id": 3699,
+    "file_name": "comic2-3900.png",
+    "panels": {
+      "6": [
+        "Banner: T-REX'S USELESS ADVICE CORNER",
+        "T-Rex: Wow that sounds bad! If it were me I would simply try not doing that thing you just said!!",
+        "T-Rex: Also please ignore that banner; it's from an earlier, unrelated event"
+      ]
+    }
+  },
+  "a213dfdc31fec4eb175b38975ac19525": {
+    "comic_id": 3764,
+    "file_name": "comic2-3965.png",
+    "panels": {
+      "6": [
+        "Banner: MUSTACHE TELEVISION",
+        "T-Rex: We were also staying up late while drinking adult beverages a lot then, that probably helped"
+      ]
+    }
+  },
   "cb8e0362727a36a5754adac8d7d06cb8": {
     "comic_id": 3790,
     "file_name": "comic2-3992.png",
@@ -2800,6 +3311,16 @@
       ]
     }
   },
+  "f386262bb4d644e9c6e84e8cfce20f8c": {
+    "comic_id": 3796,
+    "file_name": "comic2-3998.png",
+    "panels": {
+      "6": [
+        "Banner: Every Topic Comes Back To Batman: TODAY's WINNER",
+        "T-Rex: Thank you, thank you"
+      ]
+    }
+  },
   "0b4192e94708ed294ef8bdaef48eb16d": {
     "comic_id": 3830,
     "file_name": "comic2-4032.png",
@@ -2808,6 +3329,27 @@
         "Off-Panel: I'm not doing a crime and then dying for you, T-Rex.",
         "T-Rex: Right. RIGHT! ME NEITHER, UTAHRAPTOR! NO CRIMES HERE, THAT'S FOR DARN SURE!",
         "T-Rex: {small} ▹We'll talk later◃"
+      ]
+    }
+  },
+  "32007e4606db7171e8c8b428b13d244d": {
+    "comic_id": 3838,
+    "file_name": "comic2-4040.png",
+    "panels": {
+      "6": [
+        "Off-Panel: T-Rex, here's an giant early mechanical computer, in which every command results in the PHYSICAL whirring movement of gears and levers.",
+        "Off-Panel: ka-CHUNK ka-CHUNKKK",
+        "T-Rex: Okay",
+        "T-Rex: I'm going to allow that because it rules"
+      ]
+    }
+  },
+  "d563a0b23f0a8d9348efaad1ba87d170": {
+    "comic_id": 3851,
+    "file_name": "comic2-4053.png",
+    "panels": {
+      "2": [
+        "T-Rex: {small} sex scene"
       ]
     }
   },
