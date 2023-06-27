@@ -19,8 +19,8 @@ CHARS = (
     "abcdefghijklmnopqrstuvwxyz"
     "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     """!"#$%&'()*+,-./:;<=>?@[]^{|}‘’“”·•™"""
-    "éÉïçêáÁèàßû"
-    "®♪♫±_~¡"
+    "éÉïçêáÁèàßûñùÜóÆÖИÇâ"
+    "®♪♫±_~¡²«»∩"
     "αάβγδεέζηήθιίκλμνξοόπρσςτυύφχψωώ"
 )
 FORBIDDEN_FIRST_CHARS = "%&)=^|}”·™_"
