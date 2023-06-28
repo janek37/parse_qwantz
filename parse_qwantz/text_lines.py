@@ -149,7 +149,7 @@ def get_text_line(start: Pixel, image: SimpleImage, font: Font) -> TextLine | No
     first_char = char_boxes[0].char
     if (
         len(char_boxes) == 1 and not first_char.isalnum()
-        and first_char not in '!?'
+        and first_char not in '!?$'
         and not (first_char == '-' and font.group == 'LC13')
     ):
         return
