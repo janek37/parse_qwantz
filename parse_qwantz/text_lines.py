@@ -177,10 +177,9 @@ def adjust_spaces(char_boxes: list[CharBox]) -> Iterable[CharBox]:
             yield char_box
 
 
-def cleanup_text_lines(text_lines: list[TextLine], image: SimpleImage) -> list[TextLine]:
-    grouped_lines = group_text_lines(sorted(text_lines, key=lambda l: l.start))
+def cleanup_text_lines(text_lines: list[TextLine]) -> list[TextLine]:
     return sorted(
-        chain.from_iterable(_join_text_lines(group, image) for group in grouped_lines),
+        text_lines,
         key=lambda l: (l.start.y, l.start.x)
     )
 
@@ -211,18 +210,3 @@ def group_text_lines(
                     used.add(other_text_line)
         grouped_text_lines.append(group)
     return grouped_text_lines
-
-
-def _join_text_lines(text_lines: list[TextLine], image: SimpleImage) -> list[TextLine]:
-    if len(text_lines) == 1:
-        return text_lines
-    for font in (line.font for line in text_lines):
-        if font == text_lines[0].font:
-            continue
-        first_pixel = text_lines[0].find_pixel()
-        if joined_text_line := try_text_line(first_pixel, image, font):
-            joined_box = joined_text_line.box()
-            for i, text_line in enumerate(text_lines[1:], start=1):
-                if abs(joined_box.right - text_lines[i].box().right) < font.space_width // 2:
-                    return [joined_text_line, *text_lines[i+1:]]
-    return text_lines

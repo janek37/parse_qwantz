@@ -31,13 +31,13 @@ def get_elements(
             height=image.height,
             pixels={pixel: color for pixel, color in image.pixels.items() if pixel in pixels},
         )
-        for font in ALL_FONTS:
-            text_line = try_text_line(pixel, tmp_image, font)
-            if text_line:
-                text_lines.append(text_line)
-                pixels = reduce(set.union, (char_box.pixels for char_box in text_line.char_boxes))
-                sorted_pixels = remove_subsequence(sorted_pixels, sorted(pixels))
-                break
+        text_line_candidates = (try_text_line(pixel, tmp_image, font) for font in ALL_FONTS)
+        text_line_candidates = (text_line for text_line in text_line_candidates if text_line)
+        longest_candidate = max(text_line_candidates, key=lambda tl: len(tl.char_boxes), default=None)
+        if longest_candidate:
+            text_lines.append(longest_candidate)
+            pixels = reduce(set.union, (char_box.pixels for char_box in longest_candidate.char_boxes))
+            sorted_pixels = remove_subsequence(sorted_pixels, sorted(pixels))
         else:
             result = get_line(pixel, tmp_image)
             if result:
@@ -60,7 +60,7 @@ def get_elements(
                 if len(unmatched) == 5:
                     logger.warning("At least five unmatched objects detected, aborting")
                     break
-    return lines, thoughts, cleanup_text_lines(text_lines, image), extra_characters, unmatched
+    return lines, thoughts, cleanup_text_lines(text_lines), extra_characters, unmatched
 
 
 def get_batman(pixel: Pixel, image: SimpleImage) -> tuple[Box, list[Pixel]] | None:
