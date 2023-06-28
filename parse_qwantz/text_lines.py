@@ -53,9 +53,7 @@ class TextLine:
         return any(char_box.is_bold for char_box in self.char_boxes if char_box.char != ' ')
 
     def box(self, padding: int = 0) -> Box:
-        x0, y0 = self.start
-        x1, y1 = self.end
-        return Box(Pixel(x0 - padding, y0 - padding), Pixel(x1 + padding, y1 + padding))
+        return Box(self.start, self.end).with_margin(padding, padding)
 
     def find_pixel(self) -> Pixel:
         return min(self.char_boxes[0].pixels)

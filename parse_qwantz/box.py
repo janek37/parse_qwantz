@@ -75,6 +75,12 @@ class Box(NamedTuple):
             return get_distance(pixel, self.top_left)
         assert False
 
+    def with_margin(self, margin_x: int, margin_y: int):
+        return Box(
+            Pixel(self.left - margin_x, self.top - margin_y),
+            Pixel(self.right + margin_x, self.bottom + margin_y),
+        )
+
     @classmethod
     def dummy(cls) -> "Box":
         return cls(Pixel(0, 0), Pixel(0, 0))
