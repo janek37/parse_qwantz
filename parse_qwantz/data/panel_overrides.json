@@ -47,7 +47,7 @@
     "panels": {
       "6": [
         "T-Rex: I can't help it if I can't remember it!",
-        "Utahraptor: {off-panel} And I can't help it if you are a stupid dinosaur! I wish I never met you!",
+        "Off-Panel: And I can't help it if you are a stupid dinosaur! I wish I never met you!",
         "T-Rex: oh, give me a BREAK!"
       ]
     }
@@ -233,8 +233,8 @@
     "file_name": "comic2-70-2.png",
     "panels": {
       "6": [
-        "{Utahraptor's speech is partly obscured by T-Rex's speech bubble, the reconstructed obscured parts are in [brackets]}",
-        "Utahraptor: {off-panel} image is that? Plus, you can't b[ring a date t]o such a resta[urant, because ev]en if you don['t eat anythin]g cheap, it becomes All-You-Can-Politely-Eat, since you're trying to impress your date and thus can't go all-out. Food should be a delight, not a symbolic stop at a gas station. I find",
+        "{Off-panel speech is partly obscured by T-Rex's speech bubble, the reconstructed obscured parts are in [brackets]}",
+        "Off-Panel: image is that? Plus, you can't b[ring a date t]o such a resta[urant, because ev]en if you don['t eat anythin]g cheap, it becomes All-You-Can-Politely-Eat, since you're trying to impress your date and thus can't go all-out. Food should be a delight, not a symbolic stop at a gas station. I find",
         "T-Rex: I'm going to eat ◖SO MANY WINGS!◗"
       ]
     }
@@ -1053,7 +1053,7 @@
       "6": [
         "T-Rex: Aw, MAN! Best wish ever?",
         "{T-Rex imagines a dialog}",
-        "Happy women with steaks: {off thought bubble} t-rex, these steaks are starting to make us sad.",
+        "Off thought bubble: t-rex, these steaks are starting to make us sad.",
         "Imaginary T-Rex: {holding a steak} not allowed, ladies!!"
       ]
     }
@@ -1065,8 +1065,8 @@
       "6": [
         "{the background is a table with a book on it}",
         "Book cover: THE MAN WHO ATE HIS HAT AND THEN PUNCHED YOU",
-        "Book fair patron: {off-panel} I don't get it - none of them are actually in the story they describe? Also, the dinosaur on the cover is crooked.",
-        "Book fair seller: {off-panel} UM, THAT'S WHY I'M SELLING IT"
+        "Off-Panel: I don't get it - none of them are actually in the story they describe? Also, the dinosaur on the cover is crooked.",
+        "Off-Panel: UM, THAT'S WHY I'M SELLING IT"
       ]
     }
   },
@@ -1163,7 +1163,7 @@
         "Utahraptor: ...Okay."
       ],
       "6": [
-        "Utahraptor: {off-panel} It's just - you seem distracted!",
+        "Off-Panel: It's just - you seem distracted!",
         "T-Rex: {daydreaming} I'm not! I'm not!! I'm CERTAINLY not writing erotica in my head right now.",
         "T-Rex: {thinks} Aw man! Why would I even say that??"
       ]
@@ -1267,7 +1267,7 @@
       ],
       "6": [
         "T-Rex: Easy! I'll just remember to send a message back to this exact moment!",
-        "Future T-Rex: {off-panel} Utahraptor! I'm gonna kiss you so much in ten minutes!",
+        "Off-Panel: Utahraptor! I'm gonna kiss you so much in ten minutes!",
         "T-Rex: Um - that, ah, wasn't me."
       ]
     }
@@ -1348,9 +1348,9 @@
     "file_name": "comic2-1156.png",
     "panels": {
       "6": [
-        "Utahraptor: {off-panel} But they sold it anyway, often as a universal panacea!",
+        "Off-Panel: But they sold it anyway, often as a universal panacea!",
         "T-Rex: PANACEA?! THAT'S THE SECRET WORD OF THE DAY!",
-        "T-Rex and Utahraptor: AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH"
+        "T-Rex and Off-Panel: AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH"
       ]
     }
   },
@@ -1393,7 +1393,7 @@
     "file_name": "comic2-1192.png",
     "panels": {
       "1": [
-        "Michigan J. Frog: {off-panel, green cursive font, sings} Hello! my baby / Hello! my honey / Hello! my ragtime gal / Send me a kiss by wire / Baby, my heart's on fire!"
+        "Off-Panel: {green cursive font, sings} Hello! my baby / Hello! my honey / Hello! my ragtime gal / Send me a kiss by wire / Baby, my heart's on fire!"
       ],
       "2": [
         "Narrator: T-REX IN: ONE FROGGY EVENING"
@@ -1499,10 +1499,10 @@
     "panels": {
       "6": [
         "Narrator: LATER:",
-        "JOSHUA: {off-panel, “computer” font} A strange game, Matthew Broderick. It seems the only winning move is not to play.",
+        "Off-Panel: {“computer” font} A strange game, Matthew Broderick. It seems the only winning move is not to play.",
         "T-Rex: Oh my God. I love this movie.",
-        "JOSHUA: Man, me too! They should totally do a crossover with me and Skynet.",
-        "JOSHUA: ERROR 22: IDEA IS TOO AWESOME"
+        "Off-Panel: Man, me too! They should totally do a crossover with me and Skynet.",
+        "Off-Panel: ERROR 22: IDEA IS TOO AWESOME"
       ]
     }
   },
@@ -2119,7 +2119,7 @@
     "file_name": "comic2-2110.png",
     "panels": {
       "6": [
-        "Utahraptor: {off-panel; speech bubble containing only a photo of a black swallower}",
+        "Off-Panel: {a photo of a black swallower}",
         "{T-Rex is crying black tears}"
       ]
     }
@@ -2247,7 +2247,7 @@
     "file_name": "comic2-2256.png",
     "panels": {
       "6": [
-        "Utahraptor: {off-panel; large font with insane amount of diacritics} ALWAYS.",
+        "Off-Panel: {large font with insane amount of diacritics} ALWAYS.",
         "T-Rex: Hah hah hah"
       ]
     }
@@ -2858,9 +2858,9 @@
         "T-Rex: And then I say, which of these shapes is named \"kiki\" and which is named \"bouba\"?"
       ],
       "6": [
-        "Utahraptor: {off-panel} IT WAS THERE IN THE AIR AND I COULD SEE IT",
-        "Utahraptor: AHHHHHHHHHHHHHHHHHHHHH",
-        "Utahraptor: {Facebook 'like' hand thumb down}"
+        "Off-Panel: IT WAS THERE IN THE AIR AND I COULD SEE IT",
+        "Off-Panel: AHHHHHHHHHHHHHHHHHHHHH",
+        "Off-Panel: {Facebook 'like' hand thumb down}"
       ]
     }
   },
@@ -2891,10 +2891,10 @@
     "panels": {
       "6": [
         "T-Rex: ...╣!",
-        "Utahraptor: {off-panel} ...Huh?",
+        "Off-Panel: ...Huh?",
         "T-Rex: ╣: the NEW Orthographic Avenger! She's exciting, dynamic, and I can tell you right now that she's gonna be a very... SPECIAL CHARACTER.",
-        "Utahraptor: {off-panel} oh god",
-        "Utahraptor: {off-panel} WHY"
+        "Off-Panel: oh god",
+        "Off-Panel: WHY"
       ]
     }
   },
@@ -3067,7 +3067,7 @@
       "6": [
         "T-Rex: Meanwhile, I burned my grilled cheese sandwich today: a meal so simple, its recipe is fully contained within its name!!",
         "Off-Panel: Hah hah!",
-        "Smoke detector: {off-panel} ▹◖BEEP BEEP BEEP◗◃",
+        "Off-Panel: ▹◖BEEP BEEP BEEP◗◃",
         "Off-Panel: Aw crap, MY grilled cheese!!"
       ]
     }
@@ -3160,9 +3160,9 @@
     "panels": {
       "6": [
         "T-Rex: Hah! Can you imagine - again, speaking ENTIRELY HYPOTHETICALLY - if we left fixing this until we were only 12 YEARS from it being too late?",
-        "Utahraptor: {off-panel} Oh man! Let's imagine that right now!",
+        "Off-Panel: Oh man! Let's imagine that right now!",
         "T-Rex: ...",
-        "T-Rex and Utahraptor: AAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH"
+        "T-Rex and Off-Panel: AAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH"
       ]
     }
   },
@@ -3172,7 +3172,7 @@
     "panels": {
       "6": [
         "Imaginary Utahraptor: I TAKE IT BACK AND YOU RULE",
-        "Utahraptor: {off-panel} Are you imagining me saying \"I take it back and you rule\"??",
+        "Off-Panel: Are you imagining me saying \"I take it back and you rule\"??",
         "T-Rex: UH... NOT HARD ENOUGH, EVIDENTLY??"
       ]
     }
