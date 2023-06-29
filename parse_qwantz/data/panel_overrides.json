@@ -825,6 +825,17 @@
       ]
     }
   },
+  "c16d226f1bc26620c3bbb3af9776d6fb": {
+    "comic_id": 784,
+    "file_name": "comic2-815.png",
+    "panels": {
+      "3": [
+        "T-Rex: All I'll need to do is ask old people about their lives, and measure how many of them regret certain things! This \"regret index\" will range from 0 (no regret) to 1 (total ultimate regret). With it, I can tell kids today that if you rub spider eggs into your eyes, you're 96% likely to regret it, but if you drink delicious lemonade and pop wheelies, the regret index on that is near 0!",
+        "Label: {with an arrow pointing at the house} LOG CABIN: REGRET INDEX .24",
+        "Label: {with an arrow pointing at the car} OUT-OF-SCALE CAR: REGRET INDEX .992"
+      ]
+    }
+  },
   "d6fc627137b80649f629d3f0d8314b6d": {
     "comic_id": 798,
     "file_name": "comic2-829.png",
@@ -843,6 +854,17 @@
       "6": [
         "T-Rex: People who've made bad decisions: I salute you!",
         "Visual effect: {arrows pointing at T-Rex's raised arms} SALUTE!"
+      ]
+    }
+  },
+  "bc7dafa679d51dcf4666a60c76d3bbbb": {
+    "comic_id": 803,
+    "file_name": "comic2-834.png",
+    "panels": {
+      "6": [
+        "Banner: \"SOME PEOPLE TREAT THEIR GENDERED FRIENDS DIFFERENTLY\"",
+        "T-Rex: Incidentally, I don't have any friends who aren't gendered!",
+        "Banner: OKAY"
       ]
     }
   },
@@ -893,6 +915,15 @@
       ]
     }
   },
+  "d7631b00620864b1664e931da1d174e0": {
+    "comic_id": 853,
+    "file_name": "comic2-883.png",
+    "panels": {
+      "2": [
+        "T-Rex: {imagines himself sporting handlebar mustache}"
+      ]
+    }
+  },
   "5600315c9af3ebca5e135643018e52dd": {
     "comic_id": 855,
     "file_name": "comic2-886-2.png",
@@ -920,6 +951,27 @@
         "T-Rex: We jumped out of an orbital tower and are now freefalling from outer space onto giant trampolines!",
         "Off-Panel: I know! I think we should see other people, baby!",
         "T-Rex: That's cool!"
+      ]
+    }
+  },
+  "df3406a1e188375180aba514eecf0dfc": {
+    "comic_id": 907,
+    "file_name": "comic2-937.png",
+    "panels": {
+      "1": [
+        "Narrator: SHOCK ENDING COMICS",
+        "Narrator: today's feature: shock endings in panel five!",
+        "T-Rex: Man! Imagine how great things would be if I had a BRITISH ACCENT??",
+        "T-Rex: {starts daydreaming}"
+      ],
+      "2": [
+        "{T-Rex's daydream}",
+        "T-Rex: Forsooth, I recall those fair summers by the Hamptonshire. Cheerio!"
+      ],
+      "3": [
+        "T-Rex: {stops daydreaming}",
+        "T-Rex: Yes! I can see nothing wrong with this fantasy.",
+        "T-Rex: It is so accurate!"
       ]
     }
   },
@@ -1301,6 +1353,27 @@
       ]
     }
   },
+  "92d35dcfc64fdbfec1b35d5445fc2839": {
+    "comic_id": 1094,
+    "file_name": "comic2-1121.png",
+    "panels": {
+      "1": [
+        "T-Rex: What if... what if I had the BEST HOUSE EVER this Hallowe'en?",
+        "T-Rex: {starts daydreaming}"
+      ],
+      "2": [
+        "{T-Rex's daydream}",
+        "Off-Panel: T-Rex! This house is SPOOK-TACULAR!",
+        "T-Rex: Guys, I totally know!!"
+      ],
+      "3": [
+        "T-Rex: {stops daydreaming}",
+        "T-Rex: I must make this dream come true! But HOW?",
+        "Dromiceiomimus: What if you made your house spiritually scary, T-Rex? Like, instead of a corpse, a mannequin of a woman who is realizing that she has married badly.",
+        "T-Rex: Not bad! And I could have a spooky tape, but instead of chainsaws and screams, I'd have the voice of a man quietly dictating memories of his youth, knowing Alzheimer’s will rob him of them soon."
+      ]
+    }
+  },
   "38d6822a9da8196e1d8bbff5ee8c15a4": {
     "comic_id": 1107,
     "file_name": "comic2-1134.png",
@@ -1365,6 +1438,16 @@
       "6": [
         "Book cover: \"OKAY, THANKS FOR WRITING IN TO TELL ME WHAT ALL THE DEALS WERE WITH YOUR BABIES\"",
         "Book cover: \"IT WAS A RHETORICAL QUESTION\""
+      ]
+    }
+  },
+  "e5e80ad284061217c0b18c5fe7915bfd": {
+    "comic_id": 1142,
+    "file_name": "comic2-1169.png",
+    "panels": {
+      "2": [
+        "{T-Rex's daydream}",
+        "Off-Panel: Hey! Who hit me with this rubber mallet"
       ]
     }
   },
@@ -1671,6 +1754,19 @@
       ]
     }
   },
+  "e3cf97519d92d822b9494e86054fc8ea": {
+    "comic_id": 1498,
+    "file_name": "comic2-1520.png",
+    "panels": {
+      "6": [
+        "T-Rex: {stops daydreaming}",
+        "God: ANYWAY T-REX THERE'S YOUR VISION OF WHAT LIFE WOULD BE LIKE IF YOU SAID \"FRIG\" ONLY SLIGHTLY MORE OFTEN",
+        "T-Rex: It seems pretty much the same!",
+        "God: WELL IT'S ONLY A SMALL CHANGE FROM THE WAY THINGS ARE NOW",
+        "God: HONESTLY NOT REALLY SURE WHAT YOU WERE EXPECTING"
+      ]
+    }
+  },
   "e5d6cd21b332dbd373b0bda5e74b992c": {
     "comic_id": 1503,
     "file_name": "comic2-1523.png",
@@ -1837,6 +1933,28 @@
       ]
     }
   },
+  "55b26c3b51238974868190d8a6644a60": {
+    "comic_id": 1657,
+    "file_name": "comic2-1679.png",
+    "panels": {
+      "6": [
+        "Checkbox: Yes!",
+        "Checkbox: No.",
+        "Checkbox: Who is this, I don't recognize the from address at all"
+      ]
+    }
+  },
+  "e3072663dfa66786d174498814c2414e": {
+    "comic_id": 1664,
+    "file_name": "comic2-1683.png",
+    "panels": {
+      "6": [
+        "T-Rex: {stops daydreaming}",
+        "T-Rex: Well, I'd like to thank last night for that little dream, as well as the movie I watched before bed for the inspiration!",
+        "T-Rex: Oh! And my subconscious for these waking nightmares that haunt me still!"
+      ]
+    }
+  },
   "33b48901a3179e65db844852a1733325": {
     "comic_id": 1665,
     "file_name": "comic2-1690.png",
@@ -1928,6 +2046,20 @@
       "6": [
         "T-Rex: {petite} beewooowoooooooooo",
         "T-Rex: OH MY GOD I THINK IT IS"
+      ]
+    }
+  },
+  "6744a8829fd9f0c71144e0b400f57b8f": {
+    "comic_id": 1777,
+    "file_name": "comic2-1791.png",
+    "panels": {
+      "1": [
+        "T-Rex: {stops dreaming}",
+        "T-Rex: Holy crap!"
+      ],
+      "6": [
+        "T-Rex: Besides, we all have stupid names here anyway",
+        "T-Rex: {starts dreaming}"
       ]
     }
   },
@@ -2031,6 +2163,27 @@
       ]
     }
   },
+  "6ef590bfe0be8f496742ebf896f56097": {
+    "comic_id": 1919,
+    "file_name": "comic2-1930.png",
+    "panels": {
+      "6": [
+        "T-Rex: {stops daydreaming}",
+        "T-Rex: I just had the craziest dream! It was about... watches? Anyway, I guess it wasn't important.",
+        "T-Rex: Hah hah",
+        "T-Rex: Dreams are crazy"
+      ]
+    }
+  },
+  "3318484507f1157d3eddbf5009817410": {
+    "comic_id": 1921,
+    "file_name": "comic2-1932.png",
+    "panels": {
+      "1": [
+        "ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooossssssssssssssssssssssssssssssssssoss! Gross."
+      ]
+    }
+  },
   "09368ebaa3b1745e833f0672295f3db1": {
     "comic_id": 1924,
     "file_name": "comic2-1935.png",
@@ -2074,6 +2227,18 @@
       ]
     }
   },
+  "c84b631d2ce76cca4fd147bf4f9d30b5": {
+    "comic_id": 1982,
+    "file_name": "comic2-1993.png",
+    "panels": {
+      "6": [
+        "T-Rex: {stops daydreaming}",
+        "T-Rex: Oh wait that was all a fantasy and this is back in reality, where I spend most of my time. Good ol' reality!",
+        "T-Rex: Yep!",
+        "T-Rex: Can't improve on that just by closing your eyes!"
+      ]
+    }
+  },
   "a45730bded7ee36cff41ef12f5532cb1": {
     "comic_id": 2034,
     "file_name": "comic2-2045.png",
@@ -2102,6 +2267,17 @@
     "panels": {
       "6": [
         "Banner: BACON - Delicious in a sandwich - Great at wound maggot removal - Still 0 grams of trans fat per serving -"
+      ]
+    }
+  },
+  "0027d48d95e2ca95f6f4ecf06b6948c5": {
+    "comic_id": 2081,
+    "file_name": "comic2-2092.png",
+    "panels": {
+      "6": [
+        "T-Rex: {stops daydreaming}",
+        "T-Rex: Huh!",
+        "T-Rex: There's PROBABLY a downside to this that I'm not seeing?"
       ]
     }
   },
@@ -2845,6 +3021,16 @@
       ]
     }
   },
+  "1534fce81240f19c917f339dcc9e87b8": {
+    "comic_id": 2960,
+    "file_name": "comic2-2966.png",
+    "panels": {
+      "6": [
+        "Banner: WHO CARES ABOUT MOST THINGS?",
+        "Narrator: #1 winner for \"the most real rhetorical question I have ever written\""
+      ]
+    }
+  },
   "b3b3d537d15eb81c3df43815ec5c5e61": {
     "comic_id": 2964,
     "file_name": "comic2-2970.png",
@@ -3072,6 +3258,31 @@
       ]
     }
   },
+  "12bf6f9c9a4e745b1991718963867fa2": {
+    "comic_id": 3181,
+    "file_name": "comic2-3186.png",
+    "panels": {
+      "6": [
+        "Banner: NICE MANNERS",
+        "T-Rex: They help us tolerate living in close quarters without raging on each other all the time!",
+        "T-Rex: Thanks, society!"
+      ]
+    }
+  },
+  "be61ce745686e75be872c2b55970592c": {
+    "comic_id": 3254,
+    "file_name": "comic2-3259.png",
+    "panels": {
+      "1": [
+        "T-Rex: {stops dreaming}",
+        "T-Rex: Whoah! WHOAH!"
+      ],
+      "6": [
+        "T-Rex: Can't wait to hear how that works out for you",
+        "T-Rex: {starts dreaming}"
+      ]
+    }
+  },
   "c5789bf5c3a5f64d14e9e988564a53be": {
     "comic_id": 3269,
     "file_name": "comic2-3275.png",
@@ -3239,6 +3450,17 @@
       ]
     }
   },
+  "ede9788a8cce2b625506d9d6a8790aae": {
+    "comic_id": 3538,
+    "file_name": "comic2-3539.png",
+    "panels": {
+      "6": [
+        "Narrator: THAT NIGHT, INSIDE UTAHRAPTOR'S MIND:",
+        "Imaginary T-Rex: {small} MY problem is Utahraptor has the following embarrassing and insoluble issues in both his personal and professional lives:",
+        "Off-Panel: Aw dang it"
+      ]
+    }
+  },
   "ef09b2f8b2cce811e5b88af8c75c2a79": {
     "comic_id": 3561,
     "file_name": "comic2-3562.png",
@@ -3329,6 +3551,16 @@
         "Off-Panel: I'm not doing a crime and then dying for you, T-Rex.",
         "T-Rex: Right. RIGHT! ME NEITHER, UTAHRAPTOR! NO CRIMES HERE, THAT'S FOR DARN SURE!",
         "T-Rex: {small} ▹We'll talk later◃"
+      ]
+    }
+  },
+  "540136398c184779ab6e93a9ce63d870": {
+    "comic_id": 3832,
+    "file_name": "comic2-4034.png",
+    "panels": {
+      "6": [
+        "Banner: KIDS: BAD IN ANY TIME PERIOD",
+        "T-Rex: It's okay, I'm a former kid so I'm allowed to say it"
       ]
     }
   },
