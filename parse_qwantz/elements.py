@@ -33,10 +33,13 @@ def get_elements(
         )
         text_line_candidates = (try_text_line(pixel, tmp_image, font) for font in ALL_FONTS)
         text_line_candidates = (text_line for text_line in text_line_candidates if text_line)
-        longest_candidate = max(text_line_candidates, key=lambda tl: len(tl.char_boxes), default=None)
+        longest_candidate = max(text_line_candidates, key=lambda tl: len(tl[0].char_boxes), default=None)
         if longest_candidate:
-            text_lines.append(longest_candidate)
-            pixels = reduce(set.union, (char_box.pixels for char_box in longest_candidate.char_boxes))
+            longest_line, warnings = longest_candidate
+            for warning in warnings:
+                logger.warning(warning)
+            text_lines.append(longest_line)
+            pixels = reduce(set.union, (char_box.pixels for char_box in longest_line.char_boxes))
             sorted_pixels = remove_subsequence(sorted_pixels, sorted(pixels))
         else:
             result = get_line(pixel, tmp_image)

@@ -1,4 +1,3 @@
-import logging
 from functools import cached_property
 
 from dataclasses import dataclass
@@ -11,8 +10,6 @@ from parse_qwantz.fonts import Font, CharBox
 from parse_qwantz.lines import get_line
 from parse_qwantz.pixels import Pixel
 from parse_qwantz.simple_image import SimpleImage
-
-logger = logging.getLogger()
 
 
 @dataclass
@@ -62,7 +59,7 @@ class TextLine:
         return id(self)
 
 
-def try_text_line(start: Pixel, image: SimpleImage, font: Font) -> TextLine | None:
+def try_text_line(start: Pixel, image: SimpleImage, font: Font) -> tuple[TextLine, list[str]] | None:
     x0, y0 = start
     if font.italic_offsets:
         max_x_offset = font.space_width - 3
@@ -71,12 +68,12 @@ def try_text_line(start: Pixel, image: SimpleImage, font: Font) -> TextLine | No
     max_y_offset = font.height - 1
     for x in range(x0 - max_x_offset, x0 + 1):
         for y in range(y0, y0 - max_y_offset - 1, -1):
-            line = get_text_line(Pixel(x, y), image, font)
-            if line:
-                return line
+            if result := get_text_line(Pixel(x, y), image, font):
+                return result
 
 
-def get_text_line(start: Pixel, image: SimpleImage, font: Font) -> TextLine | None:
+def get_text_line(start: Pixel, image: SimpleImage, font: Font) -> tuple[TextLine, list[str]] | None:
+    warnings = []
     char_box, complement = font.get_char(start, image=image, is_first=True)
     if char_box is None or char_box.char == ' ':
         return None
@@ -124,7 +121,7 @@ def get_text_line(start: Pixel, image: SimpleImage, font: Font) -> TextLine | No
                 ):
                     break
         if inline_offset_warning:
-            logger.warning(inline_offset_warning)
+            warnings.append(inline_offset_warning)
         if char_box.char == ' ':
             if len(char_boxes) == 1 and char_boxes[0].char == "'":
                 return
@@ -162,7 +159,7 @@ def get_text_line(start: Pixel, image: SimpleImage, font: Font) -> TextLine | No
     if len(char_boxes) > 2 and char_boxes[-1].char == "'" and char_boxes[-2].char == " ":
         char_boxes = char_boxes[:-2]
     color = image.get_pixel(min(char_boxes[0].pixels))
-    return TextLine(char_boxes, font, color)
+    return TextLine(char_boxes, font, color), warnings
 
 
 def adjust_spaces(char_boxes: list[CharBox]) -> Iterable[CharBox]:
