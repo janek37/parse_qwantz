@@ -12,7 +12,7 @@ from parse_qwantz.pixels import Pixel
 from parse_qwantz.simple_image import SimpleImage
 
 
-@dataclass
+@dataclass(frozen=True, eq=True)
 class TextLine:
     char_boxes: list[CharBox]
     font: Font
@@ -20,6 +20,9 @@ class TextLine:
 
     def __repr__(self):
         return f"TextLine({repr(self.start)}, {repr(self.content)}, {self.font.name})"
+
+    def __str__(self):
+        return self.content
 
     @cached_property
     def start(self) -> Pixel:
@@ -51,6 +54,12 @@ class TextLine:
 
     def box(self, padding: int = 0) -> Box:
         return Box(self.start, self.end).with_margin(padding, padding)
+
+    def base_box(self, padding: int = 0) -> Box:
+        _, y0 = self.start
+        x1, _ = self.end
+        y1 = y0 + self.font.base
+        return Box(self.start, Pixel(x1, y1)).with_margin(padding, padding)
 
     def find_pixel(self) -> Pixel:
         return min(self.char_boxes[0].pixels)
@@ -194,9 +203,9 @@ def group_text_lines(
                 continue
             if same_font and other_text_line.font.group != text_line.font.group:
                 continue
-            box = group[-1].box()
-            other_box = other_text_line.box()
-            if abs(box.top + text_line.font.base - (other_box.top + other_text_line.font.base)) <= 1:
+            box = group[-1].base_box()
+            other_box = other_text_line.base_box()
+            if abs(box.bottom - other_box.bottom) <= 1:
                 distance = other_box.left - box.right
                 width = max(group[-1].font.space_width, other_text_line.font.space_width)
                 max_distance = width * 3 if long_space else width * 2 + 1

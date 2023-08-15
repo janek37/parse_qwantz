@@ -1,5 +1,8 @@
+import itertools
 import logging
+import math
 from dataclasses import dataclass
+from functools import cmp_to_key
 
 from parse_qwantz.box import Box
 from parse_qwantz.lines import Line
@@ -11,100 +14,116 @@ from parse_qwantz.text_lines import TextLine
 logger = logging.getLogger()
 
 
-@dataclass
+@dataclass(frozen=True, eq=True)
 class Character:
     name: str
-    box: Box
+    boxes: tuple[Box, ...]
     can_think: bool = True
 
     def __str__(self):
         return self.name
 
+    def __repr__(self):
+        return f"Character(name={self.name})"
+
     @classmethod
     def from_name(cls, name: str):
-        return cls(name, Box.dummy())
+        return cls(name, ())
 
 
 OFF_PANEL = Character.from_name("Off-Panel")
 
 Target = TextLine | Character
 
+CHARACTER_DISTANCE_THRESHOLD = 25
+TEXT_LINE_DISTANCE_THRESHOLD = 40
+MISS_ANGLE_COS_THRESHOLD = 0.5
+TEXT_LINE_INNER_PADDING = -1
+
+
+@dataclass(frozen=True, eq=True)
+class AnnotatedTarget:
+    target: Target
+    distance: float
+    miss_angle_cos: float
+
+    @classmethod
+    def from_text_line(cls, text_line: TextLine, line: Line, end_no: int):
+        box = text_line.base_box(TEXT_LINE_INNER_PADDING)
+        return cls(
+            target=text_line,
+            distance=get_box_distance(box, line, end_no),
+            miss_angle_cos=get_miss_angle_cos(box, line, end_no),
+        )
+
+    @classmethod
+    def from_character(cls, character: Character, line: Line, end_no: int):
+        distances = (get_box_distance(box, line, end_no) for box in character.boxes)
+        distance = min((distance for distance in distances if distance is not None), default=None)
+        miss_angle_cos = max(get_miss_angle_cos(box, line, end_no) for box in character.boxes)
+        return cls(target=character, distance=distance, miss_angle_cos=miss_angle_cos)
+
 
 def match_lines(
     lines: list[Line], text_blocks: list[TextBlock], characters: list[Character], image: SimpleImage
 ) -> tuple[list[tuple[Target, Target]], list[Line]]:
-    boxes = get_boxes(text_blocks, characters, inner_padding=-1)
-    line_candidates = [(line,) + match_line(line, boxes, image) for line in lines]
+    text_lines = [text_line for text_block in text_blocks for text_line in text_block.lines]
+    line_candidates = [(line,) + match_line(line, text_lines, characters, image) for line in lines]
+    # for _line, left, right in line_candidates:
+    #     logger.info('candidates:')
+    #     logger.info('left: ' + ' | '.join(str(l) for l in left))
+    #     logger.info('right: ' + ' | '.join(str(r) for r in right))
     block_mapping = {text_line: block for block in text_blocks for text_line in block.lines}
     return CandidateResolver(line_candidates, block_mapping).resolve()
 
 
-def get_boxes(
-    text_blocks: list[TextBlock], characters: list[Character], inner_padding: int
-) -> list[tuple[Box, Target]]:
-    boxes: list[tuple[Box, Target]] = [
-        (text_line.box(inner_padding), text_line)
-        # (text_line.base_box(inner_padding), text_line)
-        for text_block in text_blocks
-        for text_line in text_block.lines
-    ]
-    boxes.extend((character.box, character) for character in characters)
-    return boxes
-
-
 def match_line(
-    line: Line, boxes: list[tuple[Box, Target]], image: SimpleImage
-) -> tuple[list[Target], list[Target]]:
-    candidates: list[list[Target]] = [[], []]
+    line: Line, text_lines: list[TextLine], characters: list[Character], image: SimpleImage
+) -> tuple[list[AnnotatedTarget], list[AnnotatedTarget]]:
+    candidates: list[list[AnnotatedTarget]] = [[], []]
     for i, end in enumerate(line):
         if image.is_on_edge(end):
-            candidates[i] = [OFF_PANEL]
+            candidates[i] = [AnnotatedTarget(OFF_PANEL, 0, 0)]
         else:
-            boxes_with_distances = (
-                (box, target, get_box_distance(box, line, i, isinstance(target, Character)))
-                for box, target in boxes
+            annotated_targets = [
+                AnnotatedTarget.from_text_line(text_line, line, i)
+                for text_line in text_lines
+            ] + [
+                AnnotatedTarget.from_character(character, line, i)
+                for character in characters
+            ]
+            filtered_targets = (
+                at
+                for at in annotated_targets
+                if (
+                    at.distance is not None
+                    and at.miss_angle_cos > MISS_ANGLE_COS_THRESHOLD
+                    and not (isinstance(at.target, Character) and at.miss_angle_cos < 1)
+                    and not (isinstance(at.target, Character) and at.distance > CHARACTER_DISTANCE_THRESHOLD)
+                    and not (isinstance(at.target, TextLine) and at.distance > TEXT_LINE_DISTANCE_THRESHOLD)
+                )
             )
-            sorted_boxes = sorted(
-                (distance, box, target)
-                for box, target, distance in boxes_with_distances
-                if distance is not None
-            )
-            candidates[i] = [target for distance, box, target in sorted_boxes if distance < sorted_boxes[0][0] + 10]
+            candidates[i] = sorted(filtered_targets, key=lambda at: at.distance)
     return candidates[0], candidates[1]
 
 
-def get_box_distance(box: Box, line: Line, end_no: int, is_character: bool) -> float | None:
+def get_box_distance(box: Box, line: Line, end_no: int) -> float | None:
     distance = box.distance(line[end_no])
-    if distance > 28 and not is_character:
-        return None
-    this_end = line[end_no]
     other_end = line[1 - end_no]
     if distance > box.distance(other_end):
         return None
-    if is_character and not any(intersects(line, side) for side in sides(box)):
-        return None
-    perpendicular_line = (
-        this_end,
-        Pixel(
-            this_end.x + this_end.y - other_end.y,
-            this_end.y - this_end.x + other_end.x,
-        )
-    )
-    corners = (box.top_left, box.top_right, box.bottom_left, box.bottom_right)
-    if any(intersects(perpendicular_line, (other_end, corner)) for corner in corners):
-        return distance
-    else:
-        return None
+    return distance
 
 
-def relative_distance_to_box(line: Line, box: Box) -> float | None:
-    distances = (
-        relative_distance_to_intersection(line, side)
-        for side in sides(box)
-        if intersects(line, side)
-    )
-    distances = list(distances)
-    return min(distances, default=None, key=abs)
+def get_miss_angle_cos(box: Box, line: Line, end_no: int) -> float:
+    corners = [box.top_left, box.bottom_left, box.top_right, box.bottom_right]
+    angle_cosines = [get_angle_cos(line, end_no, corner) for corner in corners]
+    max_angle_cos = max(angle_cosines)
+    if max_angle_cos < 0:
+        return max_angle_cos
+    if any(intersects(line, side) for side in sides(box)):
+        return 1
+    return max_angle_cos
 
 
 def sides(box: Box) -> list[Line]:
@@ -122,28 +141,22 @@ def intersects(line: Line, segment: Line) -> bool:
     return ((y0 - y1)*(ax - x0) + (x1 - x0)*(ay - y0)) * ((y0 - y1)*(bx - x0) + (x1 - x0)*(by - y0)) < 0
 
 
-def relative_distance_to_intersection(line: Line, segment: Line) -> float:
-    (x0, y0), (x1, y1) = line
-    (ax, ay), (bx, by) = segment
-    # (x0, y0) + t (x1 - x0, y1 - y0)
-    # -> for which t is it on the ab line?
-    t = ((ax - x0)*(by - ay) - (ay - y0)*(bx - ax)) / ((x1 - x0)*(by - ay) - (y1 - y0)*(bx - ax))
-    if t > 1 or t < 0:
-        return t
-    else:
-        return -t if is_left(line, segment[0]) else 2 - t
-
-
-def is_left(line: Line, point: Pixel) -> bool:
-    (ax, ay), (bx, by) = line
-    cx, cy = point
-    return (bx - ax)*(cy - ay) - (by - ay)*(cx - ax) > 0
+def get_angle_cos(line: Line, end_no: int, pixel: Pixel) -> float:
+    this_end = line[end_no]
+    other_end = line[1-end_no]
+    vec1 = (this_end[0] - other_end[0], this_end[1] - other_end[1])
+    vec2 = (pixel[0] - this_end[0], pixel[1] - this_end[1])
+    dot_product = vec1[0] * vec2[0] + vec1[1] * vec2[1]
+    abs1 = math.sqrt(vec1[0]*vec1[0] + vec1[1]*vec1[1])
+    abs2 = math.sqrt(vec2[0]*vec2[0] + vec2[1]*vec2[1])
+    denominator = abs1 * abs2
+    return 1 if denominator < 0.00001 else dot_product/denominator
 
 
 class CandidateResolver:
     def __init__(
         self,
-        line_candidates: list[tuple[Line, list[Target], list[Target]]],
+        line_candidates: list[tuple[Line, list[AnnotatedTarget], list[AnnotatedTarget]]],
         block_mapping: dict[TextLine, TextBlock],
     ):
         self.line_candidates = line_candidates
@@ -151,111 +164,213 @@ class CandidateResolver:
         self.matched_blocks: set[TextBlock] = set()
 
     def resolve(self) -> tuple[list[tuple[Target, Target]], list[Line]]:
-        choices: list[tuple[Target, Target]] = []
         unmatched_lines: list[Line] = []
+        updated_candidates: list[tuple[list[AnnotatedTarget], list[AnnotatedTarget]]] = []
         for line, candidates1, candidates2 in self.line_candidates:
-            if self.is_simple_case(candidates1) and isinstance(candidates1[0], TextLine):
-                self.update_matched_blocks(candidates1[0])
-            if self.is_simple_case(candidates2) and isinstance(candidates2[0], TextLine):
-                self.update_matched_blocks(candidates2[0])
-        for line, candidates1, candidates2 in self.line_candidates:
-            result = self.first_pass(candidates1, candidates2, line)
-            if result == 'unmatched':
-                unmatched_lines.append(line)
-            elif result == 'simple case':
-                choices.append((candidates1[0], candidates2[0]))
+            if self.is_line_matched(candidates1, candidates2, line):
+                updated_candidates.append((candidates1, candidates2))
             else:
-                choices.append(self.second_pass((candidates1, candidates2)))
+                unmatched_lines.append(line)
+        while not self.is_all_resolved(updated_candidates):
+            changed, updated_candidates = self.resolve_candidates(updated_candidates)
+            if not changed:
+                for candidates1, candidates2 in updated_candidates:
+                    if len(candidates1) > 1 or len(candidates2) > 1:
+                        logger.warning(f"Candidates not fully resolved: {candidates1}, {candidates2}")
+                updated_candidates = self.force_resolve_candidates(updated_candidates)
+                break
+        choices = [(candidates1[0].target, candidates2[0].target) for candidates1, candidates2 in updated_candidates]
         return choices, unmatched_lines
 
-    def first_pass(
+    def resolve_candidates(
+        self, candidates_pairs: list[tuple[list[AnnotatedTarget], list[AnnotatedTarget]]]
+    ) -> tuple[bool, list[tuple[list[AnnotatedTarget], list[AnnotatedTarget]]]]:
+        updated_candidates_pairs = []
+        changed = False
+        for candidates1, candidates2 in candidates_pairs:
+            best_candidates1 = self.best_candidates(candidates1, candidates2)
+            best_candidates2 = self.best_candidates(candidates2, best_candidates1)
+            if len(best_candidates1) < len(candidates1) or len(best_candidates2) < len(candidates2):
+                changed = True
+            updated_candidates_pairs.append((best_candidates1, best_candidates2))
+            for best_candidates in (best_candidates1, best_candidates2):
+                if len(best_candidates) == 1 and isinstance(best_candidates[0].target, TextLine):
+                    if self.update_matched_blocks(best_candidates[0].target):
+                        changed = True
+        return changed, updated_candidates_pairs
+
+    def force_resolve_candidates(
+        self, candidates_pairs: list[tuple[list[AnnotatedTarget], list[AnnotatedTarget]]]
+    ) -> list[tuple[list[AnnotatedTarget], list[AnnotatedTarget]]]:
+        updated_candidates_pairs = []
+        for candidates1, candidates2 in candidates_pairs:
+            if len(candidates1) == 1 and len(candidates2) == 1:
+                updated_candidates_pairs.append((candidates1, candidates2))
+            else:
+                product = itertools.product([TextLine, Character], [candidates1, candidates2])
+                if all(any(isinstance(c.target, klass) for c in candidates) for klass, candidates in product):
+                    variant1 = (
+                        self.best_candidates_for_other_end(candidates1, other_end_is_character=True),
+                        self.best_candidates_for_other_end(candidates2, other_end_is_character=False),
+                    )
+                    variant2 = (
+                        self.best_candidates_for_other_end(candidates1, other_end_is_character=False),
+                        self.best_candidates_for_other_end(candidates2, other_end_is_character=True),
+                    )
+                    updated_candidates_pairs.append(
+                        variant1 if self.rate_variant(variant1) > self.rate_variant(variant2) else variant2
+                    )
+                else:
+                    logger.warning("Cannot fully resolve candidates")
+        return updated_candidates_pairs
+
+    def rate_variant(self, variant: tuple[list[AnnotatedTarget], list[AnnotatedTarget]]) -> tuple[bool, float]:
+        side1, side2 = variant
+        unmatched = True
+        for annotated_target in side1 + side2:
+            if isinstance(annotated_target.target, TextLine) and self.is_text_line_matched(annotated_target.target):
+                unmatched = False
+                break
+        total_distance = min(at.distance for at in side1) + min(at.distance for at in side2)
+        return unmatched, -total_distance
+
+    @staticmethod
+    def is_all_resolved(candidates_pairs: list[tuple[list[AnnotatedTarget], list[AnnotatedTarget]]]) -> bool:
+        for candidates1, candidates2 in candidates_pairs:
+            if len(candidates1) > 1 or len(candidates2) > 1:
+                return False
+        return True
+
+    def best_candidates(
+        self, candidates: list[AnnotatedTarget], other_end_candidates: list[AnnotatedTarget]
+    ) -> list[AnnotatedTarget]:
+        best_candidates = set()
+        for other_end_candidate in other_end_candidates:
+            new_best_candidates = self.best_candidates_for_other_end(candidates, other_end_candidate)
+            best_candidates.update(new_best_candidates)
+        best_candidates = list(best_candidates)
+        if self.is_simple_case(best_candidates):
+            return best_candidates[:1]
+        else:
+            return best_candidates
+
+    def best_candidates_for_other_end(
         self,
-        candidates1: list[Target],
-        candidates2: list[Target],
+        candidates: list[AnnotatedTarget],
+        other_end_target: AnnotatedTarget | None = None,
+        other_end_is_character: bool = False,
+    ) -> list[AnnotatedTarget]:
+        sorted_candidates = sorted(
+            candidates, key=cmp_to_key(lambda c1, c2: self.compare(c1, c2, other_end_target, other_end_is_character))
+        )
+        best = [sorted_candidates[0]]
+        for c in sorted_candidates[1:]:
+            if self.compare(c, sorted_candidates[0], other_end_target, other_end_is_character) == 0:
+                best.append(c)
+        return best
+
+    def compare(
+        self,
+        target1: AnnotatedTarget,
+        target2: AnnotatedTarget,
+        other_end_target: AnnotatedTarget | None = None,
+        other_end_is_character: bool = False,
+    ) -> int:
+        other_end_is_character = (
+            other_end_is_character
+            or (other_end_target and isinstance(other_end_target.target, Character))
+        )
+        if isinstance(target1.target, Character) and isinstance(target2.target, Character):
+            return -1 if target1.distance < target2.distance else 1
+        if isinstance(target1.target, TextLine) and isinstance(target2.target, TextLine):
+            tl1, tl2 = target1.target, target2.target
+            if (
+                (target1.miss_angle_cos > target2.miss_angle_cos or target1.miss_angle_cos == 1)
+                and target1.distance < target2.distance * 1.1
+            ):
+                return -1
+            if (
+                (target1.miss_angle_cos < target2.miss_angle_cos or target2.miss_angle_cos == 1)
+                and target1.distance * 1.1 > target2.distance
+            ):
+                return 1
+            if not self.is_text_line_matched(tl1) and self.is_text_line_matched(tl2):
+                return -1
+            if self.is_text_line_matched(tl1) and not self.is_text_line_matched(tl2):
+                return 1
+            if not self.is_narrator(tl1) and self.is_narrator(tl2):
+                return -1
+            if self.is_narrator(tl1) and not self.is_narrator(tl2):
+                return 1
+            return 0
+        # different types of targets
+        if other_end_is_character:
+            return -1 if isinstance(target1.target, TextLine) else 1
+        # other target is text line
+        if other_end_target and self.is_godlike(other_end_target.target):
+            # prefer not to match godlike text to characters
+            if isinstance(target1.target, TextLine) and self.is_godlike(target1.target):
+                return -1
+            if isinstance(target2.target, TextLine) and self.is_godlike(target2.target):
+                return 1
+        if target1.distance < target2.distance and isinstance(target1.target, Character):
+            return -1
+        if target1.distance > target2.distance and isinstance(target2.target, Character):
+            return 1
+        # text line is closer
+        if isinstance(target1.target, TextLine) and target1.miss_angle_cos == 1:
+            return -1
+        if isinstance(target2.target, TextLine) and target2.miss_angle_cos == 1:
+            return 1
+        return -1 if isinstance(target1.target, Character) else 1
+
+    @staticmethod
+    def is_line_matched(
+        candidates1: list[AnnotatedTarget],
+        candidates2: list[AnnotatedTarget],
         line: Line,
-    ) -> str:
-        if len(candidates1) == len(candidates2) == 1 and candidates1 == candidates2:
-            logger.warning(f"Unmatched line {line}: matches the same object: {candidates1[0]}")
-            return 'unmatched'
+    ) -> bool:
+        if len(candidates1) == len(candidates2) == 1 and candidates1[0].target == candidates2[0].target:
+            logger.warning(f"Unmatched line {line}: matches the same object: {candidates1[0].target}")
+            return False
         elif not (candidates1 and candidates2):
             logger.warning(f"Unmatched line {line}: matches nothing ({candidates1}, {candidates2})")
-            return 'unmatched'
+            return False
         elif not (
-                any(isinstance(c, TextLine) for c in candidates1)
-                or any(isinstance(c, TextLine) for c in candidates2)
+            any(isinstance(c.target, TextLine) for c in candidates1)
+            or any(isinstance(c.target, TextLine) for c in candidates2)
         ):
             logger.warning(f"Unmatched line {line}: matches {candidates1} to {candidates2}")
-            return 'unmatched'
-        elif self.is_simple_case(candidates1) and self.is_simple_case(candidates2):
-            return 'simple case'
+            return False
         else:
-            logger.info(f"Candidates left to resolve: {candidates1}, {candidates2}")
-            return 'complex case'
-
-    def second_pass(self, candidates_pair) -> tuple[Target, Target]:
-        has_character = [any(isinstance(c, Character) for c in candidates) for candidates in candidates_pair]
-        has_textline = [any(isinstance(c, TextLine) for c in candidates) for candidates in candidates_pair]
-        has_unmatched_blocks = [
-            any(isinstance(c, TextLine) and self.block_mapping[c] not in self.matched_blocks for c in candidates)
-            for candidates in candidates_pair
-        ]
-        if not has_textline[0]:
-            prefer = [Character, TextLine]
-        elif not has_textline[1]:
-            prefer = [TextLine, Character]
-        elif not has_character[0]:
-            prefer = [TextLine, Character]
-        elif not has_character[1]:
-            prefer = [Character, TextLine]
-        else:
-            # both types on both ends
-            logger.warning(f"Ambiguous line match candidates: {candidates_pair}")
-            if not has_unmatched_blocks[0]:
-                prefer = [Character, TextLine]
-            elif not has_unmatched_blocks[1]:
-                prefer = [TextLine, Character]
-            else:
-                # both types on both ends, both have unmatched blocks
-                if isinstance(candidates_pair[0][0], TextLine) and isinstance(candidates_pair[1][0], Character):
-                    prefer = [TextLine, Character]
-                elif isinstance(candidates_pair[0][0], Character) and isinstance(candidates_pair[1][0], TextLine):
-                    prefer = [Character, TextLine]
-                else:
-                    prefer = [TextLine, Character]
-        choice = [
-            self.select_candidate(candidates, preferred_type == Character)
-            for candidates, preferred_type in zip(candidates_pair, prefer)
-        ]
-        for target in choice:
-            if isinstance(target, TextLine):
-                self.update_matched_blocks(target)
-        return choice[0], choice[1]
-
-    def update_matched_blocks(self, text_line: TextLine) -> None:
-        self.matched_blocks.add(self.block_mapping[text_line])
-
-    def is_simple_case(self, candidates: list[Target]) -> bool:
-        if len(candidates) == 1:
             return True
-        if all(isinstance(c, TextLine) for c in candidates):
-            block_count = len(set(self.block_mapping[c] for c in candidates))
-            if block_count == 1:
-                return True
+
+    def update_matched_blocks(self, text_line: TextLine) -> bool:
+        if self.block_mapping[text_line] not in self.matched_blocks:
+            self.matched_blocks.add(self.block_mapping[text_line])
+            return True
         return False
 
-    def select_candidate(
-        self,
-        candidates: list[Target],
-        prefer_character: bool,
-    ) -> Target:
-        if prefer_character:
-            characters = [c for c in candidates if isinstance(c, Character)]
-            if characters:
-                return characters[0]
-        text_lines = [c for c in candidates if isinstance(c, TextLine)]
-        unmatched_lines = [tl for tl in text_lines if self.block_mapping[tl] not in self.matched_blocks]
-        if unmatched_lines:
-            return unmatched_lines[0]
-        if text_lines:
-            return text_lines[0]
-        return candidates[0]
+    def is_text_line_matched(self, text_line: TextLine) -> bool:
+        return self.block_mapping[text_line] in self.matched_blocks
+
+    def is_narrator(self, text_line: TextLine) -> bool:
+        block = self.block_mapping[text_line]
+        return text_line.is_bold and block.box.top < text_line.font.height
+
+    @staticmethod
+    def is_godlike(text_line: TextLine) -> bool:
+        return text_line.is_bold and text_line.content.isupper()
+
+    def is_simple_case(self, candidates: list[AnnotatedTarget]) -> bool:
+        if len(candidates) == 1:
+            return True
+        if all(isinstance(c.target, TextLine) for c in candidates):
+            block_count = len(set(self.block_mapping[c.target] for c in candidates))
+            if block_count == 1:
+                return True
+        if all(isinstance(c.target, Character) for c in candidates):
+            name_count = len(set(c.target.name for c in candidates))
+            if name_count == 1:
+                return True
+        return False

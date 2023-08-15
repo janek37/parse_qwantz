@@ -39,38 +39,41 @@ PANELS = [
 ]
 
 CHARACTERS = [
-    [Character('T-Rex', Box(Pixel(104, 90), Pixel(170, 238)))],
+    [Character('T-Rex', (Box(Pixel(104, 90), Pixel(170, 238)),))],
     [
-        Character('T-Rex', Box(Pixel(30, 105), Pixel(75, 119))),
-        Character('T-Rex', Box(Pixel(4, 119), Pixel(105, 150))),
-        Character('T-Rex', Box(Pixel(4, 150), Pixel(60, 238))),
+        Character('T-Rex', (
+            Box(Pixel(30, 105), Pixel(75, 119)),
+            Box(Pixel(4, 119), Pixel(105, 150)),
+            Box(Pixel(4, 150), Pixel(60, 238)),
+        )),
     ],
     [
-        Character('T-Rex', Box(Pixel(80, 55), Pixel(115, 213))),
-        Character('T-Rex', Box(Pixel(115, 75), Pixel(130, 90))),
-        Character('Dromiceiomimus', Box(Pixel(325, 146), Pixel(357, 238))),
-        Character('House', Box(Pixel(115, 210), Pixel(163, 238)), can_think=False),
+        Character('T-Rex', (Box(Pixel(80, 55), Pixel(115, 213)), Box(Pixel(115, 75), Pixel(130, 90)))),
+        Character('Dromiceiomimus', (Box(Pixel(325, 146), Pixel(357, 238)), Box(Pixel(250, 180), Pixel(325, 185)))),
+        Character('House', (Box(Pixel(115, 210), Pixel(163, 238)),), can_think=False),
     ],
     [
-        Character('T-Rex', Box(Pixel(0, 65), Pixel(30, 190))),
-        Character('Utahraptor', Box(Pixel(103, 81), Pixel(138, 165))),
-        Character('Utahraptor', Box(Pixel(138, 140), Pixel(165, 180))),
-        Character('Girl', Box(Pixel(0, 213), Pixel(8, 238)), can_think=False),
+        Character('T-Rex', (Box(Pixel(0, 65), Pixel(30, 190)),)),
+        Character('Utahraptor', (Box(Pixel(103, 81), Pixel(138, 165)), Box(Pixel(138, 140), Pixel(165, 180)))),
+        Character('Girl', (Box(Pixel(0, 213), Pixel(8, 238)),), can_think=False),
     ],
     [
-        Character('T-Rex', Box(Pixel(40, 70), Pixel(90, 103))),
-        Character('T-Rex', Box(Pixel(40, 104), Pixel(70, 140))),
-        Character('T-Rex', Box(Pixel(40, 141), Pixel(80, 180))),
-        Character('T-Rex', Box(Pixel(130, 167), Pixel(143, 210))),
-        Character('T-Rex', Box(Pixel(100, 197), Pixel(130, 213))),
-        Character('Utahraptor', Box(Pixel(198, 77), Pixel(233, 145))),
-        Character('Utahraptor', Box(Pixel(225, 145), Pixel(250, 190))),
+        Character('T-Rex', (
+            Box(Pixel(40, 70), Pixel(90, 103)),
+            Box(Pixel(40, 104), Pixel(70, 140)),
+            Box(Pixel(40, 141), Pixel(80, 180)),
+            Box(Pixel(130, 167), Pixel(143, 210)),
+            Box(Pixel(100, 197), Pixel(130, 213)),
+        )),
+        Character('Utahraptor', (Box(Pixel(198, 77), Pixel(233, 145)), Box(Pixel(225, 145), Pixel(250, 190)))),
     ],
     [
-        Character('T-Rex', Box(Pixel(80, 64), Pixel(134, 84))),
-        Character('T-Rex', Box(Pixel(80, 84), Pixel(100, 169))),
-        Character('T-Rex', Box(Pixel(100, 84), Pixel(120, 120))),
-        Character('T-Rex', Box(Pixel(100, 110), Pixel(125, 120))),
+        Character('T-Rex', (
+            Box(Pixel(80, 64), Pixel(134, 84)),
+            Box(Pixel(80, 84), Pixel(100, 169)),
+            Box(Pixel(100, 84), Pixel(120, 120)),
+            Box(Pixel(100, 110), Pixel(125, 120)),
+        )),
     ],
 ]
 
@@ -102,10 +105,12 @@ def parse_qwantz(image: Image, debug: bool, log_to_file: bool) -> Iterable[list[
         ask_professor_science = is_ask_professor_science(cropped)
         panel_image = SimpleImage.from_image(cropped, ask_professor_science)
         lines, thoughts, text_lines, extra_characters, unmatched_shapes = get_elements(panel_image)
-        text_blocks, block_matches, thought_matches, unmatched_stuff = match_stuff(
+        text_blocks, block_matches, thought_blocks, unmatched_stuff = match_stuff(
             characters + extra_characters, panel_image, lines, text_lines, thoughts
         )
-        script_lines = get_script_lines(text_blocks, block_matches, thought_matches, ask_professor_science)
+        if thought_blocks and i in (3, 4, 5):
+            logger.warning("Ambiguous thought bubble")
+        script_lines = get_script_lines(text_blocks, block_matches, thought_blocks, ask_professor_science)
         if debug and (unmatched_shapes or unmatched_stuff):
             handle_debug(cropped, text_blocks, unmatched_shapes, unmatched_stuff, characters + extra_characters)
         yield list(script_lines)
@@ -116,7 +121,7 @@ def match_stuff(
 ) -> tuple[
     list[TextBlock],
     dict[TextBlock, list[Character]],
-    dict[TextBlock, Character],
+    list[TextBlock],
     UnmatchedStuff,
 ]:
     text_blocks = sort_text_blocks(get_text_blocks(text_lines))
@@ -124,8 +129,7 @@ def match_stuff(
     block_matches, text_blocks, unmatched_neighbors = match_blocks(line_matches, text_blocks)
     text_blocks = sort_text_blocks(text_blocks)
     unmatched_blocks = [block for block in text_blocks if block not in block_matches]
-    thinking_characters = [character for character in characters if character.can_think]
-    thought_matches = dict(match_thought(thoughts, unmatched_blocks, thinking_characters))
+    thought_matches = list(match_thought(thoughts, unmatched_blocks))
     if thoughts and not thought_matches:
         logger.warning("Detected thought bubbles, but no thought text")
         unmatched_thoughts = thoughts
@@ -140,7 +144,7 @@ def match_stuff(
 def get_script_lines(
     text_blocks: list[TextBlock],
     block_matches: dict[TextBlock, list[Character]],
-    thought_matches: dict[TextBlock, Character],
+    thought_blocks: list[TextBlock],
     ask_professor_science: bool,
 ) -> Iterable[str]:
     if ask_professor_science:
@@ -157,9 +161,8 @@ def get_script_lines(
             else:
                 content = block.content(include_font_name=True)
             yield f"{' and '.join(ch.name for ch in characters)}: {content}"
-        elif block in thought_matches:
-            character = thought_matches[block]
-            yield f"{character}: {{thinks}} {block.content()}"
+        elif block in thought_blocks:
+            yield f"T-Rex: {{thinks}} {block.content()}"
         elif not block.font.is_mono:
             yield f"Text: {block.content()}"
         else:
@@ -200,7 +203,8 @@ def handle_debug(
                 draw.rectangle(box, outline=(0, 192, 0))
     if unmatched_stuff.neighbors or unmatched_stuff.lines:
         for character in characters:
-            draw.rectangle(character.box, outline=(0, 128, 0))
+            for box in character.boxes:
+                draw.rectangle(box, outline=(0, 128, 0))
     image.show()
 
 
@@ -259,6 +263,7 @@ def main(input_file_path: Path, output_dir: Path | None = None, debug: bool = Fa
         for (panel, characters) in zip(PANELS, CHARACTERS):
             _, (x, y) = panel
             for character in characters:
-                (x0, y0), (x1, y1) = character.box
-                draw.rectangle(((x0 + x, y0 + y), (x1 + x, y1 + y)), outline=(0, 128, 0))
+                for box in character.boxes:
+                    (x0, y0), (x1, y1) = box
+                    draw.rectangle(((x0 + x, y0 + y), (x1 + x, y1 + y)), outline=(0, 128, 0))
         image.show()
