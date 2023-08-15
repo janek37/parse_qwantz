@@ -89,8 +89,8 @@
     "panels": {
       "3": [
         "{sheet music in the background}",
-        "Lyrics: ...-SA... have got to think this through ...",
-        "Lyrics: ...-SAU...he Utahraptor says he slept with ...",
+        "Lyrics: …-SA… have got to think this through …",
+        "Lyrics: …-SAU…he Utahraptor says he slept with …",
         "T-Rex: It'd be awesome!",
         "Dromiceiomimus: ?"
       ]
@@ -103,7 +103,7 @@
       "3": [
         "{T-Rex's speech is partly obscured by Dromiceiomimus's speech bubble}",
         "T-Rex: It's so easy!",
-        "T-Rex: All you have ... is to take her ...e and then ... with you ... sideways!",
+        "T-Rex: All you have … is to take her …e and then … with you … sideways!",
         "Dromiceiomimus: Have you seen my keys?",
         "T-Rex: huh?",
         "T-Rex: Oh, no."
@@ -233,9 +233,9 @@
     "file_name": "comic2-70-2.png",
     "panels": {
       "6": [
-        "{Off-panel speech is partly obscured by T-Rex's speech bubble, the reconstructed obscured parts are in [brackets]}",
+        "{Off-panel speech is partly obscured by T-Rex's thought bubble, the reconstructed obscured parts are in [brackets]}",
         "Off-Panel: image is that? Plus, you can't b[ring a date t]o such a resta[urant, because ev]en if you don['t eat anythin]g cheap, it becomes All-You-Can-Politely-Eat, since you're trying to impress your date and thus can't go all-out. Food should be a delight, not a symbolic stop at a gas station. I find",
-        "T-Rex: I'm going to eat ◖SO MANY WINGS!◗"
+        "T-Rex: {thinks} I'm going to eat ◖SO MANY WINGS!◗"
       ]
     }
   },
@@ -992,6 +992,11 @@
     "comic_id": 935,
     "file_name": "comic2-967.png",
     "panels": {
+      "3": [
+        "T-Rex: You - you dedicated BIBLE II to me? I'm not sure how I feel about that.",
+        "Dromiceiomimus: {thinks} I didn't! DID I??",
+        "Narrator: the end!"
+      ],
       "6": [
         "Narrator: FROM MORRIS'S PERSPECTIVE!",
         "Morris: oh shucks i dunno t-rex i think that maybe one bible is just enough for me, since i never even read the first one! i tried really hard twice, two times, but the words were so big and i was so small and i thought \"how am i gonna get all those big words into my head?\" so it was real confusing, a real pickle, you know? but then my mom came home and it turned out that i didn't even have a bible! i had a cookbook under my pillow the whole time, and all i memorized was how to cook professional enchiladas",
@@ -1462,6 +1467,27 @@
       ]
     }
   },
+  "3a8db3b142a297d4df8694167704a335": {
+    "comic_id": 1147,
+    "file_name": "comic2-1174.png",
+    "panels": {
+      "3": [
+        "Narrator: LATER:",
+        "Dromiceiomimus: {thinks} Has anyone ever made a doctor-themed parody of Back to the Future, called \"Back to the Suture\"?",
+        "Dromiceiomimus: {thinks} I should probably do that."
+      ],
+      "4": [
+        "Narrator: LATER:",
+        "Utahraptor: {thinks} skin flavoured jello",
+        "T-Rex: {thinks} utahraptor's skin flavoured jello"
+      ],
+      "5": [
+        "Narrator: LATER:",
+        "T-Rex: {thinks} I should make a comic where famed scientist Francis Bacon teams up with a guy named \"Eggs\", so they can be called Bacon and Eggs. In issue two, Francis could mistakenly rename himself to \"Chris P.\"! Chris P. Bacon!",
+        "T-Rex: {thinks} OH MY GOD"
+      ]
+    }
+  },
   "f5a8ecd4eed468bcec8e46aea0683d57": {
     "comic_id": 1156,
     "file_name": "comic2-1183.png",
@@ -1614,6 +1640,18 @@
       ]
     }
   },
+  "33ed4571036e9f42e395f5f3ad2167c5": {
+    "comic_id": 1295,
+    "file_name": "comic2-1322.png",
+    "panels": {
+      "6": [
+        "Narrator: MEANWHILE, IN THE FUTURE:",
+        "{A tattoo on green skin representing T-Rex and USS Enterprise}",
+        "Off-Panel: Wow",
+        "Off-Panel: Your skin is really green"
+      ]
+    }
+  },
   "b45c4fdc28fbbe8d6efbffa9c9ce1b0f": {
     "comic_id": 1328,
     "file_name": "comic2-1355.png",
@@ -1661,6 +1699,15 @@
         "Narrator: LATER:",
         "T-Rex: {imagines having purple bat-like wings}",
         "T-Rex: {thinks} I used to be better at imagination"
+      ]
+    }
+  },
+  "2844303fbe16fc4a82d84e97b26896db": {
+    "comic_id": 1406,
+    "file_name": "comic2-1433.png",
+    "panels": {
+      "2": [
+        "T-Rex: ..."
       ]
     }
   },
@@ -1774,6 +1821,16 @@
       "6": [
         "T-Rex: And that brings us to today's Proof We're Not Living In The Best Of All Possible Worlds!",
         "Parchment scroll: “None of us are friends with Fartnoise Fartnoise Junior”"
+      ]
+    }
+  },
+  "f52a007e058e904f5de4c2a660a27a4d": {
+    "comic_id": 1542,
+    "file_name": "comic2-1563.png",
+    "panels": {
+      "6": [
+        "T-Rex: !!",
+        "T-Rex: {thinks} Oh my God, from now on his name is definitely Shortpants"
       ]
     }
   },
@@ -1978,6 +2035,16 @@
       ]
     }
   },
+  "e53cc97306d7c583508f15f20421c533": {
+    "comic_id": 1687,
+    "file_name": "comic2-1710.png",
+    "panels": {
+      "6": [
+        "T-Rex: {imagines SURGE written with blue bold letters on a background that looks like explosions}",
+        "T-Rex: {thinks} Holy crap I've never imagined this hard before"
+      ]
+    }
+  },
   "93572d1dbad17e63eca017ff2cc685db": {
     "comic_id": 1716,
     "file_name": "comic2-1740.png",
@@ -2116,6 +2183,16 @@
         "T-Rex: I'll prove it! This is me imagining what you look like, having just seen you seconds ago!",
         "Floating Batman head: {in T-Rex's imagination} I am an orange dinosaur",
         "T-Rex: Okay you can't see that but I actually did a pretty good job."
+      ]
+    }
+  },
+  "beb0ed7f9f5483564a6945e8846662bf": {
+    "comic_id": 1903,
+    "file_name": "comic2-1914.png",
+    "panels": {
+      "2": [
+        "T-Rex: Honey! You look pathetic and desperate!",
+        "Sound effect: *snap*"
       ]
     }
   },
@@ -2444,6 +2521,16 @@
         "Off-Panel: YET I WILL LIVE FOREVER // HOW IRONIC",
         "Off-Panel: IRON-IC // GET IT",
         "Off-Panel: FUN FACT // I WAS ALSO PROGRAMMED FOR JOKES"
+      ]
+    }
+  },
+  "fe3aa45b3a4197f1ccaeb6a4fe04947e": {
+    "comic_id": 2267,
+    "file_name": "comic2-2278.png",
+    "panels": {
+      "6": [
+        "T-Rex: \"GAME\"??",
+        "{T-Rex is surrounded by multiple question marks}"
       ]
     }
   },
@@ -3269,6 +3356,15 @@
       ]
     }
   },
+  "becde52049a0af7d71225928afd597c2": {
+    "comic_id": 3246,
+    "file_name": "comic2-3251.png",
+    "panels": {
+      "6": [
+        "T-Rex: ATTENTION TEENS! LISTEN TO YOUR ELDERS, WE HAVE {mini} ideas for things that would be amazing if they happened to someone else and also {normal} REALLY GOOD ADVICE!"
+      ]
+    }
+  },
   "be61ce745686e75be872c2b55970592c": {
     "comic_id": 3254,
     "file_name": "comic2-3259.png",
@@ -3322,6 +3418,23 @@
     "panels": {
       "6": [
         "Banner: Cowritten by Neil deGrasse Tyson"
+      ]
+    }
+  },
+  "84cdd8e270ca70fc085ee277fc4bb6f8": {
+    "comic_id": 3323,
+    "file_name": "comic2-3328.png",
+    "panels": {
+      "6": [
+        "Narrator: BUT IN TRUTH:",
+        "Off-Panel: T-REX, the world is under attack! Only you can save us!",
+        "{T-Rex's speech is partly obscured his own thought bubbles}",
+        "T-Rex: This will take",
+        "T-Rex: {thinks} lunch",
+        "T-Rex: supreme focus",
+        "T-Rex: {thinks} LUNCH!",
+        "T-Rex: and …ll of my abilit… toge… con…",
+        "T-Rex: {thinks} LUUUUUUUUUUUUUUNCH"
       ]
     }
   },
@@ -3622,7 +3735,7 @@
     "panels": {
       "6": [
         "{Utahraptor's speech is partly obscured by T-Rex's thought bubbles}",
-        "Utahraptor: ...ch as the rich becoming functionally immortal ... speed! Not to mention ... fact that all computati...uld slow down as lightspee... which could also aff... our ...peed of thought ... it down i... simply ... explore what ex... would be like if ...hat we take for",
+        "Utahraptor: …ch as the rich becoming functionally immortal … speed! Not to mention … fact that all computati…uld slow down as lightspee… which could also aff… our …peed of thought … it down i… simply … explore what ex… would be like if …hat we take for",
         "T-Rex: {thinks} Dang! This was MY question and Utahraptor's talking all over my answer!",
         "T-Rex: {thinks} If he's so smart why doesn't HE open other people's mail??"
       ]
@@ -3683,6 +3796,15 @@
       "6": [
         "Banner: T-REX WAS WRONG TODAY",
         "T-Rex: FRIG"
+      ]
+    }
+  },
+  "21949b536880aa55ad2fd822617e818a": {
+    "comic_id": 3986,
+    "file_name": "comic2-4187.png",
+    "panels": {
+      "6": [
+        "{T-Rex is surrounded by multiple question marks}"
       ]
     }
   }
