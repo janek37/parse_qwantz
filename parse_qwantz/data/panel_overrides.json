@@ -3807,5 +3807,74 @@
         "{T-Rex is surrounded by multiple question marks}"
       ]
     }
+  },
+  "de6c60f469676fa36a5f1fe5d122d022": {
+    "comic_id": 4019,
+    "file_name": "comic2-4219.png",
+    "panels": {
+      "6": [
+        "{a strange futuristic background}",
+        "Narrator: BUT THEN:",
+        "Off-Panel: Greetings, T-Rex! I am a traveller from the future sent back in time to observe you!",
+        "T-Rex: FRIG! NEVERMIND"
+      ]
+    }
+  },
+  "3b697f4dfa8a6c1d396767ebfa8f6b2b": {
+    "comic_id": 4034,
+    "file_name": "comic2-4234.png",
+    "panels": {
+      "6": [
+        "Banner: WATER: IT'S MANDATORY",
+        "T-Rex: If you don't drink it once every three days you'll FRIGGIN' DIE"
+      ]
+    }
+  },
+  "8c6cf5a55198109e6543f30617dfc07d": {
+    "comic_id": 4066,
+    "file_name": "comic2-4266.png",
+    "panels": {
+      "6": [
+        "Banner: Sherlock canonically does a lot of cocaine",
+        "T-Rex: ...hence my banner, you know?"
+      ]
+    }
+  },
+  "a495d28298b8c283726c6984f3ca922b": {
+    "comic_id": 4069,
+    "file_name": "comic2-4269.png",
+    "panels": {
+      "2": [
+        "T-Rex: And when that happens, I always remember what Dromiceiomimus used to say...",
+        "T-Rex: {starts daydreaming}"
+      ],
+      "3": [
+        "{T-Rex's daydream}",
+        "Dromiceiomimus: T-Rex, sometimes it's useful to have a story BEFORE your story - that way, you can use it to manage reader expectations of your second story, which is the one you REALLY want to tell. Like in The Princess Bride, with the sick kid being read a story from a book!",
+        "T-Rex: Are there other uses?",
+        "Dromiceiomimus: Sure! I remember something Utahraptor used to say - to you, if I recall correctly...",
+        "Dromiceiomimus: {starts daydreaming}"
+      ],
+      "4": [
+        "{Dromiceiomimus's daydream inside T-Rex's daydream}",
+        "Utahraptor: I, Utahraptor, will never forget the time I told you another use for framing stories...",
+        "Utahraptor: {starts daydreaming}"
+      ],
+      "5": [
+        "{Utahraptor's daydream inside Dromiceiomimus's daydream inside T-Rex's daydream}",
+        "Utahraptor: Framing stories can also be used to collect a set of short stories.",
+        "T-Rex: Cool!"
+      ]
+    }
+  },
+  "596d12612d90a450718fc44c5b1d30f5": {
+    "comic_id": 4083,
+    "file_name": "comic2-4283.png",
+    "panels": {
+      "6": [
+        "Banner: I'm not qualified to answer your questions",
+        "T-Rex: ...See??"
+      ]
+    }
   }
 }
