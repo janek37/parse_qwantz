@@ -65,7 +65,11 @@ CHARACTERS = [
             Box(Pixel(130, 167), Pixel(143, 210)),
             Box(Pixel(100, 197), Pixel(130, 213)),
         )),
-        Character('Utahraptor', (Box(Pixel(198, 77), Pixel(233, 145)), Box(Pixel(225, 145), Pixel(250, 190)))),
+        Character('Utahraptor', (
+            Box(Pixel(198, 77), Pixel(233, 145)),
+            Box(Pixel(225, 145), Pixel(250, 190)),
+            Box(Pixel(185, 115), Pixel(198, 125)),
+        )),
     ],
     [
         Character('T-Rex', (
