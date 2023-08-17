@@ -304,25 +304,22 @@ class CandidateResolver:
                 return 1
             return 0
         # different types of targets
+        ann_text_line, ann_character, choose_text_line, choose_character = (
+            (target1, target2, -1, 1) if isinstance(target1.target, TextLine) else (target2, target1, 1, -1)
+        )
         if other_end_is_character:
-            return -1 if isinstance(target1.target, TextLine) else 1
+            return choose_text_line
         # other target is text line
         if other_end_target and self.is_godlike(other_end_target.target):
             # prefer not to match godlike text to characters
-            if isinstance(target1.target, TextLine) and self.is_godlike(target1.target):
-                return -1
-            if isinstance(target2.target, TextLine) and self.is_godlike(target2.target):
-                return 1
-        if target1.distance < target2.distance and isinstance(target1.target, Character):
-            return -1
-        if target1.distance > target2.distance and isinstance(target2.target, Character):
-            return 1
+            if self.is_godlike(ann_text_line.target):
+                return choose_text_line
+        if ann_character.distance < ann_text_line.distance:
+            return choose_character
         # text line is closer
-        if isinstance(target1.target, TextLine) and target1.miss_angle_cos == 1:
-            return -1
-        if isinstance(target2.target, TextLine) and target2.miss_angle_cos == 1:
-            return 1
-        return -1 if isinstance(target1.target, Character) else 1
+        if ann_text_line.miss_angle_cos == 1:
+            return choose_text_line
+        return choose_character
 
     @staticmethod
     def is_line_matched(
