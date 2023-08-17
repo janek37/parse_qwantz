@@ -33,7 +33,7 @@ def get_elements(
         )
         text_line_candidates = (try_text_line(pixel, tmp_image, font) for font in ALL_FONTS)
         text_line_candidates = (text_line for text_line in text_line_candidates if text_line)
-        longest_candidate = max(text_line_candidates, key=lambda tl: len(tl[0].char_boxes), default=None)
+        longest_candidate = max(text_line_candidates, key=lambda tl: tl[0].box().right, default=None)
         if longest_candidate:
             longest_line, warnings = longest_candidate
             for warning in warnings:
