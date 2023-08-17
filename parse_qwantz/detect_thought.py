@@ -24,8 +24,8 @@ def get_thought(pixel: Pixel, image: SimpleImage) -> tuple[Box, list[Pixel]] | N
 
 
 def is_thought(pixels: set[Pixel], box: Box, image: SimpleImage) -> bool:
-    x_range = range(box.left + 1, box.right - 1)
-    y_range = range(box.top + 1, box.bottom - 1)
+    x_range = range(box.left, box.right)
+    y_range = range(box.top, box.bottom)
     outside = set()
     outside.update(Pixel(box.left, y) for y in y_range)
     outside.update(Pixel(box.right - 1, y) for y in y_range)
