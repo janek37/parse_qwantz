@@ -221,7 +221,9 @@ class CandidateResolver:
                         variant1 if self.rate_variant(variant1) > self.rate_variant(variant2) else variant2
                     )
                 else:
-                    logger.warning("Cannot fully resolve candidates")
+                    closest1 = min(candidates1, key=lambda c: c.distance)
+                    closest2 = min(candidates2, key=lambda c: c.distance)
+                    updated_candidates_pairs.append(([closest1], [closest2]))
         return updated_candidates_pairs
 
     def rate_variant(self, variant: tuple[list[AnnotatedTarget], list[AnnotatedTarget]]) -> tuple[bool, float]:
