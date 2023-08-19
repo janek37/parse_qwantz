@@ -121,7 +121,7 @@ def get_miss_angle_cos(box: Box, line: Line, end_no: int) -> float:
     max_angle_cos = max(angle_cosines)
     if max_angle_cos < 0:
         return max_angle_cos
-    if any(intersects(line, side) for side in sides(box)):
+    if any(intersects(line, end_no, side) for side in sides(box)):
         return 1
     return max_angle_cos
 
@@ -135,10 +135,18 @@ def sides(box: Box) -> list[Line]:
     ]
 
 
-def intersects(line: Line, segment: Line) -> bool:
-    (x0, y0), (x1, y1) = line
+def intersects(line: Line, end_no: int, segment: Line) -> bool:
+    if end_no == 1:
+        (x0, y0), (x1, y1) = line
+    else:
+        (x1, y1), (x0, y0) = line
     (ax, ay), (bx, by) = segment
-    return ((y0 - y1)*(ax - x0) + (x1 - x0)*(ay - y0)) * ((y0 - y1)*(bx - x0) + (x1 - x0)*(by - y0)) < 0
+    if ((y0 - y1)*(ax - x0) + (x1 - x0)*(ay - y0)) * ((y0 - y1)*(bx - x0) + (x1 - x0)*(by - y0)) > 0:
+        return False
+    # (x0, y0) + t (x1 - x0, y1 - y0)
+    # -> for which t is it on the ab line?
+    t = ((ax - x0)*(by - ay) - (ay - y0)*(bx - ax)) / ((x1 - x0)*(by - ay) - (y1 - y0)*(bx - ax))
+    return t > 1
 
 
 def get_angle_cos(line: Line, end_no: int, pixel: Pixel) -> float:
