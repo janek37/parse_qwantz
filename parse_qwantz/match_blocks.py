@@ -42,7 +42,7 @@ def match_blocks(
                     block_matches[block] = (new_characters, line)
                 else:
                     block1, block2, alignment = block.split(prev_line, line)
-                    if alignment.no_gap and (alignment.left_aligned or alignment.char_aligned):
+                    if alignment.no_gap or alignment.left_aligned or alignment.char_aligned:
                         logger.warning(
                             f"Splitting blocks: [{block1.content()[:12]}], [{block2.content()[:12]}]"
                         )
