@@ -113,8 +113,6 @@ def parse_qwantz(image: Image, debug: bool, log_to_file: bool) -> Iterable[list[
         text_blocks, block_matches, thought_blocks, unmatched_stuff = match_stuff(
             characters + extra_characters, panel_image, lines, text_lines, thoughts
         )
-        if thought_blocks and i in (3, 4, 5):
-            logger.warning("Ambiguous thought bubble")
         script_lines = get_script_lines(text_blocks, block_matches, thought_blocks, ask_professor_science)
         if debug and (unmatched_shapes or unmatched_stuff):
             handle_debug(cropped, text_blocks, unmatched_shapes, unmatched_stuff, characters + extra_characters)
