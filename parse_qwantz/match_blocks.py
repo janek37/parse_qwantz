@@ -57,6 +57,7 @@ def match_blocks(
         neighbors_left = []
         for line1, line2 in neighbors:
             if blocks_by_line[line1] == blocks_by_line[line2]:
+                # no longer happens
                 block = blocks_by_line[line1]
                 if block.row_index(line1) == block.row_index(line2):
                     logger.warning(f"Line connects two text lines in one row: {line1.content} -- {line2.content}")
@@ -83,17 +84,21 @@ def match_blocks(
                 ):
                     logger.warning(f"Matching a non-edge line to another line: {line1.content} -- {line2.content}")
             if block1 in block_matches and block2 in block_matches:
+                if block1 in block_matches and block1.can_split(line1, block_matches[block1][1]):
+                    logger.warning(f"Can split block: {block1}")
+                if block2 in block_matches and block2.can_split(line2, block_matches[block2][1]):
+                    logger.warning(f"Can split block: {block2}")
                 if block1.start.y < block2.start.y:
                     first_block, second_block = block1, block2
                 else:
                     first_block, second_block = block2, block1
                 characters, line = block_matches[first_block]
-                other_characters, _ = block_matches[second_block]
-                block_matches[second_block] = characters + other_characters, line
+                other_characters, other_line = block_matches[second_block]
+                block_matches[second_block] = characters + other_characters, other_line
             elif block1 in block_matches:
-                block_matches[block2] = block_matches[block1]
+                block_matches[block2] = block_matches[block1][0], line2
             elif block2 in block_matches:
-                block_matches[block1] = block_matches[block2]
+                block_matches[block1] = block_matches[block2][0], line1
             else:
                 neighbors_left.append((line1, line2))
         if neighbors == neighbors_left:
