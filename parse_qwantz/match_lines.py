@@ -257,7 +257,7 @@ class CandidateResolver:
         for other_end_candidate in other_end_candidates:
             new_best_candidates = self.best_candidates_for_other_end(candidates, other_end_candidate)
             best_candidates.update(new_best_candidates)
-        best_candidates = list(best_candidates)
+        best_candidates = sorted(best_candidates, key=lambda c: c.distance)
         if self.is_simple_case(best_candidates):
             return best_candidates[:1]
         else:
