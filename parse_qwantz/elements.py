@@ -49,7 +49,7 @@ def get_elements(
                 sorted_pixels = remove_subsequence(sorted_pixels, line_pixels)
             elif result := get_batman(pixel, tmp_image):
                 batman_box, batman_pixels = result
-                extra_characters.append(Character("Floating Batman head", (batman_box,), can_think=False))
+                extra_characters.append(Character("Floating Batman head", (batman_box,)))
                 sorted_pixels = remove_subsequence(sorted_pixels, batman_pixels)
             elif result := get_thought(pixel, tmp_image):
                 box, thought_pixels = result

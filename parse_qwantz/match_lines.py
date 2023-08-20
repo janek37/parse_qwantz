@@ -18,7 +18,6 @@ logger = logging.getLogger()
 class Character:
     name: str
     boxes: tuple[Box, ...]
-    can_think: bool = True
 
     def __str__(self):
         return self.name
