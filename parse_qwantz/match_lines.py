@@ -307,10 +307,11 @@ class CandidateResolver:
                 return -1
             if self.is_text_line_matched(tl1) and not self.is_text_line_matched(tl2):
                 return 1
-            if not self.is_narrator(tl1) and self.is_narrator(tl2):
-                return -1
-            if self.is_narrator(tl1) and not self.is_narrator(tl2):
-                return 1
+            if other_end_target is None or other_end_target.target != OFF_PANEL:
+                if not self.is_narrator(tl1) and self.is_narrator(tl2):
+                    return -1
+                if self.is_narrator(tl1) and not self.is_narrator(tl2):
+                    return 1
             return 0
         # different types of targets
         ann_text_line, ann_character, choose_text_line, choose_character = (
