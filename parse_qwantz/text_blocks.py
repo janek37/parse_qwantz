@@ -96,7 +96,10 @@ class TextBlock:
         line1_index = self.row_index(line1)
         line2_index = self.row_index(line2)
         index1, index2 = sorted((line1_index, line2_index))
-        breaking_strength, split_index = min((self.bond_strengths[i], i) for i in range(index1, index2))
+        breaking_strength, split_index = min(
+            ((self.bond_strengths[i], i) for i in range(index1, index2)),
+            key=lambda p: (p[0], -p[1]),
+        )
         if self.bond_strengths[index1:index2].count(breaking_strength) > 1:
             logger.warning(f"Non-unique breaking point for splitting (strength: {breaking_strength})")
         block1 = TextBlock(self.rows[:split_index+1], self.alignments[:split_index], self.color, self.font)
@@ -179,7 +182,7 @@ class Alignment:
 
 
 def get_text_blocks(text_lines: list[TextLine]) -> Iterable[TextBlock]:
-    grouped_lines = group_text_lines(text_lines, same_font=True, long_space=True)
+    grouped_lines = group_text_lines(text_lines)
     while grouped_lines:
         new_block = [grouped_lines[0]]
         alignments = []

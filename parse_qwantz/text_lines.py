@@ -188,9 +188,7 @@ def cleanup_text_lines(text_lines: list[TextLine]) -> list[TextLine]:
     )
 
 
-def group_text_lines(
-    text_lines: list[TextLine], same_font: bool = False, long_space: bool = False
-) -> list[list[TextLine]]:
+def group_text_lines(text_lines: list[TextLine]) -> list[list[TextLine]]:
     grouped_text_lines = []
     used: set[TextLine] = set()
     for text_line in text_lines:
@@ -201,14 +199,14 @@ def group_text_lines(
         for other_text_line in text_lines:
             if other_text_line in used:
                 continue
-            if same_font and other_text_line.font.group != text_line.font.group:
+            if other_text_line.font.group != text_line.font.group:
                 continue
             box = group[-1].base_box()
             other_box = other_text_line.base_box()
             if abs(box.bottom - other_box.bottom) <= 1:
                 distance = other_box.left - box.right
                 width = max(group[-1].font.space_width, other_text_line.font.space_width)
-                max_distance = width * 3 if long_space else width * 2 + 1
+                max_distance = width * 3
                 if -1 <= distance <= max_distance:
                     group.append(other_text_line)
                     used.add(other_text_line)
