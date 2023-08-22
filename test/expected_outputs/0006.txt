@@ -21,9 +21,9 @@ T-Rex: Eh?
 Utahraptor: I just wanted to say that I will always treasure the short time we spent together, and I hope that in time you will understand how I feel.
 
 Panel 6:
-T-Rex: {thinks} It's such a little thing to weep,
-T-Rex: {thinks} so short a thing to sigh;
-T-Rex: {thinks} And yet by trades
-T-Rex: {thinks} the size of these
-T-Rex: {thinks} We men and women die!
-T-Rex: {thinks} -Emily Dickinson
+T-Rex: 〚thinks〛 It's such a little thing to weep,
+T-Rex: 〚thinks〛 so short a thing to sigh;
+T-Rex: 〚thinks〛 And yet by trades
+T-Rex: 〚thinks〛 the size of these
+T-Rex: 〚thinks〛 We men and women die!
+T-Rex: 〚thinks〛 -Emily Dickinson

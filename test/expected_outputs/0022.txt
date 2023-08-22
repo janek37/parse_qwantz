@@ -9,11 +9,11 @@ Panel 3:
 Dromiceiomimus: You know, I've never really been comfortable with being a vegetarian Dromiceiomimus.
 T-Rex: Oh.
 T-Rex: I see.
-T-Rex: {thinks} Hmm... that was KIND of awkward.
+T-Rex: 〚thinks〛 Hmm... that was KIND of awkward.
 
 Panel 4:
 Utahraptor: Hey, I had a dream about you last night, only you had my mother's body, and, um-
-Utahraptor: {mini} Father's genitals.
+Utahraptor: 〚mini〛 Father's genitals.
 
 Panel 5:
 Utahraptor: uh

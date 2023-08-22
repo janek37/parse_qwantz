@@ -2,7 +2,7 @@ Panel 1:
 T-Rex: I wonder what's bothering the Utahraptor? ◖He totally "wigged out" on me yesterday.◗
 
 Panel 2:
-T-Rex: {thinks} What a great expression!
+T-Rex: 〚thinks〛 What a great expression!
 
 Panel 3:
 T-Rex: Did you hear? The Utahraptor totally "wigged out" on me yesterday!

@@ -21,4 +21,4 @@ T-Rex: Oh?
 Utahraptor: "No"!
 
 Panel 6:
-T-Rex: {thinks} Genius!
+T-Rex: 〚thinks〛 Genius!

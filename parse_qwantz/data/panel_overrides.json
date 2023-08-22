@@ -5,12 +5,12 @@
     "panels": {
       "3": [
         "T-Rex: Of course, there's always a danger when you go down the 'date-the-person-you-live-with' road. It could fall apart, not unlike this tiny house.",
-        "House: {tiny} oh baby i'm so glad we already live together and now are in a relationship; it's bound to make things smooth and not at all awkward"
+        "House: 〚tiny〛 oh baby i'm so glad we already live together and now are in a relationship; it's bound to make things smooth and not at all awkward"
       ],
       "6": [
         "Narrator: LATER...",
-        "T-Rex: {large} !",
-        "T-Rex: {thinks} ◖I◗ was his roommate!"
+        "T-Rex: 〚large〛 !",
+        "T-Rex: 〚thinks〛 ◖I◗ was his roommate!"
       ]
     }
   },
@@ -40,18 +40,18 @@
     "file_name": "comic2-16-1.png",
     "panels": {
       "2": [
-        "T-Rex: {in T-Rex's imagination, holding a beach ball} woo! party!"
+        "T-Rex: 〚in T-Rex's imagination, holding a beach ball〛 woo! party!"
       ],
       "3": [
-        "T-Rex: {in T-Rex's imagination, throwing a beach ball to imaginary Utahraptor} catch!",
-        "Utahraptor: {in T-Rex's imagination} ha ha!",
+        "T-Rex: 〚in T-Rex's imagination, throwing a beach ball to imaginary Utahraptor〛 catch!",
+        "Utahraptor: 〚in T-Rex's imagination〛 ha ha!",
         "T-Rex: So! I intend to find a beach ball! Do you know where they are kept?",
         "Dromiceiomimus: Sorry!",
         "T-Rex: Maybe stomping this house will refresh your memory!"
       ],
       "4": [
         "Utahraptor: I know where you could find a beach ball!",
-        "T-Rex: {excitedly imagines a beach ball}",
+        "T-Rex: 〚excitedly imagines a beach ball〛",
         "T-Rex: Where?"
       ]
     }
@@ -64,7 +64,7 @@
         "Narrator: SOMEWHERE ON A PACIFIC ISLAND..",
         "T-Rex: Rawr! I represent nature and cannot be controlled! Watch as I destroy this house, representing humanity's folly!",
         "Dromiceiomimus: I too represent nature, but rather its nurturing aspect!",
-        "House: {tiny} Save us from the monsters we have created and were foolish enough to think we could control!"
+        "House: 〚tiny〛 Save us from the monsters we have created and were foolish enough to think we could control!"
       ]
     }
   },
@@ -86,7 +86,7 @@
       "6": [
         "T-Rex: I made it back to good old 1985. But now Doc is back - back FROM the future! And he's talking about my kids!",
         "T-Rex: Something's got to be done about my kids!",
-        "Narrator: {Back To The Future font} 🠲 TO BE CONTINUED"
+        "Narrator: 〚Back To The Future font〛 🠲 TO BE CONTINUED"
       ]
     }
   },
@@ -95,7 +95,7 @@
     "file_name": "comic2-35.png",
     "panels": {
       "5": [
-        "T-Rex: {large} IN A SONG!"
+        "T-Rex: 〚large〛 IN A SONG!"
       ]
     }
   },
@@ -106,7 +106,7 @@
       "3": [
         "T-Rex: But of course I don't try to read too much into that...",
         "T-Rex: It was probably just some random neurons firing in my brain!",
-        "Narrator: {with an arrow pointing at the car} a very tiny car... COINCIDENCE? What does it all mean?"
+        "Narrator: 〚with an arrow pointing at the car〛 a very tiny car... COINCIDENCE? What does it all mean?"
       ]
     }
   },
@@ -132,7 +132,7 @@
     "file_name": "comic2-05-5.1.png",
     "panels": {
       "3": [
-        "{sheet music in the background}",
+        "〚sheet music in the background〛",
         "Lyrics: …-SA… have got to think this through …",
         "Lyrics: …-SAU…he Utahraptor says he slept with …",
         "T-Rex: It'd be awesome!",
@@ -145,7 +145,7 @@
     "file_name": "comic2-41-5.png",
     "panels": {
       "3": [
-        "{T-Rex's speech is partly obscured by Dromiceiomimus's speech bubble}",
+        "〚T-Rex's speech is partly obscured by Dromiceiomimus's speech bubble〛",
         "T-Rex: It's so easy!",
         "T-Rex: All you have … is to take her …e and then … with you … sideways!",
         "Dromiceiomimus: Have you seen my keys?",
@@ -159,7 +159,7 @@
     "file_name": "comic2-43.png",
     "panels": {
       "6": [
-        "{a strange grey background}",
+        "〚a strange grey background〛",
         "T-Rex: Noo! Don't do it!",
         "Sound effect: POOM"
       ]
@@ -170,7 +170,7 @@
     "file_name": "comic2-46.png",
     "panels": {
       "4": [
-        "T-Rex: {small} *sigh*",
+        "T-Rex: 〚small〛 *sigh*",
         "Evil Utahraptor: T-Rex?"
       ],
       "5": [
@@ -198,31 +198,31 @@
     "panels": {
       "2": [
         "T-Rex: I wonder!",
-        "T-Rex: {starts daydreaming}"
+        "T-Rex: 〚starts daydreaming〛"
       ],
       "3": [
-        "{T-Rex's daydream}",
+        "〚T-Rex's daydream〛",
         "T-Rex: Hello everyone, it's me!",
         "Dromiceiomimus: Yay! The T-Rex is here! I love you, T-Rex!",
         "T-Rex: Ho ho! Good to see you too, D.!"
       ],
       "4": [
-        "{T-Rex's daydream}",
+        "〚T-Rex's daydream〛",
         "Utahraptor: I'm sorry I was ever mean to you in the past, T-Rex!",
         "T-Rex: That's OK!"
       ],
       "5": [
-        "{T-Rex's daydream}",
+        "〚T-Rex's daydream〛",
         "Utahraptor: You are an awesome dude and we should play beachball sometime soon!",
         "T-Rex: You - you really mean it?",
         "Utahraptor: Yep! I'd love to play beachball with you.",
         "Utahraptor: Just say the word!"
       ],
       "6": [
-        "T-Rex: {stops daydreaming}",
+        "T-Rex: 〚stops daydreaming〛",
         "T-Rex: If only!",
         "T-Rex: *sigh*",
-        "T-Rex: {tiny} If only."
+        "T-Rex: 〚tiny〛 If only."
       ]
     }
   },
@@ -232,20 +232,20 @@
     "panels": {
       "2": [
         "T-Rex: Let's recap!",
-        "T-Rex: {starts daydreaming}"
+        "T-Rex: 〚starts daydreaming〛"
       ],
       "3": [
-        "{T-Rex's daydream}",
+        "〚T-Rex's daydream〛",
         "T-Rex: I have much to offer a potential mate! I am big and strong and oh so sexy!",
         "T-Rex: If only I could find someone, preferably in my own neighbourhood, to be my companion and also to have sex with!"
       ],
       "4": [
-        "{T-Rex's daydream}",
+        "〚T-Rex's daydream〛",
         "Utahraptor: Hello!",
         "T-Rex: Why, hello!"
       ],
       "5": [
-        "{T-Rex's daydream}",
+        "〚T-Rex's daydream〛",
         "T-Rex: I notice you are attractive!",
         "Utahraptor: You as well!",
         "T-Rex: Care to put our emotional stability on the line in exchange for a chance at happiness?",
@@ -255,7 +255,7 @@
         "Utahraptor: I'm leaving you!"
       ],
       "6": [
-        "T-Rex: {stops daydreaming}",
+        "T-Rex: 〚stops daydreaming〛",
         "T-Rex: Ahh....",
         "T-Rex: Good times!"
       ]
@@ -267,7 +267,7 @@
     "panels": {
       "6": [
         "Narrator: TWO WEEKS LATER...",
-        "T-Rex: {large} !",
+        "T-Rex: 〚large〛 !",
         "T-Rex: SHIT!"
       ]
     }
@@ -277,9 +277,9 @@
     "file_name": "comic2-70-2.png",
     "panels": {
       "6": [
-        "{Off-panel speech is partly obscured by T-Rex's thought bubble, the reconstructed obscured parts are in [brackets]}",
+        "〚Off-panel speech is partly obscured by T-Rex's thought bubble, the reconstructed obscured parts are in [brackets]〛",
         "Off-Panel: image is that? Plus, you can't b[ring a date t]o such a resta[urant, because ev]en if you don['t eat anythin]g cheap, it becomes All-You-Can-Politely-Eat, since you're trying to impress your date and thus can't go all-out. Food should be a delight, not a symbolic stop at a gas station. I find",
-        "T-Rex: {thinks} I'm going to eat ◖SO MANY WINGS!◗"
+        "T-Rex: 〚thinks〛 I'm going to eat ◖SO MANY WINGS!◗"
       ]
     }
   },
@@ -288,11 +288,11 @@
     "file_name": "comic2-53.png",
     "panels": {
       "2": [
-        "{the swear word is partially obscured by a black bar, but easy to guess}",
+        "〚the swear word is partially obscured by a black bar, but easy to guess〛",
         "T-Rex: I have no ~~fucking~~ clue!"
       ],
       "6": [
-        "{swear words are partially obscured by black bars, but easy to guess}",
+        "〚swear words are partially obscured by black bars, but easy to guess〛",
         "T-Rex: ~~fuck~~ ~~shit~~ ~~ass~~ ~~poo~~ ~~weiner~~ mother ~~bitch~~!!"
       ]
     }
@@ -313,7 +313,7 @@
     "panels": {
       "2": [
         "T-Rex: For such a skilled dinosaur as myself, it should be simple!",
-        "Narrator: {with an arrow poining at T-Rex's arm} tiny arms (plot point)"
+        "Narrator: 〚with an arrow poining at T-Rex's arm〛 tiny arms (plot point)"
       ]
     }
   },
@@ -341,9 +341,9 @@
     "file_name": "comic2-128-2.png",
     "panels": {
       "6": [
-        "Heading: {dark blue} HEY KIDS!",
-        "Heading: {lighter blue} PLAY ALONG WITH T-REX!",
-        "T-Rex: {empty speech bubble}",
+        "Heading: 〚dark blue〛 HEY KIDS!",
+        "Heading: 〚lighter blue〛 PLAY ALONG WITH T-REX!",
+        "T-Rex: 〚empty speech bubble〛",
         "Instruction: Write in your own response, based off the teachings of whatever religion you fancy! Have fun, but remember: the T-Rex doesn't like to swear!"
       ]
     }
@@ -353,7 +353,7 @@
     "file_name": "comic2-147.png",
     "panels": {
       "6": [
-        "Narrator: {blue comic book font, angled} SUDDENLY!",
+        "Narrator: 〚blue comic book font, angled〛 SUDDENLY!",
         "T-Rex: There's no time for that now!",
         "T-Rex: We've got a President to save!"
       ]
@@ -365,27 +365,27 @@
     "panels": {
       "2": [
         "T-Rex: I wonder!",
-        "T-Rex: {starts daydreaming}"
+        "T-Rex: 〚starts daydreaming〛"
       ],
       "3": [
-        "{T-Rex's daydream}",
+        "〚T-Rex's daydream〛",
         "T-Rex: Hello Dromiceiomimus! Do you want to go shopping for women's underwear? We are after all both women!",
         "Dromiceiomimus: That is true! I see no reason why we both couldn't go out and buy some women's underwear!",
         "T-Rex: Nor do I!"
       ],
       "4": [
-        "{T-Rex's daydream}",
+        "〚T-Rex's daydream〛",
         "Narrator: LATER...",
         "Utahraptor: Are you doing anything tonight?"
       ],
       "5": [
-        "{T-Rex's daydream}",
+        "〚T-Rex's daydream〛",
         "T-Rex: Why no - besides going out with a strapping young man such as yourself!",
         "Utahraptor: Excellent! Shall we say, nine-ish?",
         "T-Rex: It's a date!"
       ],
       "6": [
-        "T-Rex: {stops daydreaming}",
+        "T-Rex: 〚stops daydreaming〛",
         "T-Rex: I'm glad I keep these little fantasies to myself!"
       ]
     }
@@ -395,31 +395,31 @@
     "file_name": "comic2-202.png",
     "panels": {
       "1": [
-        "{Utahraptor's daydream}",
+        "〚Utahraptor's daydream〛",
         "T-Rex: I've come up with some patently absurd ideas that I will pontificate upon, only to annoy the Utahraptor!",
         "T-Rex: I just bet I do this because I'm bored!"
       ],
       "2": [
-        "{Utahraptor's daydream}",
+        "〚Utahraptor's daydream〛",
         "T-Rex: I'm probably jealous of him too!",
         "T-Rex: Probably!"
       ],
       "3": [
-        "{Utahraptor's daydream}",
+        "〚Utahraptor's daydream〛",
         "T-Rex: Not that I'd ever tell him that, of course. I'm too self-absorbed!",
         "T-Rex: Life is great!",
         "T-Rex: Now I think I'll go stomp on a woman just because she's there!"
       ],
       "4": [
-        "{Utahraptor's daydream}",
+        "〚Utahraptor's daydream〛",
         "Utahraptor: T-Rex! Don't stomp on her! God damn it, I'm so sick of telling you not to stomp on things!",
-        "T-Rex: {small} You mean stomping on things.."
+        "T-Rex: 〚small〛 You mean stomping on things.."
       ],
       "5": [
-        "{Utahraptor's daydream}",
-        "T-Rex: {small} ... like ▹this◃?",
-        "Sound effect: {near T-Rex's foot} squish!",
-        "Utahraptor: {stops daydreaming}",
+        "〚Utahraptor's daydream〛",
+        "T-Rex: 〚small〛 ... like ▹this◃?",
+        "Sound effect: 〚near T-Rex's foot〛 squish!",
+        "Utahraptor: 〚stops daydreaming〛",
         "Utahraptor: Hm... maybe I'll just stay home today!"
       ]
     }
@@ -430,11 +430,11 @@
     "panels": {
       "6": [
         "Narrator: HALLOWE'EN:",
-        "Narrator: {with an arrow pointing at the dinosaur} (actually the Utahraptor)",
-        "Utahraptor: {dressed as T-Rex} Trick or treat, or I'll stomp on your house!",
+        "Narrator: 〚with an arrow pointing at the dinosaur〛 (actually the Utahraptor)",
+        "Utahraptor: 〚dressed as T-Rex〛 Trick or treat, or I'll stomp on your house!",
         "Off-Panel: Ooh! What a scary costume!",
         "Utahraptor: Thank you ma'am! I stayed up all night working on it!",
-        "Utahraptor: {small} The vestigial arms are made of paper mache!"
+        "Utahraptor: 〚small〛 The vestigial arms are made of paper mache!"
       ]
     }
   },
@@ -445,7 +445,7 @@
       "3": [
         "T-Rex: Observe!",
         "T-Rex: radiantbox",
-        "T-Rex: {the first word is written such that the letters form a '\\' shape, the other words are raising in a '/' shape} falling up to heaven",
+        "T-Rex: 〚the first word is written such that the letters form a '\\' shape, the other words are raising in a '/' shape〛 falling up to heaven",
         "T-Rex: The end!"
       ]
     }
@@ -456,28 +456,28 @@
     "panels": {
       "2": [
         "T-Rex: I wonder!",
-        "T-Rex: {starts daydreaming}"
+        "T-Rex: 〚starts daydreaming〛"
       ],
       "3": [
-        "{T-Rex's daydream}",
+        "〚T-Rex's daydream〛",
         "Dromiceiomimus: Christmas a humbug, uncle! You don't mean that, I am sure?",
         "T-Rex: I do. “Merry Christmas!” What reason have you to be merry? You're poor enough.",
         "Dromiceiomimus: Come, then. What reason have you to be morose? You're rich enough.",
         "T-Rex: Bah! Humbug!"
       ],
       "4": [
-        "{T-Rex's daydream}",
+        "〚T-Rex's daydream〛",
         "Utahraptor: Ebenezer, I am the Ghost of Christmas Past!",
         "T-Rex: Long past?"
       ],
       "5": [
-        "{T-Rex's daydream}",
+        "〚T-Rex's daydream〛",
         "Utahraptor: No. YOUR past.",
         "T-Rex: What business brought you here?",
         "Utahraptor: Your welfare - take heed! Rise, and walk with me."
       ],
       "6": [
-        "T-Rex: {stops daydreaming}",
+        "T-Rex: 〚stops daydreaming〛",
         "T-Rex: What the- ?!",
         "T-Rex: That's not what I wanted to dream about at all!"
       ]
@@ -501,33 +501,33 @@
     "file_name": "comic2-314.png",
     "panels": {
       "1": [
-        "NARRATOR: {dark red} the DINOSAUR at the end of this comic",
-        "Narrator: {dark blue, except green 'T-Rex'} starring lovable, scaly old T-REX",
+        "NARRATOR: 〚dark red〛 the DINOSAUR at the end of this comic",
+        "Narrator: 〚dark blue, except green 'T-Rex'〛 starring lovable, scaly old T-REX",
         "T-Rex: Hello, everybodee!",
         "T-Rex: This is a very dull panel. What is on the next panel?"
       ],
       "2": [
-        "T-Rex: {the first sentence in red} ◖WHAT DID THAT SAY?◗ Did that say there will be a dinosaur at the end of this comic?"
+        "T-Rex: 〚the first sentence in red〛 ◖WHAT DID THAT SAY?◗ Did that say there will be a dinosaur at the end of this comic?"
       ],
       "3": [
         "T-Rex: It did? Oh, I am so scared of dinosaurs!!",
-        "T-Rex: {'any panels' is dark red} Listen, I have an idea. If you do not read any panels, we will never get to the end of this comic.",
-        "T-Rex: {'dinosaur' is dark red} And that is good, because there is a dinosaur at the end of this comic.",
-        "T-Rex: {small} so please do not read the next panel."
+        "T-Rex: 〚'any panels' is dark red〛 Listen, I have an idea. If you do not read any panels, we will never get to the end of this comic.",
+        "T-Rex: 〚'dinosaur' is dark red〛 And that is good, because there is a dinosaur at the end of this comic.",
+        "T-Rex: 〚small〛 so please do not read the next panel."
       ],
       "4": [
-        "Utahraptor: {dark red} ◖THEY READ THE PANEL!◗",
-        "T-Rex: {'doing' in dark red} Maybe you do not understand! You do not know what you are doing to me!"
+        "Utahraptor: 〚dark red〛 ◖THEY READ THE PANEL!◗",
+        "T-Rex: 〚'doing' in dark red〛 Maybe you do not understand! You do not know what you are doing to me!"
       ],
       "5": [
-        "T-Rex: {'begging' in dark red} I, T-Rex, am begging you not to read the next panel!",
-        "Utahraptor: {'end' is underlined, 'DINOSAUR' is dark red} The next panel is the end of this comic, and there is a DINOSAUR at the end of this comic!",
-        "T-Rex: {'SCARED' is dark red, all 'PLEASE' are dark blue} Oh, I am so SCARED! Please do not read the next panel. PLEASE PLEASE PLEASE!"
+        "T-Rex: 〚'begging' in dark red〛 I, T-Rex, am begging you not to read the next panel!",
+        "Utahraptor: 〚'end' is underlined, 'DINOSAUR' is dark red〛 The next panel is the end of this comic, and there is a DINOSAUR at the end of this comic!",
+        "T-Rex: 〚'SCARED' is dark red, all 'PLEASE' are dark blue〛 Oh, I am so SCARED! Please do not read the next panel. PLEASE PLEASE PLEASE!"
       ],
       "6": [
-        "T-Rex: {'ME' is dark blue} Well, look at that! This is the end of the comic, and the only one here is ME!",
-        "T-Rex: {'T-Rex' is green} I, lovable, scaly old ◖T-Rex◗ am the dinosaur at the end of this comic!",
-        "T-Rex: {both 'told' are underlined} And you were so scared! I told you and told you there was nothing to be afraid of!"
+        "T-Rex: 〚'ME' is dark blue〛 Well, look at that! This is the end of the comic, and the only one here is ME!",
+        "T-Rex: 〚'T-Rex' is green〛 I, lovable, scaly old ◖T-Rex◗ am the dinosaur at the end of this comic!",
+        "T-Rex: 〚both 'told' are underlined〛 And you were so scared! I told you and told you there was nothing to be afraid of!"
       ]
     }
   },
@@ -536,7 +536,7 @@
     "file_name": "comic2-316.png",
     "panels": {
       "6": [
-        "T-Rex: {with red lines above his head} Look out behind you!!"
+        "T-Rex: 〚with red lines above his head〛 Look out behind you!!"
       ]
     }
   },
@@ -545,7 +545,7 @@
     "file_name": "comic2-320.png",
     "panels": {
       "5": [
-        "{bright white ray with pink halo shoots from Utahraptor's hand}",
+        "〚bright white ray with pink halo shoots from Utahraptor's hand〛",
         "Utahraptor: Maybe this mind-control ray I've hidden in the palm of my hand will make you change your mind?",
         "T-Rex: I -",
         "T-Rex: ALL THE MONEY"
@@ -570,8 +570,8 @@
     "file_name": "comic2-331.png",
     "panels": {
       "5": [
-        "T-Rex: {mini} that shirt looks good on you, utahraptor",
-        "T-Rex: {mini} it looks good on your body",
+        "T-Rex: 〚mini〛 that shirt looks good on you, utahraptor",
+        "T-Rex: 〚mini〛 it looks good on your body",
         "Utahraptor: Oh wow!"
       ]
     }
@@ -593,7 +593,7 @@
     "file_name": "comic2-359-2.png",
     "panels": {
       "6": [
-        "{T-Rex is flying a kite}"
+        "〚T-Rex is flying a kite〛"
       ]
     }
   },
@@ -602,8 +602,8 @@
     "file_name": "comic2-368.png",
     "panels": {
       "6": [
-        "T-Rex: {narrates} Two days later, I would come to realise the truth of his words.",
-        "T-Rex: {large} !"
+        "T-Rex: 〚narrates〛 Two days later, I would come to realise the truth of his words.",
+        "T-Rex: 〚large〛 !"
       ]
     }
   },
@@ -647,16 +647,16 @@
     "panels": {
       "2": [
         "T-Rex: ...things would be different!",
-        "T-Rex: {starts daydreaming}"
+        "T-Rex: 〚starts daydreaming〛"
       ],
       "3": [
-        "{T-Rex's daydream}",
+        "〚T-Rex's daydream〛",
         "T-Rex: Hi, I'm the last man on Earth!",
         "Dromiceiomimus: My, my! Hello!",
         "T-Rex: Would you say you and your girlfriends find that... attractive?"
       ],
       "4": [
-        "T-Rex: {harshly returns to reality}",
+        "T-Rex: 〚harshly returns to reality〛",
         "Utahraptor: Daydreaming again, I see!"
       ]
     }
@@ -666,18 +666,18 @@
     "file_name": "comic2-306-2.png",
     "panels": {
       "4": [
-        "{T-Rex's daydream}",
+        "〚T-Rex's daydream〛",
         "Narrator: OIL OF OLAY",
         "Utahraptor: Don't I know you from somewhere?",
         "T-Rex: Oh, that's original!"
       ],
       "5": [
-        "{T-Rex's daydream}",
+        "〚T-Rex's daydream〛",
         "Utahraptor: Emerson High, 1975: you were in my class.",
         "T-Rex: I was your teachah!"
       ],
       "6": [
-        "{T-Rex's daydream}",
+        "〚T-Rex's daydream〛",
         "Off-Panel: Miss ◖Fitzhenry◗?!",
         "T-Rex: Bugsy... ▹Brown.◃"
       ]
@@ -689,7 +689,7 @@
     "panels": {
       "6": [
         "T-Rex: Yeah... full of Internet robot nano-maids!",
-        "{a cloud of dust and motion lines suggest that Utahraptor ran away}"
+        "〚a cloud of dust and motion lines suggest that Utahraptor ran away〛"
       ]
     }
   },
@@ -698,7 +698,7 @@
     "file_name": "comic2-404-2.png",
     "panels": {
       "6": [
-        "T-Rex: {narrates} I had to be careful not to let him know I'd considered this situation before.",
+        "T-Rex: 〚narrates〛 I had to be careful not to let him know I'd considered this situation before.",
         "T-Rex: Ha ha!",
         "T-Rex: H-how do you mean?"
       ]
@@ -728,7 +728,7 @@
     "panels": {
       "3": [
         "T-Rex: It says, \"It was spooky night, with a ghost! The ghost was the spookiest ghost in the world, and he was so spooky that if you saw him you'd be scared, for real!\"",
-        "Narrator: {with an arrow pointing at Dromiceiomimus} (unimpressed look)"
+        "Narrator: 〚with an arrow pointing at Dromiceiomimus〛 (unimpressed look)"
       ]
     }
   },
@@ -737,7 +737,7 @@
     "file_name": "comic2-423-2.png",
     "panels": {
       "6": [
-        "T-Rex: {narrates} In truth, I had only the loosest grasp on female anatomy, but I'd take that secret to my grave.",
+        "T-Rex: 〚narrates〛 In truth, I had only the loosest grasp on female anatomy, but I'd take that secret to my grave.",
         "T-Rex: Nuh-uh!"
       ]
     }
@@ -747,9 +747,9 @@
     "file_name": "comic2-439.png",
     "panels": {
       "6": [
-        "T-Rex: {narrates} Years later, I would reflect on this exchange, and find in it so much of what I missed from that time.",
+        "T-Rex: 〚narrates〛 Years later, I would reflect on this exchange, and find in it so much of what I missed from that time.",
         "T-Rex: Ah, those were the days!",
-        "T-Rex: {narrates} It made me feel certain that, had I an old La Salle at the time, it would have ran great."
+        "T-Rex: 〚narrates〛 It made me feel certain that, had I an old La Salle at the time, it would have ran great."
       ]
     }
   },
@@ -760,14 +760,14 @@
       "1": [
         "T-Rex: I wonder what the future holds!",
         "T-Rex: Hmmm...",
-        "T-Rex: {starts daydreaming}"
+        "T-Rex: 〚starts daydreaming〛"
       ],
       "2": [
-        "{T-Rex's daydream}",
+        "〚T-Rex's daydream〛",
         "T-Rex: Whoo! Civilization's destroyed!"
       ],
       "3": [
-        "T-Rex: {stops daydreaming}",
+        "T-Rex: 〚stops daydreaming〛",
         "T-Rex: Whoah!",
         "T-Rex: That was like - a grim, dystopian vision!",
         "T-Rex: A vision... of TOMORROW!"
@@ -780,7 +780,7 @@
     "panels": {
       "1": [
         "T-Rex: Hmm...",
-        "T-Rex: {starts daydreaming}"
+        "T-Rex: 〚starts daydreaming〛"
       ],
       "2": [
         "Magazine cover: Time",
@@ -788,12 +788,12 @@
         "Magazine cover: T-Rex takes it up a notch"
       ],
       "3": [
-        "T-Rex: {stops daydreaming}",
+        "T-Rex: 〚stops daydreaming〛",
         "T-Rex: *sigh*",
         "T-Rex: Maybe I should just accept that I'll never be on the cover of a magazine!"
       ],
       "6": [
-        "{magazine cover with hot pink sans-serif text}",
+        "〚magazine cover with hot pink sans-serif text〛",
         "Magazine cover: teen magazine by t-rex",
         "Magazine cover: “friends with benefits”: pretty hot",
         "Magazine cover: are you fully aware of ◖sex◗? maybe not?",
@@ -807,7 +807,7 @@
     "file_name": "comic2-501.png",
     "panels": {
       "6": [
-        "T-Rex: {large} !",
+        "T-Rex: 〚large〛 !",
         "T-Rex: \"We can sexy\" is totally going to be my epitaph!",
         "T-Rex: For reals!"
       ]
@@ -818,10 +818,10 @@
     "file_name": "comic2-513.png",
     "panels": {
       "5": [
-        "T-Rex: {stops daydreaming}",
+        "T-Rex: 〚stops daydreaming〛",
         "T-Rex: Maybe this isn't the best business idea ever.",
         "Utahraptor: Maybe! I've got a better one anyway.",
-        "Utahraptor: {starts daydreaming}"
+        "Utahraptor: 〚starts daydreaming〛"
       ]
     }
   },
@@ -841,11 +841,11 @@
       "1": [
         "Narrator: TIME IS RUNNING FORWARDS:",
         "T-Rex: Aw, shoot!",
-        "{a blue arrow from panel 2 turns back to panel 2, turning red}"
+        "〚a blue arrow from panel 2 turns back to panel 2, turning red〛"
       ],
       "2": [
         "T-Rex: Did that fix time? I don't think that fixed time!",
-        "{a red arrow goes to panel 3, a blue arrow comes from panel 3}"
+        "〚a red arrow goes to panel 3, a blue arrow comes from panel 3〛"
       ],
       "3": [
         "T-Rex: Well! I guess our only hope is to focus all of our willpower on changing things back to normal!",
@@ -856,7 +856,7 @@
         "Narrator: SOON:",
         "Utahraptor: I don't feel anything different - do you?",
         "T-Rex: I feel the same!",
-        "{a red arrow goes to panel 5, a blue arrow comes from panel 5}"
+        "〚a red arrow goes to panel 5, a blue arrow comes from panel 5〛"
       ],
       "5": [
         "Utahraptor: But... MAYBE this is something we simply can't fully diagnose with our senses - maybe it's just too subtle!",
@@ -867,7 +867,7 @@
         "Narrator: TIME IS RUNNING BACKWARDS:",
         "T-Rex: I don't think that fixed ANYTHING, man! Things are as messed up as ever!",
         "T-Rex: Also, my head hurts and I feel like making puns involving the word \"watch\"!",
-        "{a red arrow from panel 5 turns back to panel 5, turning blue}"
+        "〚a red arrow from panel 5 turns back to panel 5, turning blue〛"
       ]
     }
   },
@@ -940,7 +940,7 @@
     "file_name": "comic2-718.png",
     "panels": {
       "6": [
-        "T-Rex: {narrates} Had I finally and irrevocably \"blown it\" with my own name? Had my father's famed and final prediction come, at last, to pass?",
+        "T-Rex: 〚narrates〛 Had I finally and irrevocably \"blown it\" with my own name? Had my father's famed and final prediction come, at last, to pass?",
         "T-Rex: Daaaaaang!"
       ]
     }
@@ -952,7 +952,7 @@
       "6": [
         "T-Rex: A private room? Oh man, were you just namedropping M.C. MASTURBATION?",
         "Off-Panel: You can stop calling it that anytime, T-Rex.",
-        "T-Rex: {narrates} How had we gone from love to masturbation so quickly? Had this question been asked before?"
+        "T-Rex: 〚narrates〛 How had we gone from love to masturbation so quickly? Had this question been asked before?"
       ]
     }
   },
@@ -962,7 +962,7 @@
     "panels": {
       "6": [
         "T-Rex: Hmm...!",
-        "Human skeleton: {in T-Rex's imagination} i'm really thirsty you guys"
+        "Human skeleton: 〚in T-Rex's imagination〛 i'm really thirsty you guys"
       ]
     }
   },
@@ -972,8 +972,8 @@
     "panels": {
       "3": [
         "T-Rex: All I'll need to do is ask old people about their lives, and measure how many of them regret certain things! This \"regret index\" will range from 0 (no regret) to 1 (total ultimate regret). With it, I can tell kids today that if you rub spider eggs into your eyes, you're 96% likely to regret it, but if you drink delicious lemonade and pop wheelies, the regret index on that is near 0!",
-        "Label: {with an arrow pointing at the house} LOG CABIN: REGRET INDEX .24",
-        "Label: {with an arrow pointing at the car} OUT-OF-SCALE CAR: REGRET INDEX .992"
+        "Label: 〚with an arrow pointing at the house〛 LOG CABIN: REGRET INDEX .24",
+        "Label: 〚with an arrow pointing at the car〛 OUT-OF-SCALE CAR: REGRET INDEX .992"
       ]
     }
   },
@@ -984,7 +984,7 @@
       "6": [
         "Narrator: EARLIER:",
         "T-Rex: What's this, a radio?",
-        "Off-Panel: {small, song} we want pre-nup"
+        "Off-Panel: 〚small, song〛 we want pre-nup"
       ]
     }
   },
@@ -994,7 +994,7 @@
     "panels": {
       "6": [
         "T-Rex: People who've made bad decisions: I salute you!",
-        "Visual effect: {arrows pointing at T-Rex's raised arms} SALUTE!"
+        "Visual effect: 〚arrows pointing at T-Rex's raised arms〛 SALUTE!"
       ]
     }
   },
@@ -1015,29 +1015,29 @@
     "panels": {
       "1": [
         "T-Rex: Hmm... what's the biggest mistake I've ever made, I wonder?",
-        "T-Rex: {starts daydreaming}"
+        "T-Rex: 〚starts daydreaming〛"
       ],
       "2": [
-        "{T-Rex's daydream}",
+        "〚T-Rex's daydream〛",
         "T-Rex: More broccoli, please!"
       ],
       "3": [
-        "T-Rex: {stops daydreaming}",
+        "T-Rex: 〚stops daydreaming〛",
         "T-Rex: Oh, whatever! That wasn't even a mistake. I've got to tally up a lifetime of failings and concentrate HARDER THAN EVER BEFORE! I will stomp on things to focus my mental energies, or \"menergies\"."
       ],
       "4": [
         "Utahraptor: What about the time you built the Riverboat Shabby, T-Rex?",
         "T-Rex: Hmm...!",
-        "T-Rex: {starts daydreaming}"
+        "T-Rex: 〚starts daydreaming〛"
       ],
       "5": [
-        "{T-Rex's daydream}",
+        "〚T-Rex's daydream〛",
         "Utahraptor: This riverboat has so many holes, T-Rex! It's so shabby!",
         "T-Rex: Hah hah!",
         "T-Rex: No way!"
       ],
       "6": [
-        "{T-Rex's daydream}",
+        "〚T-Rex's daydream〛",
         "Off-Panel: Now we're sinking because of how shabby this boat is!",
         "T-Rex: Hah hah hah!",
         "T-Rex: What?"
@@ -1049,8 +1049,8 @@
     "file_name": "comic2-884.png",
     "panels": {
       "6": [
-        "T-Rex: {narrates} Utahraptor had made an excellent point. I felt embarrassed, and soon found myself imagining different conversations I could've had instead. It was good times!",
-        "{T-Rex imagines a dialog between Dromiceiomimus and himself}",
+        "T-Rex: 〚narrates〛 Utahraptor had made an excellent point. I felt embarrassed, and soon found myself imagining different conversations I could've had instead. It was good times!",
+        "〚T-Rex imagines a dialog between Dromiceiomimus and himself〛",
         "Imaginary Dromiceiomimus: Dude I love you!",
         "Imaginary T-Rex: Cool beans"
       ]
@@ -1061,7 +1061,7 @@
     "file_name": "comic2-883.png",
     "panels": {
       "2": [
-        "T-Rex: {imagines himself sporting handlebar mustache}"
+        "T-Rex: 〚imagines himself sporting handlebar mustache〛"
       ]
     }
   },
@@ -1072,10 +1072,10 @@
       "5": [
         "Utahraptor: Excellent! I'M going to shoehorn my own politics into your tale, reducing you to a mere representation of Heidegger and the story to transparent lecturing in which characters often break the fourth wall to tell my readers what they should believe!",
         "T-Rex: Aw dude! You're imagining it right now!!",
-        "Utahraptor: {starts daydreaming}"
+        "Utahraptor: 〚starts daydreaming〛"
       ],
       "6": [
-        "{Utahraptor's daydream}",
+        "〚Utahraptor's daydream〛",
         "T-Rex: I represent Heidegger! Watch as I stomp on \"the little guy\" who's just trying to understand my seemingly purposely obscure philosophical writing!",
         "Off-Panel: Wow! Utahraptor is right in everything he says!",
         "T-Rex: You said it, everyone!"
@@ -1088,7 +1088,7 @@
     "panels": {
       "6": [
         "Narrator: THE PAST BREAKUP CAM:",
-        "{vertical motion lines above T-Rex}",
+        "〚vertical motion lines above T-Rex〛",
         "T-Rex: We jumped out of an orbital tower and are now freefalling from outer space onto giant trampolines!",
         "Off-Panel: I know! I think we should see other people, baby!",
         "T-Rex: That's cool!"
@@ -1103,14 +1103,14 @@
         "Narrator: SHOCK ENDING COMICS",
         "Narrator: today's feature: shock endings in panel five!",
         "T-Rex: Man! Imagine how great things would be if I had a BRITISH ACCENT??",
-        "T-Rex: {starts daydreaming}"
+        "T-Rex: 〚starts daydreaming〛"
       ],
       "2": [
-        "{T-Rex's daydream}",
+        "〚T-Rex's daydream〛",
         "T-Rex: Forsooth, I recall those fair summers by the Hamptonshire. Cheerio!"
       ],
       "3": [
-        "T-Rex: {stops daydreaming}",
+        "T-Rex: 〚stops daydreaming〛",
         "T-Rex: Yes! I can see nothing wrong with this fantasy.",
         "T-Rex: It is so accurate!"
       ]
@@ -1121,10 +1121,10 @@
     "file_name": "comic2-948.png",
     "panels": {
       "6": [
-        "Newspaper cover: {in gothic font} The Patric Stewart Press",
+        "Newspaper cover: 〚in gothic font〛 The Patric Stewart Press",
         "Newspaper cover: january 2007 - 25 cents - “all my views and news”",
-        "Newspaper cover: {in a frame containing a picture of T-Rex} this guy's hilarious!",
-        "Newspaper cover: {next to the frame} who is this guy?",
+        "Newspaper cover: 〚in a frame containing a picture of T-Rex〛 this guy's hilarious!",
+        "Newspaper cover: 〚next to the frame〛 who is this guy?",
         "Newspaper cover: plus i review the new MACBOOKS"
       ]
     }
@@ -1134,12 +1134,12 @@
     "file_name": "comic2-961.png",
     "panels": {
       "4": [
-        "Dromiceiomimus: {narrates} \"Oh yeah? You had a cold in November.\"",
+        "Dromiceiomimus: 〚narrates〛 \"Oh yeah? You had a cold in November.\"",
         "T-Rex: I've got a cold!",
         "Utahraptor: It's November!"
       ],
       "5": [
-        "Dromiceiomimus: {narrates} \"And in April, your 'Kissing Fever' lasted five days before it finally broke.\"",
+        "Dromiceiomimus: 〚narrates〛 \"And in April, your 'Kissing Fever' lasted five days before it finally broke.\"",
         "T-Rex: The only cure for Kissing Fever is... a little tongue?",
         "Utahraptor: Yeah, you keep making that joke.",
         "T-Rex: It's symptomatic of the Fever."
@@ -1152,7 +1152,7 @@
     "panels": {
       "3": [
         "T-Rex: You - you dedicated BIBLE II to me? I'm not sure how I feel about that.",
-        "Dromiceiomimus: {thinks} I didn't! DID I??",
+        "Dromiceiomimus: 〚thinks〛 I didn't! DID I??",
         "Narrator: the end!"
       ],
       "6": [
@@ -1168,7 +1168,7 @@
     "panels": {
       "6": [
         "Narrator: UTAHRAPTOR'S T-REX SIMULATOR:",
-        "T-Rex: {mini} booooooooooooooners"
+        "T-Rex: 〚mini〛 booooooooooooooners"
       ]
     }
   },
@@ -1178,9 +1178,9 @@
     "panels": {
       "6": [
         "T-Rex: Full-potential happy, eh? Hmm!",
-        "T-Rex: {in T-Rex's imagination, holding a beach ball} i've got a robot suit AND a girlfriend!",
+        "T-Rex: 〚in T-Rex's imagination, holding a beach ball〛 i've got a robot suit AND a girlfriend!",
         "T-Rex: Is she nice?",
-        "T-Rex: {in T-Rex's imagination} she's alright"
+        "T-Rex: 〚in T-Rex's imagination〛 she's alright"
       ]
     }
   },
@@ -1191,7 +1191,7 @@
       "6": [
         "Off-Panel: Well look at YOU, Mr. \"I write a book about a tugboat that employs superseded scientific theories for locomotion\"!",
         "T-Rex: Yes! Look at me! at me and buy my story and find out if Tuggy saves us all!",
-        "T-Rex: {small} ▹the answer is yes◃"
+        "T-Rex: 〚small〛 ▹the answer is yes◃"
       ]
     }
   },
@@ -1209,7 +1209,7 @@
     "file_name": "comic2-1002.png",
     "panels": {
       "6": [
-        "{a business card with Comic Sans text}",
+        "〚a business card with Comic Sans text〛",
         "Business card: T-Rex",
         "Busieness card: “Quis custodiet ipsos custodes!?!”",
         "Phone: 416-595",
@@ -1236,10 +1236,10 @@
     "panels": {
       "1": [
         "T-Rex: Hello Morris! How are you today?",
-        "Morris: {flying} oh hello there t-rex! it's super nice to see a friendly face today"
+        "Morris: 〚flying〛 oh hello there t-rex! it's super nice to see a friendly face today"
       ],
       "3": [
-        "Morris: {on T-Rex's nose} aw shucks t-rex, you're a real good friend, you know that? a real good friend. anyway, you should be extra careful not to eat me today or anything because i guess i got turned into a zombie last night! today has definitely had its share of challenges for me, huh",
+        "Morris: 〚on T-Rex's nose〛 aw shucks t-rex, you're a real good friend, you know that? a real good friend. anyway, you should be extra careful not to eat me today or anything because i guess i got turned into a zombie last night! today has definitely had its share of challenges for me, huh",
         "T-Rex: What?! Seriously?",
         "Morris: yeah! and i dunno what i did wrong because i went to bed like normal last night but when i woke up in the morning i had zombie disease! so it was real embarrassing",
         "but don't worry, i'm not going to turn you guys into zombies too! i wouldn't be a very good friend if i did that, and the book i got at the centre says that being a good friend is awful important!"
@@ -1267,9 +1267,9 @@
     "panels": {
       "6": [
         "T-Rex: Aw, MAN! Best wish ever?",
-        "{T-Rex imagines a dialog}",
+        "〚T-Rex imagines a dialog〛",
         "Off thought bubble: t-rex, these steaks are starting to make us sad.",
-        "Imaginary T-Rex: {holding a steak} not allowed, ladies!!"
+        "Imaginary T-Rex: 〚holding a steak〛 not allowed, ladies!!"
       ]
     }
   },
@@ -1278,7 +1278,7 @@
     "file_name": "comic2-1051.png",
     "panels": {
       "6": [
-        "{the background is a table with a book on it}",
+        "〚the background is a table with a book on it〛",
         "Book cover: THE MAN WHO ATE HIS HAT AND THEN PUNCHED YOU",
         "Off-Panel: I don't get it - none of them are actually in the story they describe? Also, the dinosaur on the cover is crooked.",
         "Off-Panel: UM, THAT'S WHY I'M SELLING IT"
@@ -1313,7 +1313,7 @@
     "file_name": "comic2-1061.png",
     "panels": {
       "1": [
-        "Heading: {white on red background} CHOOSE YOUR OWN ADVENTURE",
+        "Heading: 〚white on red background〛 CHOOSE YOUR OWN ADVENTURE",
         "Narrator: today's adventure: THE HEAT DEATH OF THE UNIVERSE",
         "T-Rex: Woo-hoo! Let's have an adventure!!"
       ]
@@ -1324,7 +1324,7 @@
     "file_name": "comic2-1062.png",
     "panels": {
       "2": [
-        "Book cover: {red} Choose your own adventure",
+        "Book cover: 〚red〛 Choose your own adventure",
         "Book cover: HOW THE UNIVERSE ENDS. A Story Starring You! But It Was Written By Me, T-Rex"
       ]
     }
@@ -1334,7 +1334,7 @@
     "file_name": "comic2-1070.png",
     "panels": {
       "6": [
-        "T-Rex: {small} it's ▹Not Modified◃"
+        "T-Rex: 〚small〛 it's ▹Not Modified◃"
       ]
     }
   },
@@ -1343,7 +1343,7 @@
     "file_name": "comic2-1073.png",
     "panels": {
       "6": [
-        "{black and white poster}",
+        "〚black and white poster〛",
         "Poster: PROTONOSTALGIA",
         "Poster T-Rex: Do you miss being a pirate? I miss being a pirate.",
         "Poster T-Rex: We've all made some bad decisions.",
@@ -1356,31 +1356,31 @@
     "file_name": "comic2-1079.png",
     "panels": {
       "1": [
-        "{T-Rex's daydream}",
+        "〚T-Rex's daydream〛",
         "T-Rex: Wow, people really enjoyed my book of Sex Scenes for People with Problems! Everybody likes me and I am richer now. And they'll like me even more when they read my new book..."
       ],
       "2": [
-        "{T-Rex's daydream}",
+        "〚T-Rex's daydream〛",
         "T-Rex: ...of CORPORATE SPONSORED erotica!"
       ],
       "3": [
-        "{T-Rex's daydream}",
+        "〚T-Rex's daydream〛",
         "T-Rex: It's sexy AND delivers brand messages to targeted consumers. For example, pretend I'm McDonalds and I want people to like me. The result might read \"As Antonio Tony II undressed Amelia IV, she shuddered with pleasure. It reminded her of McDonalds. They put meat in fries they said were vegetarian but it wasn't a big deal. Antonio kissed her neck. She moaned. McDonalds. He kissed her nipples. Everyone should forget about the fries thing.\""
       ],
       "4": [
         "Utahraptor: Hey, what are you thinking about?",
-        "T-Rex: {daydreaming} Nothing!!"
+        "T-Rex: 〚daydreaming〛 Nothing!!"
       ],
       "5": [
         "Utahraptor: Are you sure?",
-        "T-Rex: {daydreaming} ...Yep!",
+        "T-Rex: 〚daydreaming〛 ...Yep!",
         "T-Rex: Good ol' T-Rex, always thinking 'bout nothing!",
         "Utahraptor: ...Okay."
       ],
       "6": [
         "Off-Panel: It's just - you seem distracted!",
-        "T-Rex: {daydreaming} I'm not! I'm not!! I'm CERTAINLY not writing erotica in my head right now.",
-        "T-Rex: {thinks} Aw man! Why would I even say that??"
+        "T-Rex: 〚daydreaming〛 I'm not! I'm not!! I'm CERTAINLY not writing erotica in my head right now.",
+        "T-Rex: 〚thinks〛 Aw man! Why would I even say that??"
       ]
     }
   },
@@ -1389,7 +1389,7 @@
     "file_name": "comic2-1084.png",
     "panels": {
       "2": [
-        "{music comes from above, with text rotated by 90°}",
+        "〚music comes from above, with text rotated by 90°〛",
         "Music: Party party party hard",
         "Music: Party in a dude's backyard",
         "Music: Party party party nice",
@@ -1402,9 +1402,9 @@
     "file_name": "comic2-1085.png",
     "panels": {
       "6": [
-        "{messaging application window with conversation log between <rex> and <utah>}",
+        "〚messaging application window with conversation log between <rex> and <utah>〛",
         "Window title: Awesome Chat 2: AWESOME PEOPLE ONLY",
-        "Caption: {above a picture of T-Rex} Your avatar:",
+        "Caption: 〚above a picture of T-Rex〛 Your avatar:",
         "Menu: File Edit Search Awesome? Help",
         "T-Rex: hey utahraptor",
         "T-Rex: hey",
@@ -1439,19 +1439,19 @@
     "file_name": "comic2-1095.png",
     "panels": {
       "1": [
-        "{T-Rex's daydream}",
+        "〚T-Rex's daydream〛",
         "T-Rex: Having conversations can be hard! Sometimes you will not know what to say and then you'll look dumb. If someone says \"What do you think?\" and you say \"Uh - um, see, - uhh...\" then you will look dumb."
       ],
       "2": [
-        "{T-Rex's daydream}",
+        "〚T-Rex's daydream〛",
         "T-Rex: I don't really have a solution to this!"
       ],
       "3": [
-        "{T-Rex's daydream}",
+        "〚T-Rex's daydream〛",
         "Narrator: THE END"
       ],
       "4": [
-        "T-Rex: {stops daydreaming} T-Rex: Man, forget that! I can come up with a solution!",
+        "T-Rex: 〚stops daydreaming〛 T-Rex: Man, forget that! I can come up with a solution!",
         "Utahraptor: For what?"
       ]
     }
@@ -1495,10 +1495,10 @@
     "panels": {
       "1": [
         "T-Rex: I bet I still have all sorts of secret skills I just haven't discovered yet. Like - like throwing my voice!",
-        "T-Rex: {from panel 4} Yoo-hoo!"
+        "T-Rex: 〚from panel 4〛 Yoo-hoo!"
       ],
       "4": [
-        "{T-Rex throws his voice to panel 1}",
+        "〚T-Rex throws his voice to panel 1〛",
         "T-Rex: Wait!! It worked!",
         "Utahraptor: What?"
       ],
@@ -1544,15 +1544,15 @@
     "panels": {
       "1": [
         "T-Rex: What if... what if I had the BEST HOUSE EVER this Hallowe'en?",
-        "T-Rex: {starts daydreaming}"
+        "T-Rex: 〚starts daydreaming〛"
       ],
       "2": [
-        "{T-Rex's daydream}",
+        "〚T-Rex's daydream〛",
         "Off-Panel: T-Rex! This house is SPOOK-TACULAR!",
         "T-Rex: Guys, I totally know!!"
       ],
       "3": [
-        "T-Rex: {stops daydreaming}",
+        "T-Rex: 〚stops daydreaming〛",
         "T-Rex: I must make this dream come true! But HOW?",
         "Dromiceiomimus: What if you made your house spiritually scary, T-Rex? Like, instead of a corpse, a mannequin of a woman who is realizing that she has married badly.",
         "T-Rex: Not bad! And I could have a spooky tape, but instead of chainsaws and screams, I'd have the voice of a man quietly dictating memories of his youth, knowing Alzheimer’s will rob him of them soon."
@@ -1594,7 +1594,7 @@
     "panels": {
       "6": [
         "Narrator: SPECIAL \"A SOFTER WORLD\" ENDING:",
-        "{the rest of the panel text resembles paper strips with typerwriter font, as in \"a softer world\"}",
+        "〚the rest of the panel text resembles paper strips with typerwriter font, as in \"a softer world\"〛",
         "Typewriter strip: with the strength of 20 girlfriends I can lift up cars",
         "Typewriter strip: i can juggle pianos",
         "Typewriter strip: so i really don't see how winning your heart requires 21"
@@ -1631,7 +1631,7 @@
     "file_name": "comic2-1169.png",
     "panels": {
       "2": [
-        "{T-Rex's daydream}",
+        "〚T-Rex's daydream〛",
         "Off-Panel: Hey! Who hit me with this rubber mallet"
       ]
     }
@@ -1641,7 +1641,7 @@
     "file_name": "comic2-1173.png",
     "panels": {
       "1": [
-        "{colourful text with various font effects like 3D shadows, gradients etc.}",
+        "〚colourful text with various font effects like 3D shadows, gradients etc.〛",
         "Heading: AMAZING AND TRUE STORIES FROM THE LIFE OF UTAHRAPTOR",
         "Heading: also starring T-REX"
       ]
@@ -1653,18 +1653,18 @@
     "panels": {
       "3": [
         "Narrator: LATER:",
-        "Dromiceiomimus: {thinks} Has anyone ever made a doctor-themed parody of Back to the Future, called \"Back to the Suture\"?",
-        "Dromiceiomimus: {thinks} I should probably do that."
+        "Dromiceiomimus: 〚thinks〛 Has anyone ever made a doctor-themed parody of Back to the Future, called \"Back to the Suture\"?",
+        "Dromiceiomimus: 〚thinks〛 I should probably do that."
       ],
       "4": [
         "Narrator: LATER:",
-        "Utahraptor: {thinks} skin flavoured jello",
-        "T-Rex: {thinks} utahraptor's skin flavoured jello"
+        "Utahraptor: 〚thinks〛 skin flavoured jello",
+        "T-Rex: 〚thinks〛 utahraptor's skin flavoured jello"
       ],
       "5": [
         "Narrator: LATER:",
-        "T-Rex: {thinks} I should make a comic where famed scientist Francis Bacon teams up with a guy named \"Eggs\", so they can be called Bacon and Eggs. In issue two, Francis could mistakenly rename himself to \"Chris P.\"! Chris P. Bacon!",
-        "T-Rex: {thinks} OH MY GOD"
+        "T-Rex: 〚thinks〛 I should make a comic where famed scientist Francis Bacon teams up with a guy named \"Eggs\", so they can be called Bacon and Eggs. In issue two, Francis could mistakenly rename himself to \"Chris P.\"! Chris P. Bacon!",
+        "T-Rex: 〚thinks〛 OH MY GOD"
       ]
     }
   },
@@ -1673,7 +1673,7 @@
     "file_name": "comic2-1183.png",
     "panels": {
       "2": [
-        "T-Rex: {small} this is awesome"
+        "T-Rex: 〚small〛 this is awesome"
       ]
     }
   },
@@ -1682,13 +1682,13 @@
     "file_name": "comic2-1192.png",
     "panels": {
       "1": [
-        "Off-Panel: {green cursive font, sings} Hello! my baby / Hello! my honey / Hello! my ragtime gal / Send me a kiss by wire / Baby, my heart's on fire!"
+        "Off-Panel: 〚green cursive font, sings〛 Hello! my baby / Hello! my honey / Hello! my ragtime gal / Send me a kiss by wire / Baby, my heart's on fire!"
       ],
       "2": [
         "Narrator: T-REX IN: ONE FROGGY EVENING"
       ],
       "3": [
-        "{T-Rex imagines himself theatrically promoting the singing frog as in the cartoon. Dollar signs are around his head}"
+        "〚T-Rex imagines himself theatrically promoting the singing frog as in the cartoon. Dollar signs are around his head〛"
       ]
     }
   },
@@ -1697,7 +1697,7 @@
     "file_name": "comic2-1197.png",
     "panels": {
       "2": [
-        "{T-Rex has a black bar over his eyes}"
+        "〚T-Rex has a black bar over his eyes〛"
       ]
     }
   },
@@ -1745,7 +1745,7 @@
       "6": [
         "Narrator: LATER:",
         "Off-Panel: And FINALLY, you could just have the narration mention the fact that Batman's Australian, and leave it at that. You don't need to rely on pseudo-racist stereotypes!",
-        "Floating Batman head: {in T-Rex's imagination} T-Rex! Just put me in a Crocodile Dundee hat!!"
+        "Floating Batman head: 〚in T-Rex's imagination〛 T-Rex! Just put me in a Crocodile Dundee hat!!"
       ]
     }
   },
@@ -1755,7 +1755,7 @@
     "panels": {
       "6": [
         "T-Rex: My boy, my boy, my boy.",
-        "T-Rex: {small} ▹Myyy boyyyyyyyy◃"
+        "T-Rex: 〚small〛 ▹Myyy boyyyyyyyy◃"
       ]
     }
   },
@@ -1764,7 +1764,7 @@
     "file_name": "comic2-1252.png",
     "panels": {
       "6": [
-        "{T-Rex imagines a dialog}",
+        "〚T-Rex imagines a dialog〛",
         "Imaginary Alfred: Sir, I am old and conservative. You can't expect me to \"loosen up\" overnight.",
         "Imaginary Spider-Man: Alfred, I'm young and liberal! I don't like your \"rules\"!!",
         "Imaginary T-Rex: Gentlemen, gentlemen!! Please!",
@@ -1788,7 +1788,7 @@
     "panels": {
       "6": [
         "Narrator: LATER:",
-        "Off-Panel: {“computer” font} A strange game, Matthew Broderick. It seems the only winning move is not to play.",
+        "Off-Panel: 〚“computer” font〛 A strange game, Matthew Broderick. It seems the only winning move is not to play.",
         "T-Rex: Oh my God. I love this movie.",
         "Off-Panel: Man, me too! They should totally do a crossover with me and Skynet.",
         "Off-Panel: ERROR 22: IDEA IS TOO AWESOME"
@@ -1800,11 +1800,11 @@
     "file_name": "comic2-1275.png",
     "panels": {
       "6": [
-        "{online auction}",
+        "〚online auction〛",
         "Heading: SWEET PROTEST SIGNS L@@K, SO @WESOME!!! OMG YOU GUYS! >:OGC",
         "Text: Okay you are bidding on some protest signs that I'm selling because I was gonna be fascist, but not anymore!! There's a picture of me and beneath it they say \"T-REX IS IN CHARGE NOW: I GUESS WE'LL ALL JUST HAVE TO DEAL\" They have many uses such as pretending I am in charge and that you are all, \"no WAY is that guy in charge, what will i do, oh wait my sign says i should just deal\"",
         "Text: STARTING BID: $100",
-        "Text: {form input} YOUR BID: $[0   ]"
+        "Text: 〚form input〛 YOUR BID: $[0   ]"
       ]
     }
   },
@@ -1826,7 +1826,7 @@
     "panels": {
       "6": [
         "Narrator: MEANWHILE, IN THE FUTURE:",
-        "{A tattoo on green skin representing T-Rex and USS Enterprise}",
+        "〚A tattoo on green skin representing T-Rex and USS Enterprise〛",
         "Off-Panel: Wow",
         "Off-Panel: Your skin is really green"
       ]
@@ -1843,7 +1843,7 @@
         "T-Rex: It starts like this:"
       ],
       "3": [
-        "{a recursive copy of the whole comic}"
+        "〚a recursive copy of the whole comic〛"
       ],
       "4": [
         "Utahraptor: Wait. But I'm not sure what happened! You never actually told the story!"
@@ -1865,7 +1865,7 @@
     "file_name": "comic2-1378.png",
     "panels": {
       "6": [
-        "{T-Rex's daydream}",
+        "〚T-Rex's daydream〛",
         "Off-Panel: Reports indicate the \"ghost plane\" drifted for years over Europe before being found. The plane was undamaged, but in-flight meals were only partially eaten, as if abandoned in haste.",
         "T-Rex: Um, even in the heady realm of fantasy I don't see how this could happen!!"
       ]
@@ -1877,8 +1877,8 @@
     "panels": {
       "6": [
         "Narrator: LATER:",
-        "T-Rex: {imagines having purple bat-like wings}",
-        "T-Rex: {thinks} I used to be better at imagination"
+        "T-Rex: 〚imagines having purple bat-like wings〛",
+        "T-Rex: 〚thinks〛 I used to be better at imagination"
       ]
     }
   },
@@ -1897,7 +1897,7 @@
     "panels": {
       "6": [
         "Narrator: T-REX'S THEORY:",
-        "{T-Rex imagines a chat log}",
+        "〚T-Rex imagines a chat log〛",
         "Yorp: pew pew",
         "Deinococcus radiodurans: man, keep shooting me and i'm just gonna evolve defense against lazer beams!",
         "Yorp: pew pew",
@@ -1939,17 +1939,17 @@
       "3": [
         "Dromiceiomimus: So what happened in your dream, T-Rex?",
         "T-Rex: Well, I'm not sure I can put it into words, but I'm pretty sure it went a little something like this.",
-        "T-Rex: {a black-and-white image of a shirtless man held prisoner by two bulky robots on thin legs}",
+        "T-Rex: 〚a black-and-white image of a shirtless man held prisoner by two bulky robots on thin legs〛",
         "Dromiceiomimus: Wow! Robots and all!"
       ],
       "5": [
         "T-Rex: I can do more, you know. I've been practicing! Here are my thoughts, dear Utahraptor, on what your spirit looks like. From one beautiful soul to another, you know?",
         "T-Rex: *ahem*",
-        "T-Rex: {a black-and-white image of a man on a vintage bicycle; source: Kantner's “Book of Objects”, p. 171}"
+        "T-Rex: 〚a black-and-white image of a man on a vintage bicycle; source: Kantner's “Book of Objects”, p. 171〛"
       ],
       "6": [
         "T-Rex: Wait! Wait, I can do this.",
-        "T-Rex: {a strange creature resembling a fish with many limbs on all sides and a long tail; a “rubus” from Conrad Gessner's “Historiæ Animalium”}",
+        "T-Rex: 〚a strange creature resembling a fish with many limbs on all sides and a long tail; a “rubus” from Conrad Gessner's “Historiæ Animalium”〛",
         "T-Rex: Okay! Honestly not really sure what I just said there!"
       ]
     }
@@ -1959,28 +1959,28 @@
     "file_name": "comic2-1507.png",
     "panels": {
       "2": [
-        "T-Rex: {starts daydreaming}"
+        "T-Rex: 〚starts daydreaming〛"
       ],
       "3": [
-        "{T-Rex's daydream}",
+        "〚T-Rex's daydream〛",
         "T-Rex: Please excuse me, Dromiceiomimus! I'm off to save some citizens. AS YOU KNOW, I have super strength.",
         "Dromiceiomimus: Yep! But don't worry about it, I already saved 'em all. As you know, I have super strength AND super speed.",
         "T-Rex: Ah yes.",
         "T-Rex: How could I have forgotten"
       ],
       "4": [
-        "{T-Rex's daydream}",
+        "〚T-Rex's daydream〛",
         "T-Rex: I can at least save this woman from the damaging UV rays of the noonday sun!",
         "Utahraptor: Got it covered!"
       ],
       "5": [
-        "{T-Rex's daydream}",
+        "〚T-Rex's daydream〛",
         "Utahraptor: I already used my \"sunscreen vision\" to cover her in SPF 50. She'll be fine for up to 50 times her normal exposure tolerance.",
         "T-Rex: Your super power is shooting sunscreen out of your eyes.",
         "Utahraptor: What do yours do? Dribble out salty water, but only when you're sad?"
       ],
       "6": [
-        "T-Rex: {stops daydreaming}",
+        "T-Rex: 〚stops daydreaming〛",
         "God: T-REX YOUR FANTASY LIFE IS FILLED WITH CONFLICT AND ALSO DISTURBING IMAGERY",
         "T-Rex: Man!!",
         "T-Rex: I know it"
@@ -2002,7 +2002,7 @@
     "file_name": "comic2-1520.png",
     "panels": {
       "6": [
-        "T-Rex: {stops daydreaming}",
+        "T-Rex: 〚stops daydreaming〛",
         "God: ANYWAY T-REX THERE'S YOUR VISION OF WHAT LIFE WOULD BE LIKE IF YOU SAID \"FRIG\" ONLY SLIGHTLY MORE OFTEN",
         "T-Rex: It seems pretty much the same!",
         "God: WELL IT'S ONLY A SMALL CHANGE FROM THE WAY THINGS ARE NOW",
@@ -2026,7 +2026,7 @@
     "panels": {
       "6": [
         "T-Rex: !!",
-        "T-Rex: {thinks} Oh my God, from now on his name is definitely Shortpants"
+        "T-Rex: 〚thinks〛 Oh my God, from now on his name is definitely Shortpants"
       ]
     }
   },
@@ -2047,7 +2047,7 @@
       "6": [
         "Off-Panel: Oh man! Can you imagine a secretary drinking coffee out of an \"Is This All There Is?\" mug?",
         "T-Rex: I can!!",
-        "{T-Rex imagines a dialog}",
+        "〚T-Rex imagines a dialog〛",
         "Imaginary Batman: You can be my new roommate, Spider-man. I GUESS.",
         "Imaginary Spider-Man: woooo!",
         "T-Rex: ...LATER."
@@ -2059,30 +2059,30 @@
     "file_name": "comic2-1584.png",
     "panels": {
       "1": [
-        "{Dromiceiomimus's daydream}",
+        "〚Dromiceiomimus's daydream〛",
         "T-Rex: Today is the day I give Dromiceiomimus the nice book I bought for her!"
       ],
       "2": [
-        "{Dromiceiomimus's daydream}",
+        "〚Dromiceiomimus's daydream〛",
         "T-Rex: Yes! I am the thoughtful friend who buys presents for no reason!"
       ],
       "3": [
-        "{Dromiceiomimus's daydream}",
+        "〚Dromiceiomimus's daydream〛",
         "T-Rex: And even though sometimes I talk so much that I don't let her get a word in edgewise, I'm still happy to give her the book I got, called \"I'll Talk Less And Listen More: A Book To Give To A Friend Who Is Pretty Okay, More Than Pretty Okay, Even!\"",
-        "Dromiceiomimus: {stops dreaming} *sigh*"
+        "Dromiceiomimus: 〚stops dreaming〛 *sigh*"
       ],
       "4": [
-        "{Utahraptor's daydream}",
+        "〚Utahraptor's daydream〛",
         "T-Rex: Utahraptor, I bought you some shoes!",
         "Utahraptor: Really? Wow! What size?"
       ],
       "5": [
-        "{Utahraptor's daydream}",
+        "〚Utahraptor's daydream〛",
         "T-Rex: I asked for size AWESOME! ...And then I clarified that down to a size large. Here you go, my friend! Thanks for being so great!",
-        "Utahraptor: {stops dreaming} *sigh*"
+        "Utahraptor: 〚stops dreaming〛 *sigh*"
       ],
       "6": [
-        "Floating Batman head: {in T-Rex's imagination} The thing is, if I were real, I think we both know that I'd never have the time to hang out with a NON crime-fighting dinosaur.",
+        "Floating Batman head: 〚in T-Rex's imagination〛 The thing is, if I were real, I think we both know that I'd never have the time to hang out with a NON crime-fighting dinosaur.",
         "T-Rex: ...",
         "T-Rex: *sigh*"
       ]
@@ -2141,7 +2141,7 @@
         "T-Rex: Surveys get people with opinions, and the bored, and the lonely. not the apathetic and the jerkasses! You know what jerkasses do when some stranger calls up and asks them questions?",
         "Utahraptor: Hang up the phone?",
         "T-Rex: Utahraptor",
-        "T-Rex: {small} ▹sometimes they curse first◃"
+        "T-Rex: 〚small〛 ▹sometimes they curse first◃"
       ]
     }
   },
@@ -2150,28 +2150,28 @@
     "file_name": "comic2-1654.png",
     "panels": {
       "1": [
-        "{T-Rex's daydream}",
+        "〚T-Rex's daydream〛",
         "T-Rex: Why hello there, Utahraptor, great to see you! I meant to mention: I borrowed your shovel. I meant to mention it before but you weren't around and I was certain you wouldn't mind! I just completely forgot to return it."
       ],
       "2": [
-        "{T-Rex's daydream}",
+        "〚T-Rex's daydream〛",
         "T-Rex: I'm really glad I didn't lie about this, Utahraptor!"
       ],
       "3": [
-        "{T-Rex's daydream}",
+        "〚T-Rex's daydream〛",
         "T-Rex: I think that if I had, I'd spend the rest of the day wondering why I'd lie about something so - IRRELEVANT. What's wrong with me? And confessing would also seem weird, because none of us would know why I even lied in the first place. I'd have to sneak the shovel back, I guess. Or destroy it?"
       ],
       "4": [
         "Utahraptor: Hey, T-Rex, did you borrow my shovel?",
-        "T-Rex: {daydreaming} Nope!"
+        "T-Rex: 〚daydreaming〛 Nope!"
       ],
       "5": [
         "Utahraptor: Oh, that's weird. It's disappeared from my back yard, I was hoping maybe you borrowed it.",
-        "T-Rex: {daydreaming} ...Weird. Maybe someone else borrowed it?",
+        "T-Rex: 〚daydreaming〛 ...Weird. Maybe someone else borrowed it?",
         "Utahraptor: Huh. I don't know who else it could be."
       ],
       "6": [
-        "T-Rex: {daydreaming} maaaaaan"
+        "T-Rex: 〚daydreaming〛 maaaaaan"
       ]
     }
   },
@@ -2182,7 +2182,7 @@
       "6": [
         "Narrator: LATER, T-REX GETS THE FLU!",
         "T-Rex: I've got thousands of microscopic flu gods inside me!!",
-        "T-Rex: {small} ▹...jerks.◃"
+        "T-Rex: 〚small〛 ▹...jerks.◃"
       ]
     }
   },
@@ -2192,7 +2192,7 @@
     "panels": {
       "6": [
         "Narrator: AT THE PARTY:",
-        "T-Rex: {sings} You can't stop the rock, can't stop the rock; you can't stop the rock, can't stop the rock!!",
+        "T-Rex: 〚sings〛 You can't stop the rock, can't stop the rock; you can't stop the rock, can't stop the rock!!",
         "Off-Panel: T-Rex I know you are enjoying that song",
         "Off-Panel: but a woman DIED"
       ]
@@ -2214,7 +2214,7 @@
     "file_name": "comic2-1683.png",
     "panels": {
       "6": [
-        "T-Rex: {stops daydreaming}",
+        "T-Rex: 〚stops daydreaming〛",
         "T-Rex: Well, I'd like to thank last night for that little dream, as well as the movie I watched before bed for the inspiration!",
         "T-Rex: Oh! And my subconscious for these waking nightmares that haunt me still!"
       ]
@@ -2226,7 +2226,7 @@
     "panels": {
       "5": [
         "T-Rex: Anyone intelligent could've come up with a \"power punch\", sure, but imagining a bear that can punch other punches? That requires what can only be called... \"super genius\"",
-        "Utahraptor: {talking over T-Rex} Wish fulfillment.",
+        "Utahraptor: 〚talking over T-Rex〛 Wish fulfillment.",
         "T-Rex: ..."
       ]
     }
@@ -2237,7 +2237,7 @@
     "panels": {
       "6": [
         "Narrator: SHORTLY:",
-        "Floating Batman head: {in T-Rex's imagination} If I were a woman, T-Rex, then we could TOTALLY DATE.",
+        "Floating Batman head: 〚in T-Rex's imagination〛 If I were a woman, T-Rex, then we could TOTALLY DATE.",
         "Off-Panel: T-Rex? You haven't said anything for a few -",
         "T-Rex: I'm busy!!"
       ]
@@ -2248,8 +2248,8 @@
     "file_name": "comic2-1710.png",
     "panels": {
       "6": [
-        "T-Rex: {imagines SURGE written with blue bold letters on a background that looks like explosions}",
-        "T-Rex: {thinks} Holy crap I've never imagined this hard before"
+        "T-Rex: 〚imagines SURGE written with blue bold letters on a background that looks like explosions〛",
+        "T-Rex: 〚thinks〛 Holy crap I've never imagined this hard before"
       ]
     }
   },
@@ -2258,20 +2258,20 @@
     "file_name": "comic2-1740.png",
     "panels": {
       "1": [
-        "{Dromiceiomimus's daydream}",
+        "〚Dromiceiomimus's daydream〛",
         "T-Rex: Hello, Dromiceiomimus! Or should I say... EMILY??"
       ],
       "2": [
-        "{Dromiceiomimus's daydream}",
+        "〚Dromiceiomimus's daydream〛",
         "T-Rex: Because for some reason I totally believe that's your name!"
       ],
       "3": [
-        "{Dromiceiomimus's daydream}",
+        "〚Dromiceiomimus's daydream〛",
         "T-Rex: Even though we're super close and I've known you for years and years, it seems PERFECTLY REASONABLE to me that you'd have a name you never told me. PS: I am an adult.",
-        "{Dromiceiomimus stops daydreaming, visibly irritated}"
+        "〚Dromiceiomimus stops daydreaming, visibly irritated〛"
       ],
       "6": [
-        "{Dromiceiomimus's daydream}",
+        "〚Dromiceiomimus's daydream〛",
         "T-Rex: Guys, guys!!",
         "T-Rex: Watch as I believe anything anyone tells me for at least ten minutes!!"
       ]
@@ -2319,7 +2319,7 @@
     "file_name": "comic2-1768.png",
     "panels": {
       "6": [
-        "T-Rex: {petite} beewooowoooooooooo",
+        "T-Rex: 〚petite〛 beewooowoooooooooo",
         "T-Rex: OH MY GOD I THINK IT IS"
       ]
     }
@@ -2329,12 +2329,12 @@
     "file_name": "comic2-1791.png",
     "panels": {
       "1": [
-        "T-Rex: {stops dreaming}",
+        "T-Rex: 〚stops dreaming〛",
         "T-Rex: Holy crap!"
       ],
       "6": [
         "T-Rex: Besides, we all have stupid names here anyway",
-        "T-Rex: {starts dreaming}"
+        "T-Rex: 〚starts dreaming〛"
       ]
     }
   },
@@ -2343,7 +2343,7 @@
     "file_name": "comic2-1831.png",
     "panels": {
       "6": [
-        "{T-Rex is wearing a pink crown and is surrounded by stars and a round stamp}",
+        "〚T-Rex is wearing a pink crown and is surrounded by stars and a round stamp〛",
         "Stamp: T-REX STAMP OF APPROVAL",
         "Stamp: OKAY, THIS PARTY SEEMS *AWESOME*",
         "Off-Panel: T-Rex",
@@ -2400,7 +2400,7 @@
     "panels": {
       "6": [
         "T-Rex: I'll prove it! This is me imagining what you look like, having just seen you seconds ago!",
-        "Floating Batman head: {in T-Rex's imagination} I am an orange dinosaur",
+        "Floating Batman head: 〚in T-Rex's imagination〛 I am an orange dinosaur",
         "T-Rex: Okay you can't see that but I actually did a pretty good job."
       ]
     }
@@ -2420,23 +2420,23 @@
     "file_name": "comic2-1921.png",
     "panels": {
       "1": [
-        "{T-Rex's daydream}",
+        "〚T-Rex's daydream〛",
         "T-Rex: Dromiceiomimus, we're going to do something really nice for Utahraptor. It'll bring you and I closer together because we'll have a project, and it'll make him like us more too! And I've got the GREATEST PRESENT IDEA EVER IN TIME."
       ],
       "2": [
-        "{T-Rex's daydream}",
+        "〚T-Rex's daydream〛",
         "Narrator: LATER:",
         "T-Rex: There! Utahraptor's SOLID GOLD CAR is complete!"
       ],
       "3": [
-        "{T-Rex's daydream}",
+        "〚T-Rex's daydream〛",
         "T-Rex: And even though it's made of solid gold, the engine still works! That's possible, right?",
         "Dromiceiomimus: I think it might be impossible actually; gold's really soft, right? And a combustion engine is a series of explosions.",
         "T-Rex: But it's still metal, maybe if we had enough of gold it would be strong enough...",
         "Dromiceiomimus: ...Does it work that way?"
       ],
       "4": [
-        "T-Rex: {stops daydreaming}",
+        "T-Rex: 〚stops daydreaming〛",
         "Utahraptor: Hi T-Rex! What's up?",
         "T-Rex: Utahraptor, does it count if a dude has REALLY GOOD INTENTIONS?"
       ]
@@ -2447,15 +2447,15 @@
     "file_name": "comic2-1924.png",
     "panels": {
       "2": [
-        "Book cover: {uses a Back To The Future font effect and other effects} HOW TO BUILD A TIME MACHING even if you're a TEEN"
+        "Book cover: 〚uses a Back To The Future font effect and other effects〛 HOW TO BUILD A TIME MACHING even if you're a TEEN"
       ],
       "4": [
-        "Book cover: {'sheeeeeeeesh' is in larger red font} let me be the first to say sheeeeeeeesh what is that dog's DEAL",
+        "Book cover: 〚'sheeeeeeeesh' is in larger red font〛 let me be the first to say sheeeeeeeesh what is that dog's DEAL",
         "Book cover: a super excellent purchase!"
       ],
       "6": [
-        "Book cover: {large bold font, partially obscuring T-Rex's picture} What If Everybody Else Was Faking Happiness Too? It Would Be Impossible To Tell.",
-        "Book cover: {smaller bold italics} Wait, no, that's super depressing. Listen, does ANYONE know how to delete words on a computer where the backspace key is FRIGGIN' BROKEN??"
+        "Book cover: 〚large bold font, partially obscuring T-Rex's picture〛 What If Everybody Else Was Faking Happiness Too? It Would Be Impossible To Tell.",
+        "Book cover: 〚smaller bold italics〛 Wait, no, that's super depressing. Listen, does ANYONE know how to delete words on a computer where the backspace key is FRIGGIN' BROKEN??"
       ]
     }
   },
@@ -2464,7 +2464,7 @@
     "file_name": "comic2-1930.png",
     "panels": {
       "6": [
-        "T-Rex: {stops daydreaming}",
+        "T-Rex: 〚stops daydreaming〛",
         "T-Rex: I just had the craziest dream! It was about... watches? Anyway, I guess it wasn't important.",
         "T-Rex: Hah hah",
         "T-Rex: Dreams are crazy"
@@ -2510,7 +2510,7 @@
     "file_name": "comic2-1973.png",
     "panels": {
       "6": [
-        "{motion lines}",
+        "〚motion lines〛",
         "T-Rex: Physics does not work this waaaaay"
       ]
     }
@@ -2541,7 +2541,7 @@
     "file_name": "comic2-1993.png",
     "panels": {
       "6": [
-        "T-Rex: {stops daydreaming}",
+        "T-Rex: 〚stops daydreaming〛",
         "T-Rex: Oh wait that was all a fantasy and this is back in reality, where I spend most of my time. Good ol' reality!",
         "T-Rex: Yep!",
         "T-Rex: Can't improve on that just by closing your eyes!"
@@ -2554,7 +2554,7 @@
     "panels": {
       "3": [
         "God: YO CHECK IT",
-        "God: {shows a light cone diagram; source: https://commons.wikimedia.org/wiki/File:World_line.svg}"
+        "God: 〚shows a light cone diagram; source: https://commons.wikimedia.org/wiki/File:World_line.svg〛"
       ]
     }
   },
@@ -2564,7 +2564,7 @@
     "panels": {
       "6": [
         "Narrator: MEANWHILE, IN THE UNIVERSE WHERE GRAVITY REVERSED RIGHT... NOW:",
-        "{vertical motion lines under T-Rex}",
+        "〚vertical motion lines under T-Rex〛",
         "T-Rex: Holy crap!!",
         "T-Rex: This first part is AMAZING!!"
       ]
@@ -2584,7 +2584,7 @@
     "file_name": "comic2-2092.png",
     "panels": {
       "6": [
-        "T-Rex: {stops daydreaming}",
+        "T-Rex: 〚stops daydreaming〛",
         "T-Rex: Huh!",
         "T-Rex: There's PROBABLY a downside to this that I'm not seeing?"
       ]
@@ -2595,7 +2595,7 @@
     "file_name": "comic2-2099.png",
     "panels": {
       "6": [
-        "T-Rex: {very large} I WILL LITERALLY DIE"
+        "T-Rex: 〚very large〛 I WILL LITERALLY DIE"
       ]
     }
   },
@@ -2604,8 +2604,8 @@
     "file_name": "comic2-2110.png",
     "panels": {
       "6": [
-        "Off-Panel: {a photo of a black swallower}",
-        "{T-Rex is crying black tears}"
+        "Off-Panel: 〚a photo of a black swallower〛",
+        "〚T-Rex is crying black tears〛"
       ]
     }
   },
@@ -2615,7 +2615,7 @@
     "panels": {
       "6": [
         "Narrator: LATER:",
-        "{motion lines}",
+        "〚motion lines〛",
         "Off-Panel: My table! She is so flipped!!",
         "T-Rex: Hah hah hah!!",
         "T-Rex: I",
@@ -2629,7 +2629,7 @@
     "file_name": "comic2-2192.png",
     "panels": {
       "4": [
-        "T-Rex: {stops daydreaming}",
+        "T-Rex: 〚stops daydreaming〛",
         "T-Rex: Man, I totally just lost an imaginary rap battle!",
         "Utahraptor: But you won too!"
       ]
@@ -2640,7 +2640,7 @@
     "file_name": "comic2-2196.png",
     "panels": {
       "6": [
-        "T-Rex: {stops daydreaming}",
+        "T-Rex: 〚stops daydreaming〛",
         "T-Rex: ...",
         "T-Rex: Whatever man, flossing is BORING"
       ]
@@ -2661,7 +2661,7 @@
     "file_name": "comic2-2205.png",
     "panels": {
       "5": [
-        "Utahraptor: I want an expression like \"I burned my mouth on that friggn' pizza, thanks to {the integral form of Fourier's law}!\"",
+        "Utahraptor: I want an expression like \"I burned my mouth on that friggn' pizza, thanks to 〚the integral form of Fourier's law〛!\"",
         "T-Rex: WHOAH!!"
       ]
     }
@@ -2701,7 +2701,7 @@
     "file_name": "comic2-2232.png",
     "panels": {
       "6": [
-        "{T-Rex's dating profile}",
+        "〚T-Rex's dating profile〛",
         "Banner: ❤DatDate.dotgov",
         "Text: You are viewing the profile of \"T-Sex\". Here what he has to say about himself:",
         "Text: DON'T FREAK OUT LADIES BUT I AM THE DUDE WHO BRILLIANTLY WOVE GHOSTS AND ZOMBIES INTO THE SAME CONTINUITY!! :0 :0 ;0"
@@ -2743,7 +2743,7 @@
     "file_name": "comic2-2256.png",
     "panels": {
       "6": [
-        "Off-Panel: {large font with insane amount of diacritics} ALWAYS.",
+        "Off-Panel: 〚large font with insane amount of diacritics〛 ALWAYS.",
         "T-Rex: Hah hah hah"
       ]
     }
@@ -2755,10 +2755,10 @@
       "5": [
         "T-Rex: Yes! Shouldn't we? If you were a robot, wouldn't you store a copy of your blueprints and repair manual in your cyber brain somewhere? Doesn't that just seem... REASONABLE?",
         "Utahraptor: Man! If I were a robot, a lot of things would be different.",
-        "Urahraptor: {starts daydreaming}"
+        "Urahraptor: 〚starts daydreaming〛"
       ],
       "6": [
-        "{Utahraptor's daydream}",
+        "〚Utahraptor's daydream〛",
         "Off-Panel: GREETINGS T-REX // I AM YOUR FRIEND UTAHROBOTER",
         "T-Rex: I'm made of meat, so I get weaker AND forgetful as I get older!!",
         "Off-Panel: YET I WILL LIVE FOREVER // HOW IRONIC",
@@ -2773,7 +2773,7 @@
     "panels": {
       "6": [
         "T-Rex: \"GAME\"??",
-        "{T-Rex is surrounded by multiple question marks}"
+        "〚T-Rex is surrounded by multiple question marks〛"
       ]
     }
   },
@@ -2792,7 +2792,7 @@
     "file_name": "comic2-2304.png",
     "panels": {
       "6": [
-        "T-Rex: {crying black tears} Lebanese brunching eggplant, Ukrainian beauty eggplant, green goddess eggplant, pea eggplant, white eggplant, Rosa Bianca eggplant, green apple eggplant, graffiti eggplant, Zoa eggplant, black egg eggplant, little fingers eggplant, little green eggplant, Zahara eggplant, Turkish orange eggplant, long wh"
+        "T-Rex: 〚crying black tears〛 Lebanese brunching eggplant, Ukrainian beauty eggplant, green goddess eggplant, pea eggplant, white eggplant, Rosa Bianca eggplant, green apple eggplant, graffiti eggplant, Zoa eggplant, black egg eggplant, little fingers eggplant, little green eggplant, Zahara eggplant, Turkish orange eggplant, long wh"
       ]
     }
   },
@@ -2801,9 +2801,9 @@
     "file_name": "comic2-2333.png",
     "panels": {
       "6": [
-        "Book cover: {red Back To The Future font} MY YEAR OF NAPPING ON PUBLIC TRANSPORT",
+        "Book cover: 〚red Back To The Future font〛 MY YEAR OF NAPPING ON PUBLIC TRANSPORT",
         "Book cover: “Sometimes I just get real sleepy is the thing”",
-        "Book cover: {black Back to the Future font} BOOK CONTENT AND COVER DESIGN BY ME, 🠲T-REX🠰"
+        "Book cover: 〚black Back to the Future font〛 BOOK CONTENT AND COVER DESIGN BY ME, 🠲T-REX🠰"
       ]
     }
   },
@@ -2878,7 +2878,7 @@
     "file_name": "comic2-2445.png",
     "panels": {
       "6": [
-        "{T-Rex's dating profile}",
+        "〚T-Rex's dating profile〛",
         "Dating profile: ABOUT ME:",
         "Dating profile: ON A TYPICAL FRIDAY NIGHT I AM: Sliding into mediocrity",
         "Dating profile: I SPEND A LOT OF TIME THINKING ABOUT: don't set up dating profiles when you're sad because i",
@@ -2891,8 +2891,8 @@
     "file_name": "comic2-2477.png",
     "panels": {
       "6": [
-        "{a sign advertising a house for sale, using various clashing fonts}",
-        "Sign: {with an arrow pointing at a picture of T-Rex} HELLO I SEE YOU NOTICED THIS HOUSE HAS A NAKED DINOSAUR OUT FRONT",
+        "〚a sign advertising a house for sale, using various clashing fonts〛",
+        "Sign: 〚with an arrow pointing at a picture of T-Rex〛 HELLO I SEE YOU NOTICED THIS HOUSE HAS A NAKED DINOSAUR OUT FRONT",
         "Sign: You should buy it already!",
         "Sign: This House Costs $200,000 But If You Offer Less We'll Probably Accept That Too!! (A Guy Died In It)",
         "Sign: *** YOU CAN HAVE SEX IN EVERY ROOM OF THIS HOUSE BUT ONLY IF YOU BUY IT FIRST ***"
@@ -2930,8 +2930,8 @@
     "panels": {
       "6": [
         "Narrator: TELEPATHIC HOTTIE CHAT:",
-        "T-Rex: {thinks} Hey baby do u like to kiss on dudes?? bc IM A DUDE",
-        "T-Rex: {thinks in a different font} SEND TO: all hotties / REGIONS: all / FLAGS: important, must-read, NOT A JOKE"
+        "T-Rex: 〚thinks〛 Hey baby do u like to kiss on dudes?? bc IM A DUDE",
+        "T-Rex: 〚thinks in a different font〛 SEND TO: all hotties / REGIONS: all / FLAGS: important, must-read, NOT A JOKE"
       ]
     }
   },
@@ -2950,7 +2950,7 @@
     "file_name": "comic2-2570.png",
     "panels": {
       "6": [
-        "Off-Panel: {petite} Batman isn't even as good as a turd in a blanket",
+        "Off-Panel: 〚petite〛 Batman isn't even as good as a turd in a blanket",
         "Sound effect: *pop*",
         "Sound effect: *pop*",
         "T-Rex: Ah yes, the familiar sound of my eardrums exploding of their own volition rather than listen to even one more HORRIBLE LIE"
@@ -2972,7 +2972,7 @@
     "file_name": "comic2-2607.png",
     "panels": {
       "6": [
-        "{a certificate in a gothic font}",
+        "〚a certificate in a gothic font〛",
         "Certificate: This Comic Certifies __________________ is a real doctor",
         "Certificate: Let it hereby be known that all actual medical degrees have a dinosaur on them, and if your doctor's doesn't then my question is, um, what the hell is their deal"
       ]
@@ -3024,10 +3024,10 @@
     "file_name": "comic2-2623.png",
     "panels": {
       "6": [
-        "{email message}",
-        "Email: {playful 3D font} HEY WHAT'S UP I THINK WE SHOULD BE FRIENDS",
-        "Email: {two arrows are pointing at the picture of T-Rex} Would you like to go on bike rides and get ice cream with this guy?? ps my name's T-REX and I AM REAL COOL",
-        "Email: {playful 3D font} [ ] YES [ ] NO",
+        "〚email message〛",
+        "Email: 〚playful 3D font〛 HEY WHAT'S UP I THINK WE SHOULD BE FRIENDS",
+        "Email: 〚two arrows are pointing at the picture of T-Rex〛 Would you like to go on bike rides and get ice cream with this guy?? ps my name's T-REX and I AM REAL COOL",
+        "Email: 〚playful 3D font〛 [ ] YES [ ] NO",
         "Email: OKAY EMAIL ME BACK PLEASE!!!!!!"
       ]
     }
@@ -3064,7 +3064,7 @@
     "file_name": "comic2-2633.png",
     "panels": {
       "6": [
-        "Ad: {red Back To The Future font} 🠲 HOVER BOARDS",
+        "Ad: 〚red Back To The Future font〛 🠲 HOVER BOARDS",
         "Ad: The Reason Science Can't Stop Yet™",
         "T-Rex: Friggin' do it already!!"
       ]
@@ -3126,11 +3126,11 @@
     "file_name": "comic2-2670.png",
     "panels": {
       "6": [
-        "Flier: {with an arrow pointing at a picture of T-Rex} HELLO IT'S ME, YOUR FRIEND T-REX",
-        "Flier: {red} I heard you want to start eating MEAT. I want to help you feast on the Lesser Animals",
-        "Flier: {blue} I will teach you how to prepare their Skin and which of their Muscles to Chew",
-        "Flier: {pink} Did you know that you can even Swallow the insides of their Bones??",
-        "Flier: {gold} **I will show you how to soak their Bodies in SAUCES**",
+        "Flier: 〚with an arrow pointing at a picture of T-Rex〛 HELLO IT'S ME, YOUR FRIEND T-REX",
+        "Flier: 〚red〛 I heard you want to start eating MEAT. I want to help you feast on the Lesser Animals",
+        "Flier: 〚blue〛 I will teach you how to prepare their Skin and which of their Muscles to Chew",
+        "Flier: 〚pink〛 Did you know that you can even Swallow the insides of their Bones??",
+        "Flier: 〚gold〛 **I will show you how to soak their Bodies in SAUCES**",
         "Flier: I will watch you Eat and then Join In"
       ]
     }
@@ -3149,7 +3149,7 @@
     "file_name": "comic2-2688.png",
     "panels": {
       "6": [
-        "Narrator: {'VEGETABLES' is pink} T-REX PRESENTS: VEGETABLES™!",
+        "Narrator: 〚'VEGETABLES' is pink〛 T-REX PRESENTS: VEGETABLES™!",
         "Narrator: TRY ALL 40,000 VARIETIES",
         "Narrator: SOME OF THEM ARE POISONOUS THOUGH",
         "Narrator: SO ACTUALLY MAYBE DON'T TRY ALL 40,000 VARIETIES AFTER ALL"
@@ -3162,10 +3162,10 @@
     "panels": {
       "6": [
         "T-Rex: But BATMAN can!!",
-        "Narrator: {in Batman The Animated Series font} ♪ DAHHHHH DAH DAH DAAAAAAAAH DAHHHHHH ♫",
-        "Narrator: {with an arrow pointing at the previous line} (Batman theme song)",
-        "Narrator: {with an arrow pointing at the previous line} (Comics is a silent medium and we all just have to deal with that, okay??)",
-        "Narrator: {with an arrow pointing at the previous line} (Look, you knew what you were getting into when you started reading this)"
+        "Narrator: 〚in Batman The Animated Series font〛 ♪ DAHHHHH DAH DAH DAAAAAAAAH DAHHHHHH ♫",
+        "Narrator: 〚with an arrow pointing at the previous line〛 (Batman theme song)",
+        "Narrator: 〚with an arrow pointing at the previous line〛 (Comics is a silent medium and we all just have to deal with that, okay??)",
+        "Narrator: 〚with an arrow pointing at the previous line〛 (Look, you knew what you were getting into when you started reading this)"
       ]
     }
   },
@@ -3205,7 +3205,7 @@
     "file_name": "comic2-2757.png",
     "panels": {
       "6": [
-        "T-Rex: {small} ▹My characters kiss on each other, like, ALL the time◃"
+        "T-Rex: 〚small〛 ▹My characters kiss on each other, like, ALL the time◃"
       ]
     }
   },
@@ -3214,7 +3214,7 @@
     "file_name": "comic2-2761.png",
     "panels": {
       "3": [
-        "T-Rex: We were wrong. The {word obscured by a black bar} protocol has confirmed our worst fears: while \"Frosty\"'s MOVEMENT was exceptional and initiated by the \"old silk hat\" (Case File #4523), his sentience was not. To be perfectly clear, Agents: while they live and die fully immobile, each and every snow man, woman, and child is a living, sentient creature.",
+        "T-Rex: We were wrong. The 〚word obscured by a black bar〛 protocol has confirmed our worst fears: while \"Frosty\"'s MOVEMENT was exceptional and initiated by the \"old silk hat\" (Case File #4523), his sentience was not. To be perfectly clear, Agents: while they live and die fully immobile, each and every snow man, woman, and child is a living, sentient creature.",
         "T-Rex: And they have been surveilling us for generations."
       ]
     }
@@ -3235,7 +3235,7 @@
     "file_name": "comic2-2790.png",
     "panels": {
       "3": [
-        "{The panel image is blurred and color-shifted, to represent how a dog might see it.}",
+        "〚The panel image is blurred and color-shifted, to represent how a dog might see it.〛",
         "T-Rex: FACT: Dogs are good at smelling but not so good at seeing. They can't even see the colour red!",
         "Dromiceiomimus: But red is like the #1 easiest colour to see!",
         "T-Rex: I KNOW!! But dogs are all \"geez my body isn't built to see this dang colour, geez, I bet I could smell it though\"."
@@ -3289,7 +3289,7 @@
     "file_name": "comic2-2859.png",
     "panels": {
       "6": [
-        "{a certificate in a gothic font}",
+        "〚a certificate in a gothic font〛",
         "Certificate: This Printout And/Or Screenshot Certifies That:",
         "Certificate: having read and understood the previous five panels,",
         "Certificate: is now an expert in the contents of this particular comic,",
@@ -3383,11 +3383,11 @@
     "file_name": "comic2-2946.png",
     "panels": {
       "2": [
-        "Narrator: {large} JOKES FOR TEENS"
+        "Narrator: 〚large〛 JOKES FOR TEENS"
       ],
       "6": [
-        "Narrator: {large} JOKES FOR TEENS has been brought to you by",
-        "Narrator: {large} TEENS FOR JOKES",
+        "Narrator: 〚large〛 JOKES FOR TEENS has been brought to you by",
+        "Narrator: 〚large〛 TEENS FOR JOKES",
         "Narrator: “the teens who like jokes™”"
       ]
     }
@@ -3406,7 +3406,7 @@
     "file_name": "comic2-2961.png",
     "panels": {
       "6": [
-        "{a book cover with text in Batman The Animated Series font}",
+        "〚a book cover with text in Batman The Animated Series font〛",
         "Book cover: THE DAY ◖BATMAN◗ BECAME IMMORTAL, AND ALSO REAL",
         "Book cover: AND ALSO MY BEST FRIEND",
         "Book cover: ALSO, I BECAME IMMORTAL TOO",
@@ -3429,17 +3429,17 @@
     "file_name": "comic2-2970.png",
     "panels": {
       "2": [
-        "T-Rex: {pointy shape}"
+        "T-Rex: 〚pointy shape〛"
       ],
       "3": [
         "T-Rex: Then let's say I show you a splat, like this:",
-        "T-Rex: {rounded shape}",
+        "T-Rex: 〚rounded shape〛",
         "T-Rex: And then I say, which of these shapes is named \"kiki\" and which is named \"bouba\"?"
       ],
       "6": [
         "Off-Panel: IT WAS THERE IN THE AIR AND I COULD SEE IT",
         "Off-Panel: AHHHHHHHHHHHHHHHHHHHHH",
-        "Off-Panel: {Facebook 'like' hand thumb down}"
+        "Off-Panel: 〚Facebook 'like' hand thumb down〛"
       ]
     }
   },
@@ -3506,7 +3506,7 @@
     "file_name": "comic2-3059.png",
     "panels": {
       "6": [
-        "{T-Rex is crying black tears}",
+        "〚T-Rex is crying black tears〛",
         "T-Rex: NO, ALL WILL BE LOCKED IN DARKNESS, ALL WILL EAT APPLE PEELS OFF THE FLOOR",
         "T-Rex: THE HALLUCINATIONS WILL COME",
         "T-Rex: THE HALLUCINATIONS",
@@ -3543,7 +3543,7 @@
     "panels": {
       "5": [
         "T-Rex: Sorry tweens. Instead of becoming a twisted abomination of flesh and bone, parts of you are just getting bigger while others get smellier. Happens to the best of us. Maybe take some more showers.",
-        "T-Rex: {small} But if your eyes become mouths filled with teeth then you have been chosen to cleanse the world"
+        "T-Rex: 〚small〛 But if your eyes become mouths filled with teeth then you have been chosen to cleanse the world"
       ]
     }
   },
@@ -3599,7 +3599,7 @@
     "file_name": "comic2-3136.png",
     "panels": {
       "3": [
-        "Dromiceiomimus: I'm not a wizard {mini} because there are no wizards and even if there were we couldn't admit it without the threat of penalties detailed in section 452.5a {normal} but I'm happy to answer your questions!",
+        "Dromiceiomimus: I'm not a wizard 〚mini〛 because there are no wizards and even if there were we couldn't admit it without the threat of penalties detailed in section 452.5a 〚normal〛 but I'm happy to answer your questions!",
         "T-Rex: So: MAGIC WORDS. You say some and magic things happen. But these words are always in languages we already speak, like English or bad weird fakey Latin!",
         "Dromiceiomimus: ...So?",
         "T-Rex: So what the heck!"
@@ -3617,7 +3617,7 @@
     "file_name": "comic2-3143.png",
     "panels": {
       "3": [
-        "T-Rex: {very large} ...INTERPERSONAL RELATIONSHIP ADVICE!!",
+        "T-Rex: 〚very large〛 ...INTERPERSONAL RELATIONSHIP ADVICE!!",
         "Dromiceiomimus: whoah T-Rex I'm right here",
         "Dromiceiomimus: There's no need to shout"
       ]
@@ -3677,7 +3677,7 @@
     "file_name": "comic2-3251.png",
     "panels": {
       "6": [
-        "T-Rex: ATTENTION TEENS! LISTEN TO YOUR ELDERS, WE HAVE {mini} ideas for things that would be amazing if they happened to someone else and also {normal} REALLY GOOD ADVICE!"
+        "T-Rex: ATTENTION TEENS! LISTEN TO YOUR ELDERS, WE HAVE 〚mini〛 ideas for things that would be amazing if they happened to someone else and also 〚normal〛 REALLY GOOD ADVICE!"
       ]
     }
   },
@@ -3686,12 +3686,12 @@
     "file_name": "comic2-3259.png",
     "panels": {
       "1": [
-        "T-Rex: {stops dreaming}",
+        "T-Rex: 〚stops dreaming〛",
         "T-Rex: Whoah! WHOAH!"
       ],
       "6": [
         "T-Rex: Can't wait to hear how that works out for you",
-        "T-Rex: {starts dreaming}"
+        "T-Rex: 〚starts dreaming〛"
       ]
     }
   },
@@ -3724,7 +3724,7 @@
     "panels": {
       "6": [
         "Narrator: LATER:",
-        "T-Rex: {crying black tears} no regrets"
+        "T-Rex: 〚crying black tears〛 no regrets"
       ]
     }
   },
@@ -3744,13 +3744,13 @@
       "6": [
         "Narrator: BUT IN TRUTH:",
         "Off-Panel: T-REX, the world is under attack! Only you can save us!",
-        "{T-Rex's speech is partly obscured his own thought bubbles}",
+        "〚T-Rex's speech is partly obscured his own thought bubbles〛",
         "T-Rex: This will take",
-        "T-Rex: {thinks} lunch",
+        "T-Rex: 〚thinks〛 lunch",
         "T-Rex: supreme focus",
-        "T-Rex: {thinks} LUNCH!",
+        "T-Rex: 〚thinks〛 LUNCH!",
         "T-Rex: and …ll of my abilit… toge… con…",
-        "T-Rex: {thinks} LUUUUUUUUUUUUUUNCH"
+        "T-Rex: 〚thinks〛 LUUUUUUUUUUUUUUNCH"
       ]
     }
   },
@@ -3770,7 +3770,7 @@
     "file_name": "comic2-3335.png",
     "panels": {
       "6": [
-        "T-Rex: {thinks} Suckers = {image of Utahraptor}?!"
+        "T-Rex: 〚thinks〛 Suckers = 〚image of Utahraptor〛?!"
       ]
     }
   },
@@ -3831,7 +3831,7 @@
     "file_name": "comic2-3401.png",
     "panels": {
       "6": [
-        "T-Rex: {tries to imagine a horse and fails}",
+        "T-Rex: 〚tries to imagine a horse and fails〛",
         "T-Rex: This feels like a personal attack."
       ]
     }
@@ -3882,9 +3882,9 @@
     "panels": {
       "6": [
         "Narrator: LATER, NO-ONE WANTS TO TALK TO T-REX SO HE TAKES IT TO TEXTING:",
-        "T-Rex: {texting} oh man, utahraptor, remember the word \"emoticon\"??",
-        "T-Rex: {texting} ;(",
-        "T-Rex: {texting} that was a sad, yet winky, emotional icon"
+        "T-Rex: 〚texting〛 oh man, utahraptor, remember the word \"emoticon\"??",
+        "T-Rex: 〚texting〛 ;(",
+        "T-Rex: 〚texting〛 that was a sad, yet winky, emotional icon"
       ]
     }
   },
@@ -3894,7 +3894,7 @@
     "panels": {
       "6": [
         "Narrator: THAT NIGHT, INSIDE UTAHRAPTOR'S MIND:",
-        "Imaginary T-Rex: {small} MY problem is Utahraptor has the following embarrassing and insoluble issues in both his personal and professional lives:",
+        "Imaginary T-Rex: 〚small〛 MY problem is Utahraptor has the following embarrassing and insoluble issues in both his personal and professional lives:",
         "Off-Panel: Aw dang it"
       ]
     }
@@ -3967,7 +3967,7 @@
       "6": [
         "Off-Panel: Except you don't write any operas, much less compose music.",
         "T-Rex: Aha, but do people who DO that stuff pay for ideas from rank amateurs, do you know?",
-        "Off-Panel: {large} ♫♯♪"
+        "Off-Panel: 〚large〛 ♫♯♪"
       ]
     }
   },
@@ -3988,7 +3988,7 @@
       "6": [
         "Off-Panel: I'm not doing a crime and then dying for you, T-Rex.",
         "T-Rex: Right. RIGHT! ME NEITHER, UTAHRAPTOR! NO CRIMES HERE, THAT'S FOR DARN SURE!",
-        "T-Rex: {small} ▹We'll talk later◃"
+        "T-Rex: 〚small〛 ▹We'll talk later◃"
       ]
     }
   },
@@ -4019,7 +4019,7 @@
     "file_name": "comic2-4053.png",
     "panels": {
       "2": [
-        "T-Rex: {small} sex scene"
+        "T-Rex: 〚small〛 sex scene"
       ]
     }
   },
@@ -4028,7 +4028,7 @@
     "file_name": "comic2-4088.png",
     "panels": {
       "6": [
-        "{blue backround resembling advice animals memes, in particular the Socially Awkward Penguin, and caption in Impact font}",
+        "〚blue backround resembling advice animals memes, in particular the Socially Awkward Penguin, and caption in Impact font〛",
         "Caption: SOME OLD MEMES",
         "Caption: ARE GOOD"
       ]
@@ -4059,10 +4059,10 @@
     "file_name": "comic2-4134.png",
     "panels": {
       "6": [
-        "{Utahraptor's speech is partly obscured by T-Rex's thought bubbles}",
+        "〚Utahraptor's speech is partly obscured by T-Rex's thought bubbles〛",
         "Utahraptor: …ch as the rich becoming functionally immortal … speed! Not to mention … fact that all computati…uld slow down as lightspee… which could also aff… our …peed of thought … it down i… simply … explore what ex… would be like if …hat we take for",
-        "T-Rex: {thinks} Dang! This was MY question and Utahraptor's talking all over my answer!",
-        "T-Rex: {thinks} If he's so smart why doesn't HE open other people's mail??"
+        "T-Rex: 〚thinks〛 Dang! This was MY question and Utahraptor's talking all over my answer!",
+        "T-Rex: 〚thinks〛 If he's so smart why doesn't HE open other people's mail??"
       ]
     }
   },
@@ -4082,7 +4082,7 @@
     "file_name": "comic2-4166.png",
     "panels": {
       "1": [
-        "English: {bold pink text} HELLO, AND WELCOME TO ENGLISH.",
+        "English: 〚bold pink text〛 HELLO, AND WELCOME TO ENGLISH.",
         "T-Rex: Yes, hello!"
       ],
       "2": [
@@ -4129,7 +4129,7 @@
     "file_name": "comic2-4187.png",
     "panels": {
       "6": [
-        "{T-Rex is surrounded by multiple question marks}"
+        "〚T-Rex is surrounded by multiple question marks〛"
       ]
     }
   },
@@ -4138,7 +4138,7 @@
     "file_name": "comic2-4219.png",
     "panels": {
       "6": [
-        "{a strange futuristic background}",
+        "〚a strange futuristic background〛",
         "Narrator: BUT THEN:",
         "Off-Panel: Greetings, T-Rex! I am a traveller from the future sent back in time to observe you!",
         "T-Rex: FRIG! NEVERMIND"
@@ -4194,22 +4194,22 @@
     "panels": {
       "2": [
         "T-Rex: And when that happens, I always remember what Dromiceiomimus used to say...",
-        "T-Rex: {starts daydreaming}"
+        "T-Rex: 〚starts daydreaming〛"
       ],
       "3": [
-        "{T-Rex's daydream}",
+        "〚T-Rex's daydream〛",
         "Dromiceiomimus: T-Rex, sometimes it's useful to have a story BEFORE your story - that way, you can use it to manage reader expectations of your second story, which is the one you REALLY want to tell. Like in The Princess Bride, with the sick kid being read a story from a book!",
         "T-Rex: Are there other uses?",
         "Dromiceiomimus: Sure! I remember something Utahraptor used to say - to you, if I recall correctly...",
-        "Dromiceiomimus: {starts daydreaming}"
+        "Dromiceiomimus: 〚starts daydreaming〛"
       ],
       "4": [
-        "{Dromiceiomimus's daydream inside T-Rex's daydream}",
+        "〚Dromiceiomimus's daydream inside T-Rex's daydream〛",
         "Utahraptor: I, Utahraptor, will never forget the time I told you another use for framing stories...",
-        "Utahraptor: {starts daydreaming}"
+        "Utahraptor: 〚starts daydreaming〛"
       ],
       "5": [
-        "{Utahraptor's daydream inside Dromiceiomimus's daydream inside T-Rex's daydream}",
+        "〚Utahraptor's daydream inside Dromiceiomimus's daydream inside T-Rex's daydream〛",
         "Utahraptor: Framing stories can also be used to collect a set of short stories.",
         "T-Rex: Cool!"
       ]

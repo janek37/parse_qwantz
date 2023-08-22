@@ -6,8 +6,8 @@ Panel 2:
 Panel 3:
 Dromiceiomimus: T-Rex, buddy, what are you --
 T-Rex: And hey, anyone hear about artificial intelligence? "AI"? Seems silly to be working on ARTIFICIAL intelligence when we've already got so much NATURAL stupidity!!
-Dromiceiomimus: {small} oh god
-Dromiceiomimus: {small} he's doing standup
+Dromiceiomimus: 〚small〛 oh god
+Dromiceiomimus: 〚small〛 he's doing standup
 
 Panel 4:
 T-Rex: Okay, by applause, anyone here ever work at a JOB?
