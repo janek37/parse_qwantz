@@ -1,10 +1,10 @@
 Panel 1:
 T-Rex: Ah yes, a new move, a new house! A new beginning, another chance to -
-Off-Panel: ▹HELLO NEIGHBOUR!◃
+Off panel: ▹HELLO NEIGHBOUR!◃
 
 Panel 2:
-Off-Panel: ▹WE MOVED TOO BECAUSE◃
-Off-Panel: ▹WE MISSED YOUR SCENT◃
+Off panel: ▹WE MOVED TOO BECAUSE◃
+Off panel: ▹WE MISSED YOUR SCENT◃
 
 Panel 3:
 Narrator: LATER:
@@ -21,7 +21,7 @@ Utahraptor: I like 'em.
 
 Panel 6:
 Narrator: LATER:
-Off-Panel: ▹WELCOME TO THE NEIGHBOURHOOD, T-REX! WE BROUGHT YOU SOME PUDDING◃
+Off panel: ▹WELCOME TO THE NEIGHBOURHOOD, T-REX! WE BROUGHT YOU SOME PUDDING◃
 T-Rex: What - what kind of pudding?
-Off-Panel: ▹IT'S SORT OF LIKE BLOOD PUDDING BUT ON TOP OF THE BLOOD WE ADDED -◃
-Off-Panel: ▹- WELL, YOU'LL SEE◃
+Off panel: ▹IT'S SORT OF LIKE BLOOD PUDDING BUT ON TOP OF THE BLOOD WE ADDED -◃
+Off panel: ▹- WELL, YOU'LL SEE◃
