@@ -10,7 +10,7 @@ Panel 3:
 T-Rex: I can't believe that I didn't see that obvious flaw in my new philosophy!*
 T-Rex: I've got to start thinking these things through.
 T-Rex: Wait - that's it!
-Narrator: * see last ish! -Ed.
+Footnote: * see last ish! -Ed.
 
 Panel 4:
 T-Rex: From now on I will be pensive, considerate. I will be a reflective and thoughtful T-Rex!
@@ -19,7 +19,7 @@ Utahraptor: Oh?
 Panel 5:
 T-Rex: Yes, I am a new, more thoughtful dinosaur.
 Utahraptor: Really! How much thought did you put into stepping on that woman just now?*
-Narrator: * last panel! -Ed.
+Footnote: * last panel! -Ed.
 
 Panel 6:
 T-Rex: {thinks} He's right!

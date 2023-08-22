@@ -29,6 +29,4 @@ Narrator: finito
 
 Panel 6:
 Narrator: ENDING FIVE
-Narrator: ▹IN MEMORY◃
-Narrator: ▹of◃
-Narrator: ▹GENE RODDENBERRY◃
+Dedication: ▹IN MEMORY of GENE RODDENBERRY◃

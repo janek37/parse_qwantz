@@ -3,6 +3,10 @@
     "comic_id": 4,
     "file_name": "comic2-07.png",
     "panels": {
+      "3": [
+        "T-Rex: Of course, there's always a danger when you go down the 'date-the-person-you-live-with' road. It could fall apart, not unlike this tiny house.",
+        "House: {tiny} oh baby i'm so glad we already live together and now are in a relationship; it's bound to make things smooth and not at all awkward"
+      ],
       "6": [
         "Narrator: LATER...",
         "T-Rex: {large} !",
@@ -17,6 +21,17 @@
       "4": [
         "Utahraptor: Stop stomping on things!",
         "T-Rex: Only if you answer me a question!"
+      ]
+    }
+  },
+  "e1a4cbf8468d78f0631ad4b4a105e4f4": {
+    "comic_id": 9,
+    "file_name": "comic2-23.png",
+    "panels": {
+      "5": [
+        "T-Rex: You know what's great?",
+        "Utahraptor: Not being a T-Rex?",
+        "T-Rex: No! Not being a Utahrapt⸺"
       ]
     }
   },
@@ -38,6 +53,18 @@
         "Utahraptor: I know where you could find a beach ball!",
         "T-Rex: {excitedly imagines a beach ball}",
         "T-Rex: Where?"
+      ]
+    }
+  },
+  "540b1a36090cece71d6f551445d5cf52": {
+    "comic_id": 16,
+    "file_name": "comic2-25.png",
+    "panels": {
+      "3": [
+        "Narrator: SOMEWHERE ON A PACIFIC ISLAND..",
+        "T-Rex: Rawr! I represent nature and cannot be controlled! Watch as I destroy this house, representing humanity's folly!",
+        "Dromiceiomimus: I too represent nature, but rather its nurturing aspect!",
+        "House: {tiny} Save us from the monsters we have created and were foolish enough to think we could control!"
       ]
     }
   },
@@ -80,6 +107,23 @@
         "T-Rex: But of course I don't try to read too much into that...",
         "T-Rex: It was probably just some random neurons firing in my brain!",
         "Narrator: {with an arrow pointing at the car} a very tiny car... COINCIDENCE? What does it all mean?"
+      ]
+    }
+  },
+  "aee12a572416029fc4d16b830069763e": {
+    "comic_id": 28,
+    "file_name": "comic2-38.png",
+    "panels": {
+      "3": [
+        "T-Rex: I can't believe that I didn't see that obvious flaw in my new philosophy!*",
+        "T-Rex: I've got to start thinking these things through.",
+        "T-Rex: Wait - that's it!",
+        "Footnote: * see last ish! -Ed."
+      ],
+      "5": [
+        "T-Rex: Yes, I am a new, more thoughtful dinosaur.",
+        "Utahraptor: Really! How much thought did you put into stepping on that woman just now?*",
+        "Footnote: * last panel! -Ed."
       ]
     }
   },
@@ -253,6 +297,16 @@
       ]
     }
   },
+  "a5146e6abdd40368f131238ff55fdd80": {
+    "comic_id": 62,
+    "file_name": "comic2-10.6.png",
+    "panels": {
+      "6": [
+        "Narrator: ENDING FIVE",
+        "Dedication: ▹IN MEMORY of GENE RODDENBERRY◃"
+      ]
+    }
+  },
   "d5ad40bcab16d06b00e4e49f7a32a0b3": {
     "comic_id": 68,
     "file_name": "comic2-78.2.png",
@@ -269,6 +323,16 @@
     "panels": {
       "6": [
         "Text: 張九齡 感遇四首之三 幽林歸獨臥，滯虛洗孤清。持此謝高鳥，因之傳遠情。日夕懷空意，人誰感至精。飛沈理自隔，何所慰吾誠。"
+      ]
+    }
+  },
+  "5a29ab6ae2c0d0955d958acb2e162919": {
+    "comic_id": 99,
+    "file_name": "comic2-100.png",
+    "panels": {
+      "6": [
+        "T-Rex: Thanks, friend!",
+        "Text: \"But each one is tempted when he is carried away and enticed by his own lusts. Then when lust has conceived, it gives birth to sin; and when sin is accomplished, it bring forth death.\" James 1 : 14 - 15"
       ]
     }
   },
@@ -543,6 +607,30 @@
       ]
     }
   },
+  "9f1c26fddfb22685b18716a882f0a90c": {
+    "comic_id": 339,
+    "file_name": "comic2-381.png",
+    "panels": {
+      "1": [
+        "Narrator: \"DINOSAUR COMICS\" by Morley Callaghan.",
+        "Text: It is true that as a dinosaur, the T-Rex should have been inclined toward gnashing his ferocious jaws and making claws of his little hands, but he had been stomping things for so long that no one remembered a time when he had gnashed instead of stomped."
+      ],
+      "2": [
+        "Text: Inside, he wanted to gnash, but he doubted himself. He knew that he could stomp. He was not sure he could gnash."
+      ],
+      "3": [
+        "Narrator: \"DINOSAUR COMICS\" by Robert Service.",
+        "Text: Well it was long ago, on some grim plateau,\nWhen this story first was told,\nAbout a land in fear made more severe\nBy a terrible threat of old.",
+        "Text: And though the men were brave, the risks were grave\nIn these misty days of yore;\nNone could ever be safe, in this ancient place,\nFrom the threat of Dinosaur."
+      ],
+      "4": [
+        "Text: Now the dinosaurs had their fearsome roars,\nBut they had their friendships, too;\nAnd while they stalked they often talked,\nAnd debated what was true."
+      ],
+      "6": [
+        "Text: Dinosaurs were giant reptiles that lived long ago. They looked like this:"
+      ]
+    }
+  },
   "9423cfde3a675c2c7c81f748e5e41e30": {
     "comic_id": 359,
     "file_name": "comic2-379.png",
@@ -605,6 +693,17 @@
       ]
     }
   },
+  "a62d22ecff97cbe65ffb380e36a59fae": {
+    "comic_id": 373,
+    "file_name": "comic2-404-2.png",
+    "panels": {
+      "6": [
+        "T-Rex: {narrates} I had to be careful not to let him know I'd considered this situation before.",
+        "T-Rex: Ha ha!",
+        "T-Rex: H-how do you mean?"
+      ]
+    }
+  },
   "3e54fe74517fc709b3115d4cf1f48b52": {
     "comic_id": 379,
     "file_name": "comic2-411.png",
@@ -630,6 +729,27 @@
       "3": [
         "T-Rex: It says, \"It was spooky night, with a ghost! The ghost was the spookiest ghost in the world, and he was so spooky that if you saw him you'd be scared, for real!\"",
         "Narrator: {with an arrow pointing at Dromiceiomimus} (unimpressed look)"
+      ]
+    }
+  },
+  "49ce6559073315bdc846642d1438cea1": {
+    "comic_id": 390,
+    "file_name": "comic2-423-2.png",
+    "panels": {
+      "6": [
+        "T-Rex: {narrates} In truth, I had only the loosest grasp on female anatomy, but I'd take that secret to my grave.",
+        "T-Rex: Nuh-uh!"
+      ]
+    }
+  },
+  "e98bd1abc59ca4f6801417baa388d0e8": {
+    "comic_id": 403,
+    "file_name": "comic2-439.png",
+    "panels": {
+      "6": [
+        "T-Rex: {narrates} Years later, I would reflect on this exchange, and find in it so much of what I missed from that time.",
+        "T-Rex: Ah, those were the days!",
+        "T-Rex: {narrates} It made me feel certain that, had I an old La Salle at the time, it would have ran great."
       ]
     }
   },
@@ -815,6 +935,27 @@
       ]
     }
   },
+  "5d889d00270db3e7d1227158951303db": {
+    "comic_id": 687,
+    "file_name": "comic2-718.png",
+    "panels": {
+      "6": [
+        "T-Rex: {narrates} Had I finally and irrevocably \"blown it\" with my own name? Had my father's famed and final prediction come, at last, to pass?",
+        "T-Rex: Daaaaaang!"
+      ]
+    }
+  },
+  "b9f09a25440dc98b3b113442f6f4e004": {
+    "comic_id": 733,
+    "file_name": "comic2-764.png",
+    "panels": {
+      "6": [
+        "T-Rex: A private room? Oh man, were you just namedropping M.C. MASTURBATION?",
+        "Off-Panel: You can stop calling it that anytime, T-Rex.",
+        "T-Rex: {narrates} How had we gone from love to masturbation so quickly? Had this question been asked before?"
+      ]
+    }
+  },
   "dca18b837e1edbc314e327f9757882d1": {
     "comic_id": 747,
     "file_name": "comic2-778.png",
@@ -985,6 +1126,23 @@
         "Newspaper cover: {in a frame containing a picture of T-Rex} this guy's hilarious!",
         "Newspaper cover: {next to the frame} who is this guy?",
         "Newspaper cover: plus i review the new MACBOOKS"
+      ]
+    }
+  },
+  "96f3e2c65fd8eb062f960b28e9e35b72": {
+    "comic_id": 929,
+    "file_name": "comic2-961.png",
+    "panels": {
+      "4": [
+        "Dromiceiomimus: {narrates} \"Oh yeah? You had a cold in November.\"",
+        "T-Rex: I've got a cold!",
+        "Utahraptor: It's November!"
+      ],
+      "5": [
+        "Dromiceiomimus: {narrates} \"And in April, your 'Kissing Fever' lasted five days before it finally broke.\"",
+        "T-Rex: The only cure for Kissing Fever is... a little tongue?",
+        "Utahraptor: Yeah, you keep making that joke.",
+        "T-Rex: It's symptomatic of the Fever."
       ]
     }
   },
@@ -1306,6 +1464,28 @@
         "T-Rex: Dear card recipient, the sender had a good time last night, even though you two didn't have sex! I'm going to say your name now to show how personalized this card is.",
         "T-Rex: Here I go!",
         "T-Rex: \"         \""
+      ]
+    }
+  },
+  "b74df9b0fec82bf6c4134daf3f238a7e": {
+    "comic_id": 1072,
+    "file_name": "comic2-1100.png",
+    "panels": {
+      "3": [
+        "T-Rex: Maybe it's whoistopless@ohheyeveryoneitsme.com, dowepartyhard@yesthatishowweparty.net, OR imtiredofpartying@guessimelderlynow.co.uk. Any of those are good.",
+        "Dromiceiomimus: But not great.",
+        "T-Rex: GOOD, but not great.",
+        "T-Rex: The focus on partying appeals, though!"
+      ],
+      "5": [
+        "T-Rex: The sender's weird. I'm gonna assume she's a woman! She types in random email addresses she thinks are cool and then sends them web cards. What's her deal?",
+        "Utahraptor: whatisherdeal@irepeatwhat-is-her-deal.com.",
+        "T-Rex: EXACTLY."
+      ],
+      "6": [
+        "Narrator: A FEW WEEKS LATER:",
+        "T-Rex: What's this, an email? From itsnotmybloodthankgoodness@iwokeupcoveredinblood.org?",
+        "T-Rex: How INTRIGUING!"
       ]
     }
   },
@@ -1726,6 +1906,22 @@
       ]
     }
   },
+  "1e782df03bb1c3b015487064743f90e5": {
+    "comic_id": 1416,
+    "file_name": "comic2-1443.png",
+    "panels": {
+      "3": [
+        "T-Rex: If I were an employer and I had two equally qualified candidates, but one resume came from colin@businesssuccessislifesuccess.com and the other resume came from colin@chumpstakingdumps.com, I know which one I'd want to hire!",
+        "Dromiceiomimus: Is it colin@chumpstakingdumps.com?",
+        "T-Rex: It is without hesitation!"
+      ],
+      "6": [
+        "Narrator: T-REX PUTS UP A FAKE JOB LISTING TO SEE WHAT EMAIL ADDRESSES HE GETS. THE BEST IS FROM COLIN@BONERSAPOPPIN.NET",
+        "T-Rex: Hah hah! Awesome!",
+        "T-Rex: ...It's not the guy I made up, though."
+      ]
+    }
+  },
   "e98f15e2f1b2f87093b98e37454c246f": {
     "comic_id": 1422,
     "file_name": "comic2-1449.png",
@@ -1889,6 +2085,18 @@
         "Floating Batman head: {in T-Rex's imagination} The thing is, if I were real, I think we both know that I'd never have the time to hang out with a NON crime-fighting dinosaur.",
         "T-Rex: ...",
         "T-Rex: *sigh*"
+      ]
+    }
+  },
+  "bd63a41b4c7c01dc198057166a94c405": {
+    "comic_id": 1591,
+    "file_name": "comic2-1612.png",
+    "panels": {
+      "5": [
+        "T-Rex: My friend Utahraptor is sassing this book I'm writing. He's really insulting ALL of us!",
+        "T-Rex: \"",
+        "Utahraptor: I'm not insulting anyone, I'm just not a fan of live autobio.",
+        "T-Rex: \", he said."
       ]
     }
   },
@@ -2143,6 +2351,17 @@
       ]
     }
   },
+  "c8f83e0198025b72cbd5192e40e5d82f": {
+    "comic_id": 1823,
+    "file_name": "comic2-1834.png",
+    "panels": {
+      "3": [
+        "T-Rex: But our culture is crazy, Dromiceiomimus, because I can't just give you a URL as a gift. No matter how much you'd like it!",
+        "Dromiceiomimus: Sure you can!",
+        "T-Rex: Well yeah I CAN, but it doesn't count nearly as much as a REAL present. You can't say you'd not be disappointed if you unwrapped a gift that was just \"checkoutthesesweethomeappliances.com\" written on a slip of paper!"
+      ]
+    }
+  },
   "ea4dfa812f0183808abbe20e536cd686": {
     "comic_id": 1838,
     "file_name": "comic2-1849.png",
@@ -2276,6 +2495,9 @@
     "comic_id": 1949,
     "file_name": "comic2-1960.png",
     "panels": {
+      "2": [
+        "T-Rex: Contact me at suckitup@walkitoff.net, democracy lovers!"
+      ],
       "6": [
         "Banner: HISTORY: SUPER SEXIST",
         "T-Rex: Hello?! This is not a suprising moral! History is also like twenty kinds of racist!",
@@ -2301,6 +2523,16 @@
         "Banner: The Worst Person To Talk About Batman With TODAY'S WINNER: UTAHRAPTOR",
         "T-Rex: Utahraptor, come quick!!",
         "T-Rex: YOU WON A PRIZE"
+      ]
+    }
+  },
+  "64a5d297eabf4a597b2a60e726cea977": {
+    "comic_id": 1974,
+    "file_name": "comic2-1985.png",
+    "panels": {
+      "1": [
+        "T-Rex: As the creator of the universe's most ambitious and inclusive storytelling project, \"Antonio Tony Toots The Bed\"*, I feel... PRETTY GREAT, ACTUALLY.",
+        "Footnote: *See last issue! -Ryan"
       ]
     }
   },
@@ -2476,6 +2708,17 @@
       ]
     }
   },
+  "79cf580a845242f4eefbcbb9a340fb12": {
+    "comic_id": 2229,
+    "file_name": "comic2-2241.png",
+    "panels": {
+      "3": [
+        "T-Rex: Moving on, there are tons of terrible website trends, and it'd be great to know that a site sucks in advance, so I propose \".WeJustRepostThingsWithoutCreditLOL\", \".OurCommentsSectionIsFullOfRacistsThoughSoHeadsUp\", and \".WeInterruptEveryArticleToBegYouToFollowUsOnFacebookAndTwitterSoBetterGetUsedToThatRealQuick\".",
+        "Dromiceiomimus: Those are kinda hard to type!",
+        "T-Rex: Oh no, then people might not visit these sites!!"
+      ]
+    }
+  },
   "249092d5e94e4ed487f49621866a369f": {
     "comic_id": 2236,
     "file_name": "comic2-2248.png",
@@ -2607,6 +2850,29 @@
       ]
     }
   },
+  "50dff78dafd7b6258c072bb2cd7a3fa8": {
+    "comic_id": 2425,
+    "file_name": "comic2-2437.png",
+    "panels": {
+      "6": [
+        "T-Rex: Utahraptor, you've turned a Victorian parlour game into a well-defined computer science and information theory search space problem!",
+        "Off-Panel: Well, I -",
+        "T-Rex: THIS IS AWESOME AND YOU ARE TOO",
+        "T-Rex: AHHHHHH"
+      ]
+    }
+  },
+  "4c460c2aa1a50af196909380f0933836": {
+    "comic_id": 2426,
+    "file_name": "comic2-2438.png",
+    "panels": {
+      "6": [
+        "T-Rex: My ending has the Google guys inventing the internet, but instead of http://www.website.com it's \"i'mhungryforsubs://yaysubs.website.stillbigintosubsoverhere\"!",
+        "T-Rex: Yep!",
+        "T-Rex: If this doesn't win me a free footlong I'll burn every Subway to the ground!"
+      ]
+    }
+  },
   "0fb992c4aa32c93fb7c94b8433b25b9f": {
     "comic_id": 2434,
     "file_name": "comic2-2445.png",
@@ -2630,6 +2896,19 @@
         "Sign: You should buy it already!",
         "Sign: This House Costs $200,000 But If You Offer Less We'll Probably Accept That Too!! (A Guy Died In It)",
         "Sign: *** YOU CAN HAVE SEX IN EVERY ROOM OF THIS HOUSE BUT ONLY IF YOU BUY IT FIRST ***"
+      ]
+    }
+  },
+  "38f9596967cfafad2cacde3bf963d52a": {
+    "comic_id": 2469,
+    "file_name": "comic2-2480.png",
+    "panels": {
+      "6": [
+        "Narrator: LATER, T-REX WALKS DOWN SOME STAIRS WITHOUT DYING:",
+        "T-Rex: AW YEAH, BABY. Women want me! Men want to BE me!",
+        "T-Rex: Some men want me too! And some women don't want me! A lot of women don't even know I exist!",
+        "T-Rex: ...",
+        "T-Rex: I'm going back upstairs, it sucks down here!"
       ]
     }
   },
@@ -2750,6 +3029,33 @@
         "Email: {two arrows are pointing at the picture of T-Rex} Would you like to go on bike rides and get ice cream with this guy?? ps my name's T-REX and I AM REAL COOL",
         "Email: {playful 3D font} [ ] YES [ ] NO",
         "Email: OKAY EMAIL ME BACK PLEASE!!!!!!"
+      ]
+    }
+  },
+  "9ba219d2ae593b0dd65571bb088c7871": {
+    "comic_id": 2619,
+    "file_name": "comic2-2629.png",
+    "panels": {
+      "1": [
+        "Mysterious Commercial Voice: EVER FORGOTTEN SOMEONE'S NAME?",
+        "T-Rex: Yes!",
+        "Mysterious Commercial Voice: EVER WISHED YOU'D REMEMBER WHERE YOU LEFT YOUR KEYS?",
+        "T-Rex: Absolutely!"
+      ],
+      "2": [
+        "Mysterious Commercial Voice: NOT ANYMORE!",
+        "T-Rex: Oh phew what a relief"
+      ],
+      "3": [
+        "Mysterious Commercial Voice: WITH ONE MINOR SURGERY A MICROCHIP WILL BE INSTALLED IN YOUR BRAIN, AND FORGETTING WILL BECOME A DELIBERATE ACT.",
+        "T-Rex: So if I want to remember something I still have to make room by deleting some old memory, but at least I'll be able to choose which one?",
+        "Mysterious Commercial Voice: PRECISELY",
+        "T-Rex: Mysterious commercial voice selling me something: I AM ALL FOR THIS."
+      ],
+      "5": [
+        "T-Rex: Hmm, a bit tight on space here. Yo, should I delete /MEMORIES2000/old memories/HiGhScHoOL/stuff/stuff222/whatever.dat, or /MEMORIES/unsorted/how_to_play_power_rangers_theme_on_a_touchtone_phone.txt??",
+        "Utahraptor: Ooh. Save that last one for sure.",
+        "T-Rex: DONE."
       ]
     }
   },
@@ -3221,6 +3527,16 @@
       ]
     }
   },
+  "6477cb8b7184c44a57f30075f81cdad7": {
+    "comic_id": 3062,
+    "file_name": "comic2-3068.png",
+    "panels": {
+      "6": [
+        "T-Rex: Well this sequence of events certainly compares favourably to whatever compromises TJCS would've been forced to make in an alternate universe in which they were born with an inferior name!!",
+        "Editor: [EDITOR'S NOTE: okay wow this is hard to transcribe but at this point T-Rex and Utahraptor just, IN UNISON, made the sound of a sigh so content it breaks your heart??]"
+      ]
+    }
+  },
   "54896c0df0d81c848328d897057b40b5": {
     "comic_id": 3072,
     "file_name": "comic2-3078.png",
@@ -3487,6 +3803,15 @@
         "Off-Panel: Oh man! Let's imagine that right now!",
         "T-Rex: ...",
         "T-Rex and Off-Panel: AAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH"
+      ]
+    }
+  },
+  "90c58da3f02ddc4abc54facb5e627d40": {
+    "comic_id": 3377,
+    "file_name": "comic2-3382.png",
+    "panels": {
+      "2": [
+        "Editor: ▹[NOTE: IN THIS PANEL T-REX IS SPRING CLEANING HIS HOUSE]◃"
       ]
     }
   },
@@ -3817,6 +4142,29 @@
         "Narrator: BUT THEN:",
         "Off-Panel: Greetings, T-Rex! I am a traveller from the future sent back in time to observe you!",
         "T-Rex: FRIG! NEVERMIND"
+      ]
+    }
+  },
+  "dc0fbc608dd122ffdedcaf238d79ab6b": {
+    "comic_id": 4025,
+    "file_name": "comic2-4225.png",
+    "panels": {
+      "1": [
+        "T-Rex: Dear God, how come life is so short? How come we don't live forever?",
+        "Deer God: YO DEER GOD HERE",
+        "Deer God: GOD OF ALL THE DEERS",
+        "Deer God: THAT'S ME"
+      ],
+      "3": [
+        "Deer God: PRETTY SURE YOU DID MY BRO",
+        "T-Rex: I said \"dear\" as in \"I am starting a letter and, as I'm told Kids Today find 'dear' overly formal and oddly solicitous, my use of the word suggests I am at least twenty years old\", not \"deer\" as in \"hoofed ruminant mammal\"!",
+        "Deer God: WELL YOU GOT THE HOOFED ONE",
+        "Deer God: HOLLA"
+      ],
+      "6": [
+        "Deer God: ANYWAY DEER DON'T LIVE FOREVER BECAUSE OF WOLVES SO YOU ASK ME YOU WANNA TALK TO WOLF GOD",
+        "T-Rex: Huh!",
+        "T-Rex: ...I do, actually"
       ]
     }
   },
