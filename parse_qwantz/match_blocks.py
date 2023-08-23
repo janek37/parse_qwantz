@@ -42,9 +42,10 @@ def match_blocks(
                     block_matches[block] = (new_characters, line)
                 else:
                     block1, block2, alignment = block.split(prev_line, line)
-                    if alignment.no_gap or alignment.left_aligned or alignment.char_aligned:
+                    if alignment.no_gap and (alignment.left_aligned or alignment.char_aligned):
                         logger.warning(
-                            f"Splitting blocks: [{block1.content()[:12]}], [{block2.content()[:12]}]"
+                            f"Splitting blocks: [{block1.content()[:12]}], [{block2.content()[:12]}],"
+                            f" strength: {alignment.strength}"
                         )
                     for b1line in block1.lines:
                         blocks_by_line[b1line] = block1
@@ -84,10 +85,6 @@ def match_blocks(
                 ):
                     logger.warning(f"Matching a non-edge line to another line: {line1.content} -- {line2.content}")
             if block1 in block_matches and block2 in block_matches:
-                if block1 in block_matches and block1.can_split(line1, block_matches[block1][1]):
-                    logger.warning(f"Can split block: {block1}")
-                if block2 in block_matches and block2.can_split(line2, block_matches[block2][1]):
-                    logger.warning(f"Can split block: {block2}")
                 if block1.start.y < block2.start.y:
                     first_block, second_block = block1, block2
                 else:
