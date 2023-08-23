@@ -134,9 +134,15 @@
       "3": [
         "〚sheet music in the background〛",
         "Lyrics: …-SA… have got to think this through …",
-        "Lyrics: …-SAU…he Utahraptor says he slept with …",
+        "Lyrics: …-SAU…he Utahraptor says he slept wit…",
         "T-Rex: It'd be awesome!",
         "Dromiceiomimus: ?"
+      ],
+      "5": [
+        "Utahraptor: The idea of a soundtrack to a life is a stupid idea. You're just going to come across a band of musicians that wants to follow you around?",
+        "T-Rex: 〚small〛 well, it -",
+        "T-Rex: 〚small〛 - um",
+        "T-Rex: 〚small〛 it's not like they wouldn't get paid"
       ]
     }
   },
@@ -151,6 +157,10 @@
         "Dromiceiomimus: Have you seen my keys?",
         "T-Rex: huh?",
         "T-Rex: Oh, no."
+      ],
+      "4": [
+        "T-Rex: So anyway, the secret I discovered to being loved is simply",
+        "Utahraptor: Hey!"
       ]
     }
   },
@@ -277,9 +287,21 @@
     "file_name": "comic2-70-2.png",
     "panels": {
       "6": [
-        "〚Off-panel speech is partly obscured by T-Rex's thought bubble, the reconstructed obscured parts are in [brackets]〛",
-        "Off panel: image is that? Plus, you can't b[ring a date t]o such a resta[urant, because ev]en if you don['t eat anythin]g cheap, it becomes All-You-Can-Politely-Eat, since you're trying to impress your date and thus can't go all-out. Food should be a delight, not a symbolic stop at a gas station. I find",
+        "〚Off-panel speech is partly obscured by T-Rex's thought bubble, the reconstructed obscured parts are in brackets〛",
+        "Off panel: image is that? Plus, you can't b〚ring a date t〛o such a resta〚urant, because ev〛en if you don〚't eat anythin〛g cheap, it becomes All-You-Can-Politely-Eat, since you're trying to impress your date and thus can't go all-out. Food should be a delight, not a symbolic stop at a gas station. I find",
         "T-Rex: 〚thinks〛 I'm going to eat ◖SO MANY WINGS!◗"
+      ]
+    }
+  },
+  "f47b857947badc23500a6a565f4ac4c6": {
+    "comic_id": 60,
+    "file_name": "comic2-71.png",
+    "panels": {
+      "4": [
+        "Narrator: LATER...",
+        "T-Rex: Whew!",
+        "T-Rex: That was graphic!",
+        "Utahraptor: Can I borrow a cup of sugar?"
       ]
     }
   },
@@ -289,11 +311,11 @@
     "panels": {
       "2": [
         "〚the swear word is partially obscured by a black bar, but easy to guess〛",
-        "T-Rex: I have no ~~fucking~~ clue!"
+        "T-Rex: I have no 〚fucking〛 clue!"
       ],
       "6": [
         "〚swear words are partially obscured by black bars, but easy to guess〛",
-        "T-Rex: ~~fuck~~ ~~shit~~ ~~ass~~ ~~poo~~ ~~weiner~~ mother ~~bitch~~!!"
+        "T-Rex: fuck〛 〚shit〛 〚ass〛 〚poo〛 〚weiner〛 mother 〚bitch〛!!"
       ]
     }
   },
@@ -435,6 +457,16 @@
         "Off panel: Ooh! What a scary costume!",
         "Utahraptor: Thank you ma'am! I stayed up all night working on it!",
         "Utahraptor: 〚small〛 The vestigial arms are made of paper mache!"
+      ]
+    }
+  },
+  "f8754ec7476f48f470368663897e94e4": {
+    "comic_id": 193,
+    "file_name": "comic2-170.png",
+    "panels": {
+      "4": [
+        "T-Rex: • Listen attentively to people's names when you meet them! If their name is the same as yours, laugh!",
+        "Utahraptor: I've got one!"
       ]
     }
   },
@@ -729,6 +761,18 @@
       "3": [
         "T-Rex: It says, \"It was spooky night, with a ghost! The ghost was the spookiest ghost in the world, and he was so spooky that if you saw him you'd be scared, for real!\"",
         "Narrator: 〚with an arrow pointing at Dromiceiomimus〛 (unimpressed look)"
+      ]
+    }
+  },
+  "4d6a2f447d26da8101b60bc597107f4c": {
+    "comic_id": 384,
+    "file_name": "comic2-414.png",
+    "panels": {
+      "5": [
+        "Narrator: THE OLD WEST",
+        "Utahraptor: Party on, Bill!",
+        "T-Rex: Party on, Ted!",
+        "T-Rex and Utahraptor: WYLD STALLYNS!"
       ]
     }
   },
@@ -1759,6 +1803,18 @@
       ]
     }
   },
+  "8170f2aa3d106a18fd3fedfda74826dd": {
+    "comic_id": 1218,
+    "file_name": "comic2-1245.png",
+    "panels": {
+      "5": [
+        "Narrator: AFTER THE SHOW:",
+        "T-Rex: Man! How do those guys do it? Every comedian up there was HILARIOUS and I don't know why. Especially the Triceratops.",
+        "Utahraptor: Comedy's hard, I guess!",
+        "T-Rex: I just can't figure out these... these ▹Dinosaur Comics◃."
+      ]
+    }
+  },
   "19e3131c5d6cf1bfbf50d19eefd234fa": {
     "comic_id": 1225,
     "file_name": "comic2-1252.png",
@@ -1829,6 +1885,17 @@
         "〚A tattoo on green skin representing T-Rex and USS Enterprise〛",
         "Off panel: Wow",
         "Off panel: Your skin is really green"
+      ]
+    }
+  },
+  "715d61d72bd3ebcdab4f7a4abb728cc0": {
+    "comic_id": 1300,
+    "file_name": "comic2-1327.png",
+    "panels": {
+      "5": [
+        "T-Rex: You'll get a new name and a new reputation AND a new driver's license, and I'll get to say \"Oh, him? He's my mysterious friend, ▹Utahraptore◃. \" All you need to do is sign!",
+        "Utahraptor: I'm not signing them.",
+        "T-Rex: Well, frig, this has been a complete waste of a Monday morning!"
       ]
     }
   },
@@ -2324,6 +2391,16 @@
       ]
     }
   },
+  "ea366c578b423785a7cba432193e5e54": {
+    "comic_id": 1751,
+    "file_name": "comic2-1775.png",
+    "panels": {
+      "5": [
+        "T-Rex: I know! I imagine Earth seen from space, spots lighting up wherever people are looking, darkening briefly as they blink, beams blasting out into the universe whenever someone glances above the horizon.",
+        "T-Rex and Utahraptor: Totally sweet!"
+      ]
+    }
+  },
   "6744a8829fd9f0c71144e0b400f57b8f": {
     "comic_id": 1777,
     "file_name": "comic2-1791.png",
@@ -2708,6 +2785,18 @@
       ]
     }
   },
+  "3d53e277e4dc06741ead3aa7e2581889": {
+    "comic_id": 2227,
+    "file_name": "comic2-2239.png",
+    "panels": {
+      "5": [
+        "T-Rex: \"THEY'RE INSIDE THE RESTAURANT. ▹PAY QUIETLY AND GET OUT◃\"",
+        "Utahraptor: \"YOUR BODY WILL BE OUR NEST\"",
+        "T-Rex: \"I HAVE THE ANTIDOTE\"",
+        "Utahraptor: \"DON'T BELIEVE HIS LIES\""
+      ]
+    }
+  },
   "79cf580a845242f4eefbcbb9a340fb12": {
     "comic_id": 2229,
     "file_name": "comic2-2241.png",
@@ -2784,6 +2873,16 @@
       "1": [
         "Off panel: T-Rex, I'm having dinner with a coworker and I'm not sure if it's a date or not!",
         "T-Rex: Not a problem, dude on speakerphone!"
+      ]
+    }
+  },
+  "890fbf99b1284570b93728f7fcb1dfc8": {
+    "comic_id": 2295,
+    "file_name": "comic2-2307.png",
+    "panels": {
+      "6": [
+        "T-Rex: Now I'm dreaming about what if we had a boat, and then we all lived on that boat! Join me, won't you? Though I must caution you:",
+        "T-Rex: On our boat, the sails and sailors alike are... ▹taut◃."
       ]
     }
   },
@@ -3281,6 +3380,17 @@
         "Banner: EATING RULES",
         "T-Rex: Attention, world!!",
         "T-Rex: Uh, my life was WAY EASIER before this sassy banner followed me around all the time"
+      ]
+    }
+  },
+  "c760a74ac9394a745b609d4764f2239a": {
+    "comic_id": 2840,
+    "file_name": "comic2-2849.png",
+    "panels": {
+      "6": [
+        "Narrator: BUT SECRETLY:",
+        "T-Rex: 〚thinks〛 Wow! Never has a single sentence made me want to run and hide from its speaker more than right now, in this very moment!!",
+        "T-Rex: 〚thinks〛 WHILE ALSO CRAMMING CHICKEN WINGS INTO MY MOUTH"
       ]
     }
   },
