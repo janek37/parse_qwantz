@@ -97,7 +97,7 @@ def get_text_line(start: Pixel, image: SimpleImage, font: Font) -> tuple[TextLin
             break
         char_box, complement = font.get_char(Pixel(x, y), image, first_column=complement)
         inline_offset_warning = None
-        if char_box is None:
+        if char_box is None and not (len(char_boxes) == 1 and char_boxes[0].char == "'"):
             for offset in ((0, -1), (0, 1)):
                 off_x, off_y = offset
                 char_box, complement = font.get_char(Pixel(x + off_x, y + off_y), image)
