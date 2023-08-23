@@ -237,9 +237,7 @@ def match_above_or_below(unmatched_blocks: list[TextBlock], block_matches: dict[
 def handle_god_and_devil(block: TextBlock, is_off_panel: bool) -> Character | None:
     if not block.content().isupper():
         return None
-    if block.color == Color.RED and block.is_bold:
-        if not is_off_panel:
-            logger.warning('Devil line not off-panel')
+    if block.color == Color.RED and is_off_panel and block.is_bold:
         return Character.from_name('Devil')
     elif is_off_panel and block.is_bold:
         return Character.from_name('God')
