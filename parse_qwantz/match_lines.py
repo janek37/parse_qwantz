@@ -38,6 +38,7 @@ CHARACTER_DISTANCE_THRESHOLD = 35
 TEXT_LINE_DISTANCE_THRESHOLD = 40
 MISS_ANGLE_COS_THRESHOLD = 0.5
 TEXT_LINE_INNER_PADDING = -1
+HORIZONTAL_LINE_THRESHOLD = 2.3
 
 
 @dataclass(frozen=True, eq=True)
@@ -45,6 +46,8 @@ class AnnotatedTarget:
     target: Target
     distance: float
     miss_angle_cos: float
+    line: Line | None = None
+    end_no: int | None = None
 
     @classmethod
     def from_text_line(cls, text_line: TextLine, line: Line, end_no: int):
@@ -53,6 +56,8 @@ class AnnotatedTarget:
             target=text_line,
             distance=get_box_distance(box, line, end_no),
             miss_angle_cos=get_miss_angle_cos(box, line, end_no),
+            line=line,
+            end_no=end_no,
         )
 
     @classmethod
@@ -60,7 +65,7 @@ class AnnotatedTarget:
         distances = (get_box_distance(box, line, end_no) for box in character.boxes)
         distance = min((distance for distance in distances if distance is not None), default=None)
         miss_angle_cos = max(get_miss_angle_cos(box, line, end_no) for box in character.boxes)
-        return cls(target=character, distance=distance, miss_angle_cos=miss_angle_cos)
+        return cls(target=character, distance=distance, miss_angle_cos=miss_angle_cos, line=line, end_no=end_no)
 
 
 def match_lines(
@@ -295,12 +300,12 @@ class CandidateResolver:
             tl1, tl2 = target1.target, target2.target
             if (
                 (target1.miss_angle_cos > target2.miss_angle_cos or target1.miss_angle_cos == 1)
-                and target1.distance < target2.distance * 1.1
+                and target1.distance < target2.distance * 1.15 and not self.is_horizontal_match(target2)
             ):
                 return -1
             if (
                 (target1.miss_angle_cos < target2.miss_angle_cos or target2.miss_angle_cos == 1)
-                and target1.distance * 1.1 > target2.distance
+                and target1.distance * 1.15 > target2.distance and not self.is_horizontal_match(target1)
             ):
                 return 1
             if not self.is_text_line_matched(tl1) and self.is_text_line_matched(tl2):
@@ -330,6 +335,18 @@ class CandidateResolver:
         if ann_text_line.miss_angle_cos == 1:
             return choose_text_line
         return choose_character
+
+    @staticmethod
+    def is_horizontal_match(ann_target: AnnotatedTarget) -> bool:
+        if ann_target.line:
+            line = ann_target.line
+            target_box = ann_target.target.box()
+            target_top = target_box.top
+            target_bottom = target_box.bottom
+            horizontal = abs(line[0].x - line[1].x) > HORIZONTAL_LINE_THRESHOLD * abs(line[0].y - line[1].y)
+            if target_top < line[ann_target.end_no].y < target_bottom and horizontal:
+                return True
+        return False
 
     @staticmethod
     def is_line_matched(
