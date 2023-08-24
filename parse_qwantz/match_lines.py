@@ -49,6 +49,9 @@ class AnnotatedTarget:
     line: Line | None = None
     end_no: int | None = None
 
+    def __repr__(self):
+        return f"AnnotatedTarget({repr(self.target)}, dist={self.distance:.2f}, cos={self.miss_angle_cos:.2f})"
+
     @classmethod
     def from_text_line(cls, text_line: TextLine, line: Line, end_no: int):
         box = text_line.base_box(TEXT_LINE_INNER_PADDING)

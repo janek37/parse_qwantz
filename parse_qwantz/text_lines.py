@@ -19,7 +19,7 @@ class TextLine:
     color: Color
 
     def __repr__(self):
-        return f"TextLine({repr(self.start)}, {repr(self.content)}, {self.font.name})"
+        return f"TextLine({repr(self.content)}, {self.font.name})"
 
     def __str__(self):
         return self.content
