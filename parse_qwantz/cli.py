@@ -2,11 +2,15 @@ import logging
 from pathlib import Path
 
 import typer
+from PIL import ImageShow
 
+from parse_qwantz.image_viewer import SilentViewer
 from parse_qwantz.main import main
 from parse_qwantz.prepare_image import ImageError
 
 logger = logging.getLogger()
+
+ImageShow.register(SilentViewer(), 0)
 
 app = typer.Typer()
 
