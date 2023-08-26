@@ -301,14 +301,16 @@ class CandidateResolver:
             return -1 if target1.distance < target2.distance else 1
         if isinstance(target1.target, TextLine) and isinstance(target2.target, TextLine):
             tl1, tl2 = target1.target, target2.target
+            multiplier1 = 1.15 if target1.miss_angle_cos < 0.95 else 1
+            multiplier2 = 1.15 if target2.miss_angle_cos < 0.95 else 1
             if (
                 (target1.miss_angle_cos > target2.miss_angle_cos or target1.miss_angle_cos == 1)
-                and target1.distance < target2.distance * 1.15 and not self.is_horizontal_match(target2)
+                and target1.distance < target2.distance * multiplier2 and not self.is_horizontal_match(target2)
             ):
                 return -1
             if (
                 (target1.miss_angle_cos < target2.miss_angle_cos or target2.miss_angle_cos == 1)
-                and target1.distance * 1.15 > target2.distance and not self.is_horizontal_match(target1)
+                and target1.distance * multiplier1 > target2.distance and not self.is_horizontal_match(target1)
             ):
                 return 1
             if not self.is_text_line_matched(tl1) and self.is_text_line_matched(tl2):
