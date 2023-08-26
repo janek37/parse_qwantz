@@ -315,7 +315,7 @@
       ],
       "6": [
         "〚swear words are partially obscured by black bars, but easy to guess〛",
-        "T-Rex: fuck〛 〚shit〛 〚ass〛 〚poo〛 〚weiner〛 mother 〚bitch〛!!"
+        "T-Rex: 〚thinks〛 〚fuck〛 〚shit〛 〚ass〛 〚poo〛 〚weiner〛 mother 〚bitch〛!!"
       ]
     }
   },
@@ -652,11 +652,11 @@
       ],
       "3": [
         "Narrator: \"DINOSAUR COMICS\" by Robert Service.",
-        "Text: Well it was long ago, on some grim plateau,\nWhen this story first was told,\nAbout a land in fear made more severe\nBy a terrible threat of old.",
-        "Text: And though the men were brave, the risks were grave\nIn these misty days of yore;\nNone could ever be safe, in this ancient place,\nFrom the threat of Dinosaur."
+        "Text: Well it was long ago, on some grim plateau, When this story first was told, About a land in fear made more severe By a terrible threat of old.",
+        "Text: And though the men were brave, the risks were grave In these misty days of yore; None could ever be safe, in this ancient place, From the threat of Dinosaur."
       ],
       "4": [
-        "Text: Now the dinosaurs had their fearsome roars,\nBut they had their friendships, too;\nAnd while they stalked they often talked,\nAnd debated what was true."
+        "Text: Now the dinosaurs had their fearsome roars, But they had their friendships, too; And while they stalked they often talked, And debated what was true."
       ],
       "6": [
         "Text: Dinosaurs were giant reptiles that lived long ago. They looked like this:"
@@ -1266,13 +1266,13 @@
     "panels": {
       "6": [
         "〚a business card with Comic Sans text〛",
-        "Business card: T-Rex",
-        "Busieness card: “Quis custodiet ipsos custodes!?!”",
-        "Phone: 416-595",
-        "EMAIL: yes ple",
-        "Occupation: BEING TOPLESS",
-        "Interests: BEING TOPLESS",
-        "(i am a DUDE you can hire if you can't finish at an ‘All U Can Eat’ restaurant!)"
+        "Business card: T-REX",
+        "Business card: “Quis custodiet ipsos custodes!?!”",
+        "Business card: PHONE: 416-595",
+        "Business card: EMAIL: yes ple",
+        "Business card: Occupation: BEING TOPLESS",
+        "Business card: Interests: BEING TOPLESS",
+        "Business card: (i am a DUDE you can hire if you can't finish at an ‘All U Can Eat’ restaurant!)"
       ]
     }
   },
@@ -1307,7 +1307,7 @@
         "Morris: 〚on T-Rex's nose〛 aw shucks t-rex, you're a real good friend, you know that? a real good friend. anyway, you should be extra careful not to eat me today or anything because i guess i got turned into a zombie last night! today has definitely had its share of challenges for me, huh",
         "T-Rex: What?! Seriously?",
         "Morris: yeah! and i dunno what i did wrong because i went to bed like normal last night but when i woke up in the morning i had zombie disease! so it was real embarrassing",
-        "but don't worry, i'm not going to turn you guys into zombies too! i wouldn't be a very good friend if i did that, and the book i got at the centre says that being a good friend is awful important!"
+        "Morris: but don't worry, i'm not going to turn you guys into zombies too! i wouldn't be a very good friend if i did that, and the book i got at the centre says that being a good friend is awful important!"
       ],
       "4": [
         "Morris: i always try to be a good friend, even though things pretty often don't work out very well for me in the end",
@@ -1599,7 +1599,7 @@
       "6": [
         "Movie Poster: THE ◖GUY◗ WHO KEPT TAKING ◖BITES◗ OUT OF ◖ANIMALS◗",
         "Movie Poster: Once In a Lifetime Comes a Movie (In The German Expressionist Tradition) In Which A Dinosaur Takes Cartoony Bites out of Cows and Then Tries to Avoid Punishment for That.™",
-        "Movie Poster Text: “◖BITINGLY◗ hilarious!” --Everyone??"
+        "Movie Poster: “◖BITINGLY◗ hilarious!” --Everyone??"
       ]
     }
   },
@@ -1942,7 +1942,7 @@
         "Utahraptor: I don't know!"
       ],
       "6": [
-        "See? Lonely, infinite buildup, a confusing instant of climax that's over before you know it, and then a long, slow slide into disappointed despair?",
+        "T-Rex: See? Lonely, infinite buildup, a confusing instant of climax that's over before you know it, and then a long, slow slide into disappointed despair?",
         "T-Rex: Man!",
         "T-Rex: You cannot deny that was a sexy story!"
       ]
@@ -2610,7 +2610,7 @@
     "file_name": "comic2-1932.png",
     "panels": {
       "1": [
-        "ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooossssssssssssssssssssssssssssssssssoss! Gross."
+        "T-Rex: ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooossssssssssssssssssssssssssssssssssoss! Gross."
       ]
     }
   },
@@ -2810,6 +2810,17 @@
       "5": [
         "Utahraptor: I want an expression like \"I burned my mouth on that friggn' pizza, thanks to 〚the integral form of Fourier's law〛!\"",
         "T-Rex: WHOAH!!"
+      ]
+    }
+  },
+  "c4894a681c0a7524ca0997e90871245a": {
+    "comic_id": 2195,
+    "file_name": "comic2-2207.png",
+    "panels": {
+      "3": [
+        "T-Rex: If you know what dogs are thinking then please let me know. My email address is whataredogsthinking@dogswhataretheythinking.dogs.",
+        "Dromiceiomimus: T-Rex, you bojo! That's not a real email address!",
+        "T-Rex: Aw geez! I was thinking about what dogs are thinking when I said that and got confused!!"
       ]
     }
   },
@@ -3126,13 +3137,23 @@
       ]
     }
   },
+  "27bde824a6b1ca602ee0e317ea2ccf21": {
+    "comic_id": 2564,
+    "file_name": "comic2-2575.png",
+    "panels": {
+      "2": [
+        "T-Rex: 〚petite〛 iguessishouldvereadthebibleatsomepoint",
+        "God: WHAT WAS THAT"
+      ]
+    }
+  },
   "7513bfe902c4acc1aa78f7fc0ae53546": {
     "comic_id": 2572,
     "file_name": "comic2-2583.png",
     "panels": {
       "6": [
         "Narrator: IF YOU FOUND THIS WALLET, IMAGINE THE KIND OF PERSON WHO'D CARRY AROUND THIS COMIC IN IT. KINDA MAKES YOU WANT TO RETURN THEIR WALLET, HUH? GIVE THEM A CALL, THEIR NUMBER IS ___________!",
-        "IF THERE'S NO NUMBER, DUDE, SCORE, ENJOY THE FREE WALLET"
+        "Narrator: IF THERE'S NO NUMBER, DUDE, SCORE, ENJOY THE FREE WALLET"
       ]
     }
   },
@@ -3849,6 +3870,16 @@
         "Banner: NICE MANNERS",
         "T-Rex: They help us tolerate living in close quarters without raging on each other all the time!",
         "T-Rex: Thanks, society!"
+      ]
+    }
+  },
+  "f1b1cfdef49f0818cabe86231316966c": {
+    "comic_id": 3211,
+    "file_name": "comic2-3216.png",
+    "panels": {
+      "5": [
+        "Utahraptor: We're well past \"blame\", T-Rex. I think the word we NEED to be looking at is \"containment\".",
+        "Narrator: (SORRY, I SHOULD'VE MENTIONED SOONER THAT THIS COMIC TAKES PLACE IN THE UNIVERSE WHERE \"FRIENDSHIP\" MEANS \"ANIMAL/HUMAN HYBRID\". IT'S A PRETTY CRAZY PLACE, GOTTA SAY.)"
       ]
     }
   },
