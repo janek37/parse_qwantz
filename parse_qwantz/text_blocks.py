@@ -224,6 +224,9 @@ def fit_to_block(line_group: list[TextLine], previous_group: list[TextLine], fon
         return None
     previous_height = font.height
     previous_width = font.space_width
+    common_part = min(right - previous_left, previous_right - left)
+    if common_part < previous_width:
+        return None
     if previous_bottom - 1 <= top <= previous_bottom + previous_height // 6:
         return Alignment(
             left_aligned=previous_left == left,
