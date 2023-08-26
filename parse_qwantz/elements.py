@@ -32,8 +32,14 @@ def get_elements(
             pixels={pixel: color for pixel, color in image.pixels.items() if pixel in pixels},
         )
         text_line_candidates = (try_text_line(pixel, tmp_image, font) for font in ALL_FONTS)
-        text_line_candidates = (text_line for text_line in text_line_candidates if text_line)
+        text_line_candidates = [text_line for text_line in text_line_candidates if text_line]
         longest_candidate = max(text_line_candidates, key=lambda tl: tl[0].box().right, default=None)
+        # UGLY SPECIAL CASE AHOY
+        if longest_candidate and longest_candidate[0].content == "-" and longest_candidate[0].font.name == "Italic":
+            try:
+                longest_candidate = next(c for c in text_line_candidates if c[0].font.name == "Regular")
+            except StopIteration:
+                pass
         if longest_candidate:
             longest_line, warnings = longest_candidate
             for warning in warnings:
