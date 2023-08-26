@@ -236,6 +236,12 @@ class CandidateResolver:
                         variant1 if self.rate_variant(variant1) > self.rate_variant(variant2) else variant2
                     )
                 else:
+                    horizontal1, horizontal2 = [
+                        [c for c in candidates if isinstance(c.target, TextLine) and self.is_horizontal_match(c)]
+                        for candidates in (candidates1, candidates2)
+                    ]
+                    candidates1 = horizontal1 or candidates1
+                    candidates2 = horizontal2 or candidates2
                     closest1 = min(candidates1, key=lambda c: c.distance)
                     closest2 = min(candidates2, key=lambda c: c.distance)
                     updated_candidates_pairs.append(([closest1], [closest2]))
