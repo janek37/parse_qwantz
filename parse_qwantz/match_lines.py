@@ -4,7 +4,7 @@ import math
 from dataclasses import dataclass
 from functools import cmp_to_key
 
-from parse_qwantz.box import Box, get_interval_distance
+from parse_qwantz.box import Box
 from parse_qwantz.lines import Line
 from parse_qwantz.text_blocks import TextBlock
 from parse_qwantz.pixels import Pixel
@@ -194,16 +194,6 @@ class CandidateResolver:
                         logger.warning(f"Candidates not fully resolved: {candidates1}, {candidates2}")
                 updated_candidates = self.force_resolve_candidates(updated_candidates)
                 break
-        for candidates1, candidates2 in updated_candidates:
-            c1 = candidates1[0]
-            c2 = candidates2[0]
-            if isinstance(c1.target, TextLine) and isinstance(c2.target, TextLine):
-                (x0, y0), (x1, y1) = c1.line
-                c1_box = c1.target.box()
-                c2_box = c2.target.box()
-                distance = get_interval_distance((c1_box.left, c1_box.right), (c2_box.left, c2_box.right))
-                if abs(x0 - x1) > abs(y0 - y1) and distance == 0:
-                    logger.warning(f"Awkwardly connected text lines: {c1}, {c2}")
         choices = [(candidates1[0].target, candidates2[0].target) for candidates1, candidates2 in updated_candidates]
         return choices, unmatched_lines
 
