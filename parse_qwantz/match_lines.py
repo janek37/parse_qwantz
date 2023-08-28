@@ -116,8 +116,11 @@ def match_line(
 
 def get_box_distance(box: Box, line: Line, end_no: int) -> float | None:
     distance = box.distance(line[end_no])
+    if distance is None:
+        return None
     other_end = line[1 - end_no]
-    if distance > box.distance(other_end):
+    other_distance = box.distance(other_end)
+    if other_distance is not None and distance > other_distance:
         return None
     return distance
 

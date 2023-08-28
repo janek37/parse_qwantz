@@ -63,7 +63,7 @@ CHARACTERS = [
             Box(Pixel(40, 141), Pixel(80, 180)),
         )),
         Character('T-Rex', (
-            Box(Pixel(130, 162), Pixel(136, 210)),
+            Box(Pixel(130, 155), Pixel(132, 210), inactive_sides=("left", "top", "bottom")),
             Box(Pixel(100, 197), Pixel(130, 213)),
         )),
         Character('Utahraptor', (
@@ -265,6 +265,6 @@ def main(input_file_path: Path, output_dir: Path | None = None, debug: bool = Fa
             _, (x, y) = panel
             for character in characters:
                 for box in character.boxes:
-                    (x0, y0), (x1, y1) = box
+                    (x0, y0), (x1, y1), _ = box
                     draw.rectangle(((x0 + x, y0 + y), (x1 + x, y1 + y)), outline=(0, 128, 0))
         image.show()

@@ -11,7 +11,7 @@ def get_line(pixel: Pixel, image: SimpleImage) -> tuple[Line, list[Pixel]] | Non
     pixels = get_shape(pixel, image)
     if len(set(pixels.values())) != 1:
         return None
-    (x_min, y_min), (right, bottom) = get_box(pixels)
+    (x_min, y_min), (right, bottom), _ = get_box(pixels)
     x_max = right - 1
     y_max = bottom - 1
     # \ or /

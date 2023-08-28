@@ -7,6 +7,10 @@ from parse_qwantz.pixels import Pixel
 class Box(NamedTuple):
     top_left: Pixel
     bottom_right: Pixel
+    inactive_sides: tuple[str, ...] = ()
+
+    def __repr__(self):
+        return f"Box(top_left={repr(self.top_left)}, bottom_right={repr(self.bottom_right)})"
 
     @property
     def top_right(self) -> Pixel:
@@ -52,28 +56,32 @@ class Box(NamedTuple):
             + get_interval_distance((self.top, self.bottom), (box.top, box.bottom))**2
         )
 
-    def distance(self, pixel: Pixel) -> float:
+    def distance(self, pixel: Pixel) -> float | None:
         if self.includes(pixel):
             return 0
+        top_active = "top" not in self.inactive_sides
+        bottom_active = "bottom" not in self.inactive_sides
+        left_active = "left" not in self.inactive_sides
+        right_active = "right" not in self.inactive_sides
         if self.left <= pixel.x < self.right:
             if pixel.y < self.top:
-                return self.top - pixel.y
+                return self.top - pixel.y if top_active else None
             else:
-                return pixel.y - self.bottom + 1
+                return pixel.y - self.bottom + 1 if bottom_active else None
         if self.top <= pixel.y < self.bottom:
             if pixel.x < self.left:
-                return self.left - pixel.x
+                return self.left - pixel.x if left_active else None
             else:
-                return pixel.x - self.right + 1
-        if pixel.x >= self.right and pixel.y >= self.bottom:
+                return pixel.x - self.right + 1 if right_active else None
+        if pixel.x >= self.right and pixel.y >= self.bottom and (right_active or bottom_active):
             return get_distance(pixel, self.bottom_right)
-        if pixel.x >= self.right and pixel.y < self.top:
+        if pixel.x >= self.right and pixel.y < self.top and (right_active or top_active):
             return get_distance(pixel, self.top_right)
-        if pixel.x < self.left and pixel.y >= self.bottom:
+        if pixel.x < self.left and pixel.y >= self.bottom and (left_active or bottom_active):
             return get_distance(pixel, self.bottom_left)
-        if pixel.x < self.left and pixel.y < self.top:
+        if pixel.x < self.left and pixel.y < self.top and (left_active or top_active):
             return get_distance(pixel, self.top_left)
-        assert False
+        return None
 
     def with_margin(self, margin_x: int, margin_y: int):
         return Box(
