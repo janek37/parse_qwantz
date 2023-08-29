@@ -63,7 +63,7 @@ CHARACTERS = [
             Box(Pixel(40, 141), Pixel(80, 180)),
         )),
         Character('T-Rex', (
-            Box(Pixel(130, 155), Pixel(132, 210), inactive_sides=("left", "top", "bottom")),
+            Box(Pixel(130, 155), Pixel(133, 210), inactive_sides=("left", "top", "bottom")),
             Box(Pixel(100, 197), Pixel(130, 213)),
         )),
         Character('Utahraptor', (
