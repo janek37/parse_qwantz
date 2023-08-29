@@ -54,6 +54,9 @@ class CharBox(NamedTuple):
     def with_box(self, box: Box):
         return CharBox(self.char, box, self.is_bold, self.is_italic, self.pixels)
 
+    def with_char(self, char: str):
+        return CharBox(char, self.box, self.is_bold, self.is_italic, self.pixels)
+
     @classmethod
     def space(cls, is_bold: bool, is_italic: bool, box: Box | None = None) -> "CharBox":
         return cls(

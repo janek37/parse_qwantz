@@ -12,6 +12,14 @@ from parse_qwantz.pixels import Pixel
 from parse_qwantz.simple_image import SimpleImage
 
 
+GREEK_ALPHABET = "αάβγδεέζηήθιίκλμνξοόπρσςτυύφχψωώ"
+LATIN_TO_GREEK = {
+    "v": "ν",
+    "o": "ο",
+    "ó": "ό",
+}
+
+
 @dataclass(frozen=True, eq=True)
 class TextLine:
     char_boxes: list[CharBox]
@@ -131,6 +139,12 @@ def get_text_line(start: Pixel, image: SimpleImage, font: Font) -> tuple[TextLin
                     break
         if inline_offset_warning:
             warnings.append(inline_offset_warning)
+        if char_boxes:
+            previous_char = char_boxes[-1].char
+            if previous_char in GREEK_ALPHABET and char_box.char in LATIN_TO_GREEK:
+                char_box = char_box.with_char(LATIN_TO_GREEK[char_box.char])
+            elif previous_char in LATIN_TO_GREEK and char_box.char in GREEK_ALPHABET:
+                char_boxes[-1] = char_boxes[-1].with_char(LATIN_TO_GREEK[previous_char])
         if char_box.char == ' ':
             if len(char_boxes) == 1 and char_boxes[0].char == "'":
                 return
