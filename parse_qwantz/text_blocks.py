@@ -92,6 +92,31 @@ class TextBlock:
             content = f"〚{self.font.name.lower()}〛 {content}"
         return content
 
+    def unambiguous_words(self) -> Iterable[str]:
+        row_contents = []
+        for row in self.rows:
+            row_content = ""
+            previous_line = None
+            for line in row:
+                if previous_line and line.box().left - previous_line.box().right >= line.font.space_width // 2:
+                    row_content += " "
+                row_content += line.content
+                previous_line = line
+            row_contents.append(row_content.lower())
+        was_hyphen = False
+        for row_content in row_contents:
+            is_hyphen = row_content[-1] == '-' and row_content[-2] not in ' -'
+            words = re.findall(r"\w+", row_content)
+            if was_hyphen and row_content[0].isalnum():
+                del words[0]
+            if is_hyphen and words:
+                del words[-1]
+            yield from words
+            if was_hyphen:
+                row_content = "-" + row_content
+            yield from re.findall(r"(?<![-\w])\w+(?:-\w+)+(?![-\w])", row_content)
+            was_hyphen = is_hyphen
+
     def split(self, line1: TextLine, line2: TextLine) -> tuple["TextBlock", "TextBlock", "Alignment"]:
         line1_index = self.row_index(line1)
         line2_index = self.row_index(line2)

@@ -119,6 +119,24 @@ def parse_qwantz(image: Image, debug: bool, log_to_file: bool) -> Iterable[list[
         yield list(script_lines)
 
 
+def get_unambiguous_words(image: Image) -> Iterable[str]:
+    md5 = hashlib.md5(image.tobytes()).hexdigest()
+    panel_overrides = get_panel_overrides().get(md5, {})
+    masked, good_panels = prepare_image(image)
+    for i, (panel, characters) in enumerate(zip(PANELS, CHARACTERS), start=1):
+        if str(i) in panel_overrides:
+            continue
+        (width, height), (x, y) = panel
+        cropped = masked.crop((x, y, x + width, y + height))
+        panel_image = SimpleImage.from_image(cropped)
+        lines, thoughts, text_lines, extra_characters, unmatched_shapes = get_elements(panel_image)
+        text_blocks, block_matches, thought_blocks, unmatched_stuff = match_stuff(
+            characters + extra_characters, panel_image, lines, text_lines, thoughts
+        )
+        for text_block in text_blocks:
+            yield from text_block.unambiguous_words()
+
+
 def match_stuff(
     characters: list[Character], image: SimpleImage, lines: list[Line], text_lines: list[TextLine], thoughts: list[Box]
 ) -> tuple[
@@ -248,8 +266,19 @@ def set_current_panel(panel: int | None = None, log_to_file: bool = False):
     logger.handlers[0].setFormatter(ColorFormatter(defaults={"panel": panel_name}, colors=not log_to_file))
 
 
-def main(input_file_path: Path, output_dir: Path | None = None, debug: bool = False, show_boxes: bool = False):
+def main(
+    input_file_path: Path,
+    output_dir: Path | None = None,
+    debug: bool = False,
+    show_boxes: bool = False,
+    unambiguous_words: bool = False,
+):
     image = Image.open(input_file_path)
+    if unambiguous_words:
+        words = get_unambiguous_words(image)
+        for word in words:
+            print(word)
+        return
     if output_dir:
         sys.stdout = (output_dir / (input_file_path.stem + '.txt')).open('w')
         logging.basicConfig(filename=output_dir / (input_file_path.stem + '.log'), filemode='w', force=True)
