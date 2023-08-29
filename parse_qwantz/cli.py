@@ -1,4 +1,6 @@
 import logging
+from dataclasses import dataclass
+from multiprocessing import Pool
 from pathlib import Path
 
 import typer
@@ -13,6 +15,26 @@ logger = logging.getLogger()
 ImageShow.register(SilentViewer(), 0)
 
 app = typer.Typer()
+
+
+@dataclass
+class Inner:
+    output_dir: Path | None
+    debug: bool
+    show_boxes: bool
+    unambiguous_words: bool
+
+    def __call__(self, image_path: Path):
+        try:
+            main(
+                image_path,
+                output_dir=self.output_dir,
+                debug=self.debug,
+                show_boxes=self.show_boxes,
+                unambiguous_words=self.unambiguous_words,
+            )
+        except ImageError:
+            pass
 
 
 @app.command()
@@ -31,17 +53,16 @@ def cli(
             image_paths = (child_path for child_path in input_path.iterdir() if child_path.is_file())
         else:
             image_paths = [input_path]
-        for image_path in image_paths:
-            try:
-                main(
-                    image_path,
-                    output_dir=output_dir,
-                    debug=debug,
-                    show_boxes=show_boxes,
-                    unambiguous_words=unambiguous_words,
-                )
-            except ImageError:
-                pass
+
+        inner = Inner(
+            output_dir=output_dir,
+            debug=debug,
+            show_boxes=show_boxes,
+            unambiguous_words=unambiguous_words,
+        )
+
+        with Pool(4) as pool:
+            pool.map(inner, image_paths)
 
 
 if __name__ == '__main__':
