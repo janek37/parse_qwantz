@@ -16,17 +16,15 @@ def make_word_set(dict_path: str, extra_words: Iterable[str] = ()) -> frozenset[
 
 
 QWANTZ_WORD_SET = make_word_set('dict/unambiguous-qwantz.txt')
-QWANTZ_PREFIXES = frozenset(word.split("-")[0] for word in QWANTZ_WORD_SET if word.count("-") == 1)
-QWANTZ_SUFFIXES = frozenset(word.split("-")[1] for word in QWANTZ_WORD_SET if word.count("-") == 1)
 
 WORD_SET = make_word_set('dict/canadian-english-huge')
 
 
 def disambiguate_hyphen(part1: list[str], part2: list[str]):
-    if not (part1 and part2):
-        return False
     word1 = part1[-1]
     word2 = part2[0]
+    if not (word1 and word2):
+        return False
     if word1[-1].islower() and word2[0].isupper():
         return True
     if word2[0].isdigit():
@@ -50,10 +48,6 @@ def disambiguate_hyphen(part1: list[str], part2: list[str]):
     if len(part1) > 1 or len(part2) > 1:
         if word1_lower not in QWANTZ_WORD_SET or word2_lower not in QWANTZ_WORD_SET:
             logger.warning(f"Unexpected hyphenation in multi-hyphened phrase ({parts_for_logging})")
-        return True
-    if word1_lower in QWANTZ_PREFIXES and word2_lower in QWANTZ_WORD_SET:
-        return True
-    if word1_lower in QWANTZ_WORD_SET and word2_lower in QWANTZ_SUFFIXES:
         return True
     logger.warning(f"Potentially ambiguous hyphen ({parts_for_logging})")
 
