@@ -54,29 +54,25 @@ class TextBlock:
     def content(self, mark_bold=True, include_font_name=False):
         char_boxes = []
         for row in self.rows:
+            row_char_boxes = list(self.get_row_charboxes(row))
+            row_content = "".join(char_box.char for char_box in row_char_boxes)
             if char_boxes:
                 if char_boxes[-1].char == '-' and char_boxes[-2].char not in ' -':
                     last_words = ''
                     for char_box in char_boxes[-2::-1]:
-                        if char_box.char in '.,!?" ':
+                        if char_box.char in '.,!?"# ':
                             break
                         last_words = char_box.char + last_words
-                    next_words = re.match(r'[^].,!?"\' :)]*', row[0].content).group()
+                    if last_words.startswith("'"):
+                        last_words = last_words[1:]
+                    next_words = re.match(r'[^].,!?"\' :;)]*', row_content).group()
                     last_word = last_words.rsplit('-', 1)[-1]
                     next_word = next_words.split('-', 1)[0]
                     if not disambiguate_hyphen(last_word, next_word):
                         char_boxes.pop()
-                    else:
-                        last_words += '-'
-                    logger.info(f"Line ending with hyphen ({last_words}/{next_words})")
-                elif not (row[0].content.startswith("+") and row[0].content[1] != " "):
+                elif not (row_content.startswith("+") and row_content[1] != " "):
                     char_boxes.append(CharBox.space(is_bold=char_boxes[-1].is_bold, is_italic=char_boxes[-1].is_italic))
-            previous_line = None
-            for line in row:
-                if previous_line and line.box().left - previous_line.box().right >= line.font.space_width // 2:
-                    char_boxes.append(CharBox.space(is_bold=previous_line.is_bold, is_italic=previous_line.is_italic))
-                char_boxes.extend(line.char_boxes)
-                previous_line = line
+            char_boxes.extend(row_char_boxes)
 
         grouped_char_boxes = groupby(char_boxes, key=lambda cb: (cb.is_bold and mark_bold, cb.is_italic))
         text_and_weight = (
@@ -91,6 +87,15 @@ class TextBlock:
         if include_font_name and self.font.name not in ('Regular', 'Italic'):
             content = f"〚{self.font.name.lower()}〛 {content}"
         return content
+
+    @staticmethod
+    def get_row_charboxes(row: list[TextLine]) -> Iterable[CharBox]:
+        previous_line = None
+        for line in row:
+            if previous_line and line.box().left - previous_line.box().right >= line.font.space_width // 2:
+                yield CharBox.space(is_bold=previous_line.is_bold, is_italic=previous_line.is_italic)
+            yield from line.char_boxes
+            previous_line = line
 
     def unambiguous_words(self) -> Iterable[str]:
         row_contents = []
