@@ -22,34 +22,44 @@ QWANTZ_SUFFIXES = frozenset(word.split("-")[1] for word in QWANTZ_WORD_SET if wo
 WORD_SET = make_word_set('dict/canadian-english-huge')
 
 
-def disambiguate_hyphen(part1: str, part2: str):
+def disambiguate_hyphen(part1: list[str], part2: list[str]):
     if not (part1 and part2):
         return False
-    if part1[-1].islower() and part2[0].isupper():
+    word1 = part1[-1]
+    word2 = part2[0]
+    if word1[-1].islower() and word2[0].isupper():
         return True
-    if part2[0].isdigit():
+    if word2[0].isdigit():
         return True
-    part1_lower = part1.lower()
-    part2_lower = part2.lower()
+    word1_lower = word1.lower()
+    word2_lower = word2.lower()
 
-    no_hyphen = part1_lower + part2_lower in QWANTZ_WORD_SET
-    with_hyphen = f"{part1_lower}-{part2_lower}" in QWANTZ_WORD_SET
+    no_hyphen = word1_lower + word2_lower in QWANTZ_WORD_SET
+    with_hyphen = f"{word1_lower}-{word2_lower}" in QWANTZ_WORD_SET
+    all_with_hyphen = f"{'-'.join(part1)}-{'-'.join(part2)}" in QWANTZ_WORD_SET
 
+    parts_for_logging = f"{'-'.join(part1)}/{'-'.join(part2)}"
     if no_hyphen:
-        if with_hyphen:
-            logger.warning(f"Ambiguous hyphen ({part1}/{part2}); both in Qwantz dict")
+        if with_hyphen or all_with_hyphen:
+            logger.warning(f"Ambiguous hyphen ({parts_for_logging}); both in Qwantz dict")
+        if len(part1) > 1 or len(part2) > 1:
+            logger.warning(f"Surprising hyphenation ({parts_for_logging})")
         return False
-    if with_hyphen:
+    if with_hyphen or all_with_hyphen:
         return True
-    if part1 in QWANTZ_PREFIXES and part2 in QWANTZ_WORD_SET:
+    if len(part1) > 1 or len(part2) > 1:
+        if word1_lower not in QWANTZ_WORD_SET or word2_lower not in QWANTZ_WORD_SET:
+            logger.warning(f"Unexpected hyphenation in multi-hyphened phrase ({parts_for_logging})")
         return True
-    if part1 in QWANTZ_WORD_SET and part2 in QWANTZ_SUFFIXES:
+    if word1_lower in QWANTZ_PREFIXES and word2_lower in QWANTZ_WORD_SET:
         return True
-    logger.warning(f"Potentially ambiguous hyphen ({part1}/{part2})")
+    if word1_lower in QWANTZ_WORD_SET and word2_lower in QWANTZ_SUFFIXES:
+        return True
+    logger.warning(f"Potentially ambiguous hyphen ({parts_for_logging})")
 
-    no_hyphen = part1_lower + part2_lower in WORD_SET
-    separate = part1_lower in WORD_SET and part2_lower in WORD_SET
+    no_hyphen = word1_lower + word2_lower in WORD_SET
+    separate = word1_lower in WORD_SET and word2_lower in WORD_SET
     if no_hyphen == separate:
-        logger.info(f"Ambiguous hyphen ({part1}/{part2}); {'both' if no_hyphen else 'none'} in dict")
+        logger.info(f"Ambiguous hyphen ({parts_for_logging}); {'both' if no_hyphen else 'none'} in dict")
         return False
     return separate

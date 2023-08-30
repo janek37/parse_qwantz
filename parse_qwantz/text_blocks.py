@@ -58,6 +58,8 @@ class TextBlock:
             row_content = "".join(char_box.char for char_box in row_char_boxes)
             if char_boxes:
                 if char_boxes[-1].char == '-' and char_boxes[-2].char not in ' -':
+                    if row_content.endswith("-") and " " not in row_content:
+                        logger.warning("Multiple hyphenation")
                     last_words = ''
                     for char_box in char_boxes[-2::-1]:
                         if char_box.char in '.,!?"# ':
@@ -66,9 +68,7 @@ class TextBlock:
                     if last_words.startswith("'"):
                         last_words = last_words[1:]
                     next_words = re.match(r'[^].,!?"\' :;)]*', row_content).group()
-                    last_word = last_words.rsplit('-', 1)[-1]
-                    next_word = next_words.split('-', 1)[0]
-                    if not disambiguate_hyphen(last_word, next_word):
+                    if not disambiguate_hyphen(last_words.split("-"), next_words.split("-")):
                         char_boxes.pop()
                 elif not (row_content.startswith("+") and row_content[1] != " "):
                     char_boxes.append(CharBox.space(is_bold=char_boxes[-1].is_bold, is_italic=char_boxes[-1].is_italic))
