@@ -287,8 +287,8 @@
     "file_name": "comic2-70-2.png",
     "panels": {
       "6": [
-        "〚Off-panel speech is partly obscured by T-Rex's thought bubble, the reconstructed obscured parts are in brackets〛",
-        "Off panel: image is that? Plus, you can't b〚ring a date t〛o such a resta〚urant, because ev〛en if you don〚't eat anythin〛g cheap, it becomes All-You-Can-Politely-Eat, since you're trying to impress your date and thus can't go all-out. Food should be a delight, not a symbolic stop at a gas station. I find",
+        "〚Off-panel speech is partly obscured by T-Rex's thought bubble, the reconstructed obscured parts are in braces〛",
+        "Off panel: image is that? Plus, you can't b⦃ring a date t⦄o such a resta⦃urant, because ev⦄en if you don⦃'t eat anythin⦄g cheap, it becomes All-You-Can-Politely-Eat, since you're trying to impress your date and thus can't go all-out. Food should be a delight, not a symbolic stop at a gas station. I find",
         "T-Rex: 〚thinks〛 I'm going to eat ◖SO MANY WINGS!◗"
       ]
     }
@@ -311,11 +311,11 @@
     "panels": {
       "2": [
         "〚the swear word is partially obscured by a black bar, but easy to guess〛",
-        "T-Rex: I have no 〚fucking〛 clue!"
+        "T-Rex: I have no ⦃fucking⦄ clue!"
       ],
       "6": [
         "〚swear words are partially obscured by black bars, but easy to guess〛",
-        "T-Rex: 〚thinks〛 〚fuck〛 〚shit〛 〚ass〛 〚poo〛 〚weiner〛 mother 〚bitch〛!!"
+        "T-Rex: 〚thinks〛 ⦃fuck⦄ ⦃shit⦄ ⦃ass⦄ ⦃poo⦄ ⦃weiner⦄ mother ⦃bitch⦄!!"
       ]
     }
   },
