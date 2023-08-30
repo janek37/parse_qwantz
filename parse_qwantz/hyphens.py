@@ -16,12 +16,10 @@ def make_word_set(dict_path: str, extra_words: Iterable[str] = ()) -> frozenset[
 
 
 QWANTZ_WORD_SET = make_word_set('dict/unambiguous-qwantz.txt')
+QWANTZ_PREFIXES = frozenset(word.split("-")[0] for word in QWANTZ_WORD_SET if word.count("-") == 1)
+QWANTZ_SUFFIXES = frozenset(word.split("-")[1] for word in QWANTZ_WORD_SET if word.count("-") == 1)
 
-
-WORD_SET = make_word_set(
-    'dict/canadian-english-huge',
-    ["utahraptor", "utahraptor's", "dromiceiomimus", "dromiceiomimus's"],
-)
+WORD_SET = make_word_set('dict/canadian-english-huge')
 
 
 def disambiguate_hyphen(part1: str, part2: str):
@@ -42,6 +40,10 @@ def disambiguate_hyphen(part1: str, part2: str):
             logger.warning(f"Ambiguous hyphen ({part1}/{part2}); both in Qwantz dict")
         return False
     if with_hyphen:
+        return True
+    if part1 in QWANTZ_PREFIXES and part2 in QWANTZ_WORD_SET:
+        return True
+    if part1 in QWANTZ_WORD_SET and part2 in QWANTZ_SUFFIXES:
         return True
     logger.warning(f"Potentially ambiguous hyphen ({part1}/{part2})")
 
