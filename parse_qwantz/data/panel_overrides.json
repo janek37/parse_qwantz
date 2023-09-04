@@ -857,6 +857,16 @@
       ]
     }
   },
+  "8a8e42655e4bf6693457f94710082918": {
+    "comic_id": 461,
+    "file_name": "comic2-506.png",
+    "panels": {
+      "4": [
+        "Utahraptor: Your medical secrets were much more compelling!",
+        "T-Rex: Yes, well- that's over now!"
+      ]
+    }
+  },
   "803a7110960b80d5d8f6f65daaa57990": {
     "comic_id": 468,
     "file_name": "comic2-513.png",
@@ -1653,6 +1663,17 @@
       ]
     }
   },
+  "0f17ab2f219d89a86e35a71003c12ed9": {
+    "comic_id": 1116,
+    "file_name": "comic2-1143.png",
+    "panels": {
+      "3": [
+        "T-Rex: It sucks, Dromiceiomimus! People stop me in the street and say \"I love your work\", and what do you say to that? \"I'm glad you found my stories arousing\"? Because that's- that's what I say.",
+        "Dromiceiomimus: Well, you're making people happy, and that's something, right?",
+        "T-Rex: I say \"I'm glad you found my stories arousing\" and I shake their hand and I smile and stare at them for a long, unblinking moment."
+      ]
+    }
+  },
   "1fb80c1c6a42ab81042f6cba4adebca2": {
     "comic_id": 1121,
     "file_name": "comic2-1148.png",
@@ -2433,6 +2454,24 @@
       ]
     }
   },
+  "3bdb094466910250077bf007667b2a1d": {
+    "comic_id": 1758,
+    "file_name": "comic2-1782.png",
+    "panels": {
+      "5": [
+        "T-Rex: Certainly not secrets that I'm keeping from you. Certainly not TERRIBLE, EXPLOSIVE secrets that, once revealed, could threaten the very foundation of our friendship!!!",
+        "Utahraptor: Ah.",
+        "T-Rex: *cough*",
+        "T-Rex: *DromiceiomimusandIaregoingonaroadtrip*",
+        "T-Rex: *cough*"
+      ],
+      "6": [
+        "T-Rex: *Holycrap*",
+        "T-Rex: *Ididn'tknowIcouldtalklikethis*",
+        "T-Rex: *Mybodyisawonderlandyouguys*"
+      ]
+    }
+  },
   "6744a8829fd9f0c71144e0b400f57b8f": {
     "comic_id": 1777,
     "file_name": "comic2-1791.png",
@@ -2605,6 +2644,12 @@
     "comic_id": 1924,
     "file_name": "comic2-1935.png",
     "panels": {
+      "5": [
+        "Utahraptor: There totally isn't. If there WAS such a secret word, then everyone would be having some really fun and satisfying weekends!",
+        "T-Rex: How was your weekend, Utahraptor?",
+        "Utahraptor: Oh, really fun and sa- um, I mean... \"boring\"?",
+        "Utahraptor: Boring is a thing weekends used to be, right?"
+      ],
       "6": [
         "T-Rex's head: *pop*",
         "T-Rex: Utahraptor if you heard that it was the sound of my brain exploding at the thought of a lifetime of missed sexy opportunities",
@@ -2666,6 +2711,18 @@
         "T-Rex: Oh wait that was all a fantasy and this is back in reality, where I spend most of my time. Good ol' reality!",
         "T-Rex: Yep!",
         "T-Rex: Can't improve on that just by closing your eyes!"
+      ]
+    }
+  },
+  "1128995fffe01865f00d1b572e8c14fb": {
+    "comic_id": 1992,
+    "file_name": "comic2-2003.png",
+    "panels": {
+      "6": [
+        "God: NOW LET'S ASSUME THE WEDDING STARTS IN 30 MINUTES AND YOU'RE LOST IN A FOREST KILOMETERS AWAY",
+        "T-Rex: I use moss on trees to- wait, why are we playing this game?",
+        "God: OH NO NOW YOU FELL INTO A MUD PUDDLE AND TORE YOUR PANTS",
+        "T-Rex: It's so stressful"
       ]
     }
   },

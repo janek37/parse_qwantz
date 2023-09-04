@@ -15,9 +15,7 @@ def make_word_set(dict_path: str, extra_words: Iterable[str] = ()) -> frozenset[
     return frozenset(chain(dict_words, extra_words))
 
 
-QWANTZ_WORD_SET = make_word_set('dict/unambiguous-qwantz.txt')
-
-WORD_SET = make_word_set('dict/canadian-english-huge')
+QWANTZ_WORD_SET = make_word_set('dict/unambiguous-qwantz.txt') | make_word_set('dict/manual-additions.txt')
 
 
 def disambiguate_hyphen(part1: list[str], part2: list[str]):
@@ -40,8 +38,6 @@ def disambiguate_hyphen(part1: list[str], part2: list[str]):
     if no_hyphen:
         if with_hyphen or all_with_hyphen:
             logger.warning(f"Ambiguous hyphen ({parts_for_logging}); both in Qwantz dict")
-        if len(part1) > 1 or len(part2) > 1:
-            logger.warning(f"Surprising hyphenation ({parts_for_logging})")
         return False
     if with_hyphen or all_with_hyphen:
         return True
@@ -49,11 +45,5 @@ def disambiguate_hyphen(part1: list[str], part2: list[str]):
         if word1_lower not in QWANTZ_WORD_SET or word2_lower not in QWANTZ_WORD_SET:
             logger.warning(f"Unexpected hyphenation in multi-hyphened phrase ({parts_for_logging})")
         return True
-    logger.warning(f"Potentially ambiguous hyphen ({parts_for_logging})")
-
-    no_hyphen = word1_lower + word2_lower in WORD_SET
-    separate = word1_lower in WORD_SET and word2_lower in WORD_SET
-    if no_hyphen == separate:
-        logger.info(f"Ambiguous hyphen ({parts_for_logging}); {'both' if no_hyphen else 'none'} in dict")
-        return False
-    return separate
+    logger.warning(f"Unresolved hyphen ({parts_for_logging})")
+    return False

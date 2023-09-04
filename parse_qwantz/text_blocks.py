@@ -62,13 +62,13 @@ class TextBlock:
                         logger.warning("Multiple hyphenation")
                     last_words = ''
                     for char_box in char_boxes[-2::-1]:
-                        if char_box.char in '.,!?"# ':
+                        if char_box.char in '.,!?"#(/ ':
                             break
                         last_words = char_box.char + last_words
                     if last_words.startswith("'"):
                         last_words = last_words[1:]
-                    next_words = re.match(r'[^].,!?"\' :;)]*', row_content).group()
-                    if not disambiguate_hyphen(last_words.split("-"), next_words.split("-")):
+                    next_words = re.match(r'[^].,!?"\' :;)/]*', row_content).group()
+                    if not disambiguate_hyphen(last_words.split("-"), next_words.strip("-").split("-")):
                         char_boxes.pop()
                 elif not (row_content.startswith("+") and row_content[1] != " "):
                     char_boxes.append(CharBox.space(is_bold=char_boxes[-1].is_bold, is_italic=char_boxes[-1].is_italic))
