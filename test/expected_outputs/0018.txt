@@ -8,7 +8,7 @@ Panel 3:
 T-Rex: Hey, do you know how I could stop the Utahraptor from not being friends with me?
 Dromiceiomimus: Maybe if you stopped stomping on things - that seems to annoy him more than anything else.
 T-Rex: Forget it! Stomping is who I am!
-Narrator: STOMP!
+Sound effect: STOMP!
 
 Panel 4:
 T-Rex: I will have to find another way to win his friendship!
