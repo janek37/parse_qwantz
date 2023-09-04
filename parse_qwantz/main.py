@@ -297,3 +297,4 @@ def main(
                     (x0, y0), (x1, y1), _ = box
                     draw.rectangle(((x0 + x, y0 + y), (x1 + x, y1 + y)), outline=(0, 128, 0))
         image.show()
+    sys.stdout.flush()
