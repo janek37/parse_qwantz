@@ -151,9 +151,6 @@ def get_text_line(start: Pixel, image: SimpleImage, font: Font) -> tuple[TextLin
             spaces.append(
                 CharBox.space(is_bold, is_italic, char_box.box)
             )
-            after_period = char_boxes[-1].char in '.,?!"'
-            if len(spaces) > 1 and not after_period:
-                break
             if len(spaces) > 2:
                 break
         else:
