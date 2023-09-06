@@ -370,7 +370,7 @@
     "panels": {
       "2": [
         "T-Rex: For such a skilled dinosaur as myself, it should be simple!",
-        "Narrator: 〚with an arrow poining at T-Rex's arm〛 tiny arms (plot point)"
+        "Narrator: 〚with an arrow pointing at T-Rex's arm〛 tiny arms (plot point)"
       ]
     }
   },
@@ -655,6 +655,17 @@
       ]
     }
   },
+  "3e634a1669f9db415686f4e9cc752634": {
+    "comic_id": 322,
+    "file_name": "comic2-362.png",
+    "panels": {
+      "5": [
+        "T-Rex: Yes indeed. I'm experimenting with it.",
+        "Utahraptor: You're experimenting with using inappropriate verb tenses.",
+        "T-Rex: Yes, well- It seemed like a good idea at the time!"
+      ]
+    }
+  },
   "a00766c3fc6c7d51e67ecae8b249c8b0": {
     "comic_id": 328,
     "file_name": "comic2-359-2.png",
@@ -795,7 +806,9 @@
     "panels": {
       "3": [
         "T-Rex: It says, \"It was spooky night, with a ghost! The ghost was the spookiest ghost in the world, and he was so spooky that if you saw him you'd be scared, for real!\"",
-        "Narrator: 〚with an arrow pointing at Dromiceiomimus〛 (unimpressed look)"
+        "Narrator: 〚with an arrow pointing at Dromiceiomimus〛 (unimpressed look)",
+        "T-Rex: The, um",
+        "T-Rex: The next paragraph is \"BOO!\""
       ]
     }
   },

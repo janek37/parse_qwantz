@@ -52,7 +52,7 @@ CHARACTERS = [
         Character('Dromiceiomimus', (Box(Pixel(325, 146), Pixel(357, 238)), Box(Pixel(250, 180), Pixel(325, 185)))),
     ],
     [
-        Character('T-Rex', (Box(Pixel(0, 65), Pixel(30, 190)),)),
+        Character('T-Rex', (Box(Pixel(0, 65), Pixel(35, 190)),)),
         Character('Utahraptor', (Box(Pixel(103, 81), Pixel(138, 165)), Box(Pixel(138, 140), Pixel(165, 180)))),
         Character('Girl', (Box(Pixel(0, 213), Pixel(8, 238)),)),
     ],
