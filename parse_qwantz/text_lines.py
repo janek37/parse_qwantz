@@ -209,7 +209,9 @@ def group_text_lines(text_lines: list[TextLine]) -> list[list[TextLine]]:
                 continue
             box = group[-1].base_box()
             other_box = other_text_line.base_box()
-            if abs(box.bottom - other_box.bottom) <= 1:
+            vertical_offset = abs(box.bottom - other_box.bottom)
+            same_font = other_text_line.font == text_line.font
+            if (vertical_offset <= 1 and same_font) or vertical_offset == 0:
                 distance = other_box.left - box.right
                 width = max(group[-1].font.space_width, other_text_line.font.space_width)
                 max_distance = width * 3

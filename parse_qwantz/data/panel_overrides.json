@@ -927,12 +927,42 @@
       ]
     }
   },
+  "20ca2c69e60595973b87acb867011007": {
+    "comic_id": 503,
+    "file_name": "comic2-545.png",
+    "panels": {
+      "6": [
+        "Narrator: MEANWHILE, IN THE UNIVERSE WHERE THIS HAPPENED AND T-REX DIED IN A REALLY TERRIFYING WAY:",
+        "T-Rex: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH",
+        "T-Rex: 〚mini〛 hhuuh",
+        "T-Rex: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH"
+      ]
+    }
+  },
+  "6f4a7fbb4d2b22b30a96cc8a181705ac": {
+    "comic_id": 518,
+    "file_name": "comic2-557.png",
+    "panels": {
+      "2": [
+        "T-Rex: Light verb constructions (LVCs) are constructions like \"take a stroll\" and \"give a smile\"!"
+      ]
+    }
+  },
   "218ff25becc5cdfe5bdc892c4a0d3408": {
     "comic_id": 563,
     "file_name": "comic2-602.png",
     "panels": {
       "6": [
         "Banner: Why visit Australia, when it's closer to visit outer space?"
+      ]
+    }
+  },
+  "707cfc2c1b46c5ce88c7c7cc7c290d51": {
+    "comic_id": 585,
+    "file_name": "comic2-624.png",
+    "panels": {
+      "2": [
+        "T-Rex: WOOOOOOOOOOOOOOOOOOOOOOOOOO!"
       ]
     }
   },
@@ -981,6 +1011,15 @@
         "Narrator: T-REX NEVER SPEAKS AGAIN... ▹IN THE PARALLEL UNIVERSE WHERE EVERYTHING IS CRAZY!◃",
         "Off panel: I'm wearing underpants on my head AND passing my driver's test!",
         "Off panel: Isn't that SO crazy??"
+      ]
+    }
+  },
+  "5ccc404a10e0d3f46d5470aba50f988f": {
+    "comic_id": 615,
+    "file_name": "comic2-655.png",
+    "panels": {
+      "2": [
+        "T-Rex: The Incr-- The Fant- The Sweet Dudes!"
       ]
     }
   },
@@ -1176,6 +1215,10 @@
     "panels": {
       "2": [
         "T-Rex: 〚imagines himself sporting handlebar mustache〛"
+      ],
+      "5": [
+        "T-Rex: Yep! Sure, women get to feel the miracle of life growing inside them and the joy of birth or of laying eggs or WHATEVER, but we get to engineer hairy faces AT OUR LEISURE.",
+        "Utahraptor: I don't get why you're casting this in terms of a gender battle, but yeah- I'm with beards over babies too!"
       ]
     }
   },
