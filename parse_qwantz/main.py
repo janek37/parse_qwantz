@@ -202,16 +202,16 @@ def handle_debug(
     draw = ImageDraw.Draw(image)
     for unmatched_shape in unmatched_shapes:
         box = get_box(unmatched_shape, padding=3)
-        draw.rectangle(box, outline=(255, 0, 0))
+        draw.rectangle(box[:2], outline=(255, 0, 0))
         for pixel in unmatched_shape:
             draw.point(pixel, fill=(255, 0, 0))
     for thought_box in unmatched_stuff.thoughts:
-        draw.rectangle(thought_box, outline=(255, 0, 255))
+        draw.rectangle(thought_box[:2], outline=(255, 0, 255))
     for text_line1, text_line2 in unmatched_stuff.neighbors:
         box1 = text_line1.box()
         box2 = text_line2.box()
-        draw.rectangle(box1, outline=(0, 0, 192))
-        draw.rectangle(box2, outline=(0, 0, 192))
+        draw.rectangle(box1[:2], outline=(0, 0, 192))
+        draw.rectangle(box2[:2], outline=(0, 0, 192))
         draw.line([
             ((box1.left + box1.right) // 2, (box1.top + box1.bottom) // 2),
             ((box2.left + box2.right) // 2, (box2.top + box2.bottom) // 2),
@@ -221,11 +221,11 @@ def handle_debug(
         for block in text_blocks:
             for text_line in block.lines:
                 box = text_line.box()
-                draw.rectangle(box, outline=(0, 192, 0))
+                draw.rectangle(box[:2], outline=(0, 192, 0))
     if unmatched_stuff.neighbors or unmatched_stuff.lines:
         for character in characters:
             for box in character.boxes:
-                draw.rectangle(box, outline=(0, 128, 0))
+                draw.rectangle(box[:2], outline=(0, 128, 0))
     image.show()
 
 
