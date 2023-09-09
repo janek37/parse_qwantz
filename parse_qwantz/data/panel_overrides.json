@@ -54,7 +54,7 @@
       "5": [
         "T-Rex: You know what's great?",
         "Utahraptor: Not being a T-Rex?",
-        "T-Rex: No! Not being a Utahrapt⸺"
+        "T-Rex: No! Not being a Utahrapt—"
       ]
     }
   },
@@ -186,7 +186,7 @@
     "file_name": "comic2-41-5.png",
     "panels": {
       "3": [
-        "〚T-Rex's speech is partly obscured by Dromiceiomimus's speech bubble〛",
+        "〚T-Rex's speech is partly obscured by Dromiceiomimus's speech balloon〛",
         "T-Rex: It's so easy!",
         "T-Rex: All you have … is to take her …e and then … with you … sideways!",
         "Dromiceiomimus: Have you seen my keys?",
@@ -322,7 +322,7 @@
     "file_name": "comic2-70-2.png",
     "panels": {
       "6": [
-        "〚Off-panel speech is partly obscured by T-Rex's thought bubble, the reconstructed obscured parts are in braces〛",
+        "〚Off-panel speech is partly obscured by T-Rex's thought balloon, the reconstructed obscured parts are in braces〛",
         "Off panel: image is that? Plus, you can't b⦃ring a date t⦄o such a resta⦃urant, because ev⦄en if you don⦃'t eat anythin⦄g cheap, it becomes All-You-Can-Politely-Eat, since you're trying to impress your date and thus can't go all-out. Food should be a delight, not a symbolic stop at a gas station. I find",
         "T-Rex: 〚thinks〛 I'm going to eat ◖SO MANY WINGS!◗"
       ]
@@ -400,7 +400,7 @@
       "6": [
         "Heading: 〚dark blue〛 HEY KIDS!",
         "Heading: 〚lighter blue〛 PLAY ALONG WITH T-REX!",
-        "T-Rex: 〚empty speech bubble〛",
+        "T-Rex: 〚empty speech balloon〛",
         "Instruction: Write in your own response, based off the teachings of whatever religion you fancy! Have fun, but remember: the T-Rex doesn't like to swear!"
       ]
     }
@@ -1434,7 +1434,7 @@
       "6": [
         "T-Rex: Aw, MAN! Best wish ever?",
         "〚T-Rex imagines a dialog〛",
-        "Off thought bubble: t-rex, these steaks are starting to make us sad.",
+        "Off thought balloon: t-rex, these steaks are starting to make us sad.",
         "Imaginary T-Rex: 〚holding a steak〛 not allowed, ladies!!"
       ]
     }
@@ -1490,7 +1490,7 @@
     "file_name": "comic2-1062.png",
     "panels": {
       "2": [
-        "Book cover: 〚red〛 Choose your own adventure",
+        "Book cover: 〚red〛 CHOOSE YOUR OWN ADVENTURE",
         "Book cover: HOW THE UNIVERSE ENDS. A Story Starring You! But It Was Written By Me, T-Rex"
       ]
     }
@@ -1570,8 +1570,8 @@
       "6": [
         "〚messaging application window with conversation log between <rex> and <utah>〛",
         "Window title: Awesome Chat 2: AWESOME PEOPLE ONLY",
-        "Caption: 〚above a picture of T-Rex〛 Your avatar:",
         "Menu: File Edit Search Awesome? Help",
+        "Caption: 〚above a picture of T-Rex〛 Your avatar:",
         "T-Rex: hey utahraptor",
         "T-Rex: hey",
         "Utahraptor: Hey, what's up?",
@@ -1617,7 +1617,8 @@
         "Narrator: THE END"
       ],
       "4": [
-        "T-Rex: 〚stops daydreaming〛 T-Rex: Man, forget that! I can come up with a solution!",
+        "T-Rex: 〚stops daydreaming〛",
+        "T-Rex: Man, forget that! I can come up with a solution!",
         "Utahraptor: For what?"
       ]
     }
@@ -1859,7 +1860,7 @@
     "file_name": "comic2-1192.png",
     "panels": {
       "1": [
-        "Off panel: 〚green cursive font, sings〛 Hello! my baby / Hello! my honey / Hello! my ragtime gal / Send me a kiss by wire / Baby, my heart's on fire!"
+        "Off panel: 〚green cursive font, sings〛 Hello! my baby Hello! my honey Hello! my ragtime gal Send me a kiss by wire Baby, my heart's on fire!"
       ],
       "2": [
         "Narrator: T-REX IN: ONE FROGGY EVENING"
@@ -1993,7 +1994,7 @@
         "Heading: SWEET PROTEST SIGNS L@@K, SO @WESOME!!! OMG YOU GUYS! >:OGC",
         "Text: Okay you are bidding on some protest signs that I'm selling because I was gonna be fascist, but not anymore!! There's a picture of me and beneath it they say \"T-REX IS IN CHARGE NOW: I GUESS WE'LL ALL JUST HAVE TO DEAL\" They have many uses such as pretending I am in charge and that you are all, \"no WAY is that guy in charge, what will i do, oh wait my sign says i should just deal\"",
         "Text: STARTING BID: $100",
-        "Text: 〚form input〛 YOUR BID: $[0   ]"
+        "Text: 〚form input〛 YOUR BID: $0"
       ]
     }
   },
@@ -2006,6 +2007,31 @@
         "Off panel: Police report a rash of interior vandalism: members of the public are waking up to find their interior walls defaced!",
         "T-Rex: What's that, radio?",
         "T-Rex: Street artists have moved indoors?"
+      ]
+    }
+  },
+  "356dbff888880964778f9e31fb75cde1": {
+    "comic_id": 1291,
+    "file_name": "comic2-1318.png",
+    "panels": {
+      "1": [
+        "Text: The ◖Woman◗ Who Woke Up As A ◖Man◗",
+        "Text: ◖by T-Rex◗"
+      ],
+      "3": [
+        "Text: Anyway she woke up as a totally tough dude, stepping on houses like they were toy Monopoly houses, like in the picture? Everyone liked her. But her female form was missing and eventually people thought that she was murdered! Nobody believed her that she was a dude now and they thought maybe HE (the girl) murdered her (herself). She went to jail and EVENTUALLY, she died in jail, from a terminal case of too much being... in jail.",
+        "Text: THE END"
+      ]
+    }
+  },
+  "333a061d18047189c9424696e0812e70": {
+    "comic_id": 1292,
+    "file_name": "comic2-1319.png",
+    "panels": {
+      "6": [
+        "Text: ▹TINA, THE DUDE WHO PUNCHED THE FUTURE◃",
+        "Text: Tina is a woman who can Punch The Future. This means that she'd punch somewhere, and then three weeks later you'd walk over there and go \"Ow who punched me.\" One time she punched a monocle guy who said \"Ow, my crotch!\" and then he turned around and he said \"Ow, my bum!!\"",
+        "Text: 〚small〛 THE END?"
       ]
     }
   },
@@ -2026,7 +2052,7 @@
     "file_name": "comic2-1327.png",
     "panels": {
       "5": [
-        "T-Rex: You'll get a new name and a new reputation AND a new driver's license, and I'll get to say \"Oh, him? He's my mysterious friend, ▹Utahraptore◃. \" All you need to do is sign!",
+        "T-Rex: You'll get a new name and a new reputation AND a new driver's license, and I'll get to say \"Oh, him? He's my mysterious friend, ▹Utahraptore◃.\" All you need to do is sign!",
         "Utahraptor: I'm not signing them.",
         "T-Rex: Well, frig, this has been a complete waste of a Monday morning!"
       ]
@@ -2090,6 +2116,17 @@
         "Narrator: LATER:",
         "T-Rex: 〚imagines having purple bat-like wings〛",
         "T-Rex: 〚thinks〛 I used to be better at imagination"
+      ]
+    }
+  },
+  "2c1051b8d4a4d86c2a93d70e546cd533": {
+    "comic_id": 1403,
+    "file_name": "comic2-1430.png",
+    "panels": {
+      "6": [
+        "T-Rex: 〚thinks〛 No-one must know I peed on the wall",
+        "Off panel: 〚thinks〛 No-one must know I peed on the wall",
+        "T-Rex: 〚thinks〛 No-one must know I bet Utahraptor peed on the wall though"
       ]
     }
   },
@@ -2311,6 +2348,15 @@
       ]
     }
   },
+  "20521a7f86efa4c16600046f8e4bc7c4": {
+    "comic_id": 1600,
+    "file_name": "comic2-1622.png",
+    "panels": {
+      "6": [
+        "T-Rex: \"Climate change hurts Cousin Theplanetwontnoticeifwealldietomorrow\"!"
+      ]
+    }
+  },
   "2508ea14ad0d84dccdf25d81db54ff4e": {
     "comic_id": 1602,
     "file_name": "comic2-1620.png",
@@ -2349,7 +2395,7 @@
     "file_name": "comic2-1641.png",
     "panels": {
       "5": [
-        "T-Rex: Surveys get people with opinions, and the bored, and the lonely. not the apathetic and the jerkasses! You know what jerkasses do when some stranger calls up and asks them questions?",
+        "T-Rex: Surveys get people with opinions, and the bored, and the lonely. But not the apathetic and the jerkasses! You know what jerkasses do when some stranger calls up and asks them questions?",
         "Utahraptor: Hang up the phone?",
         "T-Rex: Utahraptor",
         "T-Rex: 〚small〛 ▹sometimes they curse first◃"
@@ -2417,6 +2463,19 @@
         "Checkbox: Yes!",
         "Checkbox: No.",
         "Checkbox: Who is this, I don't recognize the from address at all"
+      ]
+    }
+  },
+  "b597d942d5ebf5b1e5cf9e538f48dcab": {
+    "comic_id": 1663,
+    "file_name": "comic2-1689.png",
+    "panels": {
+      "3": [
+        "T-Rex: So while still working out the particulars, they'd publish the basics of their ideas IN SECRET CODE. Robert Hooke's published his law of elasticity as \"ceiiinosssttuv\". And Newton wrote a letter to his chum Leibniz where he was all \"6accdæ13eff7i3l9n4o4qrr4s8t12ux\", which uses numbers to represent how often the letters appear, and which, unencoded, is the Latin version of, oh, I don't know, HIS FUNDAMENTAL THEORY OF CALCULUS??"
+      ],
+      "6": [
+        "T-Rex: Indeed! In comparison, being an anagramist today is totally boring, as nobody is encoding fundamental discoveries into word games anymore.",
+        "T-Rex: 12t10o8e7a6l6n6u5i5s5d5h5y3I3r3fbbwwkcmvg"
       ]
     }
   },
@@ -2522,6 +2581,15 @@
         "Clock: 9:30 PM",
         "T-Rex: Utahraptor, hi! It's me, T-Rex! On speakerphone!!",
         "T-Rex: Listen, my tummy hurts"
+      ]
+    }
+  },
+  "ea409ea44f0d1ac2774c9ac63bd7e021": {
+    "comic_id": 1743,
+    "file_name": "comic2-1767.png",
+    "panels": {
+      "5": [
+        "T-Rex and Utahraptor: -AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA-"
       ]
     }
   },
@@ -4090,7 +4158,7 @@
       "6": [
         "Narrator: BUT IN TRUTH:",
         "Off panel: T-REX, the world is under attack! Only you can save us!",
-        "〚T-Rex's speech is partly obscured his own thought bubbles〛",
+        "〚T-Rex's speech is partly obscured his own thought balloons〛",
         "T-Rex: This will take",
         "T-Rex: 〚thinks〛 lunch",
         "T-Rex: supreme focus",
@@ -4424,7 +4492,7 @@
     "file_name": "comic2-4134.png",
     "panels": {
       "6": [
-        "〚Utahraptor's speech is partly obscured by T-Rex's thought bubbles〛",
+        "〚Utahraptor's speech is partly obscured by T-Rex's thought balloons〛",
         "Utahraptor: …ch as the rich becoming functionally immortal … speed! Not to mention … fact that all computati…uld slow down as lightspee… which could also aff… our …peed of thought … it down i… simply … explore what ex… would be like if …hat we take for",
         "T-Rex: 〚thinks〛 Dang! This was MY question and Utahraptor's talking all over my answer!",
         "T-Rex: 〚thinks〛 If he's so smart why doesn't HE open other people's mail??"
