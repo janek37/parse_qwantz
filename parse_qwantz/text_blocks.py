@@ -70,7 +70,11 @@ class TextBlock:
                     next_words = re.match(r'[^].,!?"\' :;)/]*', row_content).group()
                     if not disambiguate_hyphen(last_words.split("-"), next_words.strip("-").split("-")):
                         char_boxes.pop()
-                elif not (row_content.startswith("+") and row_content[1] != " "):
+                elif (
+                    not (row_content.startswith("+") and row_content[1] != " ")
+                    and len(set(cb.char.lower() for cb in char_boxes[-2:]) | set(row_content[:2].lower())) != 1
+                    and {char_boxes[-1].char.lower()} | set(row_content[:2].lower()) != {'h'}
+                ):
                     char_boxes.append(CharBox.space(is_bold=char_boxes[-1].is_bold, is_italic=char_boxes[-1].is_italic))
             char_boxes.extend(row_char_boxes)
 
