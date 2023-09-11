@@ -165,6 +165,7 @@ def get_text_line(start: Pixel, image: SimpleImage, font: Font) -> tuple[TextLin
         len(char_boxes) == 1 and not first_char.isalnum()
         and first_char not in '!?$'
         and not (first_char == '-' and font.group == 'LC13')
+        and not (first_char == '/' and font.name == "Regular" and not is_bold and not is_italic)
     ):
         return
     if len(char_boxes) >= 2 and all(char_box.char in " \",.'‘’“”|-/·•" for char_box in char_boxes):
