@@ -3160,6 +3160,15 @@
       ]
     }
   },
+  "194fa4d5620d6bcce7f1963780eb8364": {
+    "comic_id": 2345,
+    "file_name": "comic2-2356.png",
+    "panels": {
+      "4": [
+        "Utahraptor: goodOneFunnyJoke.version4.updated.usethisoneALTERED.psd!"
+      ]
+    }
+  },
   "cfe27867e1304965bcd8e183eb6196ce": {
     "comic_id": 2364,
     "file_name": "comic2-2375.png",
@@ -3507,6 +3516,16 @@
       ]
     }
   },
+  "9e215254383fef6794bba05ca2ca2105": {
+    "comic_id": 2667,
+    "file_name": "comic2-2677.png",
+    "panels": {
+      "5": [
+        "T-Rex: TIP: To find results from other timelines, use \"reality:onewheresheneverleft\". You may encounter results where phrases like \"cold\", \"can't breathe\", or \"I'm hungry I'M HUNGRY\" are repeated madly, desperately.",
+        "Utahraptor: This is a side-effect of our proprietary search process and should be ignored."
+      ]
+    }
+  },
   "389a0c44d861cc6e5fd4195c7b517a06": {
     "comic_id": 2678,
     "file_name": "comic2-2688.png",
@@ -3622,6 +3641,17 @@
         "Banner: GRAPEFRUITS: TOTALLY AWESOME",
         "T-Rex: Also!",
         "T-Rex: GARDENING: Uh, WAY more badass than I was led to believe??"
+      ]
+    }
+  },
+  "d6935437988e7416278964f531bad7e4": {
+    "comic_id": 2821,
+    "file_name": "comic2-2831.png",
+    "panels": {
+      "6": [
+        "Narrator: THIS HAS BEEN",
+        "Narrator: \"REALISTIC TALES OF INTROSPECTION\"",
+        "Narrator: THE ONLY COMIC WRITTEN BY AND FOR INTROVERTS"
       ]
     }
   },
