@@ -72,7 +72,7 @@ class TextBlock:
                         char_boxes.pop()
                 elif (
                     not (row_content.startswith("+") and row_content[1] != " ")
-                    and not (len(char_boxes) > 1 and char_boxes[-1].char == "/" and char_boxes[-2].char != " ")
+                    and not (len(char_boxes) > 1 and char_boxes[-1].char in "/|" and char_boxes[-2].char != " ")
                     and len(set(cb.char.lower() for cb in char_boxes[-2:]) | set(row_content[:2].lower())) != 1
                     and {char_boxes[-1].char.lower()} | set(row_content[:2].lower()) != {'h'}
                 ):
