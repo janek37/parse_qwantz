@@ -7,7 +7,7 @@ from parse_qwantz.text_lines import TextLine
 
 logger = logging.getLogger()
 
-MULTI_OFF_PANEL = Character.from_name("Multiple off-panel voices")
+MULTI_OFF_PANEL = Character.from_name("multiple off-panel voices")
 
 
 def match_blocks(

@@ -30,7 +30,7 @@ class Character:
         return cls(name, ())
 
 
-OFF_PANEL = Character.from_name("Off panel")
+OFF_PANEL = Character.from_name("off panel")
 
 Target = TextLine | Character
 
