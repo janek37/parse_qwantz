@@ -155,7 +155,10 @@ def intersects(line: Line, end_no: int, segment: Line) -> bool:
         return False
     # (x0, y0) + t (x1 - x0, y1 - y0)
     # -> for which t is it on the ab line?
-    t = ((ax - x0)*(by - ay) - (ay - y0)*(bx - ax)) / ((x1 - x0)*(by - ay) - (y1 - y0)*(bx - ax))
+    denominator = (x1 - x0)*(by - ay) - (y1 - y0)*(bx - ax)
+    if denominator == 0:
+        return True
+    t = ((ax - x0)*(by - ay) - (ay - y0)*(bx - ax)) / denominator
     return t > 1
 
 
