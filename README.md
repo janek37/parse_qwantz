@@ -35,7 +35,7 @@ T-Rex: Problem(s)?
 
 Panel 6:
 T-Rex: My only problem(s) have to do with you interrupting my stomping!
-T-Rex: (small) crazy utahraptor!
+T-Rex: 〚small〛 crazy utahraptor!
 ```
 
 You can also call it with
@@ -51,11 +51,21 @@ The argument can also be a directory path instead of a file path. In such case t
 
 By default, the program outputs to stdout and logs to stderr. With this option, when processing file `image_name.png` it will output to `OUTPUT_DIR/image_name.txt` and log to `OUTPUT_DIR/image_name.log`.
 
+## Conventions
+
+Bold and italics are marked with "◖◗" and "▹◃" respectively. This is to avoid ambiguity which may result from using characters like "*" or "_".
+
+All descriptions are in "〚〛" brackets. Each line that isn't just description starts from a "character" name followed by a colon. That "character" might be one of the actual characters, but also "Narrator", "Off panel", "Banner", "Book cover" etc.
+
+When some text in a panel is obscured but can be reconstructed, it's in "⦃⦄" braces. So far this applies only to 2 comics: #59 and #61.
+
+When some text in a panel is obscured and not reconstructed, it's replaced either by the special "…" character, or a description of how it's obscured in "〚〛" brackets.
+
 ## Notes
 
-This program will not work on all DC strips. [Some](https://qwantz.com/?comic=12) [are](https://qwantz.com/?comic=45) [fairly](http://qwantz.com/?comic=70) [non-standard](https://qwantz.com/?comic=31) (including [the mirror universe](https://qwantz.com/?comic=35), [Morris the bug](https://qwantz.com/index.php?comic=674), [guest comics](https://qwantz.com/?comic=1486) etc.), while others might just not work correctly for more or less apparent reasons: there might be warning or error messages, or it might just generate an inaccurate transcript silently. It should however work correctly for most comics.
+This program still does not work on all DC strips, but at this point it should work correctly on pretty much all "standard" strips and some less-standard ones (thanks to the system of overrides). Eventually all existing strips should work, including the guest comics, with updates for new comics coming out regularly.
 
-This project is in a rather early stage, and while there are no plans to support the mirror universe or [arbitrary images](https://qwantz.com/?comic=2099), there still might be some new features and some optimization.
+After all comics are working, I might add some other features, like generating SVG images.
 
 ## Running Tests
 
@@ -67,4 +77,4 @@ To run tests, run the following command:
 
 ## Acknowledgments
 
-This program would not be possible without the wonderful comics by Ryan North! Thanks, Ryan, and congratulations on the 20th anniversary of your comics! Btw [the anniversary comic](https://qwantz.com/?comic=4005) will totally not work with this script, haha!
+This program would not be possible without the wonderful comics by Ryan North! Thanks, Ryan, and congratulations on the 20th anniversary of your comics! Btw [the anniversary comic](https://qwantz.com/?comic=4005) will totally not work with this script, haha! (at least until I add an override)
