@@ -285,10 +285,12 @@ def main(
     if output_dir:
         sys.stdout = (output_dir / (input_file_path.stem + '.txt')).open('w')
         logging.basicConfig(filename=output_dir / (input_file_path.stem + '.log'), filemode='w', force=True)
-    for panel_no, panel in enumerate(parse_qwantz(image, debug=debug, log_to_file=bool(output_dir)), start=1):
+    for panel_no, lines in enumerate(parse_qwantz(image, debug=debug, log_to_file=bool(output_dir)), start=1):
         print(f'Panel {panel_no}:')
-        for line in panel:
+        for line in lines:
             print(line)
+        if not lines:
+            print("〚no text〛")
         if panel_no != 6:
             print()
     if show_boxes:
