@@ -145,6 +145,31 @@
       ]
     }
   },
+  "40114fdfc60b1a94a6642da6fde7af5f": {
+    "comic_id": 26,
+    "file_name": "comic2-37.png",
+    "panels": {
+      "1": [
+        "Text: Sept. 6th, 1999: \"A new series of fossilized dinosaur tracks was discovered today near Drumheller, in Alberta, Canada. The tracks appear to be those of a fully grown"
+      ],
+      "2": [
+        "Text: Tyrannosaurus Rex"
+      ],
+      "3": [
+        "Narrator: but paleontologists are confused as to the origin of what appear to be fossilized wood fragments contained within, and scattered just beneath, the footprint record."
+      ],
+      "4": [
+        "Narrator: These remarkable tracks are joined by those of an adult Utahraptor, who apparently stopped and"
+      ],
+      "5": [
+        "Narrator: stood face to face with the T-Rex (one almost wants to speculate that the two were engaged in sparkling conversation) before returning the way he came..."
+      ],
+      "6": [
+        "Narrator: The tracks seem well-travelled, as if these two dinosaurs met on a daily basis.\"",
+        "Narrator: -Reuters News Service"
+      ]
+    }
+  },
   "aee12a572416029fc4d16b830069763e": {
     "comic_id": 28,
     "file_name": "comic2-38.png",
@@ -159,6 +184,82 @@
         "T-Rex: Yes, I am a new, more thoughtful dinosaur.",
         "Utahraptor: Really! How much thought did you put into stepping on that woman just now?*",
         "Footnote: * last panel! -Ed."
+      ]
+    }
+  },
+  "4f38081f8b5fd7d4f179299a2508662e": {
+    "comic_id": 29,
+    "file_name": "comic2-39.png",
+    "panels": {
+      "1": [
+        "Heading: 〚white on red background〛 CHOOSE YOUR OWN ADVENTURE",
+        "Narrator: YOU'RE THE STAR OF THE STORY! CHOOSE FROM 2 POSSIBLE ENDINGS.",
+        "Heading:  〚large red fancy font〛 DINOSAURUS REX"
+      ],
+      "2": [
+        "Text: You are a T-Rex, undisputed King of the Dinosaurs. You are out stomping when you see a log cabin!",
+        "Text: ◖Turn to panel 2.◗",
+        "Panel number: 1"
+      ],
+      "3": [
+        "Text: As you walk up to the cabin, you notice there are other dinosaurs here. Nearby there is a small Dromiceiomimus, watching. Off in the distance you see what looks like a large Utahraptor. Utahraptors were the natural enemies of your species. A meeting might lead to conflict.",
+        "Text: ◖• Do you want to try your luck in an encounter with the Utahraptor? Turn to panel 4.◗",
+        "Text: ◖• If you think it's better to play it safe, turn to panel 3.◗",
+        "Panel number: 2"
+      ],
+      "4": [
+        "Text: You turn to run away, but the Utahraptor chases you! Luckily, you end up becoming friends and live happily ever after.",
+        "Text: ◖THE END◗",
+        "Panel number: 3"
+      ],
+      "5": [
+        "Text: As you approach, you realize that the Utahraptor is friendly! The two of you begin a conversation. Things are going well until he starts to point out flaws in your philosophical beliefs!",
+        "Text: ◖• No matter, I'll shout something clever after him. Turn to panel 5.◗",
+        "Text: ◖• Forget it! I'm leaving. Escape to panel 3.◗",
+        "Panel number: 4"
+      ],
+      "6": [
+        "Text: Before you can say anything, a giant meteor strikes the earth! The impact wipes out 65% of all life on the planet, including your own.",
+        "Text: Better luck next time!",
+        "Text: ◖THE END◗",
+        "Panel number: 5"
+      ]
+    }
+  },
+  "1579bbc75a853a7d42407ac8db54518d": {
+    "comic_id": 30,
+    "file_name": "comic2-40.5.png",
+    "panels": {
+      "1": [
+        "Heading: 〚white on red background〛 CHOOSE YOUR OWN ADVENTURE",
+        "Narrator: YOU'RE THE STAR OF THE STORY! CHOOSE FROM ANY POSSIBLE ENDING.",
+        "Heading:  〚large red fancy font〛 FREE WILL"
+      ],
+      "2": [
+        "Text: Another beautiful day! Today is a good day you think for some new variety, some new excitement in your life!",
+        "Text: ◖Turn to panel 2.◗",
+        "Panel number: 1"
+      ],
+      "3": [
+        "Text: You are hit with the sinking realization that you're in a rut: everyday, you do the same old things. There must be more to living than this!",
+        "Text: You vow to start making changes in your life, today. You can make the big decisions. You can make the small decisions. You are in control.",
+        "Text: ◖Turn to panel 3.◗",
+        "Panel number: 2"
+      ],
+      "4": [
+        "Text: You are trying to think of some way you can change your life when an old friend of yours happens to stop by. ◖Turn to panel 4.◗",
+        "Panel number: 3"
+      ],
+      "5": [
+        "Text: You chat for a while. You tell him of your day; he tells you about his. It's a pleasant way to pass the time, and soon you have forgotten all about your decision to effect some change in your daily routine.",
+        "Text: ◖Turn to panel 5.◗",
+        "Panel number: 4"
+      ],
+      "6": [
+        "Text: Only later, in the evening, do you realize that you've spent another day stuck in your self-imposed rut! Another day, down the drain!",
+        "Text: Damn. Well, there's nothing you can do about that now. Tomorrow is another day, and you'd better get to bed.",
+        "Text: ◖Have a nice rest, then turn to panel 1.◗",
+        "Panel number: 5"
       ]
     }
   },
@@ -234,6 +335,58 @@
       ],
       "5": [
         "Evil Utahraptor: And then afterwards we'll discuss philosophy or something like that, OK?"
+      ]
+    }
+  },
+  "3452f0d253b6704076eb68fc206e5360": {
+    "comic_id": 42,
+    "file_name": "comic2-52.png",
+    "panels": {
+      "1": [
+        "Game title screen: 〚Sierra logo〛 SIERRA® PRESENTS",
+        "Game title screen: DINO QUEST I"
+      ],
+      "2": [
+        "Narrator: You have arrived in the time of the dinosaurs! Looking around, you see a large green T-Rex. He seems excited!"
+      ],
+      "3": [
+        "Input: >take dinosaur",
+        "Narrator: You can’t take that",
+        "Input: >look",
+        "Narrator: You see the T-Rex, stomping a house. There is a Dromiceiomimus here.",
+        "Input: >take dromoceimiumus",
+        "Narrator: I don’t see that here.",
+        "Input: >take dromociemoious",
+        "Narrator: I don’t see that here.",
+        "Input: >take other dinosaur",
+        "Narrator: I don’t see that here.",
+        "Input: >god damn",
+        "Narrator: I don’t know how to \"god damn\".",
+        "Input: >go north"
+      ],
+      "4": [
+        "Narrator: The T-Rex chases you. Be careful! There is a Utahraptor here.",
+        "Input: >hide from t rex"
+      ],
+      "5": [
+        "Narrator: Before you can do anything, you are stepped upon! You have died.",
+        "Input: >talk to t rex",
+        "Narrator: You cannot do anything because you are dead. All you can do is SAVE, RESTORE or QUIT.",
+        "Input: >quit"
+      ],
+      "6": [
+        "Narrator: Are you sure you want to quit? (Y/N)",
+        "Input: >y",
+        "Narrator: You scored 0 points out of a possible 158. Thank you for playing Sierra’s DINO QUEST!",
+        "Input: C:\\SIERRA\\DQ1\\> del *.*",
+        "Output: 31 file(s) deleted.",
+        "Input: C:\\SIERRA\\DQ1\\> cd..",
+        "Input: C:\\SIERRA\\> cd..",
+        "Input: C:\\> cd telix",
+        "Input: C:\\TELIX\\> cd dl",
+        "Input: C:\\TELIX\\DL\\> del DQ1.zip",
+        "Output: 1 file(s) deleted.",
+        "Prompt: C:\\TELIX\\DL\\>_"
       ]
     }
   },
@@ -314,6 +467,34 @@
         "Narrator: TWO WEEKS LATER...",
         "T-Rex: 〚large〛 !",
         "T-Rex: SHIT!"
+      ]
+    }
+  },
+  "df58f813dba4aba4f1cccbef1240d91f": {
+    "comic_id": 54,
+    "file_name": "comic2-64.png",
+    "panels": {
+      "1": [
+        "Narrator: A Hiftory of Dinofaurs",
+        "Narrator: Being a Survey of the Fielde, tolde with equal parts Flourish and Pædogogy, epitomized by a plain and familiar Manner, without an unnecessary Mixture of useless Curiosities and needless Repetitions.",
+        "Price tag: [Price 6d.]"
+      ],
+      "2": [
+        "Narrator: Dinosaurs, or Man-Lizards, to-day knowne as G-d’s Mistake, had assum’d Domain over all the Worlde, including the dark Lands of China-Men."
+      ],
+      "3": [
+        "Narrator: By no means Fit for their Purpose as Kings and Queens, the Dinosaurs spread Fear and Incontenience, along with several similar Inconveniencies, which neither can be Described nor Understood without having first seen one of the Færsome beasts for oneself; thy Stars are indeed Fortunate, for in to-day’s Moderne Age, the only such Animale thy shall see is in a rare Wood-Cut or handsel Picture-Book, where thou art Protected from the joyn’d Devourment and Digestione by the Fictionality of the Beast in question.",
+        "Narrator: The plague of their Times, the Dinosaur was known for taking Plæsure in rendering one’s abode or Self flatten’d."
+      ],
+      "4": [
+        "Narrator: This being the Case, there was great room to Fear, for many chylds would not survive the certain Mischief done them by the Tyrannosaurus Rex, Utahed-Raptor, &c."
+      ],
+      "5": [
+        "Narrator: The stern voice of Science tells us that these Monstrosities, once having exhausted the Novelty of Death-giving, simply took it as a Matter-of-Course, and paid it little Attenshon, likely dedicating the remainder of their Faculities towards some Conversation and Jokery."
+      ],
+      "6": [
+        "Narrator: Being thus provided with a Compleat exposition of the Dinosaurs, take care, gentle Reader, that you do not deviate from the strait and Upright path set before you by our Father, lest you find thyself in the same Position as these Beasts, and there be no roome for you on the Ark.",
+        "Ornate frame: MDCCXLIX"
       ]
     }
   },
@@ -1086,6 +1267,21 @@
       ]
     }
   },
+  "26bac0f82464ee91d238ef772945a904": {
+    "comic_id": 783,
+    "file_name": "comic2-814.gif",
+    "panels": {
+      "6": [
+        "Narrator: WALKING HOME, T-REX HAS AN EVEN BETTER IDEA:",
+        "T-Rex: Oh man!!",
+        "〚T-Rex imagines a website〛",
+        "Website: 〚large pink〛 Dogs",
+        "Website: DOES ◖EVERYONE◗ LOVE DOGS???",
+        "Website: You can eat them but you shouldn't.",
+        "Website: 〚animated \"under construction\" image〛"
+      ]
+    }
+  },
   "c16d226f1bc26620c3bbb3af9776d6fb": {
     "comic_id": 784,
     "file_name": "comic2-815.png",
@@ -1331,6 +1527,30 @@
       ]
     }
   },
+  "fb26fab38438e50a30093f1592a68295": {
+    "comic_id": 963,
+    "file_name": "comic2-995-2.png",
+    "panels": {
+      "1": [
+        "Dating profile: Mom you're not allowed to read this okay? If you know how to stop mom from reading my profile please contact me ASAP!!"
+      ],
+      "2": [
+        "Dating profile: ◖Member Name:◗ T-Rex",
+        "Dating profile: ◖Member Description:◗ i meant to write t-sex there but it won't let me change it"
+      ],
+      "3": [
+        "Dating profile: Hello ladies! My name is T-Rex. I am a rad dude with a rad 'tude! I hope you were wanting to hear about my 'tude today because you just did!!",
+        "Dating profile: Here is a picture of me with my friend Dromiceiomimus. We dated and are still really close! I hope you are cool with that. SHE IS A VERY IMPORTANT PERSON IN MY LIFE. I HOPE YOU ARE STILL COOL WITH THAT. I WILL CALL HER SOMETIMES."
+      ],
+      "4": [
+        "Dating profile: Here are pics of me and my friends. Wait the thing said I have to fill these out! ◖In my bedroom you will find:◗ UNPARALLELED PLEASURE??"
+      ],
+      "5": [
+        "Dating profile: ◖More about what I'm looking for:◗ i want to die in a bog.",
+        "Dating profile: no, it’s NOT okay to contact this member about extra-marital affairs"
+      ]
+    }
+  },
   "1877cedb552fb7236cabc5cd15f51bc2": {
     "comic_id": 969,
     "file_name": "comic2-1001.png",
@@ -1348,8 +1568,8 @@
         "〚a business card with Comic Sans text〛",
         "Business card: T-REX",
         "Business card: “Quis custodiet ipsos custodes!?!”",
-        "Business card: PHONE: 416-595",
-        "Business card: EMAIL: yes ple",
+        "Business card: PHONE: 416-595…",
+        "Business card: EMAIL: yes ple…",
         "Business card: Occupation: BEING TOPLESS",
         "Business card: Interests: BEING TOPLESS",
         "Business card: (i am a DUDE you can hire if you can't finish at an ‘All U Can Eat’ restaurant!)"
@@ -1673,14 +1893,67 @@
       ]
     }
   },
+  "8cf0c1efdd227d89f01e8e170cbb563b": {
+    "comic_id": 1084,
+    "file_name": "comic2-1111.png",
+    "panels": {
+      "1": [
+        "Heading: A MYSTERY STORY",
+        "Text: Once upon a time there was guy who \"knocked over\" (broke into) a bank and stole some money. Who did it? It was a mystery. Nobody knew the answer. They all asked each other who \"knocked over\" the bank but nobody knew for sure."
+      ],
+      "2": [
+        "Text: It was this guy. He did it. T-Rex. This guy."
+      ],
+      "3": [
+        "Text: But the bank was evil so it was okay to steal from it. It was justified. It's like if you stole from Hitler. Would that be so bad? Hitler would be mad if you stole from him. But, he's Hitler. There are a lot of moral grey areas in mystery stories.",
+        "Text: Most banks aren't even evil but this one was pretty bad. Imagine the worst things you can do. I will tell you right now that this bank did them five times before breakfast."
+      ],
+      "4": [
+        "Text: There was a cop called Utahraptor who saw T-Rex and he chased him on foot. It was exciting. Where would the chase lead to now?"
+      ],
+      "5": [
+        "Text: The chase was on motorbikes for a while and then on skateboards. Then they chased on hang gliders. A bystander told his wife it was the best chase ever and she knew it was true. They were chasing on foot again when it ended. Utahraptor arrested T-Rex, but T-Rex explained how the bank was evil. The cop thought now I am torn between the law and what I believe is right. What do I do now! Utahraptor let T-Rex go with a warning. T-Rex said thanks I have learned my lesson. The mystery was solved, except for one part: where would the spirit of adventure take T-Rex next??"
+      ]
+    }
+  },
   "cc78bf754215d2e559772eb9c61a1c26": {
     "comic_id": 1087,
     "file_name": "comic2-1114.png",
     "panels": {
       "6": [
-        "Movie Poster: THE ◖GUY◗ WHO KEPT TAKING ◖BITES◗ OUT OF ◖ANIMALS◗",
-        "Movie Poster: Once In a Lifetime Comes a Movie (In The German Expressionist Tradition) In Which A Dinosaur Takes Cartoony Bites out of Cows and Then Tries to Avoid Punishment for That.™",
-        "Movie Poster: “◖BITINGLY◗ hilarious!” --Everyone??"
+        "Movie poster: THE ◖GUY◗ WHO KEPT TAKING ◖BITES◗ OUT OF ◖ANIMALS◗",
+        "Movie poster: Once In a Lifetime Comes a Movie (In The German Expressionist Tradition) In Which A Dinosaur Takes Cartoony Bites out of Cows and Then Tries to Avoid Punishment for That.™",
+        "Movie poster: “◖BITINGLY◗ hilarious!” --Everyone??"
+      ]
+    }
+  },
+  "09ce2e5b1527d5f8c1d2e1c6a3d7d513": {
+    "comic_id": 1088,
+    "file_name": "comic2-1115.png",
+    "panels": {
+      "1": [
+        "Movie poster: THE ◖GUY◗ WHO ◖STILL◗ KEPT TAKING ◖BITES◗ OUT OF ◖ANIMALS◗",
+        "Movie poster: This Time... The Farmer Is More Exasperated At All The Bites! The Sequel To The Movie That You Saw Before."
+      ],
+      "3": [
+        "Movie poster: THE ◖GUY◗ WHO KEPT TAKING ◖BITES◗ OUT OF ◖ANIMALS◗ - IN ◖LOVE◗",
+        "T-Rex: I love biting animals.",
+        "Dromiceiomimus: I love - you!",
+        "Movie poster: What a great romantic comedy! Will they get together at the end? ▹...What if there was a musical montage?...◃"
+      ],
+      "4": [
+        "Movie poster: THE ◖TWO◗ GUYS WHO KEPT TAKING ◖BITES...◗ OUT OF ◖CRIME!◗",
+        "Movie poster: They Are Cops Now, Okay",
+        "Movie poster: Direct to VHS"
+      ],
+      "5": [
+        "Movie poster: THE TWO BITEY GUYS DISCUSS ◖EARLY APPROACHES TOWARDS LAISSEZ-FAIRE CAPITALISM◗",
+        "Movie poster: “Five stars... out of a possible FOUR!”",
+        "Movie poster: “I liked all the jump cuts”"
+      ],
+      "6": [
+        "Movie poster: THE BITEY GUY THAT YOU LIKED FROM BEFORE IS BACK ONLY THIS TIME HE HAS A SEXY LESBIAN FRIEND",
+        "Movie poster: ◖THE MOVIE◗"
       ]
     }
   },
@@ -1702,6 +1975,67 @@
         "T-Rex: I must make this dream come true! But HOW?",
         "Dromiceiomimus: What if you made your house spiritually scary, T-Rex? Like, instead of a corpse, a mannequin of a woman who is realizing that she has married badly.",
         "T-Rex: Not bad! And I could have a spooky tape, but instead of chainsaws and screams, I'd have the voice of a man quietly dictating memories of his youth, knowing Alzheimer’s will rob him of them soon."
+      ]
+    }
+  },
+  "5ff2bced525f2117436cc91c1862aa28": {
+    "comic_id": 1105,
+    "file_name": "comic2-1132.png",
+    "panels": {
+      "2": [
+        "Book cover: HE'S JUST NOT THAT INTO YOUR RAMBLEY STORIES",
+        "Book cover: they go on for SO long and we all get tired"
+      ],
+      "3": [
+        "Book cover: HE'S JUST NOT THAT INTO WOMEN WHO REMIND HIM OF HIS MOTHER",
+        "Book cover: Personality-Wise? Maybe It's Your Body."
+      ],
+      "4": [
+        "Book cover: HE'S A TOTAL JERK BUT YOU GET MAD AT US IF WE SAY THAT",
+        "Book cover: so this book is about dinosaurs instead",
+        "Book cover: happy anniversary"
+      ],
+      "5": [
+        "Book cover: HE BROKE UP WITH YOU BECAUSE HE DIDN'T WANT TO BE WITH YOU",
+        "Book cover: he didn't dial the wrong number and then break up with you because he thought you were somebody else with the same name that he no longer wanted to be cheating on you with, is the thing"
+      ],
+      "6": [
+        "Book cover: YOUR BODY NO LONGER EXCITES HER",
+        "Book cover: the book!"
+      ]
+    }
+  },
+  "c38fab14570649ea087802d52f5850f5": {
+    "comic_id": 1106,
+    "file_name": "comic2-1133.png",
+    "panels": {
+      "1": [
+        "Book cover: SHE'S JUST NOT THAT INTO YOU, MAN",
+        "Book cover: Probably She's Attracted To Men Who Are Different From You In Some Way",
+        "Book cover: What The Heck, Right?",
+        "Book cover: who the heck does she think she is"
+      ],
+      "2": [
+        "Book cover: HE'S JUST NOT THAT INTO YOU...R TASTE IN MUSIC",
+        "Book cover: don't worry DON'T WORRY everything else is FINE"
+      ],
+      "3": [
+        "Book cover: IN MY LAST BOOK I SAID HE'S JUST NOT INTO YOUR TASTE IN MUSIC BUT WHAT I ACTUALLY WANTED TO TELL YOU WAS THAT HE'S - HE'S GREAT",
+        "Book cover: he's a real catch and um, you should get married",
+        "Book cover: \"tie the knot\"",
+        "Book cover: ha ha"
+      ],
+      "4": [
+        "Book cover: THE MAN WHO KISSED A WOMAN BECAUSE HIS FRIEND AT WORK KEPT TEASING HIM ABOUT NOT KISSING ANYONE FOR A WHILE",
+        "Book cover: sure showed HIM"
+      ],
+      "5": [
+        "Book cover: HE DOESN'T CALL BECAUSE IT'S LONG DISTANCE AND HE HAS CRIPPLING DEBT",
+        "Book cover: you know those stock photos of a man with scissors cutting up his credit cards because he has too much debt? that was him!",
+        "Book cover: THAT DOES NOT ERASE YOUR DEBT, MAN WITH SCISSORS"
+      ],
+      "6": [
+        "Book cover: MY LAST BOOK WAS MORE ABOUT FINANCIAL ADVICE THAN RELATIONSHIPS"
       ]
     }
   },
@@ -1727,10 +2061,10 @@
     "file_name": "comic2-1139.png",
     "panels": {
       "6": [
-        "Movie Poster: On a PLANET where INTERROGATION is BANNED",
-        "Movie Poster: One “BY THE BOOKS” COP and one WISE-CRACKING CRIMINAL have to TEAM UP to CATCH OTHER CRIMINALS",
-        "Movie Poster: they eventually UNDERSTAND each other and HUG",
-        "Movie Poster: also the cop is a DINOSAUR we should have put that on the TOP of the POSTER"
+        "Movie poster: On a PLANET where INTERROGATION is BANNED",
+        "Movie poster: One “BY THE BOOKS” COP and one WISE-CRACKING CRIMINAL have to TEAM UP to CATCH OTHER CRIMINALS",
+        "Movie poster: they eventually UNDERSTAND each other and HUG",
+        "Movie poster: also the cop is a DINOSAUR we should have put that on the TOP of the POSTER"
       ]
     }
   },
@@ -1846,6 +2180,42 @@
       ],
       "3": [
         "〚T-Rex imagines himself theatrically promoting the singing frog as in the cartoon. Dollar signs are around his head〛"
+      ]
+    }
+  },
+  "88545341b77ee64b4b640abc295ac669": {
+    "comic_id": 1169,
+    "file_name": "comic2-1196.png",
+    "panels": {
+      "2": [
+        "T-Rex's mind: Do I want to go swimming?",
+        "Radio button: Yes",
+        "Radio button: No"
+      ],
+      "3": [
+        "T-Rex's mind: Do I want to go swimming?",
+        "Radio button: Yes",
+        "Radio button: No",
+        "Radio button: Maybe, but who's going? I don't want to go swimming if that guy from high school who made fun of me at the beach is there.",
+        "Radio button: Hah hah, but what if he's really dumb looking now? Hah hah hah!",
+        "Radio button: 〚selected〛 \"GREETINGS! Your face is now STUPID!!\"",
+        "Radio button: Hah hah hah!",
+        "Radio button: Sweet."
+      ],
+      "4": [
+        "T-Rex's mind: Wait, my list doesn't make sense. The responses don't follow from the question!",
+        "Radio button: 〚selected〛 It's cool",
+        "Utahraptor: T-Rex?"
+      ],
+      "5": [
+        "Utahraptor: What the heck, T-Rex? I invite you out a'swimmin, and you get a far-away look in your eyes and walk away?",
+        "T-Rex's mind: Aw darn, I totally did that. What should I do?",
+        "Radio button: 〚selected〛 Apologize",
+        "Radio button: 〚selected〛 Make a mental list",
+        "Radio button: 〚selected〛 Add small tasks so that accomplishment is EASY"
+      ],
+      "6": [
+        "Radio button: 〚selected〛 Radio buttons don't actually work like this"
       ]
     }
   },
@@ -2244,6 +2614,15 @@
       "6": [
         "T-Rex: And that brings us to today's Proof We're Not Living In The Best Of All Possible Worlds!",
         "Parchment scroll: “None of us are friends with Fartnoise Fartnoise Junior”"
+      ]
+    }
+  },
+  "0db5e7872c7db5a2e84f636cd2e532ab": {
+    "comic_id": 1530,
+    "file_name": "comic2-1551.gif",
+    "panels": {
+      "6": [
+        "T-Rex: 〚animated tooth sparkle〛"
       ]
     }
   },
@@ -2704,6 +3083,18 @@
       ]
     }
   },
+  "43e506fb79a905e774530c6be28e75d5": {
+    "comic_id": 1908,
+    "file_name": "comic2-1919.gif",
+    "panels": {
+      "6": [
+        "Off panel: A British military officer's servant was called this, which originally meant \"a man in charge of a horse and its load\".",
+        "T-Rex: \"Dr. Horseload\"?",
+        "Off panel: The word, my friend, is \"batman\". THE WORD \"BATMAN\" ITSELF COMES FROM HORSES.",
+        "T-Rex: 〚large light-blue animated sparkly letters〛 WHATTT"
+      ]
+    }
+  },
   "81381dc023c35a0b2d7629eb58f7406b": {
     "comic_id": 1910,
     "file_name": "comic2-1921.png",
@@ -2907,6 +3298,77 @@
         "T-Rex: 〚stops daydreaming〛",
         "T-Rex: Huh!",
         "T-Rex: There's PROBABLY a downside to this that I'm not seeing?"
+      ]
+    }
+  },
+  "5b8037e9406095f15d7f64515c64c587": {
+    "comic_id": 2086,
+    "file_name": "comic2-2097.png",
+    "panels": {
+      "1": [
+        "Dating profile: My self-summary",
+        "Dating profile: Okay so I made a profile before but nobody dated me??? It's weird I think there might be a bug on the website."
+      ],
+      "2": [
+        "Dating profile: What I'm doing with my life",
+        "Dating profile: Hah hah hah NEXT"
+      ],
+      "3": [
+        "Dating profile: First thing people usually notice about me",
+        "Dating profile: is how I hacked the website to put pictures of me and my friends in the background! Here is what's happening at Dating Site Headquarters right now: OH NO T-REX IS AN ULTRA HACKER !!! BUT DID YOU KNOW THAT IN HACKING INTO THE KERNEL HE ALSO HACKED INTO... MY HEART <3 <3 <3",
+        "Dating profile: I didn't type that! The words just appeared! So you need to move fast to date me now I think!!"
+      ],
+      "4": [
+        "Dating profile: The six things I could never live without",
+        "Dating profile: ...is a sentence fragment; I found another bug"
+      ],
+      "5": [
+        "Dating profile: On a typical Friday night I am",
+        "Dating profile: hey utahraptor what do you do on a typical friday night? i need it to be awesome/sexy!!!!!",
+        "Dating profile: helloooo",
+        "Dating profile: utahraptor UTAH UTAH utahRAP .... tor",
+        "Dating profile: whoa wrong window! Okay how do you delete"
+      ],
+      "6": [
+        "Dating profile: You should message me if",
+        "Dating profile: What what what?? There's a checkbox for if you're looking for casual sex!! Oh man! Should I check it? Message me if you think I should check it!!",
+        "Dating profile: What if I checked it??",
+        "Dating profile: I wonder if it's ever been used"
+      ]
+    }
+  },
+  "5d02856a39138a648ba94e32b6b0442f": {
+    "comic_id": 2087,
+    "file_name": "comic2-2098.png",
+    "panels": {
+      "1": [
+        "Dating profile: My self-summary",
+        "Dating profile: My old profile didn't get me any dates from any of the genders, not even the ones I prefer! GUESS WHAT, JERKS??? Here's a new one, try to get more aroused by/at it this time!!"
+      ],
+      "2": [
+        "Dating profile: I'm really good at",
+        "Dating profile: Sorry I called you jerks everyone"
+      ],
+      "3": [
+        "Dating profile: I'm looking for love on a website because",
+        "Dating profile: HTTP is the most romantic of all the protocols! Wait this site uses HTTPS, does the \"s\" stand for \"sexy\"??",
+        "Dating profile: Okay nevermind I looked it up on Wikipedia and turns out the \"s\" stands for \"secure\"!",
+        "Dating profile: Okay nevermind I fixed Wikipedia! Now HTTPS stands for \"Hey There, That's Pretty Sexy!\", you can thank me later"
+      ],
+      "4": [
+        "Dating profile: On our fifth date I would like to",
+        "Dating profile: be respectful / touch you in some places"
+      ],
+      "5": [
+        "Dating profile: The most important quality in a romantic partner is",
+        "Dating profile: the one that would be rated above any other qualities; guys this seems PRETTY OBVIOUS",
+        "Dating profile: i don't know why this text box is so big"
+      ],
+      "6": [
+        "Dating profile: In a sexual partner I look for",
+        "Dating profile: Explicit oral consent, ▹ladies!!◃",
+        "Dating profile: whoah wait that sounds way creepy now that i've written it out",
+        "Dating profile: whooaaahhhhhhhhh"
       ]
     }
   },
@@ -3157,6 +3619,77 @@
         "Book cover: 〚red Back To The Future font〛 MY YEAR OF NAPPING ON PUBLIC TRANSPORT",
         "Book cover: “Sometimes I just get real sleepy is the thing”",
         "Book cover: 〚black Back to the Future font〛 BOOK CONTENT AND COVER DESIGN BY ME, 🠲T-REX🠰"
+      ]
+    }
+  },
+  "353f7169583f85e0f180a015b5e1aaf3": {
+    "comic_id": 2323,
+    "file_name": "comic2-2334.png",
+    "panels": {
+      "1": [
+        "Book cover: THE MAN WHO LISTENED TO “◖LAYLA◗” ON ENDLESS LOOP FOR ◖A WHOLE YEAR◗",
+        "Book cover: OR, “WHATEVER, I'VE DONE A BUNCH OF OTHER STUFF TOO, BUT THIS IS ALL ANYONE WANTS TO TALK ABOUT”",
+        "Book cover: BY ME, ◖T-REX◗"
+      ],
+      "2": [
+        "Book cover: MY YEAR OF CALLING EVERYONE I KNOW \"BRO\"",
+        "Book cover: (It Was ▹Awesome◃)",
+        "Book cover: by t-rex"
+      ],
+      "3": [
+        "Book cover: HOW TO GET OVER 50,000 FOLLOWERS ON twitter",
+        "Book cover: 〚light grey〛 is a terrible thing to want to buy a book about, what is WRONG with you, instead let's all read some memoirs about the year I spent eating fast food more often; it was fun but i honestly got pretty fat",
+        "Book cover: 〚with an arrow pointing at T-Rex〛 by this guy (good at social media)"
+      ],
+      "4": [
+        "Book cover: I SAW INSIDE THE WOMEN'S WASHROOM",
+        "Book cover: 🠲 there were lots more stalls than i was used to 🠰",
+        "Book cover: 〚with an arrow pointing at T-Rex〛 by t-rex",
+        "Book cover: 〚with an arrow pointing at Utahraptor〛 this is my friend"
+      ],
+      "5": [
+        "Book cover: ONE TIME A BIRD LANDED ON MY HAND, LIKE IN CARTOONS",
+        "Book cover: Nobody Saw It But I Swear It Happened",
+        "Book cover: I'm Serious. You Gotta Believe Me",
+        "Book cover: By T-Rex, ◖Credible Dinosaur◗"
+      ],
+      "6": [
+        "Book cover: I WROTE A BUNCH OF BOOKS THAT 〚large〛 NOBODY BOUGHT",
+        "Book cover: But I'm Still Writing Them Because ◖It's All I Know Anymore◗",
+        "Book cover: By Dr. T-Rex, MD."
+      ]
+    }
+  },
+  "a4899a3901ef60a24a454326ff8c55e1": {
+    "comic_id": 2326,
+    "file_name": "comic2-2337.png",
+    "panels": {
+      "1": [
+        "Computer: Hello, and thank you for downloading an internet! Perhaps you would like to look at pictures of cats?",
+        "Input: > yes"
+      ],
+      "2": [
+        "Computer: Here it is!",
+        "Input: > that is a picture of a dinosaur"
+      ],
+      "3": [
+        "Computer: Dinosaurs lived in the past, so they evolved into cats. Do you agree that evolution worked that way?",
+        "Input: > no"
+      ],
+      "4": [
+        "Computer: Here are two cats. Do you want to purchase this jpg of two cats for $100? I will type 'yes' for you.",
+        "Input: > yes"
+      ],
+      "5": [
+        "Input: > i didnt type in yes!! it already had it typed in!!!",
+        "Computer: I'm sorry, I don't understand you. Do you want this other jpg of two cats? Press any key if correct.",
+        "Input: >",
+        "Computer: Also, press no keys if correct. Thank you for your purchase!"
+      ],
+      "6": [
+        "Input: > sometimes the internet makes me sad",
+        "Computer: Congratulations! You’ve expressed the one sentiment everyone on the internet eventually shares!",
+        "Computer: As a reward, here is another friggin' jpg of a cat!!"
       ]
     }
   },
@@ -3476,6 +4009,43 @@
       ]
     }
   },
+  "a78b9ae5b86fa768bb97f6b4a62b12e3": {
+    "comic_id": 2643,
+    "file_name": "comic2-2653.png",
+    "panels": {
+      "2": [
+        "Business card: 〚script font〛 Your Name",
+        "Business card: I like ◖dinosaurs◗!",
+        "Business card: but I work in ◖JOB UNRELATED TO DINOSAURS◗, whatever"
+      ],
+      "3": [
+        "Business card: 〚red Star Trek font〛 YOUR NAME'S BUSINESS CARD",
+        "Business card: 〚Star Trek font〛 a one-act play",
+        "Dromiceiomimus: Frig, I wish my computer could do a thing! I wish I had someone to program a computer for me!!",
+        "T-Rex: I will do that, but ONLY if you pay me.",
+        "Dromiceiomimus: Wow!! I want to pay you all the money.",
+        "Business card: 〚Star Trek font〛 P.S.: YOU'RE THE YELLOW DINOSAUR, I'M THE T-REX."
+      ],
+      "4": [
+        "〚a business card with a searing three-color gradient background〛",
+        "Business card: 〚Jokerman font with reversed vertical rainbow gradient〛 YOUR NAME",
+        "Business card: 〚Jokerman font〛 \"My Business Card Is Fun And Quirky, Just Like Me\"",
+        "T-Rex: 〚Comic Sans, purple〛 spork!",
+        "Utahraptor: 〚Jokerman font, purple〛 LOL!!!"
+      ],
+      "5": [
+        "Business card: Your Name.",
+        "T-Rex: I gave you this card because I thought you could do something for me. Just so we're absolutely clear: I hope to profit from this relationship.",
+        "Utahraptor: CAPITALISM"
+      ],
+      "6": [
+        "Business card: ◖ENEMY'S NAME◗",
+        "T-Rex: Heck, I'm way worse than ◖YOUR NAME◗! You should contact ◖YOUR NAME◗ instead and never contact me ever again. THANKS!",
+        "T-Rex: Also if you contact me I'll act confused, like I don't even know this card exists and was mailed out to every single person in my industry??",
+        "T-Rex: Hah hah"
+      ]
+    }
+  },
   "d7e1efc131d8b6294412112269623126": {
     "comic_id": 2656,
     "file_name": "comic2-2666.png",
@@ -3569,6 +4139,50 @@
         "Contract form: [ ] YES: I am ready to have kids!!",
         "Contract form: [ ] NO, and uh, maybe on second thought let's NOT have unprotected intercourse",
         "Contract form: 〚blank〛 SIGNATURE"
+      ]
+    }
+  },
+  "d94c9cbc65e2309a43b9683c9c82765b": {
+    "comic_id": 2730,
+    "file_name": "comic2-2740.png",
+    "panels": {
+      "1": [
+        "Game: WELCOME TO LIFE QUEST",
+        "Game: ENTER LOCATION:",
+        "Input: developed world"
+      ],
+      "2": [
+        "Game: ENTER ETHNICITY:",
+        "Input: dominant"
+      ],
+      "3": [
+        "Game: ENTER SEX:",
+        "Input: male",
+        "Game: ENTER GENDER:",
+        "Input: also male",
+        "Game: ENTER SEXUAL ORIENTATION:",
+        "Input: totally 100% straight",
+        "Game: YOU ARE PLAYING ON: EASY",
+        "T-Rex: Sweeeeet"
+      ],
+      "4": [
+        "Game: WELCOME TO LIFE QUEST II: AFTERLIFE QUEST",
+        "Game: ENTER SPECIES:",
+        "Input: ghost"
+      ],
+      "5": [
+        "Game: ENTER UNFINISHED BUSINESS:",
+        "Input: too horny",
+        "Game: YOU ARE PLAYING AS: HORNY GHOST",
+        "T-Rex and Utahraptor: Sweeeet"
+      ],
+      "6": [
+        "Game: LIFE QUEST ]I[: REINCARNATION QUEST",
+        "Game: YOUR CHARACTER HAS BEEN CREATED",
+        "Game: YOU ARE PLAYING AS: POO BUG",
+        "T-Rex: Aw dang, no!",
+        "Game: YOU ARE EATING: POO",
+        "T-Rex: No, NO"
       ]
     }
   },
@@ -4287,6 +4901,21 @@
     "panels": {
       "2": [
         "Sign: ASK PROFESSOR RELIGION"
+      ]
+    }
+  },
+  "b77c1b725e68e97db50c0515860c0dbd": {
+    "comic_id": 3521,
+    "file_name": "comic2-3523.gif",
+    "panels": {
+      "1": [
+        "T-Rex: God, which is the best bird?",
+        "God: I DUNNO 〚before〛 THEY'RE ALL PRETTY GOOD 〚after〛 PROBABLY KORI BUSTARD"
+      ],
+      "3": [
+        "God: I MADE THEM ALL 〚before〛 SO I'M PRETTY SURE THEY'RE ALL TIED FOR FIRST 〚after〛 AND I'M PRETTY SURE THE KORI BUSTARD IS BEST",
+        "T-Rex: Come on, tell me the REAL truth. Which one rules the most??",
+        "God: T-REX IF I MADE A BIRD THAT WAS BETTER THAN ANOTHER THEN THAT 〚before〛 OTHER BIRD WOULD BE LESS PERFECT WHICH IMPLIES I MADE A MISTAKE 〚after〛  FIRST BIRD WOULD BE THE KORI BUSTARD WHICH I LOVE MAKE NO MISTAKE"
       ]
     }
   },
