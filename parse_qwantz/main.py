@@ -286,7 +286,6 @@ def main(
         sys.stdout = (output_dir / (input_file_path.stem + '.txt')).open('w')
         logging.basicConfig(filename=output_dir / (input_file_path.stem + '.log'), filemode='w', force=True)
     for panel_no, lines in enumerate(parse_qwantz(image, debug=debug, log_to_file=bool(output_dir)), start=1):
-        print(f'Panel {panel_no}:')
         for line in lines:
             print(line)
         if not lines:

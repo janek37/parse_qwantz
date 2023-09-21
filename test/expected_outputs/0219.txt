@@ -1,19 +1,13 @@
-Panel 1:
 Narrator: DINOSAUR COMICS PRESENTS:
 Narrator: "ONE PAGE FROM 'ON THE ORIGIN OF SPECIES' BY CHARLES DARWIN"
 
-Panel 2:
 T-Rex: Any variation which is not inherited is unimportant for us.
 
-Panel 3:
 T-Rex: But the number and diversity of inheritable deviations of structure, both those of slight and those of considerable physiological importance, is endless. Dr. Prosper Lucas's treatise, in two large volumes, is the fullest and the best on this subject.
 
-Panel 4:
 Utahraptor: No breeder doubts how strong is the tendency to inheritance: like produces like is his fundamental belief.
 
-Panel 5:
 Utahraptor: Doubts have been thrown on this principle by theoretical writers alone.
 T-Rex: When a deviation appears not unfrequently, and we see it in the father and child, we cannot tell whether it may not be due to the same original cause acting on
 
-Panel 6:
 T-Rex: both; but when amongst individuals, apparently exposed to the same conditions, any very rare deviation, due to some extraordinary combination of circumstances, appears in the parent--say, once amongst several million individuals--and it reappears in the child, the mere doctrine of chances almost compels us to a-

@@ -16,24 +16,18 @@ You need to download the image file for the comic you want transcribed, for exam
 
 ```
 $ parse-qwantz comic2-02.png
-Panel 1:
 T-Rex: Today is a beautiful day to be stomping on things! As a dinosaur, stomping is the best part of my day indeed!
 
-Panel 2:
 T-Rex: *gasp*
 
-Panel 3:
 T-Rex: What's that, little house? You wish you were back in your own time? THAT IS TOO BAD FOR YOU
 
-Panel 4:
 T-Rex: Perhaps you too will get a stomping, little girl!
 Utahraptor: WAIT!
 
-Panel 5:
 Utahraptor: Is stomping really the answer to your problem(s)?
 T-Rex: Problem(s)?
 
-Panel 6:
 T-Rex: My only problem(s) have to do with you interrupting my stomping!
 T-Rex: 〚small〛 crazy utahraptor!
 ```
