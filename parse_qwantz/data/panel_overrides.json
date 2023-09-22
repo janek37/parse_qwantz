@@ -347,37 +347,37 @@
         "Game title screen: DINO QUEST I"
       ],
       "2": [
-        "Narrator: You have arrived in the time of the dinosaurs! Looking around, you see a large green T-Rex. He seems excited!"
+        "Game: You have arrived in the time of the dinosaurs! Looking around, you see a large green T-Rex. He seems excited!"
       ],
       "3": [
         "Input: >take dinosaur",
-        "Narrator: You can’t take that",
+        "Game: You can’t take that",
         "Input: >look",
-        "Narrator: You see the T-Rex, stomping a house. There is a Dromiceiomimus here.",
+        "Game: You see the T-Rex, stomping a house. There is a Dromiceiomimus here.",
         "Input: >take dromoceimiumus",
-        "Narrator: I don’t see that here.",
+        "Game: I don’t see that here.",
         "Input: >take dromociemoious",
-        "Narrator: I don’t see that here.",
+        "Game: I don’t see that here.",
         "Input: >take other dinosaur",
-        "Narrator: I don’t see that here.",
+        "Game: I don’t see that here.",
         "Input: >god damn",
-        "Narrator: I don’t know how to \"god damn\".",
+        "Game: I don’t know how to \"god damn\".",
         "Input: >go north"
       ],
       "4": [
-        "Narrator: The T-Rex chases you. Be careful! There is a Utahraptor here.",
+        "Game: The T-Rex chases you. Be careful! There is a Utahraptor here.",
         "Input: >hide from t rex"
       ],
       "5": [
-        "Narrator: Before you can do anything, you are stepped upon! You have died.",
+        "Game: Before you can do anything, you are stepped upon! You have died.",
         "Input: >talk to t rex",
-        "Narrator: You cannot do anything because you are dead. All you can do is SAVE, RESTORE or QUIT.",
+        "Game: You cannot do anything because you are dead. All you can do is SAVE, RESTORE or QUIT.",
         "Input: >quit"
       ],
       "6": [
-        "Narrator: Are you sure you want to quit? (Y/N)",
+        "Game: Are you sure you want to quit? (Y/N)",
         "Input: >y",
-        "Narrator: You scored 0 points out of a possible 158. Thank you for playing Sierra’s DINO QUEST!",
+        "Game: You scored 0 points out of a possible 158. Thank you for playing Sierra’s DINO QUEST!",
         "Input: C:\\SIERRA\\DQ1\\> del *.*",
         "Output: 31 file(s) deleted.",
         "Input: C:\\SIERRA\\DQ1\\> cd..",
@@ -668,11 +668,11 @@
     "panels": {
       "6": [
         "Narrator: HALLOWE'EN:",
-        "Narrator: 〚with an arrow pointing at the dinosaur〛 (actually the Utahraptor)",
-        "Utahraptor: 〚dressed as T-Rex〛 Trick or treat, or I'll stomp on your house!",
+        "Narrator: 〚with an arrow pointing at T-Rex〛 (actually the Utahraptor)",
+        "T-Rex: Trick or treat, or I'll stomp on your house!",
         "Off panel: Ooh! What a scary costume!",
-        "Utahraptor: Thank you ma'am! I stayed up all night working on it!",
-        "Utahraptor: 〚small〛 The vestigial arms are made of paper mache!"
+        "T-Rex: Thank you ma'am! I stayed up all night working on it!",
+        "T-Rex: 〚small〛 The vestigial arms are made of paper mache!"
       ]
     }
   },
@@ -749,33 +749,33 @@
     "file_name": "comic2-314.png",
     "panels": {
       "1": [
-        "NARRATOR: 〚dark red〛 the DINOSAUR at the end of this comic",
-        "Narrator: 〚dark blue, except green 'T-Rex'〛 starring lovable, scaly old T-REX",
+        "Narrator: 〚dark red〛 the DINOSAUR at the end of this comic",
+        "Narrator: 〚dark blue〛 starring lovable, scaly old 〚green〛 T-REX",
         "T-Rex: Hello, everybodee!",
         "T-Rex: This is a very dull panel. What is on the next panel?"
       ],
       "2": [
-        "T-Rex: 〚the first sentence in red〛 ◖WHAT DID THAT SAY?◗ Did that say there will be a dinosaur at the end of this comic?"
+        "T-Rex: 〚red〛 ◖WHAT DID THAT SAY?◗ 〚end red〛 Did that say there will be a dinosaur at the end of this comic?"
       ],
       "3": [
         "T-Rex: It did? Oh, I am so scared of dinosaurs!!",
-        "T-Rex: 〚'any panels' is dark red〛 Listen, I have an idea. If you do not read any panels, we will never get to the end of this comic.",
-        "T-Rex: 〚'dinosaur' is dark red〛 And that is good, because there is a dinosaur at the end of this comic.",
+        "T-Rex: Listen, I have an idea. If you do not read 〚dark red〛any panels〚end dark red〛, we will never get to the end of this comic.",
+        "T-Rex: And that is good, because there is a 〚dark red〛 dinosaur 〚end dark red〛 at the end of this comic.",
         "T-Rex: 〚small〛 so please do not read the next panel."
       ],
       "4": [
         "Utahraptor: 〚dark red〛 ◖THEY READ THE PANEL!◗",
-        "T-Rex: 〚'doing' in dark red〛 Maybe you do not understand! You do not know what you are doing to me!"
+        "T-Rex: Maybe you do not understand! You do not know what you are 〚dark red〛 doing 〚end dark red〛 to me!"
       ],
       "5": [
-        "T-Rex: 〚'begging' in dark red〛 I, T-Rex, am begging you not to read the next panel!",
-        "Utahraptor: 〚'end' is underlined, 'DINOSAUR' is dark red〛 The next panel is the end of this comic, and there is a DINOSAUR at the end of this comic!",
-        "T-Rex: 〚'SCARED' is dark red, all 'PLEASE' are dark blue〛 Oh, I am so SCARED! Please do not read the next panel. PLEASE PLEASE PLEASE!"
+        "T-Rex: I, T-Rex, am 〚dark red〛 begging 〚end dark red〛 you not to read the next panel!",
+        "Utahraptor: The next panel is the 〚underline〛 end 〚end underline〛 of this comic, and there is a 〚dark red〛 DINOSAUR 〚end dark red〛 at the end of this comic!",
+        "T-Rex: 〚'SCARED' is dark red, all 'PLEASE' are dark blue〛 Oh, I am so  〚dark red〛 SCARED!  〚end dark red〛 Please do not read the next panel. 〚dark blue〛 PLEASE PLEASE PLEASE!"
       ],
       "6": [
-        "T-Rex: 〚'ME' is dark blue〛 Well, look at that! This is the end of the comic, and the only one here is ME!",
-        "T-Rex: 〚'T-Rex' is green〛 I, lovable, scaly old ◖T-Rex◗ am the dinosaur at the end of this comic!",
-        "T-Rex: 〚both 'told' are underlined〛 And you were so scared! I told you and told you there was nothing to be afraid of!"
+        "T-Rex: Well, look at that! This is the end of the comic, and the only one here is 〚dark blue〛 ME!",
+        "T-Rex: I, lovable, scaly old 〚green〛 ◖T-Rex◗ 〚end green〛 am the dinosaur at the end of this comic!",
+        "T-Rex: And you were so scared! I 〚underline〛 told 〚end underline〛 you and 〚underline〛 told 〚end underline〛 you there was nothing to be afraid of!"
       ]
     }
   },
@@ -2343,7 +2343,7 @@
         "Heading: SWEET PROTEST SIGNS L@@K, SO @WESOME!!! OMG YOU GUYS! >:OGC",
         "Text: Okay you are bidding on some protest signs that I'm selling because I was gonna be fascist, but not anymore!! There's a picture of me and beneath it they say \"T-REX IS IN CHARGE NOW: I GUESS WE'LL ALL JUST HAVE TO DEAL\" They have many uses such as pretending I am in charge and that you are all, \"no WAY is that guy in charge, what will i do, oh wait my sign says i should just deal\"",
         "Text: STARTING BID: $100",
-        "Text: 〚form input〛 YOUR BID: $0"
+        "Text: YOUR BID: $〚form input〛0"
       ]
     }
   },
@@ -2404,34 +2404,6 @@
         "T-Rex: You'll get a new name and a new reputation AND a new driver's license, and I'll get to say \"Oh, him? He's my mysterious friend, ▹Utahraptore◃.\" All you need to do is sign!",
         "Utahraptor: I'm not signing them.",
         "T-Rex: Well, frig, this has been a complete waste of a Monday morning!"
-      ]
-    }
-  },
-  "b45c4fdc28fbbe8d6efbffa9c9ce1b0f": {
-    "comic_id": 1328,
-    "file_name": "comic2-1355.png",
-    "panels": {
-      "1": [
-        "T-Rex: I have for you today the SEXIEST DINOSAUR COMICS STORY OF ALL TIME! It is sexy!"
-      ],
-      "2": [
-        "T-Rex: It starts like this:"
-      ],
-      "3": [
-        "〚a recursive copy of the whole comic〛"
-      ],
-      "4": [
-        "Utahraptor: Wait. But I'm not sure what happened! You never actually told the story!"
-      ],
-      "5": [
-        "Utahraptor: You got closer and closer to it, Zeno-style, but I don't remember you actually TELLING it.",
-        "T-Rex: But it was sexy, right?",
-        "Utahraptor: I don't know!"
-      ],
-      "6": [
-        "T-Rex: See? Lonely, infinite buildup, a confusing instant of climax that's over before you know it, and then a long, slow slide into disappointed despair?",
-        "T-Rex: Man!",
-        "T-Rex: You cannot deny that was a sexy story!"
       ]
     }
   },
@@ -2675,7 +2647,7 @@
       "3": [
         "〚Dromiceiomimus's daydream〛",
         "T-Rex: And even though sometimes I talk so much that I don't let her get a word in edgewise, I'm still happy to give her the book I got, called \"I'll Talk Less And Listen More: A Book To Give To A Friend Who Is Pretty Okay, More Than Pretty Okay, Even!\"",
-        "Dromiceiomimus: 〚stops dreaming〛 *sigh*"
+        "Dromiceiomimus: 〚stops daydreaming〛 *sigh*"
       ],
       "4": [
         "〚Utahraptor's daydream〛",
@@ -2685,7 +2657,7 @@
       "5": [
         "〚Utahraptor's daydream〛",
         "T-Rex: I asked for size AWESOME! ...And then I clarified that down to a size large. Here you go, my friend! Thanks for being so great!",
-        "Utahraptor: 〚stops dreaming〛 *sigh*"
+        "Utahraptor: 〚stops daydreaming〛 *sigh*"
       ],
       "6": [
         "Floating Batman head: 〚in T-Rex's imagination〛 The thing is, if I were real, I think we both know that I'd never have the time to hang out with a NON crime-fighting dinosaur.",
@@ -3130,7 +3102,7 @@
         "Book cover: 〚uses a Back To The Future font effect and other effects〛 HOW TO BUILD A TIME MACHING even if you're a TEEN"
       ],
       "4": [
-        "Book cover: 〚'sheeeeeeeesh' is in larger red font〛 let me be the first to say sheeeeeeeesh what is that dog's DEAL",
+        "Book cover: let me be the first to say 〚larger red font〛 sheeeeeeeesh 〚end larger red font〛 what is that dog's DEAL",
         "Book cover: a super excellent purchase!"
       ],
       "6": [
@@ -4101,7 +4073,7 @@
     "file_name": "comic2-2688.png",
     "panels": {
       "6": [
-        "Narrator: 〚'VEGETABLES' is pink〛 T-REX PRESENTS: VEGETABLES™!",
+        "Narrator: T-REX PRESENTS:  〚pink〛VEGETABLES〚end pink〛™!",
         "Narrator: TRY ALL 40,000 VARIETIES",
         "Narrator: SOME OF THEM ARE POISONOUS THOUGH",
         "Narrator: SO ACTUALLY MAYBE DON'T TRY ALL 40,000 VARIETIES AFTER ALL"
@@ -4617,7 +4589,7 @@
     "file_name": "comic2-3136.png",
     "panels": {
       "3": [
-        "Dromiceiomimus: I'm not a wizard 〚mini〛 because there are no wizards and even if there were we couldn't admit it without the threat of penalties detailed in section 452.5a 〚normal〛 but I'm happy to answer your questions!",
+        "Dromiceiomimus: I'm not a wizard 〚mini〛 because there are no wizards and even if there were we couldn't admit it without the threat of penalties detailed in section 452.5a 〚end mini〛 but I'm happy to answer your questions!",
         "T-Rex: So: MAGIC WORDS. You say some and magic things happen. But these words are always in languages we already speak, like English or bad weird fakey Latin!",
         "Dromiceiomimus: ...So?",
         "T-Rex: So what the heck!"
@@ -4705,7 +4677,7 @@
     "file_name": "comic2-3251.png",
     "panels": {
       "6": [
-        "T-Rex: ATTENTION TEENS! LISTEN TO YOUR ELDERS, WE HAVE 〚mini〛 ideas for things that would be amazing if they happened to someone else and also 〚normal〛 REALLY GOOD ADVICE!"
+        "T-Rex: ATTENTION TEENS! LISTEN TO YOUR ELDERS, WE HAVE 〚mini〛 ideas for things that would be amazing if they happened to someone else and also 〚end mini〛 REALLY GOOD ADVICE!"
       ]
     }
   },
@@ -5144,7 +5116,7 @@
     "file_name": "comic2-4166.png",
     "panels": {
       "1": [
-        "English: 〚bold pink text〛 HELLO, AND WELCOME TO ENGLISH.",
+        "English: 〚bold pink〛 HELLO, AND WELCOME TO ENGLISH.",
         "T-Rex: Yes, hello!"
       ],
       "2": [
