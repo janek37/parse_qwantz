@@ -89,8 +89,8 @@ class TextBlock:
             for content, is_bold, is_italic in text_and_weight
         )
         content = content.replace('  ', ' ')
-        if include_font_name and self.font.name not in ('Regular', 'Italic'):
-            content = f"〚{self.font.name.lower()}〛 {content}"
+        if include_font_name and self.font.display_name is not None:
+            content = f"〚{self.font.display_name}〛 {content}"
         return content
 
     @staticmethod

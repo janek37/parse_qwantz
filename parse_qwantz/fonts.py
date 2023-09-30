@@ -28,12 +28,12 @@ FORBIDDEN_FIRST_CHARS = "%&)=^|}”·™_"
 ACCEPT = -1
 
 FONT_SIZES = [
-    (13, 'Regular', 8, 2, 1),
-    (12, 'Condensed', 7, 0, 0),
-    (11, 'Small', 7, 0, 0),
-    (10, 'Petite', 6, 0, 0),
-    (9, 'Mini', 5, 0, 0),
-    (8, 'Tiny', 5, 0, 0),
+    (13, 'Regular', 8, 2, 1, None),
+    (12, 'Condensed', 7, 0, 0, None),
+    (11, 'Small', 7, 0, 0, "small"),
+    (10, 'Petite', 6, 0, 0, "small"),
+    (9, 'Mini', 5, 0, 0, "tiny"),
+    (8, 'Tiny', 5, 0, 0, "tiny"),
 ]
 
 
@@ -87,6 +87,7 @@ class Font(ABC):
     group: str
     max_cut_bottom: int
     max_cut_top: int
+    display_name: str | None = None
     is_mono: bool = True
 
     base_left_padding: int = 0
@@ -220,6 +221,7 @@ class Font(ABC):
         group: str,
         max_cut_bottom: int,
         max_cut_top: int,
+        display_name: str | None = None,
         **kwargs: Any,
     ) -> "Font":
         with file_path_context_manager as file_path:
@@ -265,6 +267,7 @@ class Font(ABC):
             group,
             max_cut_bottom,
             max_cut_top,
+            display_name,
         )
 
     @classmethod
@@ -430,8 +433,9 @@ ALL_FONTS: list[Font] = [
         group=f'LC{size}',
         max_cut_bottom=max_cut_bottom,
         max_cut_top=max_cut_top,
+        display_name=display_name,
     )
-    for size, name, width, max_cut_bottom, max_cut_top in FONT_SIZES
+    for size, name, width, max_cut_bottom, max_cut_top, display_name in FONT_SIZES
     for is_bold in (False, True)
 ]
 
@@ -459,5 +463,6 @@ ALL_FONTS.append(
         max_cut_bottom=0,
         max_cut_top=0,
         space_width=3,
+        display_name='serif'
     )
 )
