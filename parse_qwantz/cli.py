@@ -6,11 +6,10 @@ from pathlib import Path
 import typer
 from PIL import ImageShow
 
+from parse_qwantz.color_logs import set_logging_formatter
 from parse_qwantz.image_viewer import SilentViewer
 from parse_qwantz.main import main
 from parse_qwantz.prepare_image import ImageError
-
-logger = logging.getLogger()
 
 ImageShow.register(SilentViewer(), 0)
 
@@ -47,6 +46,8 @@ def cli(
     unambiguous_words: bool = typer.Option(False, help="Print only unambiguous words"),
 ):
     """Generate transcripts for Ryan North's Dinosaur Comics from https://qwantz.com"""
+    set_logging_formatter()
+    logger = logging.getLogger()
     logger.setLevel(getattr(logging, log_level.upper()))
     for input_path in input_paths:
         if input_path.is_dir():
