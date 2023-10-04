@@ -56,6 +56,8 @@ def parse_qwantz(image: Image, debug: bool = False, log_colors: bool = False) ->
 
 def set_current_panel(panel: int, use_colors: bool = True):
     panel_name = f" Panel {panel}:"
+    if not logger.handlers:
+        logging.basicConfig()
     logger.handlers[0].setFormatter(ColorFormatter(defaults={"panel": panel_name}, colors=use_colors))
 
 
