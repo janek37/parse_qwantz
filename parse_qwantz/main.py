@@ -12,6 +12,7 @@ from parse_qwantz.parser import parse_qwantz, match_stuff
 from parse_qwantz.elements import get_elements
 from parse_qwantz.simple_image import SimpleImage
 from parse_qwantz.prepare_image import prepare_image
+from parse_qwantz.svg_gen import generate_svg
 
 
 def get_unambiguous_words(image: Image) -> Iterable[str]:
@@ -24,7 +25,7 @@ def get_unambiguous_words(image: Image) -> Iterable[str]:
         (width, height), (x, y) = panel
         cropped = masked.crop((x, y, x + width, y + height))
         panel_image = SimpleImage.from_image(cropped)
-        lines, thoughts, text_lines, extra_characters, unmatched_shapes = get_elements(panel_image)
+        lines, _widths, thoughts, text_lines, extra_characters, unmatched_shapes = get_elements(panel_image)
         text_blocks, block_matches, thought_blocks, unmatched_stuff = match_stuff(
             characters + extra_characters, panel_image, lines, text_lines, thoughts
         )
@@ -38,12 +39,16 @@ def main(
     debug: bool = False,
     show_boxes: bool = False,
     unambiguous_words: bool = False,
+    svg: bool = False,
 ):
     image = Image.open(input_file_path)
     if unambiguous_words:
         words = get_unambiguous_words(image)
         for word in words:
             print(word)
+        return
+    if svg:
+        print(generate_svg(image))
         return
     if output_dir:
         sys.stdout = (output_dir / (input_file_path.stem + '.txt')).open('w')

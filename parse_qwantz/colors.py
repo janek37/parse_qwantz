@@ -1,19 +1,23 @@
-from enum import Enum
-from typing import Optional
+from typing import Optional, NamedTuple
 
 COLOR_THRESHOLD = 250
 
 
-class Color(Enum):
-    WHITE = (255, 255, 255)
-    BLACK = (0, 0, 0)
-    RED = (128, 0, 0)
+class Color(NamedTuple):
+    red: int
+    green: int
+    blue: int
 
-    @classmethod
-    def get_with_threshold(cls, rgb: tuple[int, int, int]) -> Optional["Color"]:
-        for color in cls:
-            if square_distance(color.value, rgb) < COLOR_THRESHOLD:
-                return color
+
+WHITE = Color(255, 255, 255)
+BLACK = Color(0, 0, 0)
+RED = Color(128, 0, 0)
+
+
+def get_color_with_threshold(rgb: tuple[int, int, int]) -> Optional["Color"]:
+    for color in [WHITE, BLACK, RED]:
+        if square_distance(color, rgb) < COLOR_THRESHOLD:
+            return color
 
 
 def square_distance(rgb1: tuple[int, int, int], rgb2: tuple[int, int, int]):

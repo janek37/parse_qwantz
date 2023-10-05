@@ -5,9 +5,9 @@ from typing import Iterable
 
 from PIL import Image, ImageDraw
 
+from parse_qwantz import colors
 from parse_qwantz.box import Box, get_interval_distance
 from parse_qwantz.color_logs import ColorFormatter
-from parse_qwantz.colors import Color
 from parse_qwantz.elements import get_elements
 from parse_qwantz.lines import Line
 from parse_qwantz.match_blocks import match_blocks
@@ -41,7 +41,7 @@ def parse_qwantz(image: Image, debug: bool = False, log_colors: bool = False) ->
         cropped = masked.crop((x, y, x + width, y + height))
         ask_professor_science = is_ask_professor_science(cropped)
         panel_image = SimpleImage.from_image(cropped, ask_professor_science)
-        lines, thoughts, text_lines, extra_characters, unmatched_shapes = get_elements(panel_image)
+        lines, _widths, thoughts, text_lines, extra_characters, unmatched_shapes = get_elements(panel_image)
         text_blocks, block_matches, thought_blocks, unmatched_stuff = match_stuff(
             characters + extra_characters, panel_image, lines, text_lines, thoughts
         )
@@ -192,7 +192,7 @@ def match_above_or_below(unmatched_blocks: list[TextBlock], block_matches: dict[
 def handle_god_and_devil(block: TextBlock, is_off_panel: bool) -> Character | None:
     if any(char.islower() for char in block.content()):
         return None
-    if block.color == Color.RED and is_off_panel and block.is_bold:
+    if block.color == colors.RED and is_off_panel and block.is_bold:
         return Character.from_name('Devil')
     elif is_off_panel and block.is_bold:
         return Character.from_name('God')

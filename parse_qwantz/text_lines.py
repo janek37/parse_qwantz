@@ -129,7 +129,7 @@ def get_text_line(start: Pixel, image: SimpleImage, font: Font) -> tuple[TextLin
             any_pixel = next(iter(char_box.pixels))
             result = get_line(any_pixel, image)
             if result:
-                line, _pixels = result
+                line, _pixels, _width = result
                 if (
                     min(line[0].x, line[1].x) < char_box.box.left
                     or min(line[0].y, line[1].y) < char_box.box.top

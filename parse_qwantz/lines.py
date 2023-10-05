@@ -7,7 +7,7 @@ from parse_qwantz.shape import get_shape, get_box
 Line = tuple[Pixel, Pixel]
 
 
-def get_line(pixel: Pixel, image: SimpleImage) -> tuple[Line, list[Pixel]] | None:
+def get_line(pixel: Pixel, image: SimpleImage) -> tuple[Line, list[Pixel], int] | None:
     pixels = get_shape(pixel, image)
     if len(set(pixels.values())) != 1:
         return None
@@ -51,4 +51,5 @@ def get_line(pixel: Pixel, image: SimpleImage) -> tuple[Line, list[Pixel]] | Non
             sum(1 for i, j in product(range(x - 1, x + 2), range(y - 1, y + 2)) if (i, j) in pixels)
         )
     if on_edge or max(neighbor_counts) == 3 or (min(neighbor_counts) >= 2 and 6 <= max(neighbor_counts) <= 8):
-        return (end1, end2), sorted_pixels
+        width = 1 if max(neighbor_counts) == 3 else 2
+        return (end1, end2), sorted_pixels, width

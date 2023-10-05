@@ -16,9 +16,10 @@ logger = getLogger()
 
 def get_elements(
     image: SimpleImage
-) -> tuple[list[Line], list[Box], list[TextLine], list[Character], list[list[Pixel]]]:
+) -> tuple[list[Line], list[int], list[Box], list[TextLine], list[Character], list[list[Pixel]]]:
     text_lines: list[TextLine] = []
     lines: list[Line] = []
+    line_widths: list[int] = []
     thoughts: list[Box] = []
     unmatched: list[list[Pixel]] = []
     sorted_pixels = sorted(image.pixels)
@@ -50,8 +51,9 @@ def get_elements(
         else:
             result = get_line(pixel, tmp_image)
             if result:
-                line, line_pixels = result
+                line, line_pixels, width = result
                 lines.append(line)
+                line_widths.append(width)
                 sorted_pixels = remove_subsequence(sorted_pixels, line_pixels)
             elif result := get_batman(pixel, tmp_image):
                 batman_box, batman_pixels = result
@@ -69,7 +71,7 @@ def get_elements(
                 if len(unmatched) == 5:
                     logger.warning("At least five unmatched objects detected, aborting")
                     break
-    return lines, thoughts, cleanup_text_lines(text_lines), extra_characters, unmatched
+    return lines, line_widths, thoughts, cleanup_text_lines(text_lines), extra_characters, unmatched
 
 
 def get_batman(pixel: Pixel, image: SimpleImage) -> tuple[Box, list[Pixel]] | None:

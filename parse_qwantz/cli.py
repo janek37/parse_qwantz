@@ -22,6 +22,7 @@ class Inner:
     debug: bool
     show_boxes: bool
     unambiguous_words: bool
+    generate_svg: bool
 
     def __call__(self, image_path: Path):
         try:
@@ -31,6 +32,7 @@ class Inner:
                 debug=self.debug,
                 show_boxes=self.show_boxes,
                 unambiguous_words=self.unambiguous_words,
+                svg=self.generate_svg,
             )
         except ImageError:
             pass
@@ -44,6 +46,7 @@ def cli(
     debug: bool = typer.Option(False, help="Enable debug features."),
     show_boxes: bool = typer.Option(False, help="Show character boxes (for debug)"),
     unambiguous_words: bool = typer.Option(False, help="Print only unambiguous words"),
+    generate_svg: bool = typer.Option(False, help="Generate SVG file"),
 ):
     """Generate transcripts for Ryan North's Dinosaur Comics from https://qwantz.com"""
     set_logging_formatter()
@@ -60,6 +63,7 @@ def cli(
             debug=debug,
             show_boxes=show_boxes,
             unambiguous_words=unambiguous_words,
+            generate_svg=generate_svg,
         )
 
         with Pool(4) as pool:
