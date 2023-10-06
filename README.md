@@ -43,7 +43,7 @@ The argument can also be a directory path instead of a file path. In such case t
 
 ### `--output-dir`
 
-By default, the program outputs to stdout and logs to stderr. With this option, when processing file `image_name.png` it will output to `OUTPUT_DIR/image_name.txt` and log to `OUTPUT_DIR/image_name.log`.
+By default, the program outputs to stdout and logs to stderr. With this option, when processing file `image_name.png` it will output to `OUTPUT_DIR/image_name.png.txt` and log to `OUTPUT_DIR/image_name.log`.
 
 ### `--generate-svg`
 

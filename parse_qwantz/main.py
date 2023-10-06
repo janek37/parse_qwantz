@@ -52,7 +52,7 @@ def main(
         print(generate_svg(image))
         return
     if output_dir:
-        sys.stdout = (output_dir / (input_file_path.stem + '.txt')).open('w')
+        sys.stdout = (output_dir / (input_file_path.name + '.txt')).open('w')
         logging.basicConfig(filename=output_dir / (input_file_path.stem + '.log'), filemode='w', force=True)
     if footer:
         for line in parse_footer(image):
