@@ -1876,6 +1876,10 @@
         "T-Rex: Easy! I'll just remember to send a message back to this exact moment!",
         "Off panel: Utahraptor! I'm gonna kiss you so much in ten minutes!",
         "T-Rex: Um - that, ah, wasn't me."
+      ],
+      "footer": [
+        "(C) 2007 Ryan North",
+        "www.qwantz.com"
       ]
     }
   },
@@ -3982,6 +3986,16 @@
         "The voice of past T-Rex: I'm never gonna sit still! When I grow up I'm gonna run EVERYWHERE I GO!!",
         "T-Rex: Aw, sweetie! Sweetie, no.",
         "T-Rex: Sitting still is like the #1 Favourite Activity All-Time CHAMPION??"
+      ]
+    }
+  },
+  "3c6ebde4f92aa1b7de3046843a06185b": {
+    "comic_id": 2638,
+    "file_name": "comic2-2648.png",
+    "panels": {
+      "footer": [
+        "(C) 2014 Ryan North",
+        "www.qwantz.com"
       ]
     }
   },

@@ -8,7 +8,7 @@ from PIL import Image, ImageDraw
 
 from parse_qwantz.panel_overrides import get_panel_overrides
 from parse_qwantz.panels import PANELS, CHARACTERS
-from parse_qwantz.parser import parse_qwantz, match_stuff
+from parse_qwantz.parser import parse_qwantz, match_stuff, parse_footer
 from parse_qwantz.elements import get_elements
 from parse_qwantz.simple_image import SimpleImage
 from parse_qwantz.prepare_image import prepare_image
@@ -40,6 +40,7 @@ def main(
     show_boxes: bool = False,
     unambiguous_words: bool = False,
     svg: bool = False,
+    footer: bool = False,
 ):
     image = Image.open(input_file_path)
     if unambiguous_words:
@@ -53,6 +54,10 @@ def main(
     if output_dir:
         sys.stdout = (output_dir / (input_file_path.stem + '.txt')).open('w')
         logging.basicConfig(filename=output_dir / (input_file_path.stem + '.log'), filemode='w', force=True)
+    if footer:
+        for line in parse_footer(image):
+            print(line)
+        return
     for panel_no, lines in enumerate(parse_qwantz(image, debug=debug, log_colors=not output_dir), start=1):
         for line in lines:
             print(line)

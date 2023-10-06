@@ -13,7 +13,7 @@ from parse_qwantz.lines import Line
 from parse_qwantz.match_blocks import match_blocks
 from parse_qwantz.match_lines import Character, match_lines, OFF_PANEL
 from parse_qwantz.match_thought import match_thought
-from parse_qwantz.panels import PANELS, CHARACTERS
+from parse_qwantz.panels import PANELS, CHARACTERS, FOOTER
 from parse_qwantz.panel_overrides import get_panel_overrides
 from parse_qwantz.pixels import is_ask_professor_science, Pixel
 from parse_qwantz.prepare_image import prepare_image
@@ -52,6 +52,21 @@ def parse_qwantz(image: Image, debug: bool = False, log_colors: bool = False) ->
             yield list(script_lines)
         else:
             yield ["〚no text〛"]
+
+
+def parse_footer(image: Image) -> list[str]:
+    md5 = hashlib.md5(image.tobytes()).hexdigest()
+    panel_overrides = get_panel_overrides().get(md5, {})
+    if "footer" in panel_overrides:
+        return panel_overrides["footer"]
+    masked, _ = prepare_image(image)
+    (width, height), (x, y) = FOOTER
+    cropped = masked.crop((x, y, x + width, y + height))
+    footer_image = SimpleImage.from_image(cropped)
+    lines, _widths, thoughts, text_lines, extra_characters, unmatched_shapes = get_elements(footer_image)
+    if lines or thoughts or extra_characters or unmatched_shapes:
+        logger.warning("Unexpected elements in footer")
+    return [text_line.content for text_line in text_lines]
 
 
 def set_current_panel(panel: int, use_colors: bool = True):

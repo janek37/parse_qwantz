@@ -12,6 +12,8 @@ PANELS = [
     ((239, 239), (494, 244)),
 ]
 
+FOOTER = ((735, 12), (0, 488))
+
 CHARACTERS = [
     [Character('T-Rex', (Box(Pixel(104, 90), Pixel(170, 238)),))],
     [

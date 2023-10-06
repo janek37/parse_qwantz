@@ -47,7 +47,7 @@ def prepare_image(image: Image) -> tuple[Image, list[int]]:
         if square_distance(color, expected_color) <= COLOR_THRESHOLD:
             good_panels.append(panel_no)
         else:
-            logger.warning(f"Invalid template: expected {expected_color} at {pixel}; found {color}")
+            logger.info(f"Invalid template: expected {expected_color} at {pixel}; found {color}")
     if not good_panels:
         logger.error("Invalid template")
         raise ImageError(f"Invalid template")

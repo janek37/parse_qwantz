@@ -12,10 +12,13 @@ class Color(NamedTuple):
 WHITE = Color(255, 255, 255)
 BLACK = Color(0, 0, 0)
 RED = Color(128, 0, 0)
+GREY = Color(128, 128, 128)
+GREY2 = Color(117, 117, 117)
+GREY3 = Color(100, 100, 100)
 
 
 def get_color_with_threshold(rgb: tuple[int, int, int]) -> Optional["Color"]:
-    for color in [WHITE, BLACK, RED]:
+    for color in [WHITE, BLACK, RED, GREY, GREY2, GREY3]:
         if square_distance(color, rgb) < COLOR_THRESHOLD:
             return color
 

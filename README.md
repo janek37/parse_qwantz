@@ -45,6 +45,14 @@ The argument can also be a directory path instead of a file path. In such case t
 
 By default, the program outputs to stdout and logs to stderr. With this option, when processing file `image_name.png` it will output to `OUTPUT_DIR/image_name.txt` and log to `OUTPUT_DIR/image_name.log`.
 
+### `--generate-svg`
+
+Instead of transcribing the comic, generate a vectorized version in the SVG format and print it to the standard output.
+
+### `--parse-footer`
+
+Instead of transcribing the comic, transcribe just the footer.
+
 ## Conventions
 
 Bold and italics are marked with "◖◗" and "▹◃" respectively. This is to avoid ambiguity which may result from using characters like "*" or "_".
