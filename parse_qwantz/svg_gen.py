@@ -1,4 +1,5 @@
 import logging
+import math
 from importlib.resources import files
 from itertools import chain
 from typing import Iterator
@@ -12,7 +13,7 @@ from parse_qwantz.elements import get_elements
 from parse_qwantz.fonts import CharBox, Font
 from parse_qwantz.lines import Line
 from parse_qwantz.panels import PANELS
-from parse_qwantz.pixels import is_ask_professor_science
+from parse_qwantz.pixels import is_ask_professor_science, Pixel
 from parse_qwantz.prepare_image import prepare_image
 from parse_qwantz.simple_image import SimpleImage
 
@@ -64,10 +65,10 @@ def make_line_element(line: Line, width: int, no: int) -> ElementTree.Element:
         "line",
         {
             "id": f"line{no}",
-            "x1": str(line[0].x),
-            "y1": str(line[0].y),
-            "x2": str(line[1].x),
-            "y2": str(line[1].y),
+            "x1": str(line[0].x + 0.5),
+            "y1": str(line[0].y + 0.5),
+            "x2": str(line[1].x + 0.5),
+            "y2": str(line[1].y + 0.5),
             "stroke": "black",
             "stroke-width": str(width),
         }
@@ -116,4 +117,28 @@ def get_elements_for_svg(image: SimpleImage) -> tuple[list[tuple[Line, int]], li
         for char_box in text_line.char_boxes
         if char_box.pixels
     ]
+    lines = (fix_for_panel_edges(line) for line in lines)
     return list(zip(lines, line_widths)), char_boxes
+
+
+def fix_for_panel_edges(line: Line) -> Line:
+    new_ends = []
+    length = math.sqrt((line[0].x - line[1].x)**2 + (line[0].y - line[1].y)**2)
+    for end, other_end in zip(line, reversed(line)):
+        if any(is_on_edge(end, panel) for panel in PANELS):
+            new_end = Pixel(
+                x=int(end.x + 2 * (end.x - other_end.x)/length),
+                y=int(end.y + 2 * (end.y - other_end.y)/length)
+            )
+            new_ends.append(new_end)
+        else:
+            new_ends.append(end)
+    return tuple(new_ends)
+
+
+def is_on_edge(pixel: Pixel, panel: tuple[tuple[int, int], tuple[int, int]]) -> bool:
+    (width, height), (x, y) = panel
+    return (
+        (x <= pixel.x < x + width and pixel.y in (y, y + height - 1))
+        or (y <= pixel.y < y + height and pixel.x in (x, x + width - 1))
+    )
