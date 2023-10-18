@@ -51,18 +51,18 @@ def main(
     if svg:
         print(generate_svg(image))
         return
+    output_file = (output_dir / (input_file_path.name + '.txt')).open('w') if output_dir else sys.stdout
     if output_dir:
-        sys.stdout = (output_dir / (input_file_path.name + '.txt')).open('w')
         logging.basicConfig(filename=output_dir / (input_file_path.stem + '.log'), filemode='w', force=True)
     if footer:
         for line in parse_footer(image):
-            print(line)
+            print(line, file=output_file)
         return
     for panel_no, lines in enumerate(parse_qwantz(image, debug=debug, log_colors=not output_dir), start=1):
         for line in lines:
-            print(line)
+            print(line, file=output_file)
         if panel_no != 6:
-            print()
+            print(file=output_file)
     if show_boxes:
         draw = ImageDraw.Draw(image)
         for (panel, characters) in zip(PANELS, CHARACTERS):
@@ -72,4 +72,4 @@ def main(
                     (x0, y0), (x1, y1), _ = box
                     draw.rectangle(((x0 + x, y0 + y), (x1 + x, y1 + y)), outline=(0, 128, 0))
         image.show()
-    sys.stdout.flush()
+    output_file.flush()
