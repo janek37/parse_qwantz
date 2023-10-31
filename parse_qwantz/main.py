@@ -44,10 +44,7 @@ def main(
 ):
     image = Image.open(input_file_path)
     if unambiguous_words:
-        words = get_unambiguous_words(image)
-        for word in words:
-            print(word)
-        return
+        return list(get_unambiguous_words(image))
     if svg:
         print(generate_svg(image))
         return

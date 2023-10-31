@@ -27,7 +27,7 @@ class Inner:
 
     def __call__(self, image_path: Path):
         try:
-            main(
+            return main(
                 image_path,
                 output_dir=self.output_dir,
                 debug=self.debug,
@@ -71,7 +71,11 @@ def cli(
         )
 
         with Pool(4) as pool:
-            pool.map(inner, image_paths)
+            results = pool.map(inner, image_paths)
+            if unambiguous_words:
+                for result in results:
+                    for word in result:
+                        print(word)
 
 
 if __name__ == '__main__':
