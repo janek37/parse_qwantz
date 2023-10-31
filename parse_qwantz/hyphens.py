@@ -15,7 +15,11 @@ def make_word_set(dict_path: str, extra_words: Iterable[str] = ()) -> frozenset[
     return frozenset(chain(dict_words, extra_words))
 
 
-QWANTZ_WORD_SET = make_word_set('dict/unambiguous-qwantz.txt') | make_word_set('dict/manual-additions.txt')
+QWANTZ_WORD_SET = (
+    make_word_set('dict/unambiguous-qwantz.txt')
+    | make_word_set('dict/html-words.txt')
+    | make_word_set('dict/manual-additions.txt')
+)
 
 
 def disambiguate_hyphen(part1: list[str], part2: list[str]):
