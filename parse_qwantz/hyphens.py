@@ -19,7 +19,7 @@ QWANTZ_WORD_SET = (
     make_word_set('dict/unambiguous-qwantz.txt')
     | make_word_set('dict/html-words.txt')
     | make_word_set('dict/manual-additions.txt')
-)
+) - make_word_set('dict/manual-removed.txt')
 
 
 def disambiguate_hyphen(part1: list[str], part2: list[str]):
