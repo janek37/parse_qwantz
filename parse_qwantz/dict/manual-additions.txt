@@ -20,6 +20,7 @@ asymptomatic
 australopithecines
 authoritarianism
 authoritative
+auto-experimentation
 averageos
 award-eligible
 awesometasticerest
@@ -27,7 +28,7 @@ bad-assingest
 badonkadonk
 beach-ready
 bioelectromagnetic
-bio-link
+biolink
 blandgaea
 bluetooth
 bodyguards
@@ -133,7 +134,7 @@ interpersonally
 interrogation
 inundation
 justee
-kill-machine
+killmachine
 kilosexual
 land-dweller
 legally-distinct
@@ -237,6 +238,7 @@ sex-negative
 sexually-mature
 sexy-handsome
 shakesspeare
+shapeshift
 shoplifting
 side-blotched
 similar-to
