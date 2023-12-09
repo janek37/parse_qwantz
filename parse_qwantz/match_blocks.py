@@ -83,7 +83,8 @@ def match_blocks(
                     block1.row_index(line1) not in (0, len(block1.rows) - 1)
                     or block2.row_index(line2) not in (0, len(block2.rows) - 1)
                 ):
-                    logger.warning(f"Matching a non-edge line to another line: {line1.content} -- {line2.content}")
+                    if not (line1.content.isupper() and line2.content.isupper() and line1.is_bold and line2.is_bold):
+                        logger.warning(f"Matching a non-edge line to another line: {line1.content} -- {line2.content}")
             if block1 in block_matches and block2 in block_matches:
                 if block1.start.y < block2.start.y:
                     first_block, second_block = block1, block2
