@@ -5289,5 +5289,27 @@
         "T-Rex: AAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHH"
       ]
     }
+  },
+  "8ad8d9f5b6e9bf94cba746db3a25f80c": {
+    "comic_id": 4153,
+    "file_name": "comic2-4351.png",
+    "panels": {
+      "1": [
+        "Hot Pink Narrator: IT'S THE FUTURE!",
+        "T-Rex: Woo! The future!",
+        "T-Rex: Everything is great!"
+      ],
+      "3": [
+        "Hot Pink Narrator: EVERYTHING ISN'T GREAT!",
+        "T-Rex: Aw man. Well, are - are SOME things great?",
+        "Hot Pink Narrator: YEAH, SOME THINGS ARE GREAT!",
+        "T-Rex: Are the things that are great in the future the same things that are great now?",
+        "Hot Pink Narrator: SOME OF THEM, SURE"
+      ],
+      "5": [
+        "Hot Pink Narrator: 30 SECONDS. NOT THAT MUCH HONESTLY",
+        "T-Rex: This sucks! Send me back to my own time, I wanna get here the normal way!"
+      ]
+    }
   }
 }
