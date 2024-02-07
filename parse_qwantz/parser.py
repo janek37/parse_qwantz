@@ -25,9 +25,11 @@ from parse_qwantz.text_lines import TextLine
 logger = logging.getLogger()
 
 
-def parse_qwantz(image: Image, debug: bool = False, log_colors: bool = False) -> Iterable[list[str]]:
+def parse_qwantz(
+    image: Image, debug: bool = False, log_colors: bool = False, ignore_overrides: bool = False
+) -> Iterable[list[str]]:
     md5 = hashlib.md5(image.tobytes()).hexdigest()
-    panel_overrides = get_panel_overrides().get(md5, {})
+    panel_overrides = get_panel_overrides().get(md5, {}) if not ignore_overrides else {}
     masked, good_panels = prepare_image(image)
     for i, (panel, characters) in enumerate(zip(PANELS, CHARACTERS), start=1):
         if str(i) in panel_overrides:

@@ -1143,21 +1143,11 @@
         "T-Rex: Did that fix time? I don't think that fixed time!",
         "〚a red arrow goes to panel 3, a blue arrow comes from panel 3〛"
       ],
-      "3": [
-        "T-Rex: Well! I guess our only hope is to focus all of our willpower on changing things back to normal!",
-        "Dromiceiomimus: Do you think that'll make a difference?",
-        "T-Rex: I believe that MAYBE it could? It's not like we have too many options! Let's do it!"
-      ],
       "4": [
         "Narrator: SOON:",
         "Utahraptor: I don't feel anything different - do you?",
         "T-Rex: I feel the same!",
         "〚a red arrow goes to panel 5, a blue arrow comes from panel 5〛"
-      ],
-      "5": [
-        "Utahraptor: But... MAYBE this is something we simply can't fully diagnose with our senses - maybe it's just too subtle!",
-        "T-Rex: Broken timeflows are crazy! I'm sorry! Maybe we can fix it with wishes?",
-        "Utahraptor: I guess it's worth a try! On three!"
       ],
       "6": [
         "Narrator: TIME IS RUNNING BACKWARDS:",
@@ -1326,18 +1316,6 @@
         "Banner: \"SOME PEOPLE TREAT THEIR GENDERED FRIENDS DIFFERENTLY\"",
         "T-Rex: Incidentally, I don't have any friends who aren't gendered!",
         "Banner: OKAY"
-      ]
-    }
-  },
-  "13a52ef67760ae6a4082a188facd60a6": {
-    "comic_id": 817,
-    "file_name": "comic2-848.png",
-    "panels": {
-      "5": [
-        "Narrator: WHEN TO USE \"COWABUNGA\": ONLY IF YOU ARE A NINJA TURTLE.",
-        "T-Rex: So Kant's Categorical Imperative is more of a meta-directive, right?",
-        "Utahraptor: In the first formulation, yeah.",
-        "Narrator: T-REX AND UTAHRAPTOR ARE DINOSAURS SO THAT'S THE ONLY REASON WHY THEY'RE NOT USING IT."
       ]
     }
   },
@@ -1872,11 +1850,6 @@
         "T-Rex: Wait!! It worked!",
         "Utahraptor: What?"
       ],
-      "6": [
-        "T-Rex: Easy! I'll just remember to send a message back to this exact moment!",
-        "Off panel: Utahraptor! I'm gonna kiss you so much in ten minutes!",
-        "T-Rex: Um - that, ah, wasn't me."
-      ],
       "footer": [
         "(C) 2007 Ryan North",
         "www.qwantz.com"
@@ -2159,11 +2132,6 @@
         "Narrator: LATER:",
         "Utahraptor: 〚thinks〛 skin flavoured jello",
         "T-Rex: 〚thinks〛 utahraptor's skin flavoured jello"
-      ],
-      "5": [
-        "Narrator: LATER:",
-        "T-Rex: 〚thinks〛 I should make a comic where famed scientist Francis Bacon teams up with a guy named \"Eggs\", so they can be called Bacon and Eggs. In issue two, Francis could mistakenly rename himself to \"Chris P.\"! Chris P. Bacon!",
-        "T-Rex: 〚thinks〛 OH MY GOD"
       ]
     }
   },
@@ -5047,18 +5015,6 @@
       ]
     }
   },
-  "32007e4606db7171e8c8b428b13d244d": {
-    "comic_id": 3838,
-    "file_name": "comic2-4040.png",
-    "panels": {
-      "6": [
-        "Off panel: T-Rex, here's an giant early mechanical computer, in which every command results in the PHYSICAL whirring movement of gears and levers.",
-        "Off panel: ka-CHUNK ka-CHUNKKK",
-        "T-Rex: Okay",
-        "T-Rex: I'm going to allow that because it rules"
-      ]
-    }
-  },
   "d563a0b23f0a8d9348efaad1ba87d170": {
     "comic_id": 3851,
     "file_name": "comic2-4053.png",
@@ -5129,9 +5085,6 @@
       "1": [
         "English: 〚bold pink〛 HELLO, AND WELCOME TO ENGLISH.",
         "T-Rex: Yes, hello!"
-      ],
-      "2": [
-        "T-Rex: I'd like an adjective that means \"having the nature of a king or queen\", please!"
       ],
       "3": [
         "English: YOUR WORD IS \"REGAL\".",
