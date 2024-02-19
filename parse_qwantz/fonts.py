@@ -19,7 +19,7 @@ CHARS = (
     "abcdefghijklmnopqrstuvwxyz"
     "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     """!"#$%&'()*+,-./:;<=>?@[]^{|}‘’“”·•™"""
-    "éÉïçêáÁèàßûñùÜóÆÖИÇâæÊ"
+    "éÉïçêáÁèàßûñùÜóÆÖИÇâæÊöü"
     "°®♪♫±_~¡²«»∩×"
     "αάβγδεέζηήθιίκλμνξοόπρσςτυύφχψωώ"
 )
@@ -244,7 +244,7 @@ class Font(ABC):
                 if char not in 'gq[]':
                     cut_columns = [cut_column(c, height, cut_bottom=1) for c in columns]
                     cls.update_automaton(char, cut_columns, automaton)
-                if char not in 'fl':
+                if char not in 'flûêâüöï':
                     cut_columns = [cut_column(c, height, cut_top=1) for c in columns]
                     cls.update_automaton(char, cut_columns, automaton)
         for char, columns in VARIANTS.get((name, is_bold), []):
