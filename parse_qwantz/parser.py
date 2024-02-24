@@ -47,6 +47,9 @@ def parse_qwantz(
         text_blocks, block_matches, thought_blocks, unmatched_stuff = match_stuff(
             characters + extra_characters, panel_image, lines, text_lines, thoughts
         )
+        for text_block in text_blocks:
+            for extra_info in text_block.extra_info():
+                logger.warning(f"Variant used: {extra_info}")
         script_lines = list(get_script_lines(text_blocks, block_matches, thought_blocks, ask_professor_science))
         if debug and (unmatched_shapes or unmatched_stuff):
             handle_debug(cropped, text_blocks, unmatched_shapes, unmatched_stuff, characters + extra_characters)

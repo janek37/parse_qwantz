@@ -160,6 +160,14 @@ class TextBlock:
     def row_index(self, line: TextLine) -> int:
         return next(i for i, row in enumerate(self.rows) if line in row)
 
+    def extra_info(self) -> list[str]:
+        return [
+            char_box.extra_info
+            for line in self.lines
+            for char_box in line.char_boxes
+            if char_box.extra_info
+        ]
+
     def __str__(self):
         return self.content()
 

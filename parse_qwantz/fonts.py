@@ -42,6 +42,7 @@ class CharInfo:
     char: str
     left_padding: int
     right_padding: int
+    extra_info: str | None = None
 
 
 class CharBox(NamedTuple):
@@ -50,6 +51,7 @@ class CharBox(NamedTuple):
     is_bold: bool
     is_italic: bool
     pixels: set[Pixel]
+    extra_info: str | None = None
 
     def with_box(self, box: Box):
         return CharBox(self.char, box, self.is_bold, self.is_italic, self.pixels)
@@ -184,6 +186,7 @@ class Font(ABC):
             self.is_bold,
             is_italic,
             pixels,
+            char_info.extra_info,
         ), complement
 
     def _get_columns(
@@ -241,7 +244,11 @@ class Font(ABC):
             if maybe_char_info := cls.update_automaton(char, columns, automaton):
                 accepting_states.append(maybe_char_info)
         for char, columns in VARIANTS.get((name, is_bold), []):
-            if maybe_char_info := cls.update_automaton(char, columns, automaton):
+            variant_hash = hash(tuple(columns)) & ((2 << 32) - 1)
+            maybe_char_info = cls.update_automaton(
+                char, columns, automaton, extra_info=f"{name}-{'bold' if is_bold else 'normal'}-{char}-{variant_hash:x}"
+            )
+            if maybe_char_info:
                 accepting_states.append(maybe_char_info)
         initial_padding = max(char_info.left_padding for char_info in accepting_states)
         if not cls.is_mono:
@@ -285,6 +292,7 @@ class Font(ABC):
         char: str,
         columns: list[int],
         automaton: FSA,
+        extra_info: str | None = None,
     ) -> CharInfo | None:
         x = 0
         while columns[x] == 0:
@@ -304,11 +312,11 @@ class Font(ABC):
             state = state.setdefault(column, {})
             if right_padding > 1 and i >= len(columns) - right_padding - 1:
                 if ACCEPT not in state or char in ("O", "l"):
-                    state[ACCEPT] = CharInfo(char, left_padding, len(columns) - i)
+                    state[ACCEPT] = CharInfo(char, left_padding, len(columns) - i, extra_info)
         # “ and ” look the same as " in some sizes,
         # but we prefer O to 0 and l to 1 when they look the same
         if ACCEPT not in state or char in ("O", "l"):
-            state[ACCEPT] = CharInfo(char, left_padding, right_padding)
+            state[ACCEPT] = CharInfo(char, left_padding, right_padding, extra_info)
             return state[ACCEPT]
 
 
