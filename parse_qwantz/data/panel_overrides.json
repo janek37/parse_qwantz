@@ -504,7 +504,7 @@
     "panels": {
       "6": [
         "〚Off-panel speech is partly obscured by T-Rex's thought balloon, the reconstructed obscured parts are in braces〛",
-        "Off panel: image is that? Plus, you can't b⦃ring a date t⦄o such a resta⦃urant, because ev⦄en if you don⦃'t eat anythin⦄g cheap, it becomes All-You-Can-Politely-Eat, since you're trying to impress your date and thus can't go all-out. Food should be a delight, not a symbolic stop at a gas station. I find",
+        "Off panel: image is that? Plus, you can't b⦃ring a date t⦄o such a resta⦃urant, because ev⦄en if you don⦃'t mind seemin⦄g cheap, it becomes All-You-Can-Politely-Eat, since you're trying to impress your date and thus can't go all-out. Food should be a delight, not a symbolic stop at a gas station. I find",
         "T-Rex: 〚thinks〛 I'm going to eat ◖SO MANY WINGS!◗"
       ]
     }
@@ -3357,6 +3357,20 @@
       ]
     }
   },
+  "368e64f6a7ff3e54688d50f54bfa8c7d": {
+    "comic_id": 2123,
+    "file_name": "2123 - comic2-2135.png",
+    "panels": {
+      "6": [
+        "Off panel: But suppose your income is mainly in non-liquid assets not easily accessed such as bonds or multi-year GICs?",
+        "T-Rex: Depending on repayment sch- wait oh my GOD WHAT HAPPENED ARE WE SERIOUSLY HAVING A CONVERSATION ABOUT GICS??",
+        "T-Rex: WHEN",
+        "T-Rex: DID",
+        "T-Rex: WE",
+        "T-Rex: GET OLD"
+      ]
+    }
+  },
   "cc2942c96e112e19e59842f7692498ce": {
     "comic_id": 2180,
     "file_name": "comic2-2192.png",
@@ -4599,7 +4613,7 @@
       "1": [
         "Off panel: Who do you want to dedicate this song to?",
         "T-Rex: I'd like to send it out to my friends Utahraptor and Dromiceiomimus!",
-        "Narrator: You got it, caller!"
+        "Off panel: You got it, caller!"
       ],
       "3": [
         "Off panel: Who do you want to dedicate this song to?",
