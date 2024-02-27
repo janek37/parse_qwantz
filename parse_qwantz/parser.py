@@ -71,6 +71,10 @@ def parse_footer(image: Image) -> list[str]:
     lines, _widths, thoughts, text_lines, extra_characters, unmatched_shapes = get_elements(footer_image)
     if lines or thoughts or extra_characters or unmatched_shapes:
         logger.warning("Unexpected elements in footer")
+    for text_line in text_lines:
+        for char_box in text_line.char_boxes:
+            if char_box.extra_info:
+                logger.warning(f"Variant used: {char_box.extra_info}")
     return [text_line.content for text_line in text_lines]
 
 
