@@ -79,6 +79,27 @@
       ]
     }
   },
+  "3428df89c8e32b242c3238d3ed81392d": {
+    "comic_id": 12,
+    "file_name": "0012 - comic2-16-2.png",
+    "panels": {
+      "2": [
+        "T-Rex: 〚in T-Rex's imagination, holding a beach ball〛 woo! party!"
+      ],
+      "3": [
+        "T-Rex: 〚in T-Rex's imagination, throwing a beach ball to imaginary Utahraptor〛 catch!",
+        "Utahraptor: 〚in T-Rex's imagination〛 ha ha!",
+        "T-Rex: I intend to find a beach ball! Do you know where they are?",
+        "Dromiceiomimus: Sorry!",
+        "T-Rex: Maybe stomping this house will refresh your memory!"
+      ],
+      "4": [
+        "Utahraptor: I know where you could find a beach ball!",
+        "T-Rex: 〚excitedly imagines a beach ball〛",
+        "T-Rex: Where?"
+      ]
+    }
+  },
   "540b1a36090cece71d6f551445d5cf52": {
     "comic_id": 16,
     "file_name": "comic2-25.png",
