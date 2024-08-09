@@ -35,6 +35,10 @@ class TextBlock:
         return all(line.is_bold for line in self.lines)
 
     @property
+    def is_italic(self) -> bool:
+        return all(line.is_italic for line in self.lines)
+
+    @property
     def box(self) -> Box:
         top = self.start.y
         bottom = self.end.y
@@ -51,7 +55,7 @@ class TextBlock:
     def bond_strengths(self) -> list[int]:
         return [alignment.strength for alignment in self.alignments]
 
-    def content(self, mark_bold=True, include_font_name=False):
+    def content(self, mark_bold=True, mark_italic=True, include_font_name=False):
         char_boxes = []
         for row in self.rows:
             row_char_boxes = list(self.get_row_charboxes(row))
@@ -79,7 +83,9 @@ class TextBlock:
                     char_boxes.append(CharBox.space(is_bold=char_boxes[-1].is_bold, is_italic=char_boxes[-1].is_italic))
             char_boxes.extend(row_char_boxes)
 
-        grouped_char_boxes = groupby(char_boxes, key=lambda cb: (cb.is_bold and mark_bold, cb.is_italic))
+        grouped_char_boxes = groupby(
+            char_boxes, key=lambda cb: (cb.is_bold and mark_bold, cb.is_italic and mark_italic)
+        )
         text_and_weight = (
             (''.join(char_box.char for char_box in group), is_bold, is_italic)
             for (is_bold, is_italic), group in grouped_char_boxes

@@ -134,7 +134,10 @@ def get_script_lines(
         if block in block_matches:
             characters = block_matches[block]
             if god_or_devil:
-                content = block.content(mark_bold=False)
+                if god_or_devil.name in ("God", "Devil"):
+                    content = block.content(mark_bold=False)
+                else:
+                    content = block.content(mark_italic=False)
             elif characters[0].name == "Floating Batman head":
                 content = block.content()
             else:
@@ -220,3 +223,5 @@ def handle_god_and_devil(block: TextBlock, is_off_panel: bool) -> Character | No
         return Character.from_name('Devil')
     elif is_off_panel and block.is_bold:
         return Character.from_name('God')
+    elif is_off_panel and block.is_italic:
+        return Character.from_name('Creepy neighbours')
