@@ -5346,5 +5346,36 @@
         "T-Rex: Oh no it got me too"
       ]
     }
+  },
+  "1c589ded1b8b07084b5317a797f77b30": {
+    "comic_id": 4226,
+    "file_name": "comic2-4424.png",
+    "panels": {
+      "1": [
+        "Death: Surprise, T-Rex! It's me, Death",
+        "T-Rex: Oh NO!"
+      ],
+      "3": [
+        "Death: Boo! I'm Death",
+        "Dromiceiomimus: Don't bring her near me, T-Rex! I don't need a skelly in robes messing up my day.",
+        "T-Rex: I'm sorry, Dromiceiomimus! I don't control her!"
+      ],
+      "4": [
+        "Death: I'm a skeleton with a sword on a stick",
+        "Utahraptor: She's kinda annoying, yeah?",
+        "T-Rex: YEP!"
+      ],
+      "5": [
+        "Death: When I go on vacation silly things happen",
+        "Utahraptor: Isn't she supposed to lead you away from this life?",
+        "T-Rex: Who knows, man? I'm not a Death expert! I've never even died ONCE!"
+      ],
+      "6": [
+        "Death: I'm here to harvest the souls of the millions of bacteria in your digestive tract which live and die every day without anyone knowing",
+        "T-Rex: Oh! Okay. Um, does it hurt?",
+        "Death: Well!",
+        "Death: Not for them"
+      ]
+    }
   }
 }
