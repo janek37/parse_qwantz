@@ -1,7 +1,7 @@
 [project]
 name = "parse_qwantz"
 authors = [{name = "Jan Szejko", email = "jan.szejko@gmail.com"}]
-version = "2024.10.1"
+version = "2024.10.2"
 description = "Transcript generator for Dinosaur Comics"
 readme = "README.md"
 requires-python = ">=3.10"
