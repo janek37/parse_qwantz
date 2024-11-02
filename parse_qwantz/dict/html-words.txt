@@ -1221,6 +1221,7 @@ analogy
 analysis
 analyze
 analyzed
+anaphora
 anatomy
 ancestor
 ancestors
@@ -1352,6 +1353,7 @@ antonio
 antónio
 antonymous
 ants
+antsalova
 anvils
 anxie
 anxie-tay
@@ -1509,6 +1511,7 @@ arguments
 argument-solving
 aria
 arise
+arising
 aristotelian
 aristotle
 arithmetic
@@ -1677,6 +1680,7 @@ asylum
 asynchronous
 at
 atari
+atc
 ate
 atheism
 atheist
@@ -1847,6 +1851,7 @@ aw
 await
 awaited
 awaiting
+awaits
 awake
 awakening
 award
@@ -2914,6 +2919,7 @@ broadband
 broadcast
 broadcaster
 broaden
+broadens
 broadly
 broads
 broadway
@@ -2951,11 +2957,13 @@ browser
 browsing
 bruce
 bruise
+bruised
 bruisin
 brunch
 brunches
 brunette
 bruno
+brunswick
 brush
 brushes
 brushing
@@ -3177,6 +3185,7 @@ calligraphy
 call-in
 callin
 calling
+callisto
 calls
 calluses
 call-wise
@@ -3573,6 +3582,7 @@ charitably
 charities
 charity
 charles
+charleston
 charlie
 charlotte
 charlton
@@ -4143,6 +4153,7 @@ column
 colypse
 com
 coma
+combat
 combin
 combination
 combinations
@@ -4224,6 +4235,7 @@ commonplace
 commons
 commonwealth
 commotio
+commune
 communicate
 communicated
 communicates
@@ -4987,6 +4999,7 @@ ctp
 ctrl
 cube
 cubed
+cuberule
 cubes
 cubic
 cucumber
@@ -5719,6 +5732,7 @@ dinosaured
 dinosaurese
 dinosaur-focused
 dinosaurian
+dinosauroid
 dinosaurs
 dinosaur-sized
 dinosaur-style
@@ -5735,6 +5749,7 @@ diplomacy
 diplomat
 dipped
 dipping
+diprotons
 direct
 directed
 directing
@@ -6041,6 +6056,7 @@ doors
 door-to-door
 do-over
 dope
+dopey
 dord
 dords
 dorian
@@ -6768,6 +6784,7 @@ episode
 episodes
 episodic
 epistemological
+epistrophe
 epitaph
 epitaphs
 epitaph-session
@@ -6894,7 +6911,6 @@ etymologies
 etymology
 euclid
 euclidean
-euclidian
 eugh
 eulb
 eunuch
@@ -6982,6 +6998,7 @@ exceeds
 excellence
 excellent
 excelsior
+excelsior-class
 except
 excepting
 exception
@@ -7143,6 +7160,7 @@ extension
 extensions
 extensive
 extent
+extenuating
 external
 extinct
 extinction
@@ -7984,6 +8002,7 @@ frigedun
 frigedune
 frigg
 friggin
+fright
 frightmare
 frigorific
 frigyes
@@ -8174,6 +8193,7 @@ galage
 galaxies
 galaxy
 galaxy-brain
+galaxy-class
 galaxy-sized
 gall
 gallant
@@ -8204,6 +8224,7 @@ gangsta
 gangster
 gap
 gaping
+gaps
 garage
 garak
 garbage
@@ -8259,6 +8280,7 @@ gaze
 gazes
 gazing
 g-d
+gd
 gear
 gears
 gee
@@ -8447,6 +8469,7 @@ globe
 globodynamic
 gloria
 gloried
+glorious
 glory
 gloss
 glossing
@@ -8562,6 +8585,7 @@ gosh
 gosh-darned
 goss
 gosselaar
+gosses
 gossip
 got
 gotcha
@@ -8782,6 +8806,7 @@ guestbook
 guests
 guidance
 guide
+guidebook
 guided
 guidelines
 guides
@@ -9007,6 +9032,7 @@ harry
 harsh
 harsh_truths_walkthrough
 hart
+harterparses
 hartigan
 harvard
 harvest
@@ -9043,6 +9069,7 @@ haunt
 haunted
 haunters
 haunting
+hauntingly
 haunts
 hauptwörter
 have
@@ -9407,6 +9434,7 @@ homework
 homey
 homies
 homo
+homogeneous
 homographic
 homonyms
 homophobe
@@ -9485,6 +9513,7 @@ horsepox
 horses
 horsey
 horsie
+horterparks
 horton
 hospice
 hospital
@@ -9704,6 +9733,7 @@ iceland
 ichthyosaur
 icing
 icon
+iconic
 iconographs
 iconography
 icons
@@ -10332,6 +10362,7 @@ investigative
 investigator
 investing
 investment
+investments
 investor
 investors
 invincible
@@ -10395,6 +10426,8 @@ isaac
 isabel
 isacooldinosaur
 isbn
+isekai
+isekaied
 ish
 ishmael
 island
@@ -10607,6 +10640,7 @@ journalists
 journals
 journey
 journeys
+jovian
 joy
 joys
 jpeg
@@ -10653,6 +10687,7 @@ jungle
 junior
 junk
 jupiter
+jupitor
 jurassic
 juries
 jurisdiction
@@ -11246,6 +11281,7 @@ lesley-anne
 leslie
 less
 lessen
+lessens
 lesser
 less-full
 less-likely
@@ -11721,6 +11757,7 @@ macrofun
 mact
 mact-rexor
 mad
+madagascarian
 madame
 madden
 maddening
@@ -12313,6 +12350,7 @@ mid-life
 midlife
 midnight
 midnights
+midpoint
 midquel
 mid-sentence
 midshipman
@@ -13051,6 +13089,7 @@ neon
 nephew
 nephews
 nerd
+nerdiest
 nerds
 nerdy
 nerfect
@@ -13060,6 +13099,7 @@ nertz
 nerve
 nervous
 nervously
+nervousness
 nes
 ness
 nessie
@@ -13221,6 +13261,7 @@ nomicon
 nominate
 nominated
 nomination
+nominative
 non
 nonabelian
 non-adventures
@@ -13256,7 +13297,6 @@ non-dominant
 none
 non-eating
 non-euclidean
-non-euclidian
 non-event
 non-evil
 non-existant
@@ -13273,6 +13313,7 @@ non-human
 non_irony_jokes_database
 non-latin
 nonlethal
+non-linear
 non-machine
 non-mammalian
 non-mediocre
@@ -13282,6 +13323,7 @@ non-murderers
 non-native
 non-negative
 non-newtonian
+non-non-homogeneous
 non-non-non
 nono
 non-parent
@@ -13536,7 +13578,6 @@ occasionally
 occasions
 occupy
 occur
-occured
 occuring
 occurred
 occurring
@@ -13949,6 +13990,7 @@ overlapping
 overlay
 overlays
 overloaded
+overlooked
 overlord
 overlords
 overly
@@ -14527,6 +14569,7 @@ phoneme
 phones
 phonetically
 phoning
+phora
 phospholipids
 photo
 photobombing
@@ -14780,6 +14823,8 @@ plough
 plow
 pls
 plug
+plugged
+plugs
 plum
 plumb
 plumber
@@ -15723,6 +15768,7 @@ quiet
 quieter
 quietly
 quiktrip
+quintouple
 quippy
 quips
 quirk
@@ -15917,6 +15963,7 @@ ravens
 ravine
 ravings
 raw
+rawest
 ray
 raye
 raymond
@@ -16066,6 +16113,7 @@ recreation
 recreational
 recriminations
 recruited
+recruiting
 rectangular
 recurring
 recycle
@@ -16184,6 +16232,7 @@ reindeer
 reinforcement
 reinforces
 reinstall
+reintroducing
 reinvented
 reinvention
 reinvents
@@ -16755,6 +16804,7 @@ romanticism
 romanticized
 rome
 romeo
+ron
 roof
 roofs
 rook
@@ -17186,6 +17236,7 @@ scooby
 scoop
 scooping
 scooters
+scope
 scopes
 scor
 scorching
@@ -17300,6 +17351,7 @@ second
 second-act
 secondary
 second-hand
+second-largest
 second-last
 second-longest
 secondly
@@ -17673,6 +17725,7 @@ shields
 shift
 shifted
 shifting
+shifts
 shiftylook
 shiga
 shiiiiii
@@ -17720,6 +17773,7 @@ short
 shortcuts
 shorten
 shorter
+shortest
 shorthand
 shorties
 shortly
@@ -18106,6 +18160,7 @@ slumbertime
 slumming
 slunk
 slur
+slurries
 slurry
 slurs
 slut
@@ -19016,6 +19071,7 @@ strongest
 strongly
 strongman
 strongmen
+strophe
 strouse
 struck
 structurally
@@ -19067,6 +19123,7 @@ stupid-children
 stupider
 stupidity
 stupidly
+stupidor
 sturdy
 style
 stylebook
@@ -19433,6 +19490,7 @@ sweethearts
 sweetie
 sweeties
 sweetness
+swell
 swept
 swiftly
 swim
@@ -19740,6 +19798,7 @@ temporalpicard
 temporarily
 temporarily-crunchy
 temporary
+tempt
 tempted
 ten
 tend
@@ -21223,7 +21282,9 @@ vengeful
 vengefulness
 venice
 venom
+venomized
 venomous
+venomverse
 ventured
 venue
 venury
@@ -21445,6 +21506,7 @@ wagon
 waist
 waist-deep
 wait
+waite
 waited
 waiter
 waiting
@@ -21551,7 +21613,9 @@ watermark
 watermarked
 watermelon
 watermelons
+waterorses
 waterpark
+waterparks
 waters
 waterslide
 watersliding
@@ -21751,6 +21815,7 @@ wheelchariot
 wheeled
 wheeler
 wheelhouse
+wheelie
 wheels
 wheely
 wheezing
@@ -21810,6 +21875,7 @@ whoahhhh
 whoahhhhh
 whoever
 whole
+whole-ass
 whole-heartedly
 wholesale
 wholesome

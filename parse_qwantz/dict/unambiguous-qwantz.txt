@@ -993,6 +993,7 @@ ahappiness
 ahead
 ahem
 ahh
+ah-hah
 ahhh
 ahhhh
 ahhhhh
@@ -1006,6 +1007,7 @@ ahhhhhhhhhhhh
 ahhhhhhhhhhhhh
 ahhhhhhhhhhhhhhhhhh
 ahhhhhhhhhhhhhhhhhhh
+ahhhhhhhhhhhhhhhhhhhhhhh
 ahhhhhhhhhhhhhhhhhhhhhhhhhh
 ahimsa
 ah-mazing
@@ -1288,6 +1290,7 @@ analytical
 analyze
 analyzed
 analyzes
+anaphora
 anarchic
 anastasia
 anatomically
@@ -1299,6 +1302,7 @@ ancient
 ancients
 and
 anderson
+andolobe
 andrew
 andrews
 android
@@ -1350,7 +1354,6 @@ annie
 annihilate
 anniversaries
 anniversary
-annoucement
 announce
 announced
 announcement
@@ -1421,6 +1424,7 @@ anti-vegetarian
 antlers
 antonio
 ants
+antsalova
 anvil
 anxiety
 anxious
@@ -1642,6 +1646,7 @@ arrogance
 arrogant
 arrow
 arrows
+arrowsmithery
 arrrrrgggg
 arse
 arsenal
@@ -1660,8 +1665,8 @@ articulate
 articulated
 artifact
 artifacts
-artifically
 artificial
+artificially
 artisanally
 artist
 artiste
@@ -1853,6 +1858,7 @@ auctioned
 audacious
 audacity
 audible
+audibly
 audience
 audiences
 audio
@@ -2447,6 +2453,7 @@ bequeathing
 bequest
 bequests
 berahfusah
+berate
 berated
 bereaved
 bergerac
@@ -2549,7 +2556,6 @@ billboards
 billion
 billionaire
 billionaires
-billionaries
 billions
 bills
 billy
@@ -2641,6 +2647,7 @@ bladderjuice
 bladders
 blade
 blades
+bladesmithery
 blah
 blair
 blam
@@ -2749,6 +2756,7 @@ bluff
 bluffing
 blundered
 blunders
+blunt
 blur
 blu-ray
 blurb
@@ -3132,6 +3140,7 @@ brostravaganza
 broth
 brothel
 brother
+brotherhood
 brothers
 brotimes
 brotus
@@ -3394,6 +3403,7 @@ call-in
 calling
 callings
 callipygian
+callisto
 callous
 callouses
 callously
@@ -3408,6 +3418,7 @@ calorie-counting
 calorie-rich
 calories
 calves
+calzone
 camaraderie
 cambodian
 came
@@ -3971,6 +3982,7 @@ chipmunk
 chipmunks
 chipped
 chips
+chiptune
 chiptunes
 chiropractor
 chisel
@@ -4327,6 +4339,7 @@ cockpit
 cockroach
 cockroaches
 cocks
+cocktails
 cocoa
 coconut
 code
@@ -5079,6 +5092,7 @@ corrections
 corrective
 correctly
 correctness
+corrects
 correlate
 correlates
 correspond
@@ -5461,6 +5475,7 @@ cupid
 cupped
 cups
 curate
+curated
 curating
 curb
 curdled
@@ -5819,6 +5834,7 @@ decreased
 decreases
 decreasing
 decree
+decrypted
 ded
 dedicate
 dedicated
@@ -7513,6 +7529,7 @@ episodes
 epistemological
 epistemology
 epistolary
+epistrophe
 epitaph
 epitaphs
 epitaxy
@@ -7681,7 +7698,6 @@ etymology
 eu
 eubulides
 euclidean
-euclidian
 eugenic
 eugh
 euler
@@ -7862,7 +7878,6 @@ exhaustive
 exhaustively
 exhibit
 exist
-existance
 existed
 existence
 existential
@@ -8317,7 +8332,6 @@ femi-chicks
 feminine
 femininity
 feminist
-feminity
 femto
 femto-assed
 femur
@@ -8531,6 +8545,7 @@ fixer
 fixes
 fixing
 fixings
+fix-it
 flabbergasting
 flabbergastingly
 flabbers
@@ -8823,6 +8838,7 @@ former
 formerly
 formidable
 forming
+formless
 forms
 formspring
 formula
@@ -9871,6 +9887,7 @@ grown-up
 grown-ups
 grows
 growth
+grudge
 grudges
 gruesomely
 gruff
@@ -10050,6 +10067,7 @@ handle
 handlebar
 handlebars
 handled
+handlers
 handles
 handling
 hand-made
@@ -10228,6 +10246,7 @@ head-on
 headphones
 headquarters
 heads
+headset
 headsets
 head-to-butt
 heady
@@ -10452,7 +10471,6 @@ hiking
 hilarious
 hilariously
 hilarity
-hilarous
 hilary
 hilbert
 hill
@@ -10585,6 +10603,7 @@ homestuck
 homework
 homeworld
 homo
+homogeneous
 homographic
 homophobia
 homophobic
@@ -11357,7 +11376,6 @@ infinitives
 infinity
 inflamed
 inflammable
-inflammatory
 inflatable
 inflate
 inflated
@@ -11739,6 +11757,7 @@ investigates
 investigating
 investigation
 investigations
+investigative
 investigator
 investigators
 investing
@@ -11820,6 +11839,7 @@ irvine
 is
 isaac
 isaiah
+isekai
 ishmael
 iskash
 islam
@@ -11858,7 +11878,6 @@ ivory-tower
 ivy
 izza
 j
-jabroinis
 jabroni
 jabronies
 jabronis
@@ -12010,6 +12029,7 @@ josh
 journals
 journey
 journeys
+jovian
 joy
 joyless
 joyous
@@ -12116,6 +12136,7 @@ kate
 katelyn
 katherine
 kathleen
+katie
 katy
 kaufman
 kavalier
@@ -12782,7 +12803,6 @@ lingered
 lingerie
 lingering
 lingers
-lingistics
 linguistic
 linguistically
 linguistics
@@ -12886,6 +12906,7 @@ locking
 lockpicking
 locks
 locksmith
+locksmithery
 locomotive
 lodge
 lofi
@@ -13020,7 +13041,7 @@ low-framerate
 low-hanging
 low-key
 lowkey
-low-maintenence
+low-maintenance
 low-poly
 low-power
 low-quality
@@ -13193,7 +13214,6 @@ maintained
 maintaining
 maintains
 maintenance
-maintenence
 maison
 majestic
 majesty
@@ -13304,7 +13324,6 @@ mantle
 mantra
 manual
 manually
-manufactored
 manufactory
 manufacture
 manufactured
@@ -13804,6 +13823,7 @@ midlife
 midnight
 midnight-proof
 midnights
+midpoint
 midquel
 mid-range
 mid-sentence
@@ -14808,7 +14828,6 @@ none
 non-eating
 nonetheless
 non-euclidean
-non-euclidian
 non-event
 non-events
 nonexistent
@@ -14823,6 +14842,7 @@ non-haver
 non-heap
 non-heroic
 non-hilarious
+non-homogeneous
 non-hotties
 non-houseplant
 non-idiomatic
@@ -14941,7 +14961,6 @@ nostalgia
 nostalgia-sauce
 nostalgic
 nostalgretz
-nostaligic
 nostrils
 nosy
 not
@@ -15154,7 +15173,6 @@ occupy
 occupying
 occur
 occurances
-occured
 occurred
 occurrence
 occurrences
@@ -15991,7 +16009,6 @@ pectoral
 peculiar
 pedal
 pedestal
-pedestrains
 pedestrian
 pedestrians
 pedi
@@ -16532,7 +16549,7 @@ poe
 poem
 poems
 poet
-poetessess
+poetesses
 poetic
 poetry
 poets
@@ -16672,6 +16689,7 @@ pops
 popsicles
 popular
 popularity
+popularity-wise
 popularize
 popularized
 popularizes
@@ -16734,7 +16752,6 @@ possession
 possessions
 possessive
 possessiveness
-possibilility
 possibilities
 possibility
 possible
@@ -17038,6 +17055,7 @@ primarily-male
 primary
 primate
 prime
+primed
 primer
 primes
 priming
@@ -17181,6 +17199,7 @@ progressive
 progressively
 prohibition
 prohibitionist
+prohibitions
 prohibitive
 prohibitively
 project
@@ -17239,7 +17258,6 @@ prophecies
 prophecy
 prophet
 propinquity
-propogating
 pro-polygamy
 proponent
 proportion
@@ -17368,6 +17386,7 @@ psychotic
 psychotropic
 pt
 pterodactyl
+pterosaur
 pub
 puberty
 pubes
@@ -17785,6 +17804,7 @@ ravages
 raven
 ravenous
 raw
+rawest
 rawr
 ray
 raymond
@@ -17968,6 +17988,7 @@ recycled
 red
 redact
 reddish
+rededicated
 redefine
 redefined
 redefining
@@ -18376,6 +18397,7 @@ resolutions
 resolve
 resolved
 resolves
+resonance
 resonant
 resonates
 resort
@@ -18767,6 +18789,7 @@ roommate
 roommates
 rooms
 room-temperature
+roooaaad
 roos
 roost
 rooster
@@ -18877,6 +18900,7 @@ rules
 ruleset
 rulesets
 ruling
+rum
 rumbles
 rumour
 rumoured
@@ -19008,6 +19032,7 @@ samsung
 samuel
 samurai
 sanctimonious
+sanctioned
 sand
 sandblasted
 sandbox
@@ -19342,7 +19367,6 @@ second-tier
 secret
 secretariat
 secretary
-secretely
 secreting
 secretly
 secrets
@@ -19421,6 +19445,7 @@ selfies
 self-imposed
 self-improvement
 self-inflicted
+self-insert
 self-interest
 self-interested
 selfish
@@ -19440,6 +19465,7 @@ self-portraits
 self-preservation
 self-published
 self-realization
+self-realized
 self-reflection
 self-regulate
 self-serving
@@ -20243,6 +20269,7 @@ slumbers
 slumming
 slurp
 slurps
+slurries
 slurry
 slut
 slut-shames
@@ -20989,10 +21016,11 @@ stately
 statement
 statements
 states
+state-sanctioned
 static
 stating
 station
-stationary
+stationery
 stations
 statistic
 statistical
@@ -21732,6 +21760,7 @@ swerved
 swig
 swim
 swimmer
+swimmers
 swimmin
 swimming
 swimsuit
@@ -21886,6 +21915,7 @@ tandem
 tandey
 tangent
 tangential
+tangentially
 tangibility
 tangible
 tangibly
@@ -22689,7 +22719,6 @@ tramples
 trampoline
 trampolines
 trampolining
-trancendental
 trancends
 trans
 transaction
@@ -22845,6 +22874,7 @@ trig
 trigger
 trigger-happy
 triggers
+triiiiip
 trilemma
 trillion
 trillions
@@ -23829,6 +23859,7 @@ veto
 veux
 vexed
 vga
+vhf
 vhs
 vi
 via
@@ -23949,6 +23980,7 @@ visualized
 visualizes
 visually
 vital
+vitality
 vitamin
 vitamins
 vitriolic
@@ -24388,6 +24420,7 @@ whee
 wheel
 wheelchair
 wheelie
+wheelies
 wheels
 wheezing
 wheirwolf
@@ -24559,6 +24592,8 @@ wine
 wing
 winged
 wings
+wingsuit
+wingsuits
 wink
 winking
 winkle
@@ -24657,6 +24692,7 @@ wondering
 wonderland
 wonders
 wonderspace
+wondrous
 wonka
 wonky
 wont
@@ -24899,6 +24935,7 @@ yolky
 yonder
 yoo
 yoo-hoo
+yore
 yorick
 york
 yoshi
