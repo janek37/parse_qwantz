@@ -9,9 +9,10 @@ from PIL import Image
 
 import parse_qwantz
 from parse_qwantz.colors import Color
-from parse_qwantz.elements import get_elements
+from parse_qwantz.elements import get_elements, Direction
 from parse_qwantz.fonts import CharBox, Font
 from parse_qwantz.lines import Line
+from parse_qwantz.match_lines import Character
 from parse_qwantz.panels import PANELS
 from parse_qwantz.pixels import is_ask_professor_science, Pixel
 from parse_qwantz.prepare_image import prepare_image
@@ -21,17 +22,20 @@ logger = logging.getLogger()
 
 BLANK_FILE_PATH = files(parse_qwantz).joinpath('img/blank.svg')
 ASK_PROFESSOR_SCIENCE_PATH = files(parse_qwantz).joinpath('img/ask-professor-science.svg')
+BATMAN_LEFT_PATH = files(parse_qwantz).joinpath('img/batman-left.svg')
+BATMAN_RIGHT_PATH = files(parse_qwantz).joinpath('img/batman-right.svg')
 
 
 def generate_svg(image: Image):
     masked, good_panels = prepare_image(image)
     ask_professor_science = _is_ask_professor_science(masked)
     simple_image = SimpleImage.from_image(masked, ask_professor_science)
-    lines, char_boxes = get_elements_for_svg(simple_image)
+    lines, char_boxes, characters = get_elements_for_svg(simple_image)
     svg_elements = [make_line_element(line, width, i) for i, (line, width) in enumerate(lines)]
     svg_elements.extend(
         chain(*(make_text_element(char_box, font, color, i) for i, (char_box, font, color) in enumerate(char_boxes)))
     )
+    svg_elements.extend((make_character(character) for character in characters))
     if ask_professor_science:
         svg_elements.append(get_professor_science_sign())
     return render_svg(svg_elements)
@@ -46,6 +50,13 @@ def _is_ask_professor_science(image: Image) -> bool:
 
 def get_professor_science_sign() -> ElementTree.Element:
     doc = ElementTree.parse(ASK_PROFESSOR_SCIENCE_PATH)
+    root = doc.getroot()
+    return root[0]
+
+
+def get_batman(direction: Direction) -> ElementTree.Element:
+    batman_path = BATMAN_LEFT_PATH if direction == Direction.LEFT else BATMAN_RIGHT_PATH
+    doc = ElementTree.parse(batman_path)
     root = doc.getroot()
     return root[0]
 
@@ -107,9 +118,24 @@ def make_text_element(char_box: CharBox, font: Font, color: Color, no: int) -> I
         yield text_element
 
 
-def get_elements_for_svg(image: SimpleImage) -> tuple[list[tuple[Line, int]], list[tuple[CharBox, Font, Color]]]:
+def make_character(character: Character) -> ElementTree.Element:
+    assert character.name == "Floating Batman head", character.name
+    batman = get_batman(character.direction)
+    box = character.boxes[0]
+    attrib = {
+        "id": "batman",
+        "transform": f"translate({box.left},{box.top})"
+    }
+    group_element = ElementTree.Element("g", attrib)
+    group_element.append(batman)
+    return group_element
+
+
+def get_elements_for_svg(
+    image: SimpleImage
+) -> tuple[list[tuple[Line, int]], list[tuple[CharBox, Font, Color]], list[Character]]:
     lines, line_widths, thoughts, text_lines, extra_characters, unmatched = get_elements(image)
-    if thoughts or extra_characters or unmatched:
+    if thoughts or unmatched:
         logger.warning(f"Foreign elements in the image")
     char_boxes = [
         (char_box, text_line.font, text_line.color)
@@ -118,22 +144,23 @@ def get_elements_for_svg(image: SimpleImage) -> tuple[list[tuple[Line, int]], li
         if char_box.pixels
     ]
     lines = (fix_for_panel_edges(line) for line in lines)
-    return list(zip(lines, line_widths)), char_boxes
+    return list(zip(lines, line_widths)), char_boxes, extra_characters
 
 
 def fix_for_panel_edges(line: Line) -> Line:
-    new_ends = []
-    length = math.sqrt((line[0].x - line[1].x)**2 + (line[0].y - line[1].y)**2)
-    for end, other_end in zip(line, reversed(line)):
-        if any(is_on_edge(end, panel) for panel in PANELS):
-            new_end = Pixel(
-                x=int(end.x + 2 * (end.x - other_end.x)/length),
-                y=int(end.y + 2 * (end.y - other_end.y)/length)
-            )
-            new_ends.append(new_end)
-        else:
-            new_ends.append(end)
-    return tuple(new_ends)
+    start, end = line
+    length = math.sqrt((start.x - end.x)**2 + (start.y - end.y)**2)
+    return _get_new_end(start, end, length), _get_new_end(end, start, length)
+
+
+def _get_new_end(end: Pixel, other_end: Pixel, length: float) -> Pixel:
+    if any(is_on_edge(end, panel) for panel in PANELS):
+        return Pixel(
+            x=int(end.x + 2 * (end.x - other_end.x) / length),
+            y=int(end.y + 2 * (end.y - other_end.y) / length)
+        )
+    else:
+        return end
 
 
 def is_on_edge(pixel: Pixel, panel: tuple[tuple[int, int], tuple[int, int]]) -> bool:

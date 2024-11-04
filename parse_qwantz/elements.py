@@ -4,7 +4,7 @@ from logging import getLogger
 from parse_qwantz.box import Box
 from parse_qwantz.fonts import ALL_FONTS
 from parse_qwantz.lines import Line, get_line
-from parse_qwantz.match_lines import Character
+from parse_qwantz.match_lines import Character, Direction
 from parse_qwantz.text_lines import TextLine, try_text_line, cleanup_text_lines
 from parse_qwantz.detect_thought import get_thought
 from parse_qwantz.pixels import Pixel, remove_subsequence
@@ -56,8 +56,8 @@ def get_elements(
                 line_widths.append(width)
                 sorted_pixels = remove_subsequence(sorted_pixels, line_pixels)
             elif result := get_batman(pixel, tmp_image):
-                batman_box, batman_pixels = result
-                extra_characters.append(Character("Floating Batman head", (batman_box,)))
+                batman_box, batman_pixels, batman_direction = result
+                extra_characters.append(Character("Floating Batman head", (batman_box,), batman_direction))
                 sorted_pixels = remove_subsequence(sorted_pixels, batman_pixels)
             elif result := get_thought(pixel, tmp_image):
                 box, thought_pixels = result
@@ -71,12 +71,12 @@ def get_elements(
     return lines, line_widths, thoughts, cleanup_text_lines(text_lines), extra_characters, unmatched
 
 
-def get_batman(pixel: Pixel, image: SimpleImage) -> tuple[Box, list[Pixel]] | None:
+def get_batman(pixel: Pixel, image: SimpleImage) -> tuple[Box, list[Pixel], Direction] | None:
     pixels = get_shape(pixel, image)
     if len(pixels) != 187:
         return None
     if Pixel(pixel.x + 11, pixel.y - 7) in pixels and Pixel(pixel.x + 11, pixel.y - 8) not in pixels:
-        return Box(Pixel(pixel.x, pixel.y - 7), Pixel(pixel.x + 14, pixel.y + 11)), sorted(pixels)
+        return Box(Pixel(pixel.x + 1, pixel.y - 7), Pixel(pixel.x + 15, pixel.y + 11)), sorted(pixels), Direction.LEFT
     if Pixel(pixel.x + 2, pixel.y - 17) in pixels and Pixel(pixel.x + 2, pixel.y - 18) not in pixels:
-        return Box(Pixel(pixel.x, pixel.y - 7), Pixel(pixel.x + 14, pixel.y + 11)), sorted(pixels)
+        return Box(Pixel(pixel.x, pixel.y - 17), Pixel(pixel.x + 14, pixel.y + 1)), sorted(pixels), Direction.RIGHT
     return None

@@ -2,6 +2,7 @@ import itertools
 import logging
 import math
 from dataclasses import dataclass
+from enum import Enum
 from functools import cmp_to_key
 
 from parse_qwantz.box import Box
@@ -14,10 +15,16 @@ from parse_qwantz.text_lines import TextLine
 logger = logging.getLogger()
 
 
+class Direction(Enum):
+    LEFT = "left"
+    RIGHT = "right"
+
+
 @dataclass(frozen=True, eq=True)
 class Character:
     name: str
     boxes: tuple[Box, ...]
+    direction: Direction | None = None
 
     def __str__(self):
         return self.name
