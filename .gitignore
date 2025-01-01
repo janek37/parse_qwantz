@@ -3,3 +3,4 @@ __pycache__
 parse_qwantz.egg-info
 dist
 build
+.python-version
