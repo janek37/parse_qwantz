@@ -223,5 +223,5 @@ def handle_god_and_devil(block: TextBlock, is_off_panel: bool) -> Character | No
         return Character.from_name('Devil')
     elif is_off_panel and block.is_bold:
         return Character.from_name('God')
-    elif is_off_panel and block.is_italic:
-        return Character.from_name('Creepy neighbours')
+    # elif is_off_panel and block.is_italic:
+    #     return Character.from_name('Creepy neighbours')
