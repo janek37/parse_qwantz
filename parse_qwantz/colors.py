@@ -1,6 +1,6 @@
 from typing import Optional, NamedTuple
 
-COLOR_THRESHOLD = 250
+COLOR_THRESHOLD = 300
 
 
 class Color(NamedTuple):
