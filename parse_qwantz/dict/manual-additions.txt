@@ -57,6 +57,7 @@ country-sized
 credit-watchers
 crimefighters
 crimefightingly
+crime-puzzlers
 cringeworthy
 criticizing
 cryptocurrencies
