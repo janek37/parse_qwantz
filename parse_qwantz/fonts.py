@@ -23,7 +23,7 @@ CHARS = (
     "°®♪♫±_~¡²«»∩×"
     "αάβγδεέζηήθιίκλμνξοόπρσςτυύφχψωώˣ"
 )
-FORBIDDEN_FIRST_CHARS = "%&)=^|}”·™_"
+FORBIDDEN_FIRST_CHARS = "%)=^|}”·™_"
 
 ACCEPT = -1
 
