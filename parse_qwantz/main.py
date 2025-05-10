@@ -1,5 +1,6 @@
 import hashlib
 import logging
+import re
 import sys
 from pathlib import Path
 from typing import Iterable
@@ -21,6 +22,9 @@ def get_unambiguous_words(image: Image) -> Iterable[str]:
     masked, good_panels = prepare_image(image)
     for i, (panel, characters) in enumerate(zip(PANELS, CHARACTERS), start=1):
         if str(i) in panel_overrides:
+            panel = panel_overrides[str(i)]
+            for panel_line in panel:
+                yield from get_words(panel_line)
             continue
         (width, height), (x, y) = panel
         cropped = masked.crop((x, y, x + width, y + height))
@@ -31,6 +35,16 @@ def get_unambiguous_words(image: Image) -> Iterable[str]:
         )
         for text_block in text_blocks:
             yield from text_block.unambiguous_words()
+
+
+def get_words(line: str) -> list[str]:
+    if line[0] == '〚':
+        return []
+    line_text = line.split(': ', 1)[1].lower()
+    line_text = re.sub(r"〚[^〛]*〛", "", line_text)
+    line_text = re.sub(r"\w*⦃[^⦄]*⦄\w*", "", line_text)
+    line_text = re.sub(r"\w*…\w*", "", line_text)
+    return re.findall(r"\w+", line_text) + re.findall(r"\w+(-\w+)+", line_text)
 
 
 def main(
