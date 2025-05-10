@@ -1438,6 +1438,7 @@ antlers
 antonio
 ants
 antsalova
+antsy
 anvil
 anxiety
 anxious
@@ -2575,6 +2576,7 @@ bileve
 bill
 billboard
 billboards
+billie
 billion
 billionaire
 billionaires
@@ -4082,6 +4084,7 @@ chris
 christ
 christen
 christened
+christening
 christenings
 christian
 christianity
@@ -5932,6 +5935,8 @@ defense
 defenses
 defensible
 defensive
+defer
+deferred
 deffo
 defiant
 deficiency
@@ -6062,6 +6067,7 @@ depleted
 depleting
 deploy
 deployed
+deploying
 depo
 depopulated
 deposit
@@ -6136,6 +6142,7 @@ desolation
 désolé
 désormais
 despair
+despairing
 desperate
 desperately
 desperation
@@ -7486,6 +7493,7 @@ enigmatically
 enjoy
 enjoyable
 enjoyed
+enjoyer
 enjoying
 enjoyment
 enjoys
@@ -8047,6 +8055,7 @@ explosive-expert
 explosively
 explosives
 exponential
+exponents
 export
 expose
 exposed
@@ -10003,6 +10012,8 @@ guidesexy
 guiding
 guildenstern
 guile
+guillotin
+guillotine
 guilt
 guilty
 guin
@@ -11447,6 +11458,7 @@ infection
 infections
 infectious
 infects
+infer
 inferior
 infernal
 inferred
@@ -14473,6 +14485,7 @@ munch
 munched
 munchies
 munching
+mundane
 municipality
 munitions
 murder
@@ -14631,6 +14644,8 @@ narrators
 narrow
 narrowing
 narrowly
+naruto
+nas
 nasa
 nasal
 nascent
@@ -16249,6 +16264,9 @@ perilously
 period
 periodic
 periods
+peripa
+peripatetic
+peripateticness
 perish
 perished
 peritoneum
@@ -16457,6 +16475,7 @@ pigs
 pi-imal
 pik
 pik-achoo
+pilates
 pile
 piled
 piles
@@ -17283,6 +17302,7 @@ proclamation
 proclamations
 proclivities
 procrastinating
+procrastination
 procreate
 pro-crime
 procure
@@ -22131,6 +22151,7 @@ taste
 tasted
 tasteful
 tastefully
+tasteless
 tastelessly
 taste-o-vision
 tastes
@@ -22401,6 +22422,7 @@ themes
 themselve
 themselves
 then
+thence
 then-current
 then-president
 theodore
@@ -23483,7 +23505,6 @@ underwent
 undesirable
 undetectable
 undetected
-undetectible
 undetermined
 undiagnosable
 undid
@@ -23811,6 +23832,7 @@ urge
 ur-genre
 urgent
 urging
+urinal
 urinary
 urinate
 urine
@@ -24616,6 +24638,7 @@ wheels
 wheezing
 wheirwolf
 when
+whence
 whenever
 whenevs
 where
@@ -24663,6 +24686,7 @@ whitelist
 white-water
 whitewater
 whitey
+whither
 whiz
 who
 whoa
@@ -24834,6 +24858,7 @@ wither
 withered
 withhold
 within
+with-it
 without
 withstand
 witness
@@ -25088,6 +25113,7 @@ yearn
 years
 yeast
 yee
+yeesh
 yeeting
 yell
 yelled

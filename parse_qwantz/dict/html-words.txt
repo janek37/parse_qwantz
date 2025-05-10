@@ -219,6 +219,7 @@ _______
 1991
 1992
 1993
+1995
 1996
 1997
 1998
@@ -495,6 +496,7 @@ _______
 560
 5600
 56njgasdklh
+5-7pm
 58kb
 58th
 59
@@ -873,6 +875,7 @@ advantages
 adventerous
 adventure
 adventures
+adverbs
 adverse
 advertise
 advertised
@@ -1180,6 +1183,7 @@ ambiguous
 ambisextrous
 ambition
 ambitious
+ambivalent
 ambrose
 amelia
 america
@@ -1207,6 +1211,7 @@ ample
 amplification
 amplified
 amply
+ams
 amulet
 amundsen
 amusement
@@ -1393,6 +1398,7 @@ apex
 aphantasical
 aphorism
 aphorisms
+api
 a-plenty
 aplosive
 apocalypse
@@ -1555,6 +1561,7 @@ arrest
 arrested
 arrests
 arrh
+arrival
 arrive
 arrived
 arrives
@@ -1776,6 +1783,7 @@ auld
 aunt
 auntie
 aunts
+aurora
 aussehen
 austen
 austin
@@ -1871,6 +1879,7 @@ awakening
 award
 awarded
 awarding
+award-nominated
 awards
 award-winning
 aware
@@ -2135,6 +2144,7 @@ bats
 batteries
 battery
 battery-design
+bat-themed
 battle
 battled
 battledroid
@@ -2230,6 +2240,7 @@ beeps
 beepy
 beer
 beers
+beeswax
 beethoven
 beetie
 beetles
@@ -2239,6 +2250,8 @@ beforementioned
 before-show
 befriend
 befriended
+befriending
+befriends
 beg
 began
 begets
@@ -2634,6 +2647,7 @@ bodypartz
 body-temperature
 body-to-body
 bog
+boggish
 bogglingly
 bogs
 bogus
@@ -2713,6 +2727,7 @@ boom
 boomer
 boomerang
 boomers
+boon
 booners
 boons
 boooo
@@ -4093,6 +4108,7 @@ cocoa
 coda
 codak
 code
+coded
 codel
 codes
 coding
@@ -4239,6 +4255,7 @@ comics-themed
 comicteer
 comies
 coming
+coming-from
 comix
 comixology
 comma
@@ -4796,6 +4813,7 @@ counting
 countless
 countries
 country
+countryman
 counts
 county
 couple
@@ -5067,6 +5085,7 @@ cuneiform
 cunzy
 cup
 cupcakes
+cuphead
 cupid
 cupped
 cups
@@ -5145,6 +5164,7 @@ cyber
 cyber-baskervilles
 cybernetic
 cybernetically
+cyberpunk
 cybersex
 cyber-space
 cyberverse
@@ -5617,6 +5637,7 @@ detect
 detectable
 detected
 detecting
+detection
 detective
 detectives
 detectivish
@@ -5744,6 +5765,7 @@ digitalized
 digitally
 digits
 digs
+dijon
 dilation
 dilbert
 dilemma
@@ -5804,6 +5826,7 @@ directed
 directing
 direction
 directions
+direction-to
 directive
 directives
 directly
@@ -5978,7 +6001,9 @@ distributed
 distribution
 district
 disturbing
+ditcher
 ditches
+ditching
 ditty
 dive
 divergent
@@ -6139,6 +6164,7 @@ doubling
 doubly
 doubly-mad
 doubt
+doubting
 doubts
 doug
 dough
@@ -6686,6 +6712,7 @@ enactment
 enacts
 encapsulate
 encased
+ence
 encode
 encoded
 encoding
@@ -6716,6 +6743,7 @@ endorsed
 endorsement
 endorsing
 end-point
+endpoint
 endquote
 ends
 ends-today
@@ -6767,6 +6795,7 @@ enlightenment
 ennui
 enormous
 enough
+enriching
 enrobed
 enroll
 ensconced
@@ -7252,6 +7281,7 @@ eyed
 eyelids
 eyepatch
 eyes
+eyesight
 e-z
 ez
 f
@@ -7279,6 +7309,7 @@ facilitators
 facility
 facing
 fact
+fact-check
 fact-checking
 factor
 factors
@@ -7420,6 +7451,7 @@ favourably
 favoured
 favourite
 favourites
+favours
 fawkes
 fax
 faxed
@@ -7648,6 +7680,7 @@ fishstick
 fishy
 fisshe
 fist
+fistfight
 fisticuffsmanship
 fists
 fit
@@ -7691,6 +7724,7 @@ flanderizes
 flap
 flapper
 flappers
+flapping
 flaps
 flares
 flash
@@ -7822,6 +7856,7 @@ fondly
 font
 font-rendering
 food
+foodborne
 food-grade
 food-loving
 foods
@@ -8197,6 +8232,7 @@ furnature
 furnishings
 furniture
 furries
+furrowed
 furrowing
 furry
 furs
@@ -8414,6 +8450,7 @@ gentleman
 gentlemen
 gentlewomen
 gently
+gents
 genuine
 geo
 geocities
@@ -9881,6 +9918,7 @@ illegally
 illegalsigns
 illinois
 illness
+illnessio
 illuminating
 illusion
 illusions
@@ -9994,6 +10032,7 @@ inaccessible
 inaccuracies
 inaccurate
 inaccurately
+inadequate
 inane
 inanimate
 inappropriate
@@ -10136,6 +10175,7 @@ infections
 inferential
 inferior
 infernal
+inferred
 infertile
 infest
 infestation
@@ -10547,6 +10587,7 @@ itemize
 items
 iteration
 it-ess
+ither
 its
 itself
 itsy
@@ -10655,6 +10696,7 @@ jesse
 jessica
 jest
 jester
+jests
 jesus
 jet
 jetlag
@@ -10855,6 +10897,7 @@ kazu
 kbps
 kc
 kean
+keanu
 keara
 keeler
 keeley
@@ -11261,6 +11304,7 @@ lazering
 lazers
 laziest
 lazily
+laziness
 lazy
 lb
 lb-bff
@@ -11479,6 +11523,7 @@ limb
 limbal
 limbs
 lime
+limerence
 liminal
 limit
 limitation
@@ -11610,6 +11655,7 @@ locally
 locally-filmed
 location
 locations
+locative
 loch
 lochs
 lock
@@ -11681,6 +11727,7 @@ look
 looked
 lookin
 looking
+looking-glass
 lookit
 looks
 lookup
@@ -11965,6 +12012,7 @@ manager
 managers
 manages
 managing
+man-bat
 manboners
 mancave
 manchuria
@@ -12224,6 +12272,7 @@ mechanics
 mechanisms
 mechanized
 meconis
+mecum
 med
 medal
 medals
@@ -12375,6 +12424,7 @@ metaphorical
 metaphorically
 metaphors
 meta-problems
+meta-secrets
 meta-text
 meta-textual
 meta-time
@@ -12966,6 +13016,7 @@ mustaches
 mustachio
 mustachios
 mustachocene
+mustard
 must-ash
 muster
 mustn
@@ -13069,7 +13120,9 @@ narrator
 narrators
 narrowly
 narrows
+naruto
 nary_boi
+nas
 nasa
 nascent
 naseem
@@ -14066,6 +14119,7 @@ outtakes
 outwards
 outweigh
 ov
+ova
 ovah
 oval
 ovaries
@@ -14325,6 +14379,7 @@ parrots
 parrying
 parse
 parsing
+parsons
 part
 partario
 partee
@@ -14579,6 +14634,8 @@ period
 periodic
 periodically
 periods
+peripatetic
+peripathetic
 perk
 perks
 perl
@@ -14758,6 +14815,7 @@ pigeon
 pigeons
 pigged
 piglet
+pilates
 pile
 piled
 piles
@@ -15565,6 +15623,7 @@ properly
 properties
 property
 property-damaging
+prophecies
 prophecy
 prophetic
 prophets
@@ -16168,6 +16227,7 @@ receives
 receiving
 recent
 recently
+recently-used
 reception
 receptions
 receptive
@@ -16271,6 +16331,7 @@ re-energize
 re-enter
 rees
 re-evalutes
+reeves
 refer
 reference
 referenced
@@ -17311,12 +17372,14 @@ scavengers
 scenario
 scenarios
 scene
+scenery
 scenes
 scenester
 scent
 scented
 schedule
 scheduled
+schedules
 schema
 scheme
 schemes
@@ -17482,6 +17545,7 @@ secousse
 secret
 secretary
 secretary-general
+secrete
 secretly
 secrets
 section
@@ -17663,6 +17727,7 @@ serious
 seriously
 seriouslyyouguys
 serkeyn
+sermons
 serum
 serums
 servant
@@ -18169,6 +18234,7 @@ skipped
 skipped-over
 skipping
 skips
+skirts
 skittish
 skittles
 skool
@@ -18557,6 +18623,7 @@ sounding
 soundly
 sounds
 soundtrack
+soundtracks
 soup
 soupçon
 souped
@@ -18654,6 +18721,7 @@ spectrum
 spectrurorny
 speculate
 speculated
+speculating
 speculation
 speculative
 sped
@@ -18666,6 +18734,8 @@ speechwriters
 speed
 speeding
 speed-run
+speedrunners
+speedruns
 speeds
 speedy
 spell
@@ -18814,6 +18884,7 @@ spun
 spunk
 spunky
 spuoses
+spur
 spurred
 spx
 spy
@@ -19754,6 +19825,7 @@ taller
 tallest
 tallies
 tallness
+tally
 tallying
 tam
 tampering
@@ -20123,6 +20195,7 @@ thirteenth
 thirty
 this
 thisishowyoudie
+thither
 thngs
 tho
 thomas
@@ -20286,6 +20359,7 @@ tire
 tired
 tireing
 tireless
+tiresome
 tiring
 tis
 tissue
@@ -20325,6 +20399,7 @@ todays
 todd
 toddle
 toddler
+toddler-coded
 toddler-sized
 toddling
 to-do
@@ -20512,6 +20587,7 @@ transcribing
 transcript
 transcription
 transcriptions
+transcripts
 transes
 transfer
 transferred
@@ -20806,6 +20882,7 @@ twenty-kilometer
 twenty-nine
 twenty-one
 twenty-second
+twenty-two
 twerking
 twice
 twilight
@@ -21022,6 +21099,8 @@ undisclosed
 undiscovered
 undisturbed
 undo
+undocumented
+undone
 undying
 une
 unearth
@@ -21057,6 +21136,7 @@ unfounded
 unfreeze
 unfriendly
 unfulfilling
+unfurrowed
 ungainly
 ungendered
 unglued
@@ -21259,6 +21339,7 @@ urbana
 urder
 urge
 urges
+urinals
 urinary
 urine
 urkel
@@ -21314,6 +21395,7 @@ uterus
 utf
 utf-8
 utilitarianism
+utilities
 utility
 utilizing
 utmost
@@ -21336,6 +21418,8 @@ vaccination
 vaccine
 vacuum
 vacuuming
+vade
+vade-mecum
 vader
 vagina
 vaginae
@@ -21721,6 +21805,7 @@ warner
 warning
 warnings
 warp
+warrant
 warrants
 warrior
 warriors
@@ -21976,6 +22061,7 @@ when
 whenever
 whenyouemailmeyouowemethirtydollars
 where
+whereas
 whereby
 wherein
 wherer
@@ -22045,6 +22131,7 @@ whoopsies
 whopper
 whoppers
 whore
+whoreson
 whorf
 whose
 whotta
@@ -22330,6 +22417,7 @@ xcv
 xena
 xeric
 xerox
+xither
 xkcd
 xkcdinosaur
 xmas
@@ -22411,7 +22499,10 @@ yocto
 yocto-assed
 yolk
 yolo
+yon
+yond
 yonder
+yonence
 yonge
 yoou
 yore
