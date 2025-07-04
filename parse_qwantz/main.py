@@ -44,7 +44,7 @@ def get_words(line: str) -> list[str]:
     line_text = re.sub(r"〚[^〛]*〛", "", line_text)
     line_text = re.sub(r"\w*⦃[^⦄]*⦄\w*", "", line_text)
     line_text = re.sub(r"\w*…\w*", "", line_text)
-    return re.findall(r"\w+", line_text) + re.findall(r"\w+(-\w+)+", line_text)
+    return re.findall(r"\w+", line_text) + re.findall(r"\w+(?:-\w+)+", line_text)
 
 
 def main(
