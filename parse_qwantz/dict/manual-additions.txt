@@ -110,6 +110,7 @@ goth-adjacent
 grandmasters
 great-grandchildren
 hairdressing
+half-forgotten
 half-remembered
 happy-faced
 have-nots
