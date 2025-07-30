@@ -215,7 +215,7 @@
       "1": [
         "Heading: 〚white on red background〛 CHOOSE YOUR OWN ADVENTURE",
         "Narrator: YOU'RE THE STAR OF THE STORY! CHOOSE FROM 2 POSSIBLE ENDINGS.",
-        "Heading:  〚large red fancy font〛 DINOSAURUS REX"
+        "Heading: 〚large red fancy font〛 DINOSAURUS REX"
       ],
       "2": [
         "Text: You are a T-Rex, undisputed King of the Dinosaurs. You are out stomping when you see a log cabin!",
@@ -254,7 +254,7 @@
       "1": [
         "Heading: 〚white on red background〛 CHOOSE YOUR OWN ADVENTURE",
         "Narrator: YOU'RE THE STAR OF THE STORY! CHOOSE FROM ANY POSSIBLE ENDING.",
-        "Heading:  〚large red fancy font〛 FREE WILL"
+        "Heading: 〚large red fancy font〛 FREE WILL"
       ],
       "2": [
         "Text: Another beautiful day! Today is a good day you think for some new variety, some new excitement in your life!",
@@ -791,7 +791,7 @@
       "5": [
         "T-Rex: I, T-Rex, am 〚dark red〛 begging 〚end dark red〛 you not to read the next panel!",
         "Utahraptor: The next panel is the 〚underline〛 end 〚end underline〛 of this comic, and there is a 〚dark red〛 DINOSAUR 〚end dark red〛 at the end of this comic!",
-        "T-Rex: 〚'SCARED' is dark red, all 'PLEASE' are dark blue〛 Oh, I am so  〚dark red〛 SCARED!  〚end dark red〛 Please do not read the next panel. 〚dark blue〛 PLEASE PLEASE PLEASE!"
+        "T-Rex: 〚'SCARED' is dark red, all 'PLEASE' are dark blue〛 Oh, I am so 〚dark red〛 SCARED! 〚end dark red〛 Please do not read the next panel. 〚dark blue〛 PLEASE PLEASE PLEASE!"
       ],
       "6": [
         "T-Rex: Well, look at that! This is the end of the comic, and the only one here is 〚dark blue〛 ME!",
@@ -3237,7 +3237,7 @@
       "5": [
         "T-Rex: Utahraptor, we can't just shift the sad around person-to-person!",
         "Utahraptor: I'm sorry! I got sad!",
-        "T-Rex:  Well, take all the time you need! We'll continue this conversation when you're no longer sad!",
+        "T-Rex: Well, take all the time you need! We'll continue this conversation when you're no longer sad!",
         "Utahraptor: I-",
         "T-Rex: TALK ONLY WHEN NO LONGER SAD"
       ]
@@ -4068,7 +4068,7 @@
     "file_name": "comic2-2688.png",
     "panels": {
       "6": [
-        "Narrator: T-REX PRESENTS:  〚pink〛VEGETABLES〚end pink〛™!",
+        "Narrator: T-REX PRESENTS: 〚pink〛VEGETABLES〚end pink〛™!",
         "Narrator: TRY ALL 40,000 VARIETIES",
         "Narrator: SOME OF THEM ARE POISONOUS THOUGH",
         "Narrator: SO ACTUALLY MAYBE DON'T TRY ALL 40,000 VARIETIES AFTER ALL"
@@ -4882,7 +4882,7 @@
       "3": [
         "God: I MADE THEM ALL 〚before〛 SO I'M PRETTY SURE THEY'RE ALL TIED FOR FIRST 〚after〛 AND I'M PRETTY SURE THE KORI BUSTARD IS BEST",
         "T-Rex: Come on, tell me the REAL truth. Which one rules the most??",
-        "God: T-REX IF I MADE A BIRD THAT WAS BETTER THAN ANOTHER THEN THAT 〚before〛 OTHER BIRD WOULD BE LESS PERFECT WHICH IMPLIES I MADE A MISTAKE 〚after〛  FIRST BIRD WOULD BE THE KORI BUSTARD WHICH I LOVE MAKE NO MISTAKE"
+        "God: T-REX IF I MADE A BIRD THAT WAS BETTER THAN ANOTHER THEN THAT 〚before〛 OTHER BIRD WOULD BE LESS PERFECT WHICH IMPLIES I MADE A MISTAKE 〚after〛 FIRST BIRD WOULD BE THE KORI BUSTARD WHICH I LOVE MAKE NO MISTAKE"
       ]
     }
   },
