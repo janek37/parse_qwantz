@@ -1446,7 +1446,7 @@
     "file_name": "comic2-948.png",
     "panels": {
       "6": [
-        "Newspaper cover: 〚in gothic font〛 The Patric Stewart Press",
+        "Newspaper cover: 〚in gothic font〛 The Patrick Stewart Press",
         "Newspaper cover: january 2007 - 25 cents - “all my views and news”",
         "Newspaper cover: 〚in a frame containing a picture of T-Rex〛 this guy's hilarious!",
         "Newspaper cover: 〚next to the frame〛 who is this guy?",
@@ -5428,6 +5428,32 @@
       "6": [
         "Banner: #EGGLIFE",
         "T-Rex: It's better if you write it down."
+      ]
+    }
+  },
+  "36bd001ddc795670ecd89647db9d67b0": {
+    "comic_id": 4368,
+    "file_name": "comic2-5066.png",
+    "panels": {
+      "3": [
+        "Narrator: No big deal, right? But it turned out that Athena (a LITERAL GOD) did think it was a big deal, because that fun sex happened inside HER temple.",
+        "Athena: NO HAVING SEX IN HERE! WHAT IS WRONG WITH YOU?? THIS IS BASICALLY A CHURCH, HELLO",
+        "Athena: STOP IMAGINING NAKED PEOPLE AND THINK ABOUT RELIGION AND STUFF FOR ONCE IN YOUR LIVES"
+      ],
+      "4": [
+        "Athena: ANYWAY MEDUSA, NOW THE SIGHT OF YOUR FACE WILL TURN ANY LIVING THING TO STONE",
+        "T-Rex: What?!",
+        "Utahraptor: Yeah, what?!"
+      ],
+      "5": [
+        "T-Rex: This punishment seems ENTIRELY unrelated to my alleged \"crime\"!!",
+        "Athena: COMPLAIN AGAIN AND I'LL TURN YOUR HAIR INTO SNAKES",
+        "Utahraptor: But that's even less related!!"
+      ],
+      "6": [
+        "Athena: TOO LATE, ENJOY HAVING TO FEED MICE TO YOUR HAIR FOREVER NOW",
+        "T-Rex: The snakes are invisible for reasons that don't need exploring at this juncture.",
+        "Athena: OBVIOUSLY. ANYWAY ENJOY BEING SINGLE GREATEST BIOLOGICAL WEAPON ON THE PLANET, BYEEE"
       ]
     }
   }
