@@ -172,7 +172,7 @@ def get_text_line(start: Pixel, image: SimpleImage, font: Font) -> tuple[TextLin
         if ''.join(char_box.char for char_box in char_boxes) != "...":
             return
     char_boxes = list(adjust_spaces(char_boxes))
-    if len(char_boxes) > 2 and char_boxes[-1].char == "'" and char_boxes[-2].char == " ":
+    if len(char_boxes) > 2 and char_boxes[-1].char in "'_" and char_boxes[-2].char == " ":
         char_boxes = char_boxes[:-2]
     color = image.get_pixel(min(char_boxes[0].pixels))
     return TextLine(char_boxes, font, color), warnings
