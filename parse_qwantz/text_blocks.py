@@ -55,14 +55,14 @@ class TextBlock:
     def bond_strengths(self) -> list[int]:
         return [alignment.strength for alignment in self.alignments]
 
-    def content(self, mark_bold=True, mark_italic=True, include_font_name=False):
+    def content(self, mark_bold=True, mark_italic=True, include_font_name=False, log=False):
         char_boxes = []
         for row in self.rows:
             row_char_boxes = list(self.get_row_charboxes(row))
             row_content = "".join(char_box.char for char_box in row_char_boxes)
             if char_boxes:
                 if char_boxes[-1].char == '-' and char_boxes[-2].char not in ' -':
-                    if row_content.endswith("-") and " " not in row_content:
+                    if log and row_content.endswith("-") and " " not in row_content:
                         logger.warning("Multiple hyphenation")
                     last_words = ''
                     for char_box in char_boxes[-2::-1]:
@@ -72,7 +72,7 @@ class TextBlock:
                     if last_words.startswith("'"):
                         last_words = last_words[1:]
                     next_words = re.match(r'[^].,!?"\' :;)/]*', row_content).group()
-                    if not disambiguate_hyphen(last_words.split("-"), next_words.strip("-").split("-")):
+                    if not disambiguate_hyphen(last_words.split("-"), next_words.strip("-").split("-"), log=log):
                         char_boxes.pop()
                 elif (
                     not (row_content.startswith("+") and row_content[1] != " ")

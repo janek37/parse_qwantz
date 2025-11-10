@@ -129,7 +129,8 @@ def get_script_lines(
     if ask_professor_science:
         yield "Sign: ASK PROFESSOR SCIENCE"
     for block in text_blocks:
-        if god_or_devil := handle_god_and_devil(block, block_matches.get(block) == [OFF_PANEL]):
+        default_content = block.content(log=True)
+        if god_or_devil := handle_god_and_devil(block, default_content, block_matches.get(block) == [OFF_PANEL]):
             block_matches[block] = [god_or_devil]
         if block in block_matches:
             characters = block_matches[block]
@@ -139,7 +140,7 @@ def get_script_lines(
                 else:
                     content = block.content(mark_italic=False)
             elif characters[0].name == "Floating Batman head":
-                content = block.content()
+                content = default_content
             else:
                 content = block.content(include_font_name=True)
             line = f"{' and '.join(ch.name for ch in characters)}: {content}"
@@ -147,9 +148,9 @@ def get_script_lines(
                 line = line[0].upper() + line[1:]
             yield line
         elif block in thought_blocks:
-            yield f"T-Rex: 〚thinks〛 {block.content()}"
+            yield f"T-Rex: 〚thinks〛 {default_content}"
         elif not block.font.is_mono:
-            yield f"Text: {block.content()}"
+            yield f"Text: {default_content}"
         else:
             if not block.is_bold:
                 logger.warning('Narrator not bold: %s', block.font.name)
@@ -216,8 +217,8 @@ def match_above_or_below(unmatched_blocks: list[TextBlock], block_matches: dict[
             block_matches[unmatched_block] = closest
 
 
-def handle_god_and_devil(block: TextBlock, is_off_panel: bool) -> Character | None:
-    if any(char.islower() for char in block.content()):
+def handle_god_and_devil(block: TextBlock, content: str, is_off_panel: bool) -> Character | None:
+    if any(char.islower() for char in content):
         return None
     if block.color == colors.RED and is_off_panel and block.is_bold:
         return Character.from_name('Devil')
@@ -225,3 +226,4 @@ def handle_god_and_devil(block: TextBlock, is_off_panel: bool) -> Character | No
         return Character.from_name('God')
     elif is_off_panel and block.is_italic:
         return Character.from_name('Creepy voice(s)')
+    return None

@@ -22,7 +22,7 @@ QWANTZ_WORD_SET = (
 ) - make_word_set('dict/manual-removed.txt')
 
 
-def disambiguate_hyphen(part1: list[str], part2: list[str]):
+def disambiguate_hyphen(part1: list[str], part2: list[str], log=False):
     word1 = part1[-1]
     word2 = part2[0]
     if not (word1 and word2):
@@ -40,14 +40,15 @@ def disambiguate_hyphen(part1: list[str], part2: list[str]):
 
     parts_for_logging = f"{'-'.join(part1)}/{'-'.join(part2)}"
     if no_hyphen:
-        if with_hyphen or all_with_hyphen:
+        if log and (with_hyphen or all_with_hyphen):
             logger.warning(f"Ambiguous hyphen ({parts_for_logging}); both in Qwantz dict")
         return False
     if with_hyphen or all_with_hyphen:
         return True
     if len(part1) > 1 or len(part2) > 1:
-        if word1_lower not in QWANTZ_WORD_SET or word2_lower not in QWANTZ_WORD_SET:
+        if log and (word1_lower not in QWANTZ_WORD_SET or word2_lower not in QWANTZ_WORD_SET):
             logger.warning(f"Unexpected hyphenation in multi-hyphened phrase ({parts_for_logging})")
         return True
-    logger.warning(f"Unresolved hyphen ({parts_for_logging})")
+    if log:
+        logger.warning(f"Unresolved hyphen ({parts_for_logging})")
     return False
