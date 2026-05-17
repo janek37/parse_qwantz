@@ -62,7 +62,6 @@ crimefighters
 crimefightingly
 crime-puzzlers
 critic-proof
-cringeworthy
 criticizing
 cryptocurrencies
 crystallizing
@@ -155,6 +154,7 @@ magnetosphere
 market-tested
 mass-produced
 mathemoscar
+matic
 maybetomorrowyoucould
 mechagodzilla
 microhappiness

@@ -69,7 +69,7 @@ class TextBlock:
                         multiple_hyphenation = False
                     last_words = ''
                     for char_box in char_boxes[-2::-1]:
-                        if char_box.char in '.,!?"#(/ ':
+                        if char_box.char in '.,!?"#(/| ':
                             break
                         last_words = char_box.char + last_words
                     if last_words.startswith("'"):

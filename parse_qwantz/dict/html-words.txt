@@ -1676,6 +1676,7 @@ asleep
 asoft
 asofterworld
 asofts
+asp
 aspect
 aspects
 asperger
@@ -2622,6 +2623,7 @@ blend
 blender
 blessed
 blessing
+blessings
 blew
 blimpin
 blind
@@ -3066,6 +3068,7 @@ browning
 brows
 browse
 browser
+browsers
 browsing
 bruce
 bruise
@@ -4107,6 +4110,7 @@ clippings
 clippy
 clips
 cloaca
+cloacae
 cloacaing
 cloacal
 clobber
@@ -4964,6 +4968,7 @@ cram
 cramp
 crampingly
 crams
+cranberry
 crank
 crap
 crappier
@@ -5046,6 +5051,7 @@ criminality
 criminally
 criminals
 cringe
+cringeworthy
 cringo
 cringy
 crippling
@@ -5532,6 +5538,7 @@ defaults
 defeat
 defeated
 defeating
+defeats
 defeatville
 defence
 defences
@@ -6478,6 +6485,7 @@ durian
 during
 dusk
 dust
+dusted
 dustin
 dustjackets
 dusty
@@ -8231,6 +8239,7 @@ friendly
 friendo
 friendos
 friendpal
+friendpix
 friends
 friendship
 friendships
@@ -8317,6 +8326,7 @@ fugueing
 fulfilled
 fulfilling
 full
+full-blown
 full-bodily
 full-colour
 fullest
@@ -8533,6 +8543,7 @@ gauntlet
 gave
 gavel
 gay
+gayest
 gays
 gazared
 gaze
@@ -10566,6 +10577,7 @@ intermittent
 intern
 internacional
 internal
+internalize
 international
 internationally
 interneaaaaaaaaaaaaaaaaahhhhhhhhhhhhh
@@ -11079,6 +11091,7 @@ kc
 kean
 keanu
 keara
+kee
 keeled
 keeler
 keeley
@@ -11120,6 +11133,7 @@ keystroke
 keystrokes
 keyword
 keywords
+kə
 kfc
 kg
 khan
@@ -11233,6 +11247,13 @@ klingon
 klingonese
 klingons
 klinical
+kloh
+kloh-ay-kee
+kloh-ay-kə
+kloh-ay-see
+kloʊˈeɪkə
+kloʊˈeɪki
+kloʊˈeɪsi
 klub
 km
 knackpo
@@ -11951,6 +11972,7 @@ losers
 loses
 losing
 loss
+losses
 lossless
 lossy
 lost
@@ -13425,6 +13447,7 @@ negative
 negatively
 negatives
 neglected
+negligible
 negotiate
 negotiated
 negotiation
@@ -13493,6 +13516,7 @@ nevertheless
 neverwinter
 nevis
 new
+newark
 newbitude
 newborn
 newborns
@@ -13608,6 +13632,7 @@ nocs
 nod
 nodded
 nodding
+node
 nodes
 noelle
 nofear
@@ -13688,6 +13713,7 @@ non-mobile
 non-murderers
 non-native
 non-negative
+non-negligible
 non-newtonian
 non-non-homogeneous
 non-non-non
@@ -14147,6 +14173,7 @@ oooob-waaa
 ooooh
 oops
 oopsie
+oopsie-doopsie
 ooze
 oozy
 open
@@ -14601,6 +14628,7 @@ parked
 parker
 parking
 parks
+parmesan
 parodies
 parody
 paroline
@@ -15123,6 +15151,7 @@ pixxx
 pizza
 pizzas
 pizzazz
+pl
 place
 placebo
 placed
@@ -15604,6 +15633,7 @@ pre-ordering
 preordering
 pre-orders
 preorders
+pre-owned
 prep
 preparation
 prepare
@@ -15679,6 +15709,7 @@ previous
 previousamount
 previousjuly
 previously
+previously-enjoyed
 previously-unknown
 pre-writing
 pre-written
@@ -21334,6 +21365,7 @@ unbanned
 unbearable
 unbeatable
 unbeknownst
+unbelievable
 unbelievably
 unbidden
 unblinking
@@ -21722,6 +21754,7 @@ uteron
 uterus
 utf
 utf-8
+uti
 utilitarianism
 utilities
 utility
@@ -21848,6 +21881,7 @@ venom
 venomized
 venomous
 venomverse
+vent
 ventured
 venue
 venury
@@ -22061,6 +22095,7 @@ wabe
 wackiest
 wacky
 wackyteenfanfiction
+wackytowne
 wad
 wades
 wading
@@ -22100,6 +22135,7 @@ wallet
 wallets
 wallop
 wallpaper
+wallpapered
 walls
 wall-sized
 wallspankers
@@ -22207,6 +22243,7 @@ waves
 waving
 wax
 way
+wayback
 waye
 wayne
 wayooo
