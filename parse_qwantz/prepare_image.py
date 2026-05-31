@@ -34,20 +34,23 @@ def get_mask_image() -> Image.Image:
         return Image.open(image_path)
 
 
-def prepare_image(image: Image.Image) -> tuple[Image.Image, list[int]]:
+def prepare_image(image: Image.Image, skip_template_validation: bool = False) -> tuple[Image.Image, list[int]]:
     if image.size != DIM:
         logger.error(f"Wrong image dimensions: {image.size}, only {DIM} is valid")
         raise ImageError(f"Wrong image dimensions: {image.size}, only {DIM} is valid")
     palette = image.getpalette()
     palette = tuple(palette) if palette else None
     good_panels: list[int] = []
-    for panel_no, (pixel, expected_color) in enumerate(SAMPLE, start=1):
-        color = image.getpixel(pixel)
-        color = normalize_color(color, palette)
-        if square_distance(color, expected_color) <= COLOR_THRESHOLD:
-            good_panels.append(panel_no)
-        else:
-            logger.info(f"Invalid template: expected {expected_color} at {pixel}; found {color}")
+    if skip_template_validation:
+        good_panels = list(range(1, 7))
+    else:
+        for panel_no, (pixel, expected_color) in enumerate(SAMPLE, start=1):
+            color = image.getpixel(pixel)
+            color = normalize_color(color, palette)
+            if square_distance(color, expected_color) <= COLOR_THRESHOLD:
+                good_panels.append(panel_no)
+            else:
+                logger.info(f"Invalid template: expected {expected_color} at {pixel}; found {color}")
     if not good_panels:
         logger.error("Invalid template")
         raise ImageError(f"Invalid template")

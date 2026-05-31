@@ -30,7 +30,7 @@ def parse_qwantz(
 ) -> Iterable[list[str]]:
     md5 = hashlib.md5(image.tobytes()).hexdigest()
     panel_overrides = get_panel_overrides().get(md5, {}) if not ignore_overrides else {}
-    masked, good_panels = prepare_image(image)
+    masked, good_panels = prepare_image(image, skip_template_validation=ignore_overrides)
     for i, (panel, characters) in enumerate(zip(PANELS, CHARACTERS), start=1):
         if str(i) in panel_overrides:
             yield panel_overrides[str(i)]

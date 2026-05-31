@@ -18,7 +18,7 @@ def add_panel_override(image_path: Path, comic_id: int, panel_no: list[int]) -> 
     if md5 not in overrides:
         file_name = image_path.name
         overrides[md5] = {"comic_id": int(comic_id), "file_name": file_name, "panels": {}}
-    panels = list(parse_qwantz(image))
+    panels = list(parse_qwantz(image, ignore_overrides=True))
     for n in panel_no:
         overrides[md5]["panels"][n] = panels[n-1]
     json.dump(overrides, open('parse_qwantz/data/panel_overrides.json', 'w'), indent=2, ensure_ascii=False)
