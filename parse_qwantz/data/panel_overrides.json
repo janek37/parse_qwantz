@@ -5469,7 +5469,7 @@
   },
   "84dc8ecf60bb03a0d907895ff2432dc6": {
     "comic_id": 4405,
-    "file_name": "4405 - comic2-5103.png",
+    "file_name": "comic2-5103.png",
     "panels": {
       "6": [
         "T-Rex and off panel: Whooooaahhhhhhhhh"
@@ -5484,6 +5484,16 @@
         "Off panel: \"MachinesthatprovideaTEMPORARYbenefitbypushingcrowsfromyourfieldstothefieldsofyourneighboursuntiltheytoobuyscarecrowssoREALLYitsjustamovebyBigScarecrowtosellmorescarecrow.\"",
         "T-Rex: Yes.",
         "T-Rex: I see no reason why they shouldn't be called that."
+      ]
+    }
+  },
+  "194cf76d762b5246a3eb7fd40296e8d2": {
+    "comic_id": 4478,
+    "file_name": "comic2-5176.png",
+    "panels": {
+      "5": [
+        "T-Rex: ...Oh. Uh, it might be bad though.",
+        "Utahraptor: Yeah, it might look more like pee vision than dog vision."
       ]
     }
   }
