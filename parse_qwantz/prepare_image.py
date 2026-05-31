@@ -29,12 +29,12 @@ class ImageError(Exception):
 
 
 @cache
-def get_mask_image() -> Image:
+def get_mask_image() -> Image.Image:
     with as_file(MASK_FILE_PATH) as image_path:
         return Image.open(image_path)
 
 
-def prepare_image(image: Image) -> tuple[Image, list[int]]:
+def prepare_image(image: Image.Image) -> tuple[Image.Image, list[int]]:
     if image.size != DIM:
         logger.error(f"Wrong image dimensions: {image.size}, only {DIM} is valid")
         raise ImageError(f"Wrong image dimensions: {image.size}, only {DIM} is valid")

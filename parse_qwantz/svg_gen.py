@@ -26,7 +26,7 @@ BATMAN_LEFT_PATH = files(parse_qwantz).joinpath('img/batman-left.svg')
 BATMAN_RIGHT_PATH = files(parse_qwantz).joinpath('img/batman-right.svg')
 
 
-def generate_svg(image: Image):
+def generate_svg(image: Image.Image):
     masked, good_panels = prepare_image(image)
     ask_professor_science = _is_ask_professor_science(masked)
     simple_image = SimpleImage.from_image(masked, ask_professor_science)
@@ -41,7 +41,7 @@ def generate_svg(image: Image):
     return render_svg(svg_elements)
 
 
-def _is_ask_professor_science(image: Image) -> bool:
+def _is_ask_professor_science(image: Image.Image) -> bool:
     panel = PANELS[0]
     (width, height), (x, y) = panel
     cropped = image.crop((x, y, x + width, y + height))

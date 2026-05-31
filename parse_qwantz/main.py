@@ -16,7 +16,7 @@ from parse_qwantz.prepare_image import prepare_image
 from parse_qwantz.svg_gen import generate_svg
 
 
-def get_unambiguous_words(image: Image) -> Iterable[str]:
+def get_unambiguous_words(image: Image.Image) -> Iterable[str]:
     md5 = hashlib.md5(image.tobytes()).hexdigest()
     panel_overrides = get_panel_overrides().get(md5, {})
     masked, good_panels = prepare_image(image)

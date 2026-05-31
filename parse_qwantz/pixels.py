@@ -18,7 +18,7 @@ class UnknownColor(ValueError):
     pass
 
 
-def get_pixels(image: Image) -> Iterable[tuple[Pixel, Color]]:
+def get_pixels(image: Image.Image) -> Iterable[tuple[Pixel, Color]]:
     palette = image.getpalette()
     palette = tuple(palette) if palette else None
     values = image.getdata()
@@ -67,7 +67,7 @@ def remove_subsequence(sorted_pixels: list[Pixel], subsequence: list[Pixel]) -> 
     return pixels
 
 
-def is_ask_professor_science(image: Image) -> bool:
+def is_ask_professor_science(image: Image.Image) -> bool:
     palette = image.getpalette()
     palette = tuple(palette) if palette else None
     for x in range(109, 113):

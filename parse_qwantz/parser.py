@@ -26,7 +26,7 @@ logger = logging.getLogger()
 
 
 def parse_qwantz(
-    image: Image, debug: bool = False, log_colors: bool = False, ignore_overrides: bool = False
+    image: Image.Image, debug: bool = False, log_colors: bool = False, ignore_overrides: bool = False
 ) -> Iterable[list[str]]:
     md5 = hashlib.md5(image.tobytes()).hexdigest()
     panel_overrides = get_panel_overrides().get(md5, {}) if not ignore_overrides else {}
@@ -59,7 +59,7 @@ def parse_qwantz(
             yield ["〚no text〛"]
 
 
-def parse_footer(image: Image) -> list[str]:
+def parse_footer(image: Image.Image) -> list[str]:
     md5 = hashlib.md5(image.tobytes()).hexdigest()
     panel_overrides = get_panel_overrides().get(md5, {})
     if "footer" in panel_overrides:
@@ -158,7 +158,7 @@ def get_script_lines(
 
 
 def handle_debug(
-    image: Image,
+    image: Image.Image,
     text_blocks: list[TextBlock],
     unmatched_shapes: list[list[Pixel]],
     unmatched_stuff: UnmatchedStuff,

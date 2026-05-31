@@ -13,7 +13,7 @@ class SimpleImage:
     pixels: dict[Pixel, Color]
 
     @classmethod
-    def from_image(cls, image: Image, trim_top: bool = False):
+    def from_image(cls, image: Image.Image, trim_top: bool = False):
         if trim_top:
             pixels = {pixel: color for pixel, color in get_pixels(image) if pixel.x > 240 or pixel.y > 46}
         else:
