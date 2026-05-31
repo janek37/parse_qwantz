@@ -10,7 +10,6 @@ classifiers = [
     "Programming Language :: Python :: 3.10",
     "Environment :: Console",
     "Intended Audience :: End Users/Desktop",
-    "License :: OSI Approved :: MIT License",
     "Natural Language :: English",
     "Operating System :: OS Independent",
     "Topic :: Multimedia :: Graphics :: Graphics Conversion",
@@ -21,6 +20,7 @@ dependencies = [
     "Pillow",
     "typer",
 ]
+license = "MIT"
 
 [project.optional-dependencies]
 dev = ["pytest"]
@@ -33,3 +33,6 @@ parse-qwantz = "parse_qwantz:app"
 
 [tool.setuptools]
 packages = ["parse_qwantz", "parse_qwantz.data", "parse_qwantz.img", "parse_qwantz.dict"]
+
+[tool.uv]
+package = true
