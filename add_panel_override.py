@@ -17,6 +17,8 @@ def add_panel_override(image_path: Path, comic_id: int, panel_no: list[int]) -> 
     md5 = hashlib.md5(image.tobytes()).hexdigest()
     if md5 not in overrides:
         file_name = image_path.name
+        if " - " in file_name:
+            file_name = file_name.split(" - ")[1]
         overrides[md5] = {"comic_id": int(comic_id), "file_name": file_name, "panels": {}}
     panels = list(parse_qwantz(image, ignore_overrides=True))
     for n in panel_no:
