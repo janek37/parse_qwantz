@@ -113,6 +113,7 @@ _
 154
 158
 1582
+1587
 1597
 1599
 15-minute
@@ -463,6 +464,7 @@ _
 512-bit
 52
 5219
+525
 526
 53
 5326
@@ -536,8 +538,10 @@ _
 74656
 75
 750
+76
 762nd
 765
+76-gram
 7734
 78
 78252
@@ -571,6 +575,7 @@ _
 925
 93
 94
+948
 95
 96
 960
@@ -879,6 +884,7 @@ admirable
 admiration
 admire
 admirers
+admires
 admissible
 admission
 admit
@@ -1196,6 +1202,7 @@ allusion
 allusions
 all-you-can-eat
 all-you-can-politely-eat
+almanac
 almond
 almonds
 almost
@@ -2259,6 +2266,7 @@ barn
 barneo
 barn-floor
 barns
+barnum
 barons
 barosaurus
 barrel
@@ -2461,6 +2469,7 @@ begins
 begs
 begun
 behalf
+be-hamburgered
 behave
 behaves
 behaving
@@ -2496,7 +2505,6 @@ bell
 belle
 belles
 bellies
-belligerant
 belligerent
 bellows
 bells
@@ -2762,6 +2770,7 @@ bland
 blandness
 blank
 blanket
+blankie
 blankly
 blanks
 blaring
@@ -2990,6 +2999,7 @@ books
 bookshelf
 bookshelves
 bookstore
+bookwheel
 boom
 boomed
 boomers
@@ -3555,6 +3565,7 @@ calzone
 cam
 camaraderie
 cambodian
+camcorder
 came
 camel
 camelopardalis
@@ -3590,6 +3601,7 @@ candidates
 candied
 candies
 candle
+candlepower
 candles
 candy
 cane
@@ -4411,6 +4423,8 @@ climes
 cling
 clinic
 clinical
+clip
+clipper
 clips
 clique
 cloaca
@@ -4741,7 +4755,6 @@ compares
 comparing
 comparison
 comparisons
-comparitively
 compartmental
 compartments
 compass
@@ -5498,6 +5511,7 @@ cremated
 cremates
 cremators
 cressida
+crestfallen
 crew
 crewed
 crews
@@ -5667,6 +5681,7 @@ cunning
 cuntburglar
 cup
 cupboard
+cupboards
 cupcakes
 cupid
 cupped
@@ -6071,6 +6086,7 @@ deeds
 deee
 deee-lite
 deep
+deep-dish
 deeper
 deeper-than-average
 deepest
@@ -6140,6 +6156,7 @@ deintensifiers
 deities
 del
 delay
+delaycrows
 delayed
 delaying
 delectable
@@ -6366,6 +6383,7 @@ deterministically
 deterrence
 detonator
 detriment
+detroit
 deus
 deuteronomy
 deux
@@ -6494,6 +6512,7 @@ dignity
 digrams
 digression
 digression-filled
+digs
 dihedral
 dilates
 dilation
@@ -6826,6 +6845,7 @@ documentary
 documentation
 documented
 documents
+dodecaceps
 dodged
 dodging
 dodo
@@ -8189,6 +8209,7 @@ existentialist
 existing
 exists
 exit
+exited
 exiting
 exits
 ex-lax
@@ -8796,6 +8817,7 @@ finger
 fingernails
 fingerprinting
 fingerprints
+finger-quotes
 fingers
 fingertips
 finish
@@ -10213,8 +10235,8 @@ grid
 grief
 grieffe
 grieg
+grievances
 grieve
-grievences
 grifters
 grill
 grilled
@@ -10339,6 +10361,7 @@ gunn
 gunned
 gunplay
 gunpowder
+gun-powered
 guns
 gunshot
 gunshow
@@ -10441,6 +10464,7 @@ halve
 halves
 ham
 hamburger
+hamburgered
 hamburgers
 hamlet
 hammer
@@ -10588,12 +10612,14 @@ hasteners
 hasty
 hat
 hatch
+hatched
 hatcher
 hatching
 hate
 hated
 hate-fav
 hateful
+hate-mailers
 hatemobs
 hater
 haters
@@ -10701,6 +10727,7 @@ heck
 heckin
 heckle
 heckler
+hecks
 hector
 hectoring
 hedge
@@ -10718,6 +10745,7 @@ heels
 heh
 heidegger
 height
+heighten
 heightened
 heightening
 heightens
@@ -11070,6 +11098,7 @@ hook
 hooke
 hooked
 hooking
+hooks
 hookup
 hookups
 hooliganism
@@ -11129,6 +11158,7 @@ horseless
 horselike
 horseload
 horseman
+horsepower
 horsepox
 horses
 horseshoes
@@ -11262,6 +11292,7 @@ humbug
 hum-dinger
 hume
 humiliating
+humiliation
 humility
 hummer
 hummina
@@ -11866,6 +11897,7 @@ infused
 ing
 in-game
 ingenious
+in-genre
 ingenuity
 ingest
 ingested
@@ -13659,6 +13691,7 @@ machine-aided
 machine-assisted
 machinery
 machines
+machinesthatprovideatemporarybenefitbypushingcrowsfromyourfieldstothefieldsofyourneighboursuntiltheytoobuyscarecrowssoreallyitsjustamovebybigscarecrowtosellmorescarecrow
 machinnes
 macmillan
 macmillans
@@ -13724,6 +13757,7 @@ mail
 mailbag
 mailbox
 mailed
+mailers
 mailing
 mailman
 mail-order
@@ -14832,6 +14866,7 @@ mourn
 mourned
 mourning
 mouse
+mousetrap
 moustache
 moustaches
 mouth
@@ -15191,6 +15226,7 @@ negotiation
 negotiations
 negotiators
 negro
+neigh
 neighbour
 neighbourhood
 neighbourly
@@ -15404,6 +15440,7 @@ non-bat-themed
 non-bhangra
 non-binary
 non-binding
+non-candle-based
 non-canon
 non-cellular
 non-changing
@@ -15447,6 +15484,7 @@ non-houseplant
 non-idiomatic
 non-jabroni
 non-jennifers
+non-leap
 non-liquid
 non-literal
 nonlocalities
@@ -16503,6 +16541,7 @@ parson
 parsons
 part
 partake
+partaken
 partee
 partial
 partially
@@ -17276,7 +17315,6 @@ politely
 politeness
 political
 politically
-politicans
 politician
 politicians
 politicize
@@ -18001,6 +18039,7 @@ protein
 proteins
 protest
 protested
+pro-tip
 proto
 protoadult
 protobabies
@@ -18239,6 +18278,7 @@ qo
 qs
 qu
 quad
+quad-blasting
 quad-core
 quadrathlon
 quadratic
@@ -19564,6 +19604,7 @@ rosencrantz
 rosenstone
 roses
 rot
+rotate
 rotated
 rotates
 rotating
@@ -19596,6 +19637,7 @@ roving
 row
 rowboat
 rowling
+rows
 royal
 royalties
 royalty
@@ -21584,9 +21626,9 @@ spines
 spinning
 spin-off
 spinoff
+spinoza
 spins
 spinster
-spinzoa
 spiral
 spiraled
 spirals
@@ -22847,6 +22889,7 @@ taxicabs
 taximeter
 taxing
 taxis
+taxpayers
 tbs
 t-butyl
 tcp
@@ -23740,6 +23783,7 @@ t-rexia
 t-rexian
 t-rexism
 t-rexium
+tri
 trial
 trials
 triangle
@@ -24274,6 +24318,7 @@ unhappiness
 unhappy
 unhatted
 unhelpful
+unheralded
 unholy
 unhugga
 uni
