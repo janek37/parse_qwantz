@@ -76,7 +76,7 @@ class TextLine:
         return id(self)
 
 
-def try_text_line(start: Pixel, image: SimpleImage, font: Font) -> tuple[TextLine, list[str]] | None:
+def try_text_line(start: Pixel, image: SimpleImage, font: Font) -> TextLine | None:
     x0, y0 = start
     if font.italic_offsets:
         max_x_offset = font.space_width - 3
@@ -89,8 +89,7 @@ def try_text_line(start: Pixel, image: SimpleImage, font: Font) -> tuple[TextLin
                 return result
 
 
-def get_text_line(start: Pixel, image: SimpleImage, font: Font) -> tuple[TextLine, list[str]] | None:
-    warnings = []
+def get_text_line(start: Pixel, image: SimpleImage, font: Font) -> TextLine | None:
     char_box, complement = font.get_char(start, image=image, is_first=True)
     if char_box is None or char_box.char == ' ':
         return None
@@ -104,22 +103,6 @@ def get_text_line(start: Pixel, image: SimpleImage, font: Font) -> tuple[TextLin
         if x >= image.width:
             break
         char_box, complement = font.get_char(Pixel(x, y), image, first_column=complement)
-        inline_offset_warning = None
-        if char_box is None and not (len(char_boxes) == 1 and char_boxes[0].char == "'"):
-            for offset in ((0, -1), (0, 1)):
-                off_x, off_y = offset
-                char_box, complement = font.get_char(Pixel(x + off_x, y + off_y), image)
-                if char_box and char_box.char == ' ':
-                    char_box = None
-                if char_box is not None and char_box.char not in "_'":
-                    content_so_far = ''.join(char_box.char for char_box in char_boxes)
-                    inline_offset_warning = (
-                        f"Inline offset after {content_so_far + ' '*len(spaces)!r},"
-                        f" before {char_box.char!r}: {(off_x, off_y)}"
-                    )
-                    x += off_x
-                    y += off_y
-                    break
         if char_box is None:
             break
         # this is to avoid treating "i"/"j" dots as periods, but still allow lines starting with "..."
@@ -137,8 +120,6 @@ def get_text_line(start: Pixel, image: SimpleImage, font: Font) -> tuple[TextLin
                     or max(line[0].y, line[1].y) > char_box.box.bottom
                 ):
                     break
-        if inline_offset_warning:
-            warnings.append(inline_offset_warning)
         if char_boxes:
             previous_char = char_boxes[-1].char
             if previous_char in GREEK_ALPHABET and char_box.char in LATIN_TO_GREEK:
@@ -175,7 +156,7 @@ def get_text_line(start: Pixel, image: SimpleImage, font: Font) -> tuple[TextLin
     if len(char_boxes) > 2 and char_boxes[-1].char in "'_" and char_boxes[-2].char == " ":
         char_boxes = char_boxes[:-2]
     color = image.get_pixel(min(char_boxes[0].pixels))
-    return TextLine(char_boxes, font, color), warnings
+    return TextLine(char_boxes, font, color)
 
 
 def adjust_spaces(char_boxes: list[CharBox]) -> Iterable[CharBox]:

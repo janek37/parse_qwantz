@@ -32,19 +32,16 @@ def get_elements(
             height=image.height,
             pixels={pixel: color for pixel, color in image.pixels.items() if pixel in pixels},
         )
-        text_line_candidates = (try_text_line(pixel, tmp_image, font) for font in ALL_FONTS)
-        text_line_candidates = [text_line for text_line in text_line_candidates if text_line]
-        longest_candidate = max(text_line_candidates, key=lambda tl: tl[0].box().right, default=None)
+        text_line_optional_candidates = (try_text_line(pixel, tmp_image, font) for font in ALL_FONTS)
+        text_line_candidates = [text_line for text_line in text_line_optional_candidates if text_line is not None]
+        longest_line = max(text_line_candidates, key=lambda tl: tl.box().right, default=None)
         # UGLY SPECIAL CASE AHOY
-        if longest_candidate and longest_candidate[0].content == "-" and longest_candidate[0].font.name == "Italic":
+        if longest_line and longest_line.content == "-" and longest_line.font.name == "Italic":
             try:
-                longest_candidate = next(c for c in text_line_candidates if c[0].font.name == "Regular")
+                longest_line = next(c for c in text_line_candidates if c.font.name == "Regular")
             except StopIteration:
                 pass
-        if longest_candidate:
-            longest_line, warnings = longest_candidate
-            for warning in warnings:
-                logger.warning(warning)
+        if longest_line:
             text_lines.append(longest_line)
             pixels = reduce(set.union, (char_box.pixels for char_box in longest_line.char_boxes))
             sorted_pixels = remove_subsequence(sorted_pixels, sorted(pixels))
